@@ -14,6 +14,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { WordVocabularyComponent } from './word-vocabulary/word-vocabulary.component';
 import { VocabularyListComponent} from './vocabulary-list/vocabulary-list.component';
 import {NgbdSortableHeader} from './services/sortable.directive';
+import { TextRatingComponent } from './text-rating/text-rating.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NgbdSortableHeader} from './services/sortable.directive';
     VocabularyComponent,
     NgbdSortableHeader,
     WordVocabularyComponent,
-    VocabularyListComponent
+    VocabularyListComponent,
+    TextRatingComponent
   ],
   imports: [
     BrowserModule,
