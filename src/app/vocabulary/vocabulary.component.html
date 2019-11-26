@@ -7,12 +7,13 @@
         <div class="col-6">
           <b>Keeleõppija:</b>
           <div class="custom-control custom-radio">
-            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" [(ngModel)]="list">
+            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input"
+                   [(ngModel)]="list" value="noor" (ngModelChange)="getData()">
             <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
           </div>
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input"
-                   [checked]="true" [(ngModel)]="list">
+                   [(ngModel)]="list" value="etLex" (ngModelChange)="getData()">
             <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
           </div>
         </div>
@@ -44,7 +45,7 @@
             {{item.pos}}
           </td>
           <td>
-            {{item.level[0]}}
+            {{item.level}}
           </td>
         </tr>
         </tbody>
