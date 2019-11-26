@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row pt-4">
+      <form class="col-4" [formGroup]="form">
+      <div class="row">
+        <div class="col-6">
+          <b>Keeleõppija:</b>
+          <div class="custom-control custom-radio">
+            <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
+                   class="custom-control-input">
+            <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
+                   class="custom-control-input" value="etLex">
+            <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <h4>Keeletase:</h4>
+          <div>
+          <label formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+            <input  type="checkbox"[formControlName]="i">
+            {{langLevel[i]}}
+          </label>
+          </div>
+        </div>
+      </div>
+      <h4>Sõnaliik</h4>
+        <!--   <div *ngFor="let word of wordTypes">
+  <div class="custom-control custom-checkbox">
+         <input type="checkbox" class="custom-control-input" id="'customCheck'+{{word.name}}">
+         <label class="custom-control-label" for="'customCheck'+{{word.name}}">{{word.name}}</label>
+       </div>
+      </div>
+       -->
+        <div>
+          <label formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
+            <input  type="checkbox"[formControlName]="i">
+            {{wordTypes[i].name}}
+          </label>
+        </div>
+
+      <button class="filter-btn" (click)="sendData()">Filtreeri</button>
+      <a class="remove-filters pl-2" (click)="form.reset()">Tühista filtrid</a>
+      </form>
+    <div class="col-8">
+    <div class="float-right">
+      <label for="select">Näita</label>
+      <select id="select" class="custom-select select" name="pageSize" [(ngModel)]="pageSize">
+        <option [ngValue]="2">2</option>
+        <option [ngValue]="4">4</option>
+        <option [ngValue]="6">6</option>
+      </select>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col" sortable="lemma" (sort)="onSort($event)">Sõna</th>
+        <th scope="col" sortable="pos" (sort)="onSort($event)">Sõnaliik</th>
+        <th scope="col" sortable="level" (sort)="onSort($event)">Tase</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of words$ | async">
+        <td>
+          <ngb-highlight [result]="item.lemma" ></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="item.pos" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.level" ></ngb-highlight></td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize">
+      </ngb-pagination>
+    </div>
+    </div>
+  </div>
+</div>

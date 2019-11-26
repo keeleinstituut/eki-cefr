@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class VocabularyListService {
+
+  constructor(private http: HttpClient) { }
+
+  getCheckboxData() {
+    return this.http.get('http://elo.eki.ee/etLex/api/v1.0/projects?asdict=1');
+  }
+
+  getTableData(list: string, level?: string, words?: string) {
+    return this.http.get('https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?' + level + words);
+  }
+}
