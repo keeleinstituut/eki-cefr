@@ -34,13 +34,13 @@
       </div>
      </div>
       -->
-        <div>
+        <div class="row">
           <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
 
           <div  formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
           <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" [formControlName]="i" id="'customCheck'+{{lang}}">
-            <label class="adult-blue custom-control-label" for="'customCheck'+{{lang}}">
+            <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
+            <label class="adult-blue custom-control-label" [for]="i">
               {{levels[i]}}
             </label>
           </div>
