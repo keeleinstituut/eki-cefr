@@ -1,0 +1,58 @@
+<div class="container">
+  <h3>Teksti sõnavara hindamine</h3>
+  <p>Teksti sõnavara hindamise programm analüüsib tekste sõnavara loendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab.
+  </p>
+  <form [formGroup]="form">
+  <div class="row pt-4">
+    <div class="col-6">
+      <b>Keeleõppija:</b>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio1" name="list" class="custom-control-input"
+               formControlName="list" value="noor">
+        <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio2" name="list" class="custom-control-input"
+               formControlName="list" value="etLex">
+        <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
+        <textarea class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="4"></textarea>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="form-group">
+        <div>
+          <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
+          <label formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+            <input  type="checkbox"[formControlName]="i">
+            {{levels[i]}}
+          </label>
+        </div>
+        <textarea class="form-control" formControlName="result" id="exampleFormControlTextarea2" rows="4"></textarea>
+      </div>
+    </div>
+    <div class="col-2">
+        <p>Sõnu kokku: {{smTable.wordCount}}</p>
+        <div class="row">
+          <div class="col-6 text-center">
+            <p>Keeletase</p>
+          </div>
+          <div class="col-3 text-center">
+            <p>Sõnu</p>
+          </div>
+          <div class="col-3 text-center">
+            <p>%</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  <button (click)="getData()">Hinda</button>
+    {{resultData | json}}
+  </form>
+</div>
