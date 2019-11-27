@@ -20,3 +20,28 @@
   background-position: center center;
   background-size: 50% 50%;
 }
+
+.color-A1{
+  background: #A0DCF8;
+  border-radius: 6px;
+}
+.color-A2{
+  background: #A9EBB4;
+  border-radius: 6px;
+}
+.color-B1{
+  background: #E8CBF3;
+  border-radius: 6px;
+}
+.color-B2{
+  background: #FFDD75;
+  border-radius: 6px;
+}
+.color-C1{
+  background: #FFB9B9;
+  border-radius: 6px;
+}
+.color-eelA1{
+  background: #D3DBE4;
+  border-radius: 6px;
+}

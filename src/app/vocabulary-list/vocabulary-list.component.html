@@ -17,27 +17,24 @@
         </div>
         <div class="col-6">
           <h4>Keeletase:</h4>
-          <div>
-          <label formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-            <input  type="checkbox"[formControlName]="i">
-            {{langLevel[i]}}
-          </label>
+          <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
+              <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
+                {{langLevel[i]}}
+              </label>
+            </div>
           </div>
         </div>
       </div>
       <h4>Sõnaliik</h4>
-        <!--   <div *ngFor="let word of wordTypes">
-  <div class="custom-control custom-checkbox">
-         <input type="checkbox" class="custom-control-input" id="'customCheck'+{{word.name}}">
-         <label class="custom-control-label" for="'customCheck'+{{word.name}}">{{word.name}}</label>
-       </div>
-      </div>
-       -->
-        <div>
-          <label formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
-            <input  type="checkbox"[formControlName]="i">
-            {{wordTypes[i].name}}
-          </label>
+        <div formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" [formControlName]="i" id="'type'+{{i}}">
+            <label class="custom-control-label" for="'type'+{{i}}">
+              {{wordTypes[i].name}}
+            </label>
+          </div>
         </div>
 
       <button class="filter-btn" (click)="sendData()">Filtreeri</button>

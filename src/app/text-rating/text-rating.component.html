@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid bottom-gutter">
   <h3>Teksti sõnavara hindamine</h3>
   <p>Teksti sõnavara hindamise programm analüüsib tekste sõnavara loendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab.
   </p>
@@ -27,20 +27,13 @@
     </div>
     <div class="col-5">
       <div class="form-group">
-        <!--   <div *ngFor="let word of wordTypes">
- <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="'customCheck'+{{word.name}}">
-        <label class="custom-control-label" for="'customCheck'+{{word.name}}">{{word.name}}</label>
-      </div>
-     </div>
-      -->
         <div class="row">
           <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
 
           <div  formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
-            <label class="adult-blue custom-control-label" [for]="i">
+            <label class="color-{{levels[i]}} custom-control-label" [for]="i">
               {{levels[i]}}
             </label>
           </div>

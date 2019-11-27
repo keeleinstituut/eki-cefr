@@ -137,17 +137,23 @@ export class VocabularyListComponent implements OnInit {
       this.adultWordTypes = data.items.etLex.poslist;
       this.childWordTypes = data.items.noor.poslist;
       this.getAdultData();
-      this.addCheckboxes();
     });
   }
 
   getAdultData() {
     this.langLevel = this.adultLangLevel;
     this.wordTypes = this.adultWordTypes;
+    this.form.controls.lang.controls = [];
+    this.form.controls.types.controls = [];
+    this.addCheckboxes();
   }
   getChildData() {
+    this.form.controls.lang.controls = [];
     this.langLevel = this.childLangLevel;
     this.wordTypes = this.childWordTypes;
+    this.form.controls.lang.controls = [];
+    this.form.controls.types.controls = [];
+    this.addCheckboxes();
   }
 
   sendData() {
