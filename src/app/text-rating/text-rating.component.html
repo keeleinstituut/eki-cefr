@@ -27,18 +27,31 @@
     </div>
     <div class="col-5">
       <div class="form-group">
+        <!--   <div *ngFor="let word of wordTypes">
+ <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="'customCheck'+{{word.name}}">
+        <label class="custom-control-label" for="'customCheck'+{{word.name}}">{{word.name}}</label>
+      </div>
+     </div>
+      -->
         <div>
           <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
-          <label formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-            <input  type="checkbox"[formControlName]="i">
-            {{levels[i]}}
-          </label>
+
+          <div  formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" [formControlName]="i" id="'customCheck'+{{lang}}">
+            <label class="adult-blue custom-control-label" for="'customCheck'+{{lang}}">
+              {{levels[i]}}
+            </label>
+          </div>
+          </div>
+
         </div>
         <textarea class="form-control" formControlName="result" id="exampleFormControlTextarea2" rows="4"></textarea>
       </div>
     </div>
     <div class="col-2">
-        <p>Sõnu kokku: {{smTable.wordCount}}</p>
+        <p>Sõnu kokku: {{wordCount}}</p>
         <div class="row">
           <div class="col-6 text-center">
             <p>Keeletase</p>
@@ -50,6 +63,17 @@
             <p>%</p>
           </div>
         </div>
+      <div  class="row" *ngFor="let item of smTable">
+        <div class="col-6 text-center">
+          <p>{{item.label}}</p>
+        </div>
+        <div class="col-3 text-center">
+          <p>{{item.count}}</p>
+        </div>
+        <div class="col-3 text-center">
+          <p>{{item.percentage}}</p>
+        </div>
+      </div>
     </div>
   </div>
   <button (click)="getData()">Hinda</button>

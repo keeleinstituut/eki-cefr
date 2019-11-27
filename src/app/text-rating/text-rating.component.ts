@@ -12,6 +12,7 @@ export class TextRatingComponent implements OnInit {
   public form;
   public resultData = '';
   public smTable = '';
+  public wordCount = '';
   public levels = [];
   constructor(private formBuilder: FormBuilder, private service: TextService) {
     this.form = this.formBuilder.group({
@@ -31,13 +32,13 @@ export class TextRatingComponent implements OnInit {
       this.levels = data.item.evaluationLevels;
       this.form.controls.lang.controls = [];
       this.addCheckboxes();
-      console.log(this.form.controls.lang.controls);
     });
 
     this.service.getTextData(this.form.value.text, this.form.value.list).subscribe((data: any) => {
-      console.log(data);
       this.resultData = data;
-      this.smTable = data.textStat;
+      this.smTable = data.textStat.tables.by_level;
+      this.wordCount = data.textStat.wordCount;
+      console.log(this.resultData);
     });
   }
 
