@@ -14,6 +14,7 @@ export class TextRatingComponent implements OnInit {
   public smTable = '';
   public wordCount = '';
   public levels = [];
+  public notAllowed = [];
   constructor(private formBuilder: FormBuilder, private service: TextService) {
     this.form = this.formBuilder.group({
       list: 'etLex',
@@ -35,18 +36,36 @@ export class TextRatingComponent implements OnInit {
     });
 
     this.service.getTextData(this.form.value.text, this.form.value.list).subscribe((data: any) => {
-      this.resultData = data;
+      this.resultData = data.evaluatedText;
       this.smTable = data.textStat.tables.by_level;
       this.wordCount = data.textStat.wordCount;
-      console.log(this.resultData);
+      this.form.controls.result.setValue(this.form.value.text);
     });
   }
 
   private addCheckboxes() {
     this.levels.forEach((o, i) => {
-      const control = new FormControl(i === 0); // if first item set to true, else false
+      const control = new FormControl(i >= 0); // if first item set to true, else false
       (this.form.controls.lang as FormArray).push(control);
     });
+  }
+
+  wordColor(level, val) {
+    if (val === false) {
+      this.notAllowed.push(level);
+    } else {
+      this.notAllowed = this.notAllowed.filter(item => item !== level);
+    }
+  }
+  colors(level): string {
+
+    for (const color of this.notAllowed) {
+      if (color === level) {
+        return '';
+      }
+    }
+
+    return 'color-' + level;
   }
 
 }
