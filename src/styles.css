@@ -21,27 +21,60 @@
   background-size: 50% 50%;
 }
 
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5D606E;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #8A98A5;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  box-shadow: none;
+}
+.form-control:focus {
+  color: #5D606E;
+  background-color: #fff;
+  border-color: #8A98A5;
+  box-shadow: none;
+}
+
 .color-A1{
   background: #A0DCF8;
   border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .color-A2{
   background: #A9EBB4;
   border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .color-B1{
   background: #E8CBF3;
   border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .color-B2{
   background: #FFDD75;
   border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .color-C1{
   background: #FFB9B9;
   border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .color-eelA1{
   background: #D3DBE4;
   border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
 }

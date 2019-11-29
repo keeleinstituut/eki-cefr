@@ -27,6 +27,8 @@ export class TextRatingComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
   getData() {
     this.service.getLevels(this.form.value.list).subscribe((data: any) => {
       this.levels = [];
@@ -57,14 +59,13 @@ export class TextRatingComponent implements OnInit {
       this.notAllowed = this.notAllowed.filter(item => item !== level);
     }
   }
-  colors(level): string {
 
+  colors(level): string {
     for (const color of this.notAllowed) {
       if (color === level) {
         return '';
       }
     }
-
     return 'color-' + level;
   }
 

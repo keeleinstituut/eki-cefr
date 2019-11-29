@@ -19,19 +19,19 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-5">
+    <div class="col-4">
       <div class="form-group">
         <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
         <textarea class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="4"></textarea>
       </div>
     </div>
-    <div class="col-5">
+    <div class="col-4">
       <div class="form-group">
         <div class="row">
           <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
 
           <div  formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-          <div class="custom-control custom-checkbox">
+          <div class="custom-control custom-checkbox pr-2">
             <input class="custom-control-input" type="checkbox" [formControlName]="i"
                    [id]="i" (change)="wordColor(levels[i], lang.value)">
             <label class="color-{{levels[i]}} custom-control-label" [for]="i">
@@ -40,15 +40,15 @@
           </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row text-bg-white">
           <div class="pr-2" id="exampleFormControlTextarea2" *ngFor="let word of this.resultData; let i = index">
-            <p [ngClass]="colors(word.level)" ngbPopover="{{word.pos}}"
-               triggers="manual" #p="ngbPopover" (click)="p.open()" >{{word.lemma}}</p>
+            <p [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
+               triggers="manual" #p="ngbPopover" (click)="p.open()" >{{word.token}}</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-2">
+    <div class="col-2 mt-4 ml-4 text-bg-white">
         <p>Sõnu kokku: {{wordCount}}</p>
         <div class="row">
           <div class="col-6 text-center">
@@ -74,6 +74,6 @@
       </div>
     </div>
   </div>
-  <button (click)="getData()">Hinda</button>
+  <button class="btn btn-submit" (click)="getData()">Hinda</button>
   </form>
 </div>

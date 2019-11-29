@@ -84,3 +84,30 @@
   border-color: transparent;
   border-style: solid;
 }
+
+.btn-submit {
+  display: inline-block;
+  text-transform: none;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  color: #fff;
+  background-color: #00892E;
+  border-color: #00892E;
+}
+
+.text-bg-white {
+  background: #FFFFFF;
+  border-radius: 10px;
+  min-height: 105px;
+}
