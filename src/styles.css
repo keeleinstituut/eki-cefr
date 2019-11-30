@@ -42,6 +42,34 @@
   box-shadow: none;
 }
 
+.breadcrumb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: .75rem 0 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  border-radius: .25rem;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  display: inline-block;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  color: #0E1013;;
+  content: ">";
+  }
+
+.breadcrumb a{
+  color: #0053B3;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #0053B3;
+}
+
 .color-A1{
   background: #A0DCF8;
   border-radius: 6px;

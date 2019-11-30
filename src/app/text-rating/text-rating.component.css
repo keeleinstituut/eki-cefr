@@ -109,5 +109,23 @@
 .text-bg-white {
   background: #FFFFFF;
   border-radius: 10px;
-  min-height: 105px;
+  min-height: 202px;
+}
+
+.rating-table{
+  margin-top: 2rem;
+  border-radius: 10px;
+  background: #FFFFFF;
+  min-height: 102px;
+}
+
+.counter {
+  position: absolute;
+  bottom: 22px;
+  right: 25px;
+  color: #5D606E;
+}
+
+.table-border {
+  border-bottom: 1px solid #3F3F3F;
 }

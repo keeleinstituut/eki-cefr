@@ -1,56 +1,65 @@
 <div class="container-fluid bottom-gutter">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home']">Avaleht</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Teksti sõnavara hindamine</li>
+    </ol>
+  </nav>
   <h3>Teksti sõnavara hindamine</h3>
-  <p>Teksti sõnavara hindamise programm analüüsib tekste sõnavara loendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab.
+  <p>Teksti sõnavara hindamise programm analüüsib tekste sõnavara loendite põhjal ning näitab, mis keeleoskustaseme
+    sõnavara tekst sisaldab.
   </p>
   <form [formGroup]="form">
-  <div class="row pt-4">
-    <div class="col-6">
-      <b>Keeleõppija:</b>
-      <div class="custom-control custom-radio">
-        <input type="radio" id="customRadio1" name="list" class="custom-control-input"
-               formControlName="list" value="noor">
-        <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
-      </div>
-      <div class="custom-control custom-radio">
-        <input type="radio" id="customRadio2" name="list" class="custom-control-input"
-               formControlName="list" value="etLex">
-        <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
-        <textarea class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="4"></textarea>
+    <div class="row pt-4 pb-4">
+      <div class="col-6">
+        <b>Keeleõppija:</b>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="list" class="custom-control-input"
+                 formControlName="list" value="noor">
+          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span class="alert-icn"></span></label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio2" name="list" class="custom-control-input"
+                 formControlName="list" value="etLex">
+          <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
+        </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="form-group">
-        <div class="row">
-          <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
+          <textarea class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="8"
+                    maxlength="2000"></textarea>
+          <small class="counter">{{this.form.controls.text.value.length}}/2000</small>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <div class="row">
+            <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
 
-          <div  formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-          <div class="custom-control custom-checkbox pr-2">
-            <input class="custom-control-input" type="checkbox" [formControlName]="i"
-                   [id]="i" (change)="wordColor(levels[i], lang.value)">
-            <label class="color-{{levels[i]}} custom-control-label" [for]="i">
-              {{levels[i]}}
-            </label>
+            <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+              <div class="custom-control custom-checkbox pr-2">
+                <input class="custom-control-input" type="checkbox" [formControlName]="i"
+                       [id]="i" (change)="wordColor(levels[i], lang.value)">
+                <label class="color-{{levels[i]}} custom-control-label" [for]="i">
+                  {{levels[i]}}
+                </label>
+              </div>
+            </div>
           </div>
-          </div>
-        </div>
-        <div class="row text-bg-white">
-          <div class="pr-2" id="exampleFormControlTextarea2" *ngFor="let word of this.resultData; let i = index">
-            <p [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
-               triggers="manual" #p="ngbPopover" (click)="p.open()" >{{word.token}}</p>
+          <div class="row text-bg-white">
+            <div class="pr-2" id="exampleFormControlTextarea2" *ngFor="let word of this.resultData; let i = index">
+              <p [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
+                 triggers="manual" #p="ngbPopover" (click)="p.open()">{{word.token}}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-2 mt-4 ml-4 text-bg-white">
+      <div class="col-2 ml-4 rating-table">
         <p>Sõnu kokku: {{wordCount}}</p>
-        <div class="row">
+        <div class="row table-border">
           <div class="col-6 text-center">
             <p>Keeletase</p>
           </div>
@@ -61,19 +70,19 @@
             <p>%</p>
           </div>
         </div>
-      <div  class="row" *ngFor="let item of smTable">
-        <div class="col-6 text-center">
-          <p>{{item.label}}</p>
-        </div>
-        <div class="col-3 text-center">
-          <p>{{item.count}}</p>
-        </div>
-        <div class="col-3 text-center">
-          <p>{{item.percentage}}</p>
+        <div class="row" *ngFor="let item of smTable">
+          <div class="col-6 text-center">
+            <p>{{item.label}}</p>
+          </div>
+          <div class="col-3 text-center">
+            <p>{{item.count}}</p>
+          </div>
+          <div class="col-3 text-center">
+            <p>{{item.percentage}}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <button class="btn btn-submit" (click)="getData()">Hinda</button>
+    <button class="btn btn-submit" (click)="getData()">Hinda</button>
   </form>
 </div>

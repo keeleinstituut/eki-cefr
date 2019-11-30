@@ -1,15 +1,17 @@
 <div class="container-fluid">
   <div class="row pt-4">
     <div class="col-4">
-      <input id="search" type="text" [(ngModel)]="searchWord">
-      <button class="sm-search-btn" (click)="getData()">Otsi</button>
+      <div class="row">
+        <input id="search" type="text"  class="form-control w-50" [(ngModel)]="searchWord">
+        <button class="btn sm-search-btn" (click)="getData()">Otsi</button>
+      </div>
       <div class="row pt-4">
-        <div class="col-6">
+        <div class="col">
           <b>Keeleõppija:</b>
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input"
                    [(ngModel)]="list" value="noor" (ngModelChange)="getData()">
-            <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
+            <label class="custom-control-label" for="customRadio1">noor keeleõppija <span class="alert-icn"></span></label>
           </div>
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input"
@@ -21,6 +23,7 @@
     </div>
     <div class="col-8">
       <div class="float-right">
+        <a class="pr-2">PDF</a>
         <label for="select">Näita</label>
         <select id="select" class="custom-select select" name="pageSize">
           <option [ngValue]="2">2</option>
@@ -32,7 +35,7 @@
         <thead>
         <tr>
           <th scope="col" sortable="lemma" (sort)="onSort($event)">Sõna</th>
-          <th scope="col" sortable="pos" (sort)="onSort($event)">Sõnaliik</th>
+          <th scope="col" sortable="pos_text" (sort)="onSort($event)">Sõnaliik</th>
           <th scope="col" sortable="level[0]" (sort)="onSort($event)">Tase</th>
         </tr>
         </thead>
@@ -42,7 +45,7 @@
             {{item.lemma}}
           </td>
           <td>
-            {{item.pos}}
+            {{item.pos_text}}
           </td>
           <td>
             {{item.level}}

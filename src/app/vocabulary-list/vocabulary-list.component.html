@@ -2,12 +2,12 @@
   <div class="row pt-4">
       <form class="col-4" [formGroup]="form">
       <div class="row">
-        <div class="col-6">
+        <div class="col-7">
           <b>Keeleõppija:</b>
           <div class="custom-control custom-radio">
             <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
                    class="custom-control-input">
-            <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
+            <label class="custom-control-label" for="customRadio1">noor keeleõppija <span class="alert-icn"></span></label>
           </div>
           <div class="custom-control custom-radio">
             <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
@@ -15,7 +15,7 @@
             <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-5">
           <h4>Keeletase:</h4>
           <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
             <div class="custom-control custom-checkbox">
@@ -42,6 +42,7 @@
       </form>
     <div class="col-8">
     <div class="float-right">
+      <a class="pr-2">PDF</a>
       <label for="select">Näita</label>
       <select id="select" class="custom-select select" name="pageSize" [(ngModel)]="pageSize">
         <option [ngValue]="2">2</option>
@@ -53,7 +54,7 @@
       <thead>
       <tr>
         <th scope="col" sortable="lemma" (sort)="onSort($event)">Sõna</th>
-        <th scope="col" sortable="pos" (sort)="onSort($event)">Sõnaliik</th>
+        <th scope="col" sortable="pos_text" (sort)="onSort($event)">Sõnaliik</th>
         <th scope="col" sortable="level" (sort)="onSort($event)">Tase</th>
       </tr>
       </thead>
@@ -63,13 +64,15 @@
           <ngb-highlight [result]="item.lemma" ></ngb-highlight>
         </td>
         <td>
-          <ngb-highlight [result]="item.pos" ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.level" ></ngb-highlight></td>
+          <ngb-highlight [result]="item.pos_text" ></ngb-highlight></td>
+        <td><ngb-highlight class="color-{{item.level}}" [result]="item.level" ></ngb-highlight></td>
       </tr>
       </tbody>
     </table>
     <div>
       <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize">
+        <ng-template ngbPaginationPrevious>Eelmine</ng-template>
+        <ng-template ngbPaginationNext>Järgmine</ng-template>
       </ngb-pagination>
     </div>
     </div>
