@@ -43,8 +43,38 @@
   position: relative;
   display: block;
   padding: .5rem .75rem;
-  margin-left: -1px;
   line-height: 1.25;
   color: #3173B8;
   border: 1px solid #3173B8;
+  background: #ECF0F2;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin-left: 5px;
+}
+
+.sm-search-btn{
+  background: #00874F;
+  border-radius: 0 6px 6px 0;
+  color: #FFFFFF;
+
+  display: inline-block;
+  text-transform: none;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  border-color: #00892E;
+}
+
+.select{
+  border-color: transparent;
+  background: #F2F2F2;
 }

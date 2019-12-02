@@ -71,6 +71,7 @@ export class VocabularyListComponent implements OnInit {
   constructor(private listService: VocabularyListService,  private formBuilder: FormBuilder, private pipe: DecimalPipe) {
 
     this.form = this.formBuilder.group({
+      search: '',
       list: 'etLex',
       lang: new FormArray([]),
       types: new FormArray([])
@@ -121,11 +122,11 @@ export class VocabularyListComponent implements OnInit {
 
   private addCheckboxes() {
     this.langLevel.forEach((o, i) => {
-      const control = new FormControl(i === 0); // if first item set to true, else false
+      const control = new FormControl();
       (this.form.controls.lang as FormArray).push(control);
     });
     this.wordTypes.forEach((o, i) => {
-      const control = new FormControl(i === 0); // if first item set to true, else false
+      const control = new FormControl();
       (this.form.controls.types as FormArray).push(control);
     });
   }
@@ -159,6 +160,7 @@ export class VocabularyListComponent implements OnInit {
   sendData() {
     let levelLongString = '';
     let wordLongString = '';
+    let searchLongString = '';
 
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
@@ -170,7 +172,7 @@ export class VocabularyListComponent implements OnInit {
 
     for (const lang of langLevel) {
       let levelString = '';
-      if (lang === langLevel[0]) {
+      if (lang === langLevel[0] && this.form.value.search === '') {
          levelString  = 'level=' + lang;
       } else {
          levelString  = '&level=' + lang;
@@ -188,7 +190,11 @@ export class VocabularyListComponent implements OnInit {
       wordLongString = wordLongString + wordString;
     }
 
-    this.listService.getTableData(this.form.value.list, levelLongString, wordLongString).subscribe((data: any) => {
+    if (this.form.value.search !== '') {
+      searchLongString = 'word=' + this.form.value.search;
+    }
+
+    this.listService.getTableData(searchLongString, this.form.value.list, levelLongString, wordLongString).subscribe((data: any) => {
       this.tableData = data.items;
 
       console.log(this.tableData);

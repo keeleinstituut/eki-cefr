@@ -1,72 +1,23 @@
 <div class="row header-wrap">
   <div class="col-12">
-    <a href="https://sonaveeb.ee/" aria-label="Pealehele" role="link" class="logo">
-      <span class="icon icon-logo-s d-md-none"></span>
-      <span class="icon icon-logo d-none d-md-block"></span>
-    </a>
-    <div class="row pt-4">
-      <div class="col-3"></div>
-    <a [routerLink]="['/vocabulary']" class="col-1 text-center">
+    <div class="row">
+      <div class="col-3"><a [routerLink]="['/home']"><img width="165" src="../../assets/images/icons/main-logo.svg"></a></div>
+    <a [routerLink]="['/vocabulary']" class="col-1 text-center pt-2">
       <span class="main-menu-item">Sõnavara</span>
     </a>
-    <a class="col-1 text-center">
+    <a class="col-1 text-center pt-2">
      <span class="main-menu-item">Grammatika</span>
     </a>
-    <a [routerLink]="['/rating']" class="col-2 text-center">
+    <a [routerLink]="['/rating']" class="col-2 text-center pt-2">
       <span class="main-menu-item">Teksti hindamine</span>
     </a>
-    <a class="col-1 text-center">
+    <a class="col-1 text-center pt-2">
       <span class="main-menu-item">Projektist</span>
     </a>
+      <a href="https://sonaveeb.ee/" aria-label="Sõnaveebi" role="link" class="logo">
+        <span class="icon icon-logo-s d-md-none"></span>
+        <span class="icon icon-logo d-none d-md-block"></span>
+      </a>
     </div>
-    <div class="back mt-2">
-      <span class="icon icon-back"></span>
-    </div>
-    <button role="button" aria-expanded="false" data-toggle="collapse" data-target="#headerLinks" class="btn menu-btn">
-      <span class="d-none d-md-block">Menüü</span>
-      <span class="icon icon-menu"></span>
-    </button>
-
-    <div id="headerLinks">
-      <div class="header-links" role="navbar">
-        <div class="dropdown lang-btn">
-          <a href="#" aria-label="Vali keel" role="button" class="dropdown-toggle d-none" id="langDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            EST
-            <span class="icon icon-chevron-left"></span>
-          </a>
-          <div class="dropdown-menu" data-target="langDropdownMenuButton" aria-expanded="true" aria-labelledby="langDropdownMenuButton">
-            <a role="link" class="dropdown-item" href="#">EST</a>
-            <a role="link" class="dropdown-item" href="#">RUS</a>
-            <a role="link" class="dropdown-item" href="#">ENG</a>
-          </div>
-        </div>
-        <button class="btn menu-btn float-right clear-both" data-toggle="collapse" data-target="#headerLinks">
-          <span>Sulge</span>
-          <span class="icon icon-close"></span>
-        </button>
-        <a href="/" class="menu-item selected" data-item-name="search">
-          <span>Otsing</span>
-        </a>
-        <a href="/learn" class="menu-item" data-item-name="learn">
-          <span>Õpi eesti keelt</span>
-        </a>
-        <a aria-hidden="true" href="/games" class="menu-item" data-item-name="games">
-          <span>Keelemängud</span>
-        </a>
-        <a href="/about" class="menu-item" data-item-name="about">
-          <span>Portaalist</span>
-        </a>
-        <a href="/contacts" class="menu-item" data-item-name="contacts">
-          <span>Kontakt</span>
-        </a>
-        <a href="/#" role="button" data-toggle="modal" data-target="#feedbackModal" class="menu-item" data-item-name="feedback">
-          <span>Tagasiside</span>
-        </a>
-        <a class="menu-item" href="#">
-          <!-- For WCAG focus trap. Not to be removed -->
-        </a>
-      </div>
-    </div>
-
   </div>
 </div>

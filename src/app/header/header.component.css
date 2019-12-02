@@ -4,3 +4,8 @@
 
   color: #0053B3;
 }
+
+.logo, .back {
+  right: 0!important;
+  left: auto;
+}

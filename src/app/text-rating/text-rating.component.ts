@@ -47,7 +47,7 @@ export class TextRatingComponent implements OnInit {
 
   private addCheckboxes() {
     this.levels.forEach((o, i) => {
-      const control = new FormControl(i >= 0); // if first item set to true, else false
+      const control = new FormControl(i >= 0);
       (this.form.controls.lang as FormArray).push(control);
     });
   }
