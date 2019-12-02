@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
+      <div class="col-5">
         <div class="form-group">
           <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
           <textarea class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="8"
@@ -52,33 +52,33 @@
           <div class="row text-bg-white">
             <div class="pr-2" id="exampleFormControlTextarea2" *ngFor="let word of this.resultData; let i = index">
               <p [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
-                 triggers="manual" #p="ngbPopover" (click)="p.open()">{{word.token}}</p>
+                 triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-2 ml-4 rating-table">
-        <p>Sõnu kokku: {{wordCount}}</p>
-        <div class="row table-border">
-          <div class="col-6 text-center">
-            <p>Keeletase</p>
+      <div class="col ml-4 mr-4 rating-table">
+        Sõnu kokku: {{wordCount}}
+        <div class="row table-border m-0">
+          <div class="col-4 pl-0 text-left">
+            Keeletase
           </div>
-          <div class="col-3 text-center">
-            <p>Sõnu</p>
+          <div class="col-4 text-left">
+            Sõnu
           </div>
-          <div class="col-3 text-center">
-            <p>%</p>
+          <div class="col-3 text-left">
+            %
           </div>
         </div>
         <div class="row" *ngFor="let item of smTable">
-          <div class="col-6 text-center">
-            <p>{{item.label}}</p>
+          <div class="col-4 text-left">
+            {{item.label}}
           </div>
-          <div class="col-3 text-center">
-            <p>{{item.count}}</p>
+          <div class="col-4 text-left">
+            {{item.count}}
           </div>
-          <div class="col-3 text-center">
-            <p>{{item.percentage}}</p>
+          <div class="col-3 text-left">
+            {{item.percentage}}
           </div>
         </div>
       </div>
