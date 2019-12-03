@@ -9,3 +9,22 @@
   right: 0!important;
   left: auto;
 }
+.icon-small {
+  font-size: 1.1rem;
+  padding-top: 20px;
+}
+
+.item-active{
+  color: #0053B3;
+  background-color: transparent;
+  text-decoration:none!important;
+  border-bottom: 2px solid #0053B3;
+}
+
+a:hover{
+  text-decoration: none!important;
+}
+
+a:focus{
+  text-decoration: none!important;
+}

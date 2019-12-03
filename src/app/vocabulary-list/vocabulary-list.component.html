@@ -8,7 +8,7 @@
       <div class="pl-3 pb-4 row">
             <input type="text" formControlName="search" class="form-control w-50">
             <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
-            <span class="alert-icn"></span>
+            <span class="alert-icn-search"></span>
       </div>
       <div class="row">
         <div class="col-7">
@@ -28,7 +28,7 @@
         <div class="col-5">
           <h4>Keeletase:</h4>
           <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-            <div class="custom-control custom-checkbox">
+            <div class="custom-control custom-checkbox pb-2">
               <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
               <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
                 {{langLevel[i]}}

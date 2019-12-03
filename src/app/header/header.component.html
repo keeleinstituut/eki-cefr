@@ -1,23 +1,22 @@
-<div class="row header-wrap">
-  <div class="col-12">
-    <div class="row">
-      <div class="col-3"><a [routerLink]="['/home']"><img width="165" src="../../assets/images/icons/main-logo.svg"></a></div>
-    <a [routerLink]="['/vocabulary']" class="col-1 text-center pt-2">
-      <span class="main-menu-item">Sõnavara</span>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3"><a [routerLink]="['/home']"><img width="165" src="../../assets/images/icons/main-logo.svg"></a>
+    </div>
+    <a [routerLink]="['/vocabulary']" class="col-1 text-center pt-2 pr-0" (click)="setItem('vocabulary')">
+      <span class="main-menu-item" [class.item-active]="menuItem === 'vocabulary'">Sõnavara otsing</span>
     </a>
-    <a class="col-1 text-center pt-2">
-     <span class="main-menu-item">Grammatika</span>
+    <a [routerLink]="['/rating']" class="col-2 text-center pt-2 pr-0" (click)="setItem('rating')">
+      <span class="main-menu-item" [class.item-active]="menuItem === 'rating'">Teksti sõnavara hindamine</span>
     </a>
-    <a [routerLink]="['/rating']" class="col-2 text-center pt-2">
-      <span class="main-menu-item">Teksti hindamine</span>
+    <a class="col-1 text-center pt-2 pr-4">
+      <span class="main-menu-item">Grammatika</span>
     </a>
     <a class="col-1 text-center pt-2">
       <span class="main-menu-item">Projektist</span>
     </a>
-      <a href="https://sonaveeb.ee/" aria-label="Sõnaveebi" role="link" class="logo">
-        <span class="icon icon-logo-s d-md-none"></span>
-        <span class="icon icon-logo d-none d-md-block"></span>
-      </a>
-    </div>
+    <a href="https://sonaveeb.ee/" aria-label="Sõnaveebi" role="link" class="logo">
+      <span class="icon icon-logo-s d-md-none"></span>
+      <span class="icon-small icon-logo d-none d-md-block"></span>
+    </a>
   </div>
 </div>
