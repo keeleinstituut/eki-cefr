@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from './main/main.component';
 import {TextRatingComponent} from './text-rating/text-rating.component';
 import {VocabularyListComponent} from './vocabulary-list/vocabulary-list.component';
+import {GrammarComponent} from './grammar/grammar.component';
 
 const routes: Routes = [
   { path: 'home', component: MainComponent },
   { path: 'vocabulary', component: VocabularyListComponent },
   { path: 'rating', component: TextRatingComponent },
+  { path: 'grammar', component: GrammarComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 

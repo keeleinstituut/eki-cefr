@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { RateComponent } from './rate/rate.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,19 +14,20 @@ import { WordVocabularyComponent } from './word-vocabulary/word-vocabulary.compo
 import { VocabularyListComponent} from './vocabulary-list/vocabulary-list.component';
 import {NgbdSortableHeader} from './services/sortable.directive';
 import { TextRatingComponent } from './text-rating/text-rating.component';
+import { GrammarComponent } from './grammar/grammar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    RateComponent,
     FooterComponent,
     HeaderComponent,
     VocabularyComponent,
     NgbdSortableHeader,
     WordVocabularyComponent,
     VocabularyListComponent,
-    TextRatingComponent
+    TextRatingComponent,
+    GrammarComponent
   ],
   imports: [
     BrowserModule,

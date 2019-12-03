@@ -162,7 +162,7 @@ ngb-popover-window.bs-popover-bottom>.arrow, ngb-popover-window.bs-popover-top>.
 
 .btn-submit {
   display: inline-block;
-  text-transform: none;
+  text-transform: uppercase;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;

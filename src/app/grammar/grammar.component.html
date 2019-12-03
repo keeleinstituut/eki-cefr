@@ -1,0 +1,102 @@
+<div class="container-fluid bottom-gutter">
+  <h3>Grammatika</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+    <form class="col-12" [formGroup]="form">
+        <div class="row">
+          <b class="pr-2">Keeleõppija:</b>
+          <div class="custom-control custom-radio pr-4">
+            <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
+                   class="custom-control-input">
+            <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
+              class="alert-icn"></span></label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
+                   class="custom-control-input" value="etLex" disabled>
+            <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
+          </div>
+        </div>
+        <div class="row">
+          <b class="pr-2">Keeletase:</b>
+          <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+            <div class="custom-control custom-checkbox pb-2">
+              <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
+              <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
+                {{langLevel[i]}}
+              </label>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Peakategooria</label>
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="catList"
+                  (change)="getChildValues(form.value.catList)">
+            <option *ngFor="let category of categoriesList">{{category.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">Kõik alamkategooriad</label>
+          <select class="form-control" id="exampleFormControlSelect2" formControlName="childCatList"
+                  (change)="getTypeValues(form.value.childCatList)">
+            <option *ngFor="let category of childCatList" value="{{category.category}}">{{category.name}}</option>
+          </select>
+        </div>
+        <div *ngIf="typeList" class="form-group pt-4">
+          <select class="form-control mt-2" formControlName="childType"
+                  (change)="getTypes(form.value.childType)">
+            <option *ngFor="let type of typeList.descriptors" value="{{type}}">{{type}}</option>
+          </select>
+        </div>
+        <div *ngIf="valTypeList" class="form-group pt-4">
+          <select class="form-control mt-2" formControlName="valueType">
+            <option *ngFor="let type of valTypeList.values" value="{{type}}">{{type}}</option>
+          </select>
+        </div>
+        <div class="pl-4 pt-4">
+          <span>+</span>
+          <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
+        </div>
+      </div>
+    </form>
+    <div class="col-8">
+      <div class="float-right">
+        <a class="pr-2">PDF</a>
+        <label for="select">Näita</label>
+        <select id="select" class="custom-select select" name="pageSize" [(ngModel)]="pageSize">
+          <option [ngValue]="2">2</option>
+          <option [ngValue]="4">4</option>
+          <option [ngValue]="6">6</option>
+        </select>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col" sortable="lemma" (sort)="onSort($event)">Sõna</th>
+          <th scope="col" sortable="pos_text" (sort)="onSort($event)">Sõnaliik</th>
+          <th scope="col" sortable="level" (sort)="onSort($event)">Tase</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of words$ | async">
+          <td>
+            <ngb-highlight [result]="item.lemma"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="item.pos_text"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight class="color-{{item.level}}" [result]="item.level"></ngb-highlight>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div>
+        <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize">
+          <ng-template ngbPaginationPrevious>Eelmine</ng-template>
+          <ng-template ngbPaginationNext>Järgmine</ng-template>
+        </ngb-pagination>
+      </div>
+    </div>
+</div>
