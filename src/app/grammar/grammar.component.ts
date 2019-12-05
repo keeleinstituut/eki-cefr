@@ -2,7 +2,7 @@ import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChildren} from '@angular/core';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {GrammarService} from './grammar.service';
 
@@ -18,6 +18,13 @@ interface State {
   searchTerm: string;
   sortColumn: string;
   sortDirection: SortDirection;
+}
+
+@Pipe({ name: 'keys',  pure: false })
+export class KeysPipe implements PipeTransform {
+  transform(value: any, args: any[] = null): any {
+    return Object.values(value).sort((a, b) => a.ord - b.ord);
+  }
 }
 
 function compare(v1, v2) {
@@ -55,6 +62,7 @@ export class GrammarComponent implements OnInit {
   public typeList: any[];
   public valTypeList: any[];
   public categories: any[];
+  itemsCount: number;
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
   private _words$ = new BehaviorSubject<any[]>([]);
@@ -200,7 +208,9 @@ export class GrammarComponent implements OnInit {
     console.log(langLevel);
 
     this.listService.getTableData(encodeURI(JSON.stringify(valueArray)), langLevel).subscribe((data: any) => {
+            this.itemsCount = data.count;
       this.tableData = data.items;
+      console.log(this.tableData);
 
       this._search$.pipe(
         tap(() => this._loading$.next(true)),

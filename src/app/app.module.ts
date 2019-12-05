@@ -14,7 +14,7 @@ import { WordVocabularyComponent } from './word-vocabulary/word-vocabulary.compo
 import { VocabularyListComponent} from './vocabulary-list/vocabulary-list.component';
 import {NgbdSortableHeader} from './services/sortable.directive';
 import { TextRatingComponent } from './text-rating/text-rating.component';
-import { GrammarComponent } from './grammar/grammar.component';
+import {GrammarComponent, KeysPipe} from './grammar/grammar.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
 
 @NgModule({
@@ -29,7 +29,8 @@ import { AboutProjectComponent } from './about-project/about-project.component';
     VocabularyListComponent,
     TextRatingComponent,
     GrammarComponent,
-    AboutProjectComponent
+    AboutProjectComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
