@@ -1,21 +1,23 @@
 <div class="container-fluid bottom-gutter">
   <div class="row">
+    <div class="col-12">
+      <h3>Sõnavara otsing</h3>
+    </div>
     <div class="col-8 pr-4">
-  <h3>Sõnavara otsing</h3>
-  <p>Sõnavara osa sisaldab eri vanuses eri keeleoskustasemetega õppijate sõnavaraloendeid.
-    Eristatud on noored keeleõppijad (keeleoskustasemed eelA1, A1, A2, B1) ja täiskasvanud
-    (keeleoskustasemed A1, A2, B1, B2, C1).</p>
-  </div>
-    <div class="col-4 pt-4">
+      <p>Sõnavara osa sisaldab eri vanuses eri keeleoskustasemetega õppijate sõnavaraloendeid.
+        Eristatud on noored keeleõppijad (keeleoskustasemed eelA1, A1, A2, B1) ja täiskasvanud
+        (keeleoskustasemed A1, A2, B1, B2, C1).</p>
+    </div>
+    <div class="col-4">
       <button class="btn btn-submit float-right">Tagasiside</button>
     </div>
   </div>
   <div class="row pt-4">
     <form class="col-4" [formGroup]="form">
       <div class="pl-3 pb-4 row">
-            <input type="text" formControlName="search" class="form-control w-50">
-            <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
-            <span class="alert-icn-search"></span>
+        <input type="text" formControlName="search" class="form-control w-50">
+        <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
+        <span class="alert-icn-search"></span>
       </div>
       <div class="row">
         <div class="col-7">

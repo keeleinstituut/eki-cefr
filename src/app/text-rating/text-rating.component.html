@@ -1,8 +1,17 @@
 <div class="container-fluid bottom-gutter">
-  <h3>Teksti sõnavara hindamine</h3>
-  <p>Teksti sõnavara hindamise programm analüüsib tekste sõnavara loendite põhjal ning näitab, mis keeleoskustaseme
-    sõnavara tekst sisaldab.
-  </p>
+  <div class="row">
+    <div class="col-12">
+      <h3>Teksti sõnavara hindamine</h3>
+    </div>
+    <div class="col-8 pr-4">
+      <p>Teksti sõnavara hindamise programm analüüsib tekste sõnavara loendite põhjal ning näitab, mis keeleoskustaseme
+        sõnavara tekst sisaldab.
+      </p>
+    </div>
+    <div class="col-4">
+      <button class="btn btn-submit float-right">Tagasiside</button>
+    </div>
+  </div>
   <form [formGroup]="form">
     <div class="row pt-4 pb-4">
       <div class="col-6">
@@ -10,7 +19,8 @@
         <div class="custom-control custom-radio">
           <input type="radio" id="customRadio1" name="list" class="custom-control-input"
                  formControlName="list" value="noor">
-          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span class="alert-icn"></span></label>
+          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
+            class="alert-icn"></span></label>
         </div>
         <div class="custom-control custom-radio">
           <input type="radio" id="customRadio2" name="list" class="custom-control-input"
