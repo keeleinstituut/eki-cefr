@@ -97,8 +97,11 @@
           </td>
           <td>
             <ngb-highlight  [result]="item.can_do_statement"></ngb-highlight>
+            <div class="row">
+            <span class="features" >TUNNUSED</span>
             <div *ngFor="let obj of item.descriptors | keys">
-              <span class="features" >TUNNUSED</span> {{obj.descriptor}} {{obj.values}}
+              {{obj.descriptor}} <span class="features-category">{{obj.values}}</span>
+            </div>
             </div>
           </td>
           <td>
