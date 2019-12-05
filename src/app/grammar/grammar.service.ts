@@ -21,7 +21,7 @@ export class GrammarService {
     return this.http.get('https://elo.eki.ee/etLex/api/v1.0/gramdescriptors');
   }
 
-  getTableData(wordsString: string) {
+  getTableData(wordsString: string, level: string) {
     return this.http.get('https://elo.eki.ee/etLex/api/v1.0/gramprofiles?project=noor&filter_json=' + wordsString);
   }
 }

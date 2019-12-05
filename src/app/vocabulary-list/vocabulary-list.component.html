@@ -1,8 +1,15 @@
 <div class="container-fluid bottom-gutter">
+  <div class="row">
+    <div class="col-8 pr-4">
   <h3>Sõnavara otsing</h3>
   <p>Sõnavara osa sisaldab eri vanuses eri keeleoskustasemetega õppijate sõnavaraloendeid.
     Eristatud on noored keeleõppijad (keeleoskustasemed eelA1, A1, A2, B1) ja täiskasvanud
     (keeleoskustasemed A1, A2, B1, B2, C1).</p>
+  </div>
+    <div class="col-4 pt-4">
+      <button class="btn btn-submit float-right">Tagasiside</button>
+    </div>
+  </div>
   <div class="row pt-4">
     <form class="col-4" [formGroup]="form">
       <div class="pl-3 pb-4 row">
@@ -70,7 +77,7 @@
         <tbody>
         <tr *ngFor="let item of words$ | async">
           <td>
-            <ngb-highlight [result]="item.lemma"></ngb-highlight>
+            <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
           </td>
           <td>
             <ngb-highlight [result]="item.pos_text"></ngb-highlight>

@@ -34,24 +34,6 @@
   background: #F2F2F2;
 }
 
-/deep/ .pagination  {
-  display: flex !important;
-  flex-wrap: wrap !important;
-}
-
-/deep/ .pagination .page-link {
-  position: relative;
-  display: block;
-  padding: .5rem .75rem;
-  line-height: 1.25;
-  color: #3173B8;
-  border: 1px solid #3173B8;
-  background: #ECF0F2;
-  box-sizing: border-box;
-  border-radius: 6px;
-  margin-left: 5px;
-}
-
 .sm-search-btn{
   background: #00874F;
   border-radius: 0 6px 6px 0;
@@ -72,11 +54,6 @@
   line-height: 1.5;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   border-color: #00892E;
-}
-
-.select{
-  border-color: transparent;
-  background: #F2F2F2;
 }
 
 .alert-icn-search {

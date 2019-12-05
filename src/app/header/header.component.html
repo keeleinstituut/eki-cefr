@@ -11,8 +11,8 @@
     <a [routerLink]="['/grammar']" class="col-1 text-center pt-2 pr-4" (click)="setItem('grammar')">
       <span class="main-menu-item" [class.item-active]="menuItem === 'grammar'">Grammatika</span>
     </a>
-    <a class="col-1 text-center pt-2">
-      <span class="main-menu-item">Projektist</span>
+    <a [routerLink]="['/about']" class="col-1 text-center pt-2"  (click)="setItem('about')">
+      <span class="main-menu-item" [class.item-active]="menuItem === 'about'">Projektist</span>
     </a>
     <a href="https://sonaveeb.ee/" aria-label="Sõnaveebi" role="link" class="logo">
       <span class="icon icon-logo-s d-md-none"></span>

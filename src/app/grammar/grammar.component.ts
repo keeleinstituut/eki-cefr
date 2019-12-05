@@ -76,11 +76,10 @@ export class GrammarComponent implements OnInit {
   constructor(private listService: GrammarService,  private formBuilder: FormBuilder, private pipe: DecimalPipe) {
 
     this.form = this.formBuilder.group({
-      catList: '',
-      childCatList: '',
-      childType: '',
-      valueType: '',
-      search: '',
+      maincategory: '',
+      subcategory: '',
+      descriptor: '',
+      values: '',
       list: 'noor',
       lang: new FormArray([]),
       types: new FormArray([])
@@ -186,43 +185,21 @@ export class GrammarComponent implements OnInit {
   }
 
   sendData() {
-    let levelLongString = '';
-    let wordLongString = '';
-    let searchLongString = '';
 
+    let valueArray = [];
+    let descriptors = [];
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null);
 
-    const wordList = this.form.value.types
-      .map((v, i) => v ? this.wordTypes[i].pos : null)
-      .filter(v => v !== null);
+    descriptors = [[this.form.value.descriptor, this.form.value.values]];
+    valueArray = [{maincategory: this.form.value.maincategory, subcategory: this.form.value.subcategory, descriptors}];
 
-    for (const lang of langLevel) {
-      let levelString = '';
-      if (lang === langLevel[0] && this.form.value.search === '') {
-        levelString  = 'level=' + lang;
-      } else {
-        levelString  = '&level=' + lang;
-      }
-      levelLongString = levelLongString + levelString;
-    }
+    console.log(JSON.stringify(valueArray));
 
-    for (const word of wordList) {
-      let wordString = '';
-      if (word === wordList[0] && levelLongString === '') {
-        wordString  = 'pos=' + word;
-      } else {
-        wordString  = '&pos=' + word;
-      }
-      wordLongString = wordLongString + wordString;
-    }
+    console.log(langLevel);
 
-    if (this.form.value.search !== '') {
-      searchLongString = 'word=' + this.form.value.search;
-    }
-
-    this.listService.getTableData(searchLongString).subscribe((data: any) => {
+    this.listService.getTableData(encodeURI(JSON.stringify(valueArray)), langLevel).subscribe((data: any) => {
       this.tableData = data.items;
 
       this._search$.pipe(

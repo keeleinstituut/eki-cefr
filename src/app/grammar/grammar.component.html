@@ -20,7 +20,7 @@
         <div class="row">
           <b class="pr-2">Keeletase:</b>
           <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-            <div class="custom-control custom-checkbox pb-2">
+            <div class="custom-control custom-checkbox pb-2 pr-3">
               <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
               <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
                 {{langLevel[i]}}
@@ -31,26 +31,30 @@
       <div class="row">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Peakategooria</label>
-          <select class="form-control" id="exampleFormControlSelect1" formControlName="catList"
-                  (change)="getChildValues(form.value.catList)">
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
+                  (change)="getChildValues(form.value.maincategory)">
+            <option value="" hidden>Kõik peakategooriad</option>
             <option *ngFor="let category of categoriesList">{{category.name}}</option>
           </select>
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect2">Kõik alamkategooriad</label>
-          <select class="form-control" id="exampleFormControlSelect2" formControlName="childCatList"
-                  (change)="getTypeValues(form.value.childCatList)">
+          <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
+                  (change)="getTypeValues(form.value.subcategory)">
+            <option value="" hidden>Kõik alamkategooriad</option>
             <option *ngFor="let category of childCatList" value="{{category.category}}">{{category.name}}</option>
           </select>
         </div>
         <div *ngIf="typeList" class="form-group pt-4">
-          <select class="form-control mt-2" formControlName="childType"
-                  (change)="getTypes(form.value.childType)">
+          <select class="form-control mt-2" formControlName="descriptor"
+                  (change)="getTypes(form.value.descriptor)" >
+            <option value="" hidden>Tunnus</option>
             <option *ngFor="let type of typeList.descriptors" value="{{type}}">{{type}}</option>
           </select>
         </div>
         <div *ngIf="valTypeList" class="form-group pt-4">
-          <select class="form-control mt-2" formControlName="valueType">
+          <select class="form-control mt-2" formControlName="values">
+            <option value="" hidden>Tunnuse liik</option>
             <option *ngFor="let type of valTypeList.values" value="{{type}}">{{type}}</option>
           </select>
         </div>
