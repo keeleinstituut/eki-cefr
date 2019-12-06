@@ -30,6 +30,7 @@ export class TextRatingComponent implements OnInit {
 
 
   getData() {
+    console.log(this.form.value.text);
     this.service.getLevels(this.form.value.list).subscribe((data: any) => {
       this.levels = [];
       this.levels = data.item.evaluationLevels;
@@ -37,7 +38,7 @@ export class TextRatingComponent implements OnInit {
       this.addCheckboxes();
     });
 
-    this.service.getTextData(this.form.value.text, this.form.value.list).subscribe((data: any) => {
+    this.service.getTextData(encodeURI(this.form.value.text), this.form.value.list).subscribe((data: any) => {
       this.resultData = data.evaluatedText;
       this.smTable = data.textStat.tables.by_level;
       this.wordCount = data.textStat.wordCount;

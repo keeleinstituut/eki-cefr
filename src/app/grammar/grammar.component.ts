@@ -23,7 +23,7 @@ interface State {
 @Pipe({ name: 'keys',  pure: false })
 export class KeysPipe implements PipeTransform {
   transform(value: any, args: any[] = null): any {
-    return Object.values(value).sort((a, b) => a.ord - b.ord);
+    return Object.values(value).sort((a: any, b: any) => a.ord - b.ord);
   }
 }
 
