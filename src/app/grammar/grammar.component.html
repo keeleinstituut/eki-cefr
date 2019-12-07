@@ -37,11 +37,12 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div formArrayName="category">
+    <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Peakategooria</label>
         <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
-                (change)="getChildValues(form.value.maincategory)">
+                (change)="getChildValues(form.value.category[i].maincategory, i)">
           <option value="" hidden>Kõik peakategooriad</option>
           <option *ngFor="let category of categoriesList">{{category.name}}</option>
         </select>
@@ -49,9 +50,9 @@
       <div class="form-group">
         <label for="exampleFormControlSelect2">Kõik alamkategooriad</label>
         <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
-                (change)="getTypeValues(form.value.subcategory)">
+                (change)="getTypeValues(form.value.category[i].subcategory)">
           <option value="" hidden>Kõik alamkategooriad</option>
-          <option *ngFor="let category of childCatList" value="{{category.category}}">{{category.name}}</option>
+          <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
         </select>
       </div>
       <div *ngIf="typeList" class="form-group pt-4">
@@ -72,9 +73,10 @@
         <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
       </div>
     </div>
+    </div>
     <div class="row">
       <i class="fa fa-plus plus pt-1 pr-2"></i>
-      <a>Lisa peakategooria</a>
+      <a (click)="addRow()">Lisa peakategooria</a>
     </div>
   </form>
   <div class="pt-4">

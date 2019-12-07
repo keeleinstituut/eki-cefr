@@ -58,10 +58,14 @@ export class GrammarComponent implements OnInit {
   public form;
   public tableData: object[];
   public categoriesList: any[];
-  public childCatList: any[];
+  public childCatList = [];
+  public childLists = [];
   public typeList: any[];
   public valTypeList: any[];
   public categories: any[];
+  public mainRowNum = 1;
+  public mainCatRow = [this.mainRowNum];
+  public subCatRow = 1;
   itemsCount: number;
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
@@ -84,10 +88,7 @@ export class GrammarComponent implements OnInit {
   constructor(private listService: GrammarService,  private formBuilder: FormBuilder, private pipe: DecimalPipe) {
 
     this.form = this.formBuilder.group({
-      maincategory: '',
-      subcategory: '',
-      descriptor: '',
-      values: '',
+      category: new FormArray([]),
       list: 'noor',
       lang: new FormArray([]),
       types: new FormArray([])
@@ -157,14 +158,20 @@ export class GrammarComponent implements OnInit {
     });
 
     this.listService.getTypeData().subscribe((data: any) => {
-        this.categoriesList = data.items.filter(item => item.parent === null);
-        this.categories = data.items;
+      this.categoriesList = data.items.filter(item => item.parent === null);
+      this.categories = data.items;
     });
   }
 
-  getChildValues(selected: string) {
+  getChildValues(selected: string, index: number) {
     this.childCatList = this.categories.filter(item => item.parent === selected);
+    console.log(this.childCatList);
+    this.childLists[index] = this.childCatList;
+    console.log(this.childLists);
+    // this.form.controls.category[i].subcategory = this.childCatList;
   }
+
+
 
   getTypeValues(selected: string) {
     this.typeList = this.categories.find(item => item.category === selected);
@@ -192,6 +199,23 @@ export class GrammarComponent implements OnInit {
     this.addCheckboxes();
   }
 
+  addRow() {
+    this.mainRowNum = this.mainRowNum + 1;
+    this.mainCatRow.push(this.mainRowNum );
+
+    (this.form.get('category')).push(this.formBuilder.group({
+      maincategory: [],
+      subcategory: [],
+      descriptor: [],
+      values: [],
+    }));
+
+  }
+
+  get category() {
+    return (this.form.get('category')).controls;
+  }
+
   sendData() {
 
     let valueArray = [];
@@ -203,14 +227,9 @@ export class GrammarComponent implements OnInit {
     descriptors = [[this.form.value.descriptor, this.form.value.values]];
     valueArray = [{maincategory: this.form.value.maincategory, subcategory: this.form.value.subcategory, descriptors}];
 
-    console.log(JSON.stringify(valueArray));
-
-    console.log(langLevel);
-
     this.listService.getTableData(encodeURI(JSON.stringify(valueArray)), langLevel).subscribe((data: any) => {
             this.itemsCount = data.count;
       this.tableData = data.items;
-      console.log(this.tableData);
 
       this._search$.pipe(
         tap(() => this._loading$.next(true)),
