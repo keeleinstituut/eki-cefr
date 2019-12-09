@@ -37,7 +37,8 @@
         </div>
       </div>
     </div>
-    <div formArrayName="category">
+    <div class="row">
+    <div formArrayName="category" class="col">
     <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Peakategooria</label>
@@ -50,29 +51,30 @@
       <div class="form-group">
         <label for="exampleFormControlSelect2">Kõik alamkategooriad</label>
         <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
-                (change)="getTypeValues(form.value.category[i].subcategory)">
+                (change)="getTypeValues(form.value.category[i].subcategory, i)">
           <option value="" hidden>Kõik alamkategooriad</option>
           <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
         </select>
       </div>
-      <div *ngIf="typeList" class="form-group pt-4">
+      <div *ngIf="typeLists[i]" class="form-group pt-4">
         <select class="form-control mt-2" formControlName="descriptor"
-                (change)="getTypes(form.value.descriptor)">
+                (change)="getTypes(form.value.category[i].descriptor, i)">
           <option value="" hidden>Tunnus</option>
-          <option *ngFor="let type of typeList.descriptors" value="{{type}}">{{type}}</option>
+          <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
         </select>
       </div>
-      <div *ngIf="valTypeList" class="form-group pt-4">
+      <div *ngIf="valTypeLists[i]" class="form-group pt-4">
         <select class="form-control mt-2" formControlName="values">
           <option value="" hidden>Tunnuse liik</option>
-          <option *ngFor="let type of valTypeList.values" value="{{type}}">{{type}}</option>
+          <option *ngFor="let type of valTypeLists[i].values" value="{{type}}">{{type}}</option>
         </select>
       </div>
-      <div class="pl-4 button-padding">
+    </div>
+    </div>
+      <div class="pl-4 button-padding col">
         <i class="fa fa-plus plus"></i>
         <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
       </div>
-    </div>
     </div>
     <div class="row">
       <i class="fa fa-plus plus pt-1 pr-2"></i>

@@ -60,12 +60,13 @@ export class GrammarComponent implements OnInit {
   public categoriesList: any[];
   public childCatList = [];
   public childLists = [];
-  public typeList: any[];
-  public valTypeList: any[];
+  public typeLists = [];
+  public typeList = [];
+  public valTypeList = [];
+  public valTypeLists = [];
   public categories: any[];
   public mainRowNum = 1;
-  public mainCatRow = [this.mainRowNum];
-  public subCatRow = 1;
+  public valuesArray = [];
   itemsCount: number;
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
@@ -165,22 +166,21 @@ export class GrammarComponent implements OnInit {
 
   getChildValues(selected: string, index: number) {
     this.childCatList = this.categories.filter(item => item.parent === selected);
-    console.log(this.childCatList);
     this.childLists[index] = this.childCatList;
-    console.log(this.childLists);
-    // this.form.controls.category[i].subcategory = this.childCatList;
   }
 
-
-
-  getTypeValues(selected: string) {
+  getTypeValues(selected: string, index: number) {
     this.typeList = this.categories.find(item => item.category === selected);
+    this.typeLists[index] = this.typeList;
+    console.log(this.typeLists);
   }
 
-  getTypes(selected: string) {
+  getTypes(selected: string, index: number) {
     this.listService.getTypeValues().subscribe((data: any) => {
       this.valTypeList = data.items.find(item => item.descriptor === selected);
+      this.valTypeLists[index] = this.valTypeList;
     });
+    console.log(this.valTypeLists);
   }
 
   getAdultData() {
@@ -200,9 +200,6 @@ export class GrammarComponent implements OnInit {
   }
 
   addRow() {
-    this.mainRowNum = this.mainRowNum + 1;
-    this.mainCatRow.push(this.mainRowNum );
-
     (this.form.get('category')).push(this.formBuilder.group({
       maincategory: [],
       subcategory: [],
@@ -218,17 +215,23 @@ export class GrammarComponent implements OnInit {
 
   sendData() {
 
-    let valueArray = [];
-    let descriptors = [];
+    console.log(this.form.value.category);
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null);
 
-    descriptors = [[this.form.value.descriptor, this.form.value.values]];
-    valueArray = [{maincategory: this.form.value.maincategory, subcategory: this.form.value.subcategory, descriptors}];
+    for (const item of this.form.value.category) {
+      let valueArray = [];
+      let descriptors = [];
+      descriptors = [[item.descriptor, item.values]];
+      valueArray = [{maincategory: item.maincategory, subcategory: item.subcategory, descriptors}];
+      this.valuesArray.push(valueArray);
+    }
+    // descriptors = [[this.form.value.descriptor, this.form.value.values]];
+    // valueArray = [{maincategory: this.form.value.maincategory, subcategory: this.form.value.subcategory, descriptors}];
 
-    this.listService.getTableData(encodeURI(JSON.stringify(valueArray)), langLevel).subscribe((data: any) => {
-            this.itemsCount = data.count;
+    this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), langLevel).subscribe((data: any) => {
+      this.itemsCount = data.count;
       this.tableData = data.items;
 
       this._search$.pipe(
