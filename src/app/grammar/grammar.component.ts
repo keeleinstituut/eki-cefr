@@ -227,10 +227,9 @@ export class GrammarComponent implements OnInit {
       valueArray = [{maincategory: item.maincategory, subcategory: item.subcategory, descriptors}];
       this.valuesArray.push(valueArray);
     }
-    // descriptors = [[this.form.value.descriptor, this.form.value.values]];
-    // valueArray = [{maincategory: this.form.value.maincategory, subcategory: this.form.value.subcategory, descriptors}];
 
     this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), langLevel).subscribe((data: any) => {
+      this.valuesArray = [];
       this.itemsCount = data.count;
       this.tableData = data.items;
 
