@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {TextService} from './text.service';
+import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 
 @Component({
   selector: 'app-text-rating',
   templateUrl: './text-rating.component.html',
   styleUrls: ['./text-rating.component.css']
 })
-export class TextRatingComponent implements OnInit {
+export class TextRatingComponent {
 
   public form;
   public resultData = '';
@@ -15,6 +16,9 @@ export class TextRatingComponent implements OnInit {
   public wordCount = '';
   public levels = [];
   public notAllowed = [];
+  @ViewChild(FeedbackModalComponent, {static: false})
+  private modal: FeedbackModalComponent;
+
   constructor(private formBuilder: FormBuilder, private service: TextService) {
     this.form = this.formBuilder.group({
       list: 'etLex',
@@ -23,11 +27,6 @@ export class TextRatingComponent implements OnInit {
       result: ''
     });
   }
-
-  ngOnInit() {
-  }
-
-
 
   getData() {
     console.log(this.form.value.text);

@@ -8,7 +8,7 @@
         magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
     </div>
     <div class="col-4">
-      <button class="btn btn-submit float-right">Tagasiside</button>
+      <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
     </div>
   </div>
   <form class="col-12" [formGroup]="form">
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="row">
-    <div formArrayName="category" class="col">
+    <div formArrayName="category" class="col-10">
     <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Peakategooria</label>
@@ -56,23 +56,27 @@
           <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
         </select>
       </div>
-      <div *ngIf="typeLists[i]" class="form-group pt-4">
-        <select class="form-control mt-2" formControlName="descriptor"
-                (change)="getTypes(form.value.category[i].descriptor, i)">
-          <option value="" hidden>Tunnus</option>
-          <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
-        </select>
+      <div formArrayName="subCategory">
+      <div class="row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;" [formGroupName]="k">
+        <div *ngIf="typeLists[i]" class="form-group pt-4">
+          <select class="form-control mt-2" formControlName="descriptor"
+                  (change)="getTypes(form.value.category[i].descriptor, i)">
+            <option value="" hidden>Tunnus</option>
+            <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
+          </select>
+        </div>
+        <div *ngIf="valTypeLists[i]" class="form-group pt-4">
+          <select class="form-control mt-2" formControlName="values">
+            <option value="" hidden>Tunnuse liik</option>
+            <option *ngFor="let type of valTypeLists[i].values" value="{{type}}">{{type}}</option>
+          </select>
+        </div>
       </div>
-      <div *ngIf="valTypeLists[i]" class="form-group pt-4">
-        <select class="form-control mt-2" formControlName="values">
-          <option value="" hidden>Tunnuse liik</option>
-          <option *ngFor="let type of valTypeLists[i].values" value="{{type}}">{{type}}</option>
-        </select>
       </div>
+      <i class="fa fa-plus plus filter-icon" (click)="addSubRow(i)"></i>
     </div>
     </div>
-      <div class="pl-4 button-padding col">
-        <i class="fa fa-plus plus"></i>
+      <div class="pl-4 button-padding col-2">
         <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
       </div>
     </div>
@@ -134,4 +138,5 @@
       </ngb-pagination>
     </div>
   </div>
+  <app-feedback-modal></app-feedback-modal>
 </div>

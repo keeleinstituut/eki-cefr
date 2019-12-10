@@ -2,9 +2,10 @@ import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {VocabularyListService} from './vocabulary-list.service';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
+import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 
 
 interface SearchResult {
@@ -56,6 +57,8 @@ export class VocabularyListComponent implements OnInit {
   private _total$ = new BehaviorSubject<number>(0);
   public words$: Observable<object[]>;
   public total$: Observable<number>;
+  @ViewChild(FeedbackModalComponent, {static: false})
+  private modal: FeedbackModalComponent;
 
   private _state: State = {
     page: 1,

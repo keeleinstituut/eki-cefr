@@ -16,6 +16,7 @@ import {NgbdSortableHeader} from './services/sortable.directive';
 import { TextRatingComponent } from './text-rating/text-rating.component';
 import {GrammarComponent, KeysPipe} from './grammar/grammar.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
+import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AboutProjectComponent } from './about-project/about-project.component';
     TextRatingComponent,
     GrammarComponent,
     AboutProjectComponent,
-    KeysPipe
+    KeysPipe,
+    FeedbackModalComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { AboutProjectComponent } from './about-project/about-project.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [FeedbackModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

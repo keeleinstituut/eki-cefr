@@ -9,7 +9,7 @@
         (keeleoskustasemed A1, A2, B1, B2, C1).</p>
     </div>
     <div class="col-4">
-      <button class="btn btn-submit float-right">Tagasiside</button>
+      <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
     </div>
   </div>
   <div class="row pt-4">
@@ -98,4 +98,5 @@
       </div>
     </div>
   </div>
+  <app-feedback-modal></app-feedback-modal>
 </div>

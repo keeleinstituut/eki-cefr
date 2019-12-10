@@ -2,6 +2,11 @@
   color: #8A98A5;
 }
 
+.filter-icon {
+  padding-top: 2.5rem;
+  padding-left: 1rem;
+}
+
 .button-padding {
   padding-top: 1.9rem !important;
 }

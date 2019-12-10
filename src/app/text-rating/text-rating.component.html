@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="col-4">
-      <button class="btn btn-submit float-right">Tagasiside</button>
+      <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
     </div>
   </div>
   <form [formGroup]="form">
@@ -89,4 +89,5 @@
     </div>
     <button class="btn btn-submit" (click)="getData()">Hinda</button>
   </form>
+  <app-feedback-modal></app-feedback-modal>
 </div>

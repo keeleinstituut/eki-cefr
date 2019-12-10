@@ -2,9 +2,10 @@ import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChildren} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {GrammarService} from './grammar.service';
+import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 
 
 interface SearchResult {
@@ -65,7 +66,6 @@ export class GrammarComponent implements OnInit {
   public valTypeList = [];
   public valTypeLists = [];
   public categories: any[];
-  public mainRowNum = 1;
   public valuesArray = [];
   itemsCount: number;
   private _loading$ = new BehaviorSubject<boolean>(true);
@@ -74,6 +74,8 @@ export class GrammarComponent implements OnInit {
   private _total$ = new BehaviorSubject<number>(0);
   public words$: Observable<object[]>;
   public total$: Observable<number>;
+  @ViewChild(FeedbackModalComponent, {static: false})
+  private modal: FeedbackModalComponent;
 
   private _state: State = {
     page: 1,
@@ -203,19 +205,30 @@ export class GrammarComponent implements OnInit {
     (this.form.get('category')).push(this.formBuilder.group({
       maincategory: [],
       subcategory: [],
-      descriptor: [],
-      values: [],
+      subCategory: new FormArray([]),
+      // descriptor: [],
+      // values: [],
     }));
+  }
 
+  addSubRow(index: number) {
+    (this.form.get('category')).controls[index].controls.subCategory.push(this.formBuilder.group({
+      descriptor: [],
+      values: []
+    }));
+    console.log((this.form.get('category')).controls[index]);
   }
 
   get category() {
     return (this.form.get('category')).controls;
   }
 
-  sendData() {
+  get subCategory() {
+    return (this.form.get('category')).controls;
+  }
 
-    console.log(this.form.value.category);
+  sendData() {
+    // console.log(this.form.value.category);
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null);
