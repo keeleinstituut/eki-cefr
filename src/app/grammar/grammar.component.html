@@ -60,15 +60,15 @@
       <div class="row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;" [formGroupName]="k">
         <div *ngIf="typeLists[i]" class="form-group pt-4">
           <select class="form-control mt-2" formControlName="descriptor"
-                  (change)="getTypes(form.value.category[i].descriptor, i)">
+                  (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
             <option value="" hidden>Tunnus</option>
             <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
           </select>
         </div>
         <div *ngIf="valTypeLists[i]" class="form-group pt-4">
-          <select class="form-control mt-2" formControlName="values">
+          <select class="form-control mt-2"  formControlName="values">
             <option value="" hidden>Tunnuse liik</option>
-            <option *ngFor="let type of valTypeLists[i].values" value="{{type}}">{{type}}</option>
+            <option *ngFor="let type of valTypeLists[i][k].values" value="{{type}}">{{type}}</option>
           </select>
         </div>
       </div>
@@ -126,7 +126,7 @@
           </div>
         </td>
         <td>
-          <ngb-highlight result="Lisainfo"></ngb-highlight>
+          <ngb-highlight result="Lisainfo" (click)="toDetail(item)"></ngb-highlight>
         </td>
       </tr>
       </tbody>

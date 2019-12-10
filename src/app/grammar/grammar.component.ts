@@ -6,6 +6,8 @@ import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildr
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {GrammarService} from './grammar.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
+import {Router} from '@angular/router';
+import {GrammarDetailService} from '../services/grammar-detail.service';
 
 
 interface SearchResult {
@@ -67,6 +69,7 @@ export class GrammarComponent implements OnInit {
   public valTypeLists = [];
   public categories: any[];
   public valuesArray = [];
+  public list = [];
   itemsCount: number;
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
@@ -88,7 +91,8 @@ export class GrammarComponent implements OnInit {
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(private listService: GrammarService,  private formBuilder: FormBuilder, private pipe: DecimalPipe) {
+  constructor(private listService: GrammarService,  private formBuilder: FormBuilder, private pipe: DecimalPipe, private router: Router,
+              private detailService: GrammarDetailService) {
 
     this.form = this.formBuilder.group({
       category: new FormArray([]),
@@ -174,13 +178,15 @@ export class GrammarComponent implements OnInit {
   getTypeValues(selected: string, index: number) {
     this.typeList = this.categories.find(item => item.category === selected);
     this.typeLists[index] = this.typeList;
-    console.log(this.typeLists);
   }
 
-  getTypes(selected: string, index: number) {
+  getTypes(selected: string, index: number, indeksTwo: number) {
+    console.log(index);
     this.listService.getTypeValues().subscribe((data: any) => {
       this.valTypeList = data.items.find(item => item.descriptor === selected);
-      this.valTypeLists[index] = this.valTypeList;
+      this.list[indeksTwo] = this.valTypeList;
+      console.log(this.valTypeList);
+      this.valTypeLists[index] = this.list;
     });
     console.log(this.valTypeLists);
   }
@@ -245,6 +251,7 @@ export class GrammarComponent implements OnInit {
       this.valuesArray = [];
       this.itemsCount = data.count;
       this.tableData = data.items;
+      console.log(data);
 
       this._search$.pipe(
         tap(() => this._loading$.next(true)),
@@ -262,5 +269,8 @@ export class GrammarComponent implements OnInit {
       this.total$ = this._total$.asObservable();
     });
   }
-
+  toDetail(item) {
+    this.detailService.sendData(item.id);
+    this.router.navigate(['/grammar-detail']);
+  }
 }

@@ -17,6 +17,7 @@ import { TextRatingComponent } from './text-rating/text-rating.component';
 import {GrammarComponent, KeysPipe} from './grammar/grammar.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
+import { GrammarDetailComponent } from './grammar-detail/grammar-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FeedbackModalComponent } from './feedback-modal/feedback-modal.componen
     GrammarComponent,
     AboutProjectComponent,
     KeysPipe,
-    FeedbackModalComponent
+    FeedbackModalComponent,
+    GrammarDetailComponent
   ],
   imports: [
     BrowserModule,
