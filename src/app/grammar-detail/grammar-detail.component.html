@@ -4,7 +4,7 @@
       <h3>Detailinfo</h3>
     </div>
     <div class="col-8 pr-4">
-      Tagasi
+      <a [routerLink]="['/grammar']"> < Tagasi</a>
     </div>
     <div class="col-4">
       <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
@@ -15,7 +15,7 @@
       Keeletase:
     </div>
     <div class="col-8">
-        {{obj.langlevel}}
+      <span class="color-{{obj.langlevel}}" >{{obj.langlevel}}</span>
     </div>
   </div>
   <div class="row">
@@ -36,10 +36,10 @@
   </div>
   <div class="row">
     <div class="col-4">
-      Oskab-lause:
+      <b>Oskab-lause:</b>
     </div>
     <div class="col-8">
-      {{obj.can_do_statement}}
+      <b>{{obj.can_do_statement}}</b>
     </div>
   </div>
   <div class="row">
@@ -47,7 +47,9 @@
       Tunnused:
     </div>
     <div class="col-8">
-      {{obj.can_do_statement}}
+      <div *ngFor="let item of obj.descriptors | keys">
+        {{item.descriptor}} <span class="features-category">{{item.values}}</span>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -55,7 +57,7 @@
       Semantiline funktsioon:
     </div>
     <div class="col-8">
-
+      {{obj.function_sem}}
     </div>
   </div>
   <div class="row">
@@ -63,7 +65,7 @@
       Süntaktiline funktsioon:
     </div>
     <div class="col-8">
-
+      {{obj.function_synt}}
     </div>
   </div>
   <div class="row">
@@ -71,32 +73,37 @@
       Pragmaatiline funktsioon:
     </div>
     <div class="col-8">
-
+      {{obj.function_pragm}}
     </div>
   </div>
   <hr>
-  <div class="row">
+  <div class="row pb-4">
     <div class="col-4">
       Märkus:
     </div>
     <div class="col-8">
-
+      {{obj.comment}}
     </div>
   </div>
-  <div class="row">
-    <div class="col-4">
-      Näitelause 1:
+  <div *ngFor="let example of obj.examples; let i = index">
+    <div class="row">
+      <div class="col-4">
+        Näitelause {{i + 1}}:
+      </div>
+      <div class="col-4">
+        {{example.text}}
+      </div>
+      <div class="col-4">
+        {{example.source}}
+      </div>
     </div>
-    <div class="col-8">
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      Parandatud
-    </div>
-    <div class="col-8">
-
+    <div class="row pb-4">
+      <div class="col-4">
+        Parandatud
+      </div>
+      <div class="col-8">
+        {{example.text_fixed}}
+      </div>
     </div>
   </div>
   <app-feedback-modal></app-feedback-modal>

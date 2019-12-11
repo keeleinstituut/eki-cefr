@@ -10,16 +10,3 @@
 .button-padding {
   padding-top: 1.9rem !important;
 }
-
-.features{
-  background: #A9CBFF;
-  border-radius: 6px;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-.features-category{
-  background: #FEC2AF;
-  border-radius: 6px;
-  padding-left: 4px;
-  padding-right: 4px;
-}
