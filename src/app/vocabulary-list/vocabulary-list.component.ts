@@ -35,6 +35,7 @@ function sort(countries: any[], column: string, direction: string): any[] {
     });
   }
 }
+
 @Component({
   selector: 'app-vocabulary-list',
   templateUrl: './vocabulary-list.component.html',
@@ -59,6 +60,9 @@ export class VocabularyListComponent implements OnInit {
   public total$: Observable<number>;
   @ViewChild(FeedbackModalComponent, {static: false})
   private modal: FeedbackModalComponent;
+  public levelLongString = '';
+  public wordLongString = '';
+  public searchLongString = '';
 
   private _state: State = {
     page: 1,
@@ -71,7 +75,7 @@ export class VocabularyListComponent implements OnInit {
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(private listService: VocabularyListService,  private formBuilder: FormBuilder, private pipe: DecimalPipe) {
+  constructor(private listService: VocabularyListService, private formBuilder: FormBuilder, private pipe: DecimalPipe) {
 
     this.form = this.formBuilder.group({
       search: '',
@@ -81,16 +85,41 @@ export class VocabularyListComponent implements OnInit {
     });
   }
 
-  get loading$() { return this._loading$.asObservable(); }
-  get page() { return this._state.page; }
-  get pageSize() { return this._state.pageSize; }
-  get searchTerm() { return this._state.searchTerm; }
+  get loading$() {
+    return this._loading$.asObservable();
+  }
 
-  set page(page: number) { this._set({page}); }
-  set pageSize(pageSize: number) { this._set({pageSize}); }
-  set searchTerm(searchTerm: string) { this._set({searchTerm}); }
-  set sortColumn(sortColumn: string) { this._set({sortColumn}); }
-  set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
+  get page() {
+    return this._state.page;
+  }
+
+  get pageSize() {
+    return this._state.pageSize;
+  }
+
+  get searchTerm() {
+    return this._state.searchTerm;
+  }
+
+  set page(page: number) {
+    this._set({page});
+  }
+
+  set pageSize(pageSize: number) {
+    this._set({pageSize});
+  }
+
+  set searchTerm(searchTerm: string) {
+    this._set({searchTerm});
+  }
+
+  set sortColumn(sortColumn: string) {
+    this._set({sortColumn});
+  }
+
+  set sortDirection(sortDirection: SortDirection) {
+    this._set({sortDirection});
+  }
 
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
@@ -151,6 +180,7 @@ export class VocabularyListComponent implements OnInit {
     this.form.controls.types.controls = [];
     this.addCheckboxes();
   }
+
   getChildData() {
     this.form.controls.lang.controls = [];
     this.langLevel = this.childLangLevel;
@@ -161,9 +191,9 @@ export class VocabularyListComponent implements OnInit {
   }
 
   sendData() {
-    let levelLongString = '';
-    let wordLongString = '';
-    let searchLongString = '';
+    this.levelLongString = '';
+    this.wordLongString = '';
+    this.searchLongString = '';
 
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
@@ -176,28 +206,28 @@ export class VocabularyListComponent implements OnInit {
     for (const lang of langLevel) {
       let levelString = '';
       if (lang === langLevel[0] && this.form.value.search === '') {
-         levelString  = 'level=' + lang;
+        levelString = 'level=' + lang;
       } else {
-         levelString  = '&level=' + lang;
+        levelString = '&level=' + lang;
       }
-      levelLongString = levelLongString + levelString;
+      this.levelLongString = this.levelLongString + levelString;
     }
 
     for (const word of wordList) {
       let wordString = '';
-      if (word === wordList[0] && levelLongString === '') {
-        wordString  = 'pos=' + word;
+      if (word === wordList[0] && this.levelLongString === '') {
+        wordString = 'pos=' + word;
       } else {
-        wordString  = '&pos=' + word;
+        wordString = '&pos=' + word;
       }
-      wordLongString = wordLongString + wordString;
+      this.wordLongString = this.wordLongString + wordString;
     }
 
     if (this.form.value.search !== '') {
-      searchLongString = 'word=' + this.form.value.search;
+      this.searchLongString = 'word=' + this.form.value.search;
     }
 
-    this.listService.getTableData(searchLongString, this.form.value.list, levelLongString, wordLongString).subscribe((data: any) => {
+    this.listService.getTableData(this.searchLongString, this.form.value.list, this.levelLongString, this.wordLongString).subscribe((data: any) => {
       this.tableData = data.items;
       this._search$.pipe(
         tap(() => this._loading$.next(true)),
@@ -214,6 +244,10 @@ export class VocabularyListComponent implements OnInit {
       this.words$ = this._words$.asObservable();
       this.total$ = this._total$.asObservable();
     });
+  }
+
+  sendToFile(item) {
+    this.listService.sendToFile(this.searchLongString, this.form.value.list, item, this.levelLongString, this.wordLongString);
   }
 
 }
