@@ -251,7 +251,6 @@ export class GrammarComponent implements OnInit {
       this.valuesArray = [];
       this.itemsCount = data.count;
       this.tableData = data.items;
-      console.log(data);
 
       this._search$.pipe(
         tap(() => this._loading$.next(true)),

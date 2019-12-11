@@ -82,7 +82,9 @@
         <tbody>
         <tr *ngFor="let item of words$ | async">
           <td>
-            <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
+            <a [attr.href]="'https://www.sonaveeb.ee/search/est-est/detail/'+item.lemma_text">
+              <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
+            </a>
           </td>
           <td>
             <ngb-highlight [result]="item.pos_text"></ngb-highlight>
