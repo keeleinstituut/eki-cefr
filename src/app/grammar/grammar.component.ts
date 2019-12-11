@@ -82,7 +82,7 @@ export class GrammarComponent implements OnInit {
 
   private _state: State = {
     page: 1,
-    pageSize: 4,
+    pageSize: 20,
     searchTerm: '',
     sortColumn: '',
     sortDirection: ''

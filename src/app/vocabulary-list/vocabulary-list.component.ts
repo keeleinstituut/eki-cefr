@@ -62,7 +62,7 @@ export class VocabularyListComponent implements OnInit {
 
   private _state: State = {
     page: 1,
-    pageSize: 4,
+    pageSize: 20,
     searchTerm: '',
     sortColumn: '',
     sortDirection: ''
@@ -199,8 +199,6 @@ export class VocabularyListComponent implements OnInit {
 
     this.listService.getTableData(searchLongString, this.form.value.list, levelLongString, wordLongString).subscribe((data: any) => {
       this.tableData = data.items;
-
-      console.log(this.tableData);
       this._search$.pipe(
         tap(() => this._loading$.next(true)),
         debounceTime(200),
