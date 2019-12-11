@@ -11,21 +11,25 @@ export class GrammarDetailComponent implements OnInit {
 
   @ViewChild(FeedbackModalComponent, {static: false})
   private modal: FeedbackModalComponent;
-  public obj = [];
-  public level = '';
+  public obj = {};
+  isDataAvailable = false;
+  public lang = '';
 
   constructor(private detailService: GrammarDetailService) {
-    this.detailService.getData().subscribe((data: any) => {
-      this.obj = data.item;
-      this.level = data.item.langLevel;
-      console.log(data);
-    }, () => {}, () => {
-      console.log(this.obj);
-    });
   }
 
   ngOnInit() {
-
+    this.fetchEvent();
   }
+
+  fetchEvent() {
+    return this.detailService.getData().subscribe((data: any) => {
+      this.obj = data.item;
+    }, () => {
+    }, () => {
+      this.isDataAvailable = true;
+    });
+  }
+
 
 }

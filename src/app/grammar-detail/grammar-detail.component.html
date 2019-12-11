@@ -1,4 +1,4 @@
-<div class="container-fluid bottom-gutter">
+<div class="container-fluid bottom-gutter" *ngIf="isDataAvailable">
   <div class="row">
     <div class="col-12">
       <h3>Detailinfo</h3>
@@ -10,12 +10,12 @@
       <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
     </div>
   </div>
-  <div class="row" *ngIf="obj">
+  <div class="row">
     <div class="col-4">
       Keeletase:
     </div>
     <div class="col-8">
-        {{obj}}
+        {{obj.langlevel}}
     </div>
   </div>
   <div class="row">
@@ -23,7 +23,7 @@
       Peakategooria:
     </div>
     <div class="col-8">
-
+      {{obj.maincategory_name}}
     </div>
   </div>
   <div class="row">
@@ -31,15 +31,15 @@
       Alamkategooria:
     </div>
     <div class="col-8">
-
+      {{obj.subcategory_name}}
     </div>
   </div>
   <div class="row">
     <div class="col-4">
-      Oskab-aluse:
+      Oskab-lause:
     </div>
     <div class="col-8">
-
+      {{obj.can_do_statement}}
     </div>
   </div>
   <div class="row">
@@ -47,7 +47,7 @@
       Tunnused:
     </div>
     <div class="col-8">
-
+      {{obj.can_do_statement}}
     </div>
   </div>
   <div class="row">
