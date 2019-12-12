@@ -180,15 +180,20 @@ export class GrammarComponent implements OnInit {
     this.typeLists[index] = this.typeList;
   }
 
-  getTypes(selected: string, index: number, indeksTwo: number) {
-    console.log(index);
+  getTypes(selected: string, index: number, indexTwo: number) {
     this.listService.getTypeValues().subscribe((data: any) => {
       this.valTypeList = data.items.find(item => item.descriptor === selected);
-      this.list[indeksTwo] = this.valTypeList;
-      console.log(this.valTypeList);
-      this.valTypeLists[index] = this.list;
+
+      if (this.valTypeLists[index] === undefined) {
+        this.list = [];
+        this.list[indexTwo] = this.valTypeList;
+        this.valTypeLists[index] = this.list;
+      } else {
+        const tempList = this.valTypeLists[index];
+        tempList[indexTwo] = this.valTypeList;
+        this.valTypeLists[index] = tempList;
+      }
     });
-    console.log(this.valTypeLists);
   }
 
   getAdultData() {
