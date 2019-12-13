@@ -44,15 +44,15 @@
         <label for="exampleFormControlSelect1">Peakategooria</label>
         <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
                 (change)="getChildValues(form.value.category[i].maincategory, i)">
-          <option value="" hidden>Kõik peakategooriad</option>
+          <option value="" hidden>Vali peakategooria</option>
           <option *ngFor="let category of categoriesList">{{category.name}}</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect2">Kõik alamkategooriad</label>
+        <label for="exampleFormControlSelect2">Alamkategooriad</label>
         <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
                 (change)="getTypeValues(form.value.category[i].subcategory, i)">
-          <option value="" hidden>Kõik alamkategooriad</option>
+          <option value="" hidden>Vali alamkategooria</option>
           <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
         </select>
       </div>
@@ -68,12 +68,13 @@
         <div *ngIf="valTypeLists[i]" class="form-group pt-4">
           <select class="form-control mt-2"  formControlName="values">
             <option value="" hidden>Tunnuse liik</option>
-            <option *ngFor="let type of valTypeLists[i][k].values" value="{{type}}">{{type}}</option>
+            <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
           </select>
         </div>
+        <i class="fa fa-minus minus filter-icon pr-4 pl-4" (click)="removeSubRow(k, i)"></i>
       </div>
       </div>
-      <i class="fa fa-plus plus filter-icon" (click)="addSubRow(i)"></i>
+      <i class="fa fa-plus plus filter-icon pl-4" (click)="addSubRow(i)"></i>
     </div>
     </div>
       <div class="pl-4 button-padding col-2">

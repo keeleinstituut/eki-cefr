@@ -217,8 +217,6 @@ export class GrammarComponent implements OnInit {
       maincategory: [],
       subcategory: [],
       subCategory: new FormArray([]),
-      // descriptor: [],
-      // values: [],
     }));
   }
 
@@ -227,7 +225,11 @@ export class GrammarComponent implements OnInit {
       descriptor: [],
       values: []
     }));
-    console.log((this.form.get('category')).controls[index]);
+    console.log((this.form.get('category')).controls[index].controls.subCategory);
+  }
+
+  removeSubRow(k: any, i: any) {
+    (this.form.get('category')).controls[i].controls.subCategory.removeAt(k);
   }
 
   get category() {
@@ -239,19 +241,22 @@ export class GrammarComponent implements OnInit {
   }
 
   sendData() {
-    // console.log(this.form.value.category);
+    console.log(this.form.value.category);
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null);
 
     for (const item of this.form.value.category) {
+      console.log(item);
       let valueArray = [];
-      let descriptors = [];
-      descriptors = [[item.descriptor, item.values]];
+      const descriptors = [];
+      for (const part of item.subCategory) {
+        descriptors.push([part.descriptor, part.values]);
+      }
       valueArray = [{maincategory: item.maincategory, subcategory: item.subcategory, descriptors}];
       this.valuesArray.push(valueArray);
     }
-
+    console.log(this.valuesArray);
     this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), langLevel).subscribe((data: any) => {
       this.valuesArray = [];
       this.itemsCount = data.count;
