@@ -100,6 +100,7 @@ export class GrammarComponent implements OnInit {
       lang: new FormArray([]),
       types: new FormArray([])
     });
+    this.addRow();
   }
 
   get loading$() { return this._loading$.asObservable(); }
@@ -225,7 +226,6 @@ export class GrammarComponent implements OnInit {
       descriptor: [],
       values: []
     }));
-    console.log((this.form.get('category')).controls[index].controls.subCategory);
   }
 
   removeSubRow(k: any, i: any) {
