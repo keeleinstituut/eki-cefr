@@ -1,14 +1,28 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <h4 class="modal-title" id="modal-basic-title">Tagasiside</h4>
+    <span class="icon icon-close" aria-label="Close" (click)="d('Cross click')"></span>
   </div>
   <div class="modal-body">
-    <p>Hello, World!</p>
+    <label>
+      Kommentaar
+      <input class="form-control">
+    </label>
+    <label>
+      Nimi
+      <input class="form-control">
+    </label>
+    <label>
+      E-post
+      <input class="form-control">
+    </label>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    <div class="col-12 p-0 mt-2">
+      <div class="text-right">
+        <a role="button" href="#" class="mr-3" data-dismiss="modal">Sulge</a>
+        <button role="button" type="button" class="btn btn-primary disabled" name="feedbackSendBtn">Saada</button>
+      </div>
+    </div>
   </div>
 </ng-template>
