@@ -1,3 +1,195 @@
-<div class="container-fluid bottom-gutter">
-<p>about-project works!</p>
+<div class="container-fluid bottom-gutter row">
+  <nav id="navbar-example3" class="navbar navbar-light bg-light col-2">
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link" [routerLink]="['/about']" fragment="item-1" (click)="onAnchorClick()">Keeleoskustasemete määramine</a>
+      <a class="nav-link" [routerLink]="['/about']" fragment="item-2" (click)="onAnchorClick()">Sõnavaraloendid</a>
+      <a class="nav-link" [routerLink]="['/about']" fragment="item-3" (click)="onAnchorClick()">Koolieelikute sõnavaraloendid</a>
+      <a class="nav-link" [routerLink]="['/about']" fragment="item-4" (click)="onAnchorClick()">Noore keeleõppija (vanus 7-15) sõnavaraloendid</a>
+      <a class="nav-link" [routerLink]="['/about']" fragment="item-5" (click)="onAnchorClick()">Täiskasvanute sõnavaraloendid</a>
+    </nav>
+  </nav>
+  <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="col-10">
+    <h3>Projektist</h3>
+    <h4 id="item-1">Keeleoskustasemete määramine</h4>
+    <p>
+      Täiskasvanute sõnavara tasemekohasuse määramisel on aluseks „Euroopa keeleõppe raamdokument: õppimine, õpetamine,
+      hindamine“ (Tartu: Haridus- ja Teadusministeerium, 2007) ning selle sõsarväljaanne (2018). Eristatakse kolme
+      üldist
+      taset (A, B ja C) ja kuut alajaotust (A1, A2, B1, B2, C1, C2). Tavapärane on mõõta esimese viie taseme sõnavara.
+      C2-taseme sõnavara mõõtmist ei peeta vajalikuks, kuna sellel tasemel kõneleja valdab keelt juba haritud emakeelse
+      kõneleja sarnaselt.
+      Sõnavara suuruse määramisel on lähtekohaks Krista Kerge koostatud „Funktsionaalse keeleoskuse taseme määratlemine“
+      (Tallinn: Haridusministeerium, 1996), mille kohaselt ulatub eesti keelt algtasemel valdava inimese sõnavara
+      1500–2000 sõnani, kesktaseme korral aga umbes 5000 sõnani.
+      Noore keeleõppija sõnavara ja grammatika tasemekohasuse määramisel on lisaks eelpool nimetatule aluseks põhikooli
+      riiklik õppekava (PRÕK) https://www.riigiteataja.ee/akt/129082014020?leiaKehtiv. Eesti keel teise keelena (E2)
+      kuulub ainevaldkonda „Võõrkeeled“, ainekavad on täpsemalt kirjeldatud PRÕKi Lisas 2
+      https://www.riigiteataja.ee/aktilisa/1290/8201/4018/141m%20lisa2.pdf
+      Kehtiva õppekava järgi on vene õppekeelega kooli 3. klassi lõpetaja oodatav eesti keele oskuse tase A1.2, 6.
+      klassi
+      lõpetajal A2.2 ja 9. klassi lõpetajal B1.2, hindamisel tuleb järgida eakohasuse printsiipi. (Uue valdkonnakava
+      projekti järgi on õpitulemused kõrgemal tasemel, kuid 2019. aastal see veel ei kehti.) Võõrkeelte õpetamise
+      eesmärk
+      põhikoolis on kujundada õpilastes eakohane võõrkeelepädevus.
+    </p>
+    <h4 id="item-2">Sõnavaraloendid</h4>
+    <p>
+      Sõnade tasemetesse jagamise põhimõtted on järgmised: 1) sagedus korpustes (täiskasvanutel eelkõige 2017. aastal
+      loodud eesti keele ühendkorpuses; noortel keeleõppijatel eesti keele kui teise keele põhikooli õpikute korpuses;
+      koolieelikutel lastekeelekorpuse CHILDES eesti keele alamkorpuses) 2) tuumsus
+      (vt lähemalt Pajusalu, R., Tragel, I., Veismann, A., Vija, M. 2004. Tuumsõnade semantikat ja pragmaatikat.
+      Tartu.);
+      3) kasutatavus suulises ja kirjalikus tekstiloomes (vt lähemalt Pajupuu, H., Kerge, K., Alp, P. 2009.
+      Sõnavara loomulik rikkus haritud keeleoskaja tekstides. – Eesti rakenduslingvistika ühingu aastaraamat V.
+      Tallinn.);
+      4) vajalikkus igapäevaelu valdkondades; 5) sõnavara ajakohasus.
+    </p>
+    <h5 id="item-3">Koolieelikute sõnavaraloendid</h5>
+    <p>
+      Koolieelikute sõnaloend sisaldab kokku 1147 sõna ning selle koostajad on eksperdid Tallinna Ülikooli professor
+      Reili
+      Argus, lasteaiaõpetaja ja eesti keele õpikute autor Lea Maiberg ning lasteaiaõpetaja Mariana Koho. Eksperte
+      konsulteerisid Eesti Keele Instituudi spetsialistid Jelena Kallas ja Kristina Koppel.
+      Sõnaloend koolieelikutele on koostatud alusharidust omandava keeleõppija vajadusi silmas pidades ja seda sobib
+      kasutada alushariduse õppevara koostamisel. Sõnade valikul on lähtekohaks Koolieelse lasteasutuse riikliku
+      õppekava
+      (RT I 2008, 23, 152) valdkonna Eesti keel kui teine keel õppe- ja kasvatustegevuse sisu ning eeldatavad tulemused.
+      Sõnaloend sisaldab kõnearendusteemadest tulenevalt 3–7-aastaste laste aktiivset (lapsed saavad aru ja oskavad ise
+      kasutada) ja passiivset sõnavara (lapsed saavad aru, kuid ise ei kasuta).
+      Loendi koostamisel on kasutatud järgmisi allikmaterjale:
+      lastekeelekorpuse CHILDES eesti keele alamkorpust,
+      Eesti Keele Instituudis koostatud A1-taseme sõnavara loendit täiskasvanutele,
+      Haridus- ja Teadusministeeriumi ekspertide Tiina Petersoni ja Viivian Jõemetsa sõnaloendi algset ettepanekut ning
+      eesti keelest erineva kodukeelega laste keeleõppeks välja töötatud materjale lasteaedadele ja õpetajatele.
+      Lastekeelekorpuse CHILDES eesti keele alamkorpus sisaldab laste ja vanemate spontaanse kõne lindistusi, mis on
+      tehtud laste jaoks igapäevastes kodustes situatsioonides nagu söömine, mängimine, riietumine jne. Kuna esimese ja
+      teise keele omandamine kulgeb suures osas sarnaselt ning nii nagu ükskeelne, vajab ka kakskeelne laps sellist
+      sõnavara, mis võimaldab suhelda mitteformaalsetes lapsekesksetes igapäevastes situatsioonides, on spontaanse
+      suulise
+      kõne keelematerjal sõnaloendi aluseks sobiv.
+      Sõnaloendi koostamisel lähtuti sõnade valikul peamiselt sellest, mis vanuses laste kõnes teatud sõna korpuses
+      esines
+      ning kui sage see laste ja vanemate keelekasutuses oli. Näiteks kui sõna esines eesti keelt esimese keelena
+      omandavate laste kõnes enne nende kaheaastaseks saamist ja kui see sõna oli alamkorpuses sage, on põhjust arvata,
+      et
+      see sõna on omane lapsekesksetele kõnesituatsioonidele ning see on vajalik ka eesti keelt teise keelena omandavate
+      laste jaoks. Samas on oluline rõhutada, et teise keele õppijate keelekonstruktsioonid on lihtsamad kui esimese
+      keele
+      puhul ja seepärast on sõnaloend väiksemamahulisem kui lapse sõnavara emakeeles.
+      Loendite koostamisel analüüsiti süstemaatiliselt ka temaatilist sõnavara (nt kehaosad, loomad, linnud, toit,
+      transport jmt) ning rühmaruumiga seotud sõnavara (rühmaruumis olevad asjad ja lasteaia tegevustes kasutatavad
+      vahendid), lisati Eesti kultuuri tundmise seisukohalt oluline sõnavara, nt riiklike ja rahvakalendri tähtpäevade
+      ning riigipühade nimetused (jaanipäev, emadepäev, isadepäev, vastlapäev jmt).
+      Suurem osa Eesti lasteaedu on liitunud programmiga „Kiusamisest vaba lasteaed“ ja tervist edendavate lasteaedade
+      võrgustikuga, mistõttu on sõnaloendis algul raskena tunduvaid sõnu, kuid antud programme kasutades on need
+      vajalikud.
+    </p>
+    <h5 id="item-4">Noore keeleõppija (vanus 7-15) sõnavaraloendid</h5>
+    <p>
+      Põhikooliealiste ehk noore keeleõppija sõnaloendite väljatöötamisel on lähtutud Euroopa keeleõppe raamdokumendi
+      sõsarväljaandest (2018), millega koos on Euroopa Nõukogu levitanud ka noorte õppijate tasemekirjeldusi (vanustele
+      7-10 ja 11-15). Noore keeleõppija sõnaloend sisaldab kokku 5000 sõna.
+      Loendite koostamisel on kasutatud järgmisi allikmaterjale:
+      Korpused:
+      Eesti keeleõppija korpus EMMA (3. klassi eesti keele kui emakeele tasemetööde kirjalikud osa (2017; 299 tööd); 6.
+      klassi eesti keele kui teise keele tasemetööde kirjalik osa (2016-2018; 1614 tööd); põhikooli eesti keele kui
+      teise
+      keele lõpueksami kirjalik osa (2016-2018; 902 tööd))
+      Eesti keele kui teise keele põhikooliõpikute korpuse 2020 3., 6. ja 9. klassi osa.
+      3. klassi õpikud
+      Pipar, Pille 2016. Koos on vahva. Sõprade seiklused. Eesti keele õpik vene õppekeelega kooli 3. klassile. Tallinn.
+      Koolibri.
+      Mangus, Inga; Simmul, Merge 2018. Minu eesti keel. 3. klass. I osa. Tallinn: Kirjatark.
+      Mangus, Inga; Simmul, Merge 2018. Minu eesti keel. 3. klass. II osa. Tallinn: Kirjatark.
+      6. klassi õpikud
+      Jänese, Anne; Metsa, Antidea 2013. Eesti keele õpik vene õppekeelega kooli 6. klassile 1. osa. Tallinn: Koolibri.
+      Jänese, Anne; Metsa, Antidea 2013. Eesti keele õpik vene õppekeelega kooli 6. klassile 2. osa. Tallinn: Koolibri.
+      Mangus, Inga; Simmul, Merge 2018. Minu eesti keel. 6. klass. Tallinn: Kirjatark.
+      9. klassi õpikud
+      Siirak, Aino 2016. Eesti keele õpik vene õppekeelega kooli 9. klassile, 1. osa. Tallinn: Koolibri.
+      Siirak, Aino 2017. Eesti keele õpik vene õppekeelega kooli 9. klassile, 2. osa. Tallinn: Koolibri.
+      Kitsnik, Mare 2004. Eesti keele õpik vene õppekeelega koolile. 9. klass. Tallinn: Ilo.
+      Sõnavaraloendid:
+      Eesti Keele Instituudis koostatud A1, A2 ja B1 taseme sõnavara loendid täiskasvanutele
+      Eesti Keele Instituudis koostatud koolieelikute sõnavaraloend
+    </p>
+    <h5 id="item-5">Täiskasvanute sõnavaraloendid</h5>
+    <p>
+      Täiskasvanute sõnaloend sisaldab ca 12 000 keeletasemega (A1-C1) märgendatud sõna. Sõnavara suuruse määramisel on
+      lähtekohaks Krista Kerge koostatud „Funktsionaalse keeleoskuse taseme määratlemine“ (Tallinn: Haridusministeerium,
+      1996), mille kohaselt ulatub eesti keelt algtasemel valdava inimese sõnavara 1500–2000 sõnani, kesktaseme korral
+      aga
+      umbes 5000 sõnani.
+      Sõnavara loendite koostamisel olid aluseks kolme tüüpi allikad.
+      1. Seni ilmunud eri keeleoskustasemete sõnavara kirjeldused
+      Laur, M. 1998. Tuumiksõnade loend. – M. Laur. 1998. Esimene verstapost. Eesti keele suhtluse algtase. Tallinn:
+      REKK.
+      Kerge, K., Pajupuu, H., Ilves, M. 2008. Esmane sõnastik. – M. Ilves. Algaja keelekasutaja. A2-taseme eesti keele
+      oskus. Tallinn: Eesti Keele Sihtasutus, Tallinna Ülikool, Haridus- ja Teadusministeerium.
+      Ehala, M., Saarso, K., Vare, S., Õispuu, J. 1997. Suhtlusläve sõnaindeks. – Eesti keele suhtluslävi.
+      Kultuurikoostöö
+      Nõukogu. Strasbourg: Council of Europe Publishing.
+      2. Eesti Keele Instituudis koostatud ja koostamisel olevate õppesõnastike materjalid
+      Pärn, H., Simm, L. 1989. Eesti keele baassõnastik = Базовый словарь эстонского языка. Tallinn: Keele ja Kirjanduse
+      Instituut.
+      Kallas, J., Tiits, M., Tuulik, M., Koppel, K., Jürviste, M. 2015. Eesti keele põhisõnavara sõnastik. DOI:
+      10.15155/3-00-0000-0000-0000-05925L.
+      Eesti keele kollokatsioonisõnaraamat. Ilmumas. Vt lähemalt Kallas, J., Koppel, K., Tuulik, M. 2015.
+      Korpusleksikograafia uued võimalused eesti keele kollokatsioonisõnastiku näitel. Eesti Rakenduslingvistika Ühingu
+      aastaraamat, 11, 75−94.
+      3. Eesti keele korpused
+      Eesti keele A1–C1 õpikute korpus 2018. DOI: 10.15155/3-00-0000-0000-0000-071E9L. Korpus sisaldab A1, A2, B1, B2 ja
+      C1 keeleoskustasemega eesti keele õppijatele suunatud õpikute materjali, sh sõnavara loendeid, tekste ja
+      harjutusi.
+      Eesti keele ühendkorpus 2017. DOI: 10.15155/3-00-0000-0000-0000-071E7L. Ühendkorpuse suurus on 1,3 miljardit
+      sõnet.
+      Loendid koostati mitmes etapis.
+      Alustuseks loodi seni koostatud sõnavaraloenditest ühine elektrooniline andmebaas, mis võimaldas välja selgitada
+      loenditevahelisi kattuvusi ja erinevusi. Analüüsi käigus kõrvaldati ka loendites esinenud vananenud sõnavara,
+      näiteks sõnad ühiskorter, kooperatiivkorter, komposteerima, panderoll, telefonikabiin, videomagnetofon,
+      kassettmagnetofon.
+      Seejärel lisati andmebaasi eesti keele A1–C1 õpikute korpuse ja eesti keele ühendkorpuse andmed. Eesti keele A1–C1
+      õpikute korpus andis ülevaate, milliseid sõnu on õpikute autorid pidanud vajalikuks teatud keeleoskustaseme
+      sõnavarapädevuse arendamiseks. Kokku oli õpikutes kasutatud ligikaudu 13 000 sõna. Andmebaasi otsustati jätta vaid
+      sõnad, mis esinesid õpikus vähemalt kaks korda. Eesti keele ühendkorpuse alusel genereeritud sagedusloend (umbes
+      60
+      000 sõna) võimaldas kontrollida senistes loendites ja õpikutes kasutatud sõnavara ajakohasust ning lisada juurde
+      korpuses sagedasti esinevaid sõnu, mis olid varasematest loenditest ja ka õpikute tekstist välja jäänud.
+      Mitmetähenduslike sõnade eri tähenduste tasemekohasust eraldi ei analüüsitud. Samuti ei ole eristatud homonüüme.
+      Kui
+      sõna kuulus kahte sõnaliiki (nt hea on nii omadussõna kui ka nimisõna), analüüsiti iga sõnaliigi tasemekohasust
+      eraldi.
+      Lõpptulemuseks saadi kõigi tasemete sõnavara suurused, mis on välja toodud allolevas tabelis:
+    </p>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">keeleoskustase</th>
+        <th scope="col">sõnu kokku</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>A1</td>
+        <td>743</td>
+      </tr>
+      <tr>
+        <td>A2</td>
+        <td>2005</td>
+      </tr>
+      <tr>
+        <td>B1</td>
+        <td>4455</td>
+      </tr>
+      <tr>
+        <td>*B2</td>
+        <td>7685</td>
+      </tr>
+      <tr>
+        <td>*C1</td>
+        <td>12 225</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

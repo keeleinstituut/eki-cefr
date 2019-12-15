@@ -248,12 +248,12 @@ export class GrammarComponent implements OnInit {
 
     for (const item of this.form.value.category) {
       console.log(item);
-      let valueArray = [];
+      let valueArray = {};
       const descriptors = [];
       for (const part of item.subCategory) {
         descriptors.push([part.descriptor, part.values]);
       }
-      valueArray = [{maincategory: item.maincategory, subcategory: item.subcategory, descriptors}];
+      valueArray = {maincategory: item.maincategory, subcategory: item.subcategory, descriptors};
       this.valuesArray.push(valueArray);
     }
     console.log(this.valuesArray);
