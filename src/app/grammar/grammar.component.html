@@ -56,18 +56,18 @@
         </select>
       </div>
       <div *ngIf="row.controls.subCategory.controls.length > 0" class="arrow-left"></div>
-      <div *ngIf="row.controls.subCategory.controls.length > 0" formArrayName="subCategory" class="dark-bg mt-4 col-6 p-0">
+      <div *ngIf="row.controls.subCategory.controls.length > 0" formArrayName="subCategory" class="dark-bg mt-4 pb-2 col-6 p-0">
       <div class="pl-4 row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;" [formGroupName]="k">
         <div class="col-5 p-0 ml-2">
           <select class="form-control mt-2" formControlName="descriptor"
                   (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
-            <option value="" hidden>Tunnus</option>
+            <option value="">Tunnus</option>
             <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
           </select>
         </div>
         <div *ngIf="valTypeLists[i]" class="col-6 p-0 ml-2">
           <select class="form-control mt-2"  formControlName="values">
-            <option value="" hidden>Tunnuse liik</option>
+            <option value="undefined">Tunnuse liik</option>
             <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
           </select>
         </div>
