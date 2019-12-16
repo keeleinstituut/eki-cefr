@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VocabularyService } from './vocabulary.service';
+import { FeedbackModalService } from './feedback-modal.service';
 
-describe('VocabularyService', () => {
+describe('FeedbackModalService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: VocabularyService = TestBed.get(VocabularyService);
+    const service: FeedbackModalService = TestBed.get(FeedbackModalService);
     expect(service).toBeTruthy();
   });
 });

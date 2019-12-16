@@ -4,24 +4,32 @@
     <span class="icon icon-close" aria-label="Close" (click)="d('Cross click')"></span>
   </div>
   <div class="modal-body">
-    <label>
-      Kommentaar
-      <input class="form-control">
-    </label>
-    <label>
-      Nimi
-      <input class="form-control">
-    </label>
-    <label>
-      E-post
-      <input class="form-control">
-    </label>
+    <form [formGroup]="form">
+    <div class="row p-4">
+      <label for="comment">
+        Kommentaar
+      </label>
+      <input type="text" formControlName="comments" id="comment" class="form-control">
+    </div>
+    <div class="row p-4">
+      <label for="name">
+        Nimi
+      </label>
+      <input type="text" formControlName="sender" id="name" class="form-control">
+    </div>
+    <div class="row p-4">
+      <label for="email">
+        E-post
+      </label>
+      <input type="email" formControlName="email" id="email" class="form-control">
+    </div>
+    </form>
   </div>
   <div class="modal-footer">
     <div class="col-12 p-0 mt-2">
       <div class="text-right">
-        <a role="button" href="#" class="mr-3" data-dismiss="modal">Sulge</a>
-        <button role="button" type="button" class="btn btn-primary disabled" name="feedbackSendBtn">Saada</button>
+        <a role="button" class="mr-3" (click)="close()">Sulge</a>
+        <button role="button" type="button" class="btn btn-primary" name="feedbackSendBtn" (click)="sendData()">Saada</button>
       </div>
     </div>
   </div>

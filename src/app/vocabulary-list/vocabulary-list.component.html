@@ -14,26 +14,26 @@
   </div>
   <div class="row pt-4">
     <form class="col-4" [formGroup]="form">
+      <b>Keeleõppija:</b>
+      <div class="pl-3 pb-4 row">
+        <div class="custom-control custom-radio col-6">
+          <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
+                 class="custom-control-input">
+          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
+            class="alert-icn"></span></label>
+        </div>
+        <div class="custom-control custom-radio col-6">
+          <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
+                 class="custom-control-input" value="etLex">
+          <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
+        </div>
+      </div>
       <div class="pl-3 pb-4 row">
         <input type="text" formControlName="search" class="form-control w-50">
         <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
         <span class="alert-icn-search"></span>
       </div>
       <div class="row">
-        <div class="col-7">
-          <b>Keeleõppija:</b>
-          <div class="custom-control custom-radio">
-            <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
-                   class="custom-control-input">
-            <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
-              class="alert-icn"></span></label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
-                   class="custom-control-input" value="etLex">
-            <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
-          </div>
-        </div>
         <div class="col-5">
           <h4>Keeletase:</h4>
           <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">

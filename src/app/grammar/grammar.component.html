@@ -37,8 +37,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
-    <div formArrayName="category" class="col-11">
+    <div formArrayName="category">
     <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
       <div class="form-group pr-1">
         <label for="exampleFormControlSelect1">Peakategooria</label>
@@ -76,11 +75,10 @@
       </div>
       </div>
       <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>
-    </div>
-    </div>
-      <div class="pl-4 button-padding col-1">
-        <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
+      <div *ngIf="i == 0" class="pt-4 mt-2">
+      <button class="btn btn-submit ml-4" (click)="sendData()">Otsi</button>
       </div>
+    </div>
     </div>
     <div class="row">
       <i class="fa fa-plus plus pt-1 pr-2"></i>
@@ -90,7 +88,6 @@
   <div class="pt-4">
     <b>Otsingu tulemused ( <span>{{itemsCount}}</span> )</b>
     <div class="float-right">
-      <a class="pr-2">PDF</a>
       <label for="select">Näita</label>
       <select id="select" class="custom-select select" name="pageSize" [(ngModel)]="pageSize">
         <option [ngValue]="10">10</option>
