@@ -63,6 +63,7 @@ export class VocabularyListComponent implements OnInit {
   public levelLongString = '';
   public wordLongString = '';
   public searchLongString = '';
+  public showSpinner = false;
 
   private _state: State = {
     page: 1,
@@ -191,6 +192,7 @@ export class VocabularyListComponent implements OnInit {
   }
 
   sendData() {
+    this.showSpinner = true;
     this.levelLongString = '';
     this.wordLongString = '';
     this.searchLongString = '';
@@ -243,7 +245,7 @@ export class VocabularyListComponent implements OnInit {
       this._search$.next();
       this.words$ = this._words$.asObservable();
       this.total$ = this._total$.asObservable();
-    });
+    }, () => {}, () => { setTimeout(() => this.showSpinner = false, 1000); });
   }
 
   sendToFile(item) {

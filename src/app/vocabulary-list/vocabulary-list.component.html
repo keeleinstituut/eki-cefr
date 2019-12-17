@@ -1,108 +1,115 @@
-<div class="container-fluid bottom-gutter content-panel">
-  <div class="row">
-    <div class="col-12">
-      <h3>Sõnavara otsing</h3>
-    </div>
-    <div class="col-8 pr-4">
-      <p>Sõnavara osa sisaldab eri vanuses eri keeleoskustasemetega õppijate sõnavaraloendeid.
-        Eristatud on noored keeleõppijad (keeleoskustasemed eelA1, A1, A2, B1) ja täiskasvanud
-        (keeleoskustasemed A1, A2, B1, B2, C1).</p>
-    </div>
-    <div class="col-4">
-      <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
+<div class="wrapper">
+  <div class="overlay" *ngIf="showSpinner">
+    <div class="spinner-wrapper">
+      <app-spinner></app-spinner>
     </div>
   </div>
-  <div class="row pt-4">
-    <form class="col-4" [formGroup]="form">
-      <b>Keeleõppija:</b>
-      <div class="pl-3 pb-4 row">
-        <div class="custom-control custom-radio col-6">
-          <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
-                 class="custom-control-input">
-          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
-            class="alert-icn"></span></label>
-        </div>
-        <div class="custom-control custom-radio col-6">
-          <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
-                 class="custom-control-input" value="etLex">
-          <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
-        </div>
+  <div class="loaded-content container-fluid bottom-gutter content-panel" [class.blurred]="showSpinner">
+    <div class="row">
+      <div class="col-12">
+        <h3>Sõnavara otsing</h3>
       </div>
-      <div class="pl-3 pb-4 row">
-        <input type="text" formControlName="search" class="form-control w-50">
-        <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
-        <span class="alert-icn-search"></span>
+      <div class="col-8 pr-4">
+        <p>Sõnavara osa sisaldab eri vanuses eri keeleoskustasemetega õppijate sõnavaraloendeid.
+          Eristatud on noored keeleõppijad (keeleoskustasemed eelA1, A1, A2, B1) ja täiskasvanud
+          (keeleoskustasemed A1, A2, B1, B2, C1).</p>
       </div>
-      <div class="row">
-        <div class="col-5">
-          <h4>Keeletase:</h4>
-          <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-            <div class="custom-control custom-checkbox pb-2">
-              <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
-              <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
-                {{langLevel[i]}}
-              </label>
+      <div class="col-4">
+        <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <form class="col-4" [formGroup]="form">
+        <b>Keeleõppija:</b>
+        <div class="pl-3 pb-4 row">
+          <div class="custom-control custom-radio col-6">
+            <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
+                   class="custom-control-input">
+            <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
+              class="alert-icn"></span></label>
+          </div>
+          <div class="custom-control custom-radio col-6">
+            <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
+                   class="custom-control-input" value="etLex">
+            <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
+          </div>
+        </div>
+        <div class="pl-3 pb-4 row">
+          <input type="text" formControlName="search" class="form-control w-50">
+          <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
+          <span class="alert-icn-search"></span>
+        </div>
+        <div class="row">
+          <div class="col-5">
+            <h4>Keeletase:</h4>
+            <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+              <div class="custom-control custom-checkbox pb-2">
+                <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
+                <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
+                  {{langLevel[i]}}
+                </label>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <h4>Sõnaliik</h4>
-      <div formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
-        <div class="custom-control custom-checkbox">
-          <input class="custom-control-input" type="checkbox" [formControlName]="i" id="'type'+{{i}}">
-          <label class="custom-control-label" for="'type'+{{i}}">
-            {{wordTypes[i].name}}
-          </label>
+        <h4>Sõnaliik</h4>
+        <div formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" [formControlName]="i" id="'type'+{{i}}">
+            <label class="custom-control-label" for="'type'+{{i}}">
+              {{wordTypes[i].name}}
+            </label>
+          </div>
+        </div>
+
+        <a class="remove-filters" (click)="form.reset()">Tühista filtrid</a>
+      </form>
+      <div class="col-8">
+        <div class="float-right">
+          <span class="pr-2 download-link" (click)="sendToFile('txt')">TXT</span>
+          <span class="pr-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
+          <label for="select">Näita</label>
+          <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize">
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="20">20</option>
+            <option [ngValue]="30">30</option>
+            <option [ngValue]="50">50</option>
+            <option [ngValue]="100">100</option>
+            <option [ngValue]=" this.tableData?.length">kõik</option>
+          </select>
+        </div>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col" sortable="lemma" (sort)="onSort($event)">Sõna</th>
+            <th scope="col" sortable="pos_text" (sort)="onSort($event)">Sõnaliik</th>
+            <th scope="col" sortable="level" (sort)="onSort($event)">Tase</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of words$ | async">
+            <td>
+              <a [attr.href]="'https://www.sonaveeb.ee/search/est-est/detail/'+item.lemma_text">
+                <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
+              </a>
+            </td>
+            <td>
+              <ngb-highlight [result]="item.pos_text"></ngb-highlight>
+            </td>
+            <td>
+              <ngb-highlight class="color-{{item.level}}" [result]="item.level"></ngb-highlight>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div>
+          <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize" [maxSize]="10">
+            <ng-template ngbPaginationPrevious>Eelmine</ng-template>
+            <ng-template ngbPaginationNext>Järgmine</ng-template>
+          </ngb-pagination>
         </div>
       </div>
-
-      <a class="remove-filters" (click)="form.reset()">Tühista filtrid</a>
-    </form>
-    <div class="col-8">
-      <div class="float-right">
-        <span class="pr-2 download-link" (click)="sendToFile('txt')">TXT</span>
-        <span class="pr-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
-        <label for="select">Näita</label>
-        <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize">
-          <option [ngValue]="10">10</option>
-          <option [ngValue]="20">20</option>
-          <option [ngValue]="30">30</option>
-          <option [ngValue]="50">50</option>
-          <option [ngValue]="100">100</option>
-          <option [ngValue]=" this.tableData?.length">kõik</option>
-        </select>
-      </div>
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th scope="col" sortable="lemma" (sort)="onSort($event)">Sõna</th>
-          <th scope="col" sortable="pos_text" (sort)="onSort($event)">Sõnaliik</th>
-          <th scope="col" sortable="level" (sort)="onSort($event)">Tase</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let item of words$ | async">
-          <td>
-            <a [attr.href]="'https://www.sonaveeb.ee/search/est-est/detail/'+item.lemma_text">
-              <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
-            </a>
-          </td>
-          <td>
-            <ngb-highlight [result]="item.pos_text"></ngb-highlight>
-          </td>
-          <td>
-            <ngb-highlight class="color-{{item.level}}" [result]="item.level"></ngb-highlight>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-      <div>
-        <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize">
-          <ng-template ngbPaginationPrevious>Eelmine</ng-template>
-          <ng-template ngbPaginationNext>Järgmine</ng-template>
-        </ngb-pagination>
-      </div>
     </div>
+    <app-feedback-modal></app-feedback-modal>
   </div>
-  <app-feedback-modal></app-feedback-modal>
 </div>

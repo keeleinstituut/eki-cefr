@@ -16,6 +16,7 @@ import {GrammarComponent, KeysPipe} from './grammar/grammar.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 import { GrammarDetailComponent } from './grammar-detail/grammar-detail.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GrammarDetailComponent } from './grammar-detail/grammar-detail.componen
     AboutProjectComponent,
     KeysPipe,
     FeedbackModalComponent,
-    GrammarDetailComponent
+    GrammarDetailComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

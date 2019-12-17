@@ -1,147 +1,156 @@
-<div class="container-fluid bottom-gutter content-panel">
-  <div class="row">
-    <div class="col-12">
-      <h3>Grammatika</h3>
-    </div>
-    <div class="col-8 pr-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-    </div>
-    <div class="col-4">
-      <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
+<div class="wrapper">
+  <div class="overlay" *ngIf="showSpinner">
+    <div class="spinner-wrapper">
+      <app-spinner></app-spinner>
     </div>
   </div>
-  <form *ngIf="form" class="col-12" [formGroup]="form">
+  <div class="loaded-content container-fluid bottom-gutter content-panel" [class.blurred]="showSpinner">
     <div class="row">
-      <b class="pr-2">Keeleõppija:</b>
-      <div class="custom-control custom-radio pr-4">
-        <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
-               class="custom-control-input">
-        <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
-          class="alert-icn"></span></label>
+      <div class="col-12">
+        <h3>Grammatika</h3>
       </div>
-      <div class="custom-control custom-radio">
-        <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
-               class="custom-control-input" value="etLex" disabled>
-        <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
+      <div class="col-8 pr-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
       </div>
     </div>
-    <div class="row">
-      <b class="pr-2">Keeletase:</b>
-      <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-        <div class="custom-control custom-checkbox pb-2 pr-3">
-          <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
-          <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
-            {{langLevel[i]}}
-          </label>
+    <form *ngIf="form" class="col-12" [formGroup]="form">
+      <div class="row">
+        <b class="pr-2">Keeleõppija:</b>
+        <div class="custom-control custom-radio pr-4">
+          <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
+                 class="custom-control-input">
+          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
+            class="alert-icn"></span></label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
+                 class="custom-control-input" value="etLex" disabled>
+          <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
         </div>
       </div>
-    </div>
-    <div formArrayName="category">
-    <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
-      <div class="form-group pr-1">
-        <label for="exampleFormControlSelect1">Peakategooria</label>
-        <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
-                (change)="getChildValues(form.value.category[i].maincategory, i)">
-          <option value="" hidden>Vali peakategooria</option>
-          <option *ngFor="let category of categoriesList" value="{{category.category}}">{{category.name}}</option>
-        </select>
-      </div>
-      <div class="form-group pr-2">
-        <label for="exampleFormControlSelect2">Alamkategooriad</label>
-        <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
-                (change)="getTypeValues(form.value.category[i].subcategory, i)">
-          <option  value="">Vali alamkategooria</option>
-          <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
-        </select>
-      </div>
-      <div *ngIf="row.controls.subCategory.controls.length > 0" class="arrow-left"></div>
-      <div *ngIf="row.controls.subCategory.controls.length > 0" formArrayName="subCategory" class="dark-bg mt-4 pb-2 col-6 p-0">
-      <div class="pl-4 row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;" [formGroupName]="k">
-        <div class="col-5 p-0 ml-2">
-          <select class="form-control mt-2" formControlName="descriptor"
-                  (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
-            <option value="">Tunnus</option>
-            <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
-          </select>
+      <div class="row">
+        <b class="pr-2">Keeletase:</b>
+        <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
+          <div class="custom-control custom-checkbox pb-2 pr-3">
+            <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
+            <label class="color-{{langLevel[i]}} custom-control-label" [for]="i">
+              {{langLevel[i]}}
+            </label>
+          </div>
         </div>
-        <div *ngIf="valTypeLists[i]" class="col-6 p-0 ml-2">
-          <select class="form-control mt-2"  formControlName="values">
-            <option value="undefined">Tunnuse liik</option>
-            <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
-          </select>
-        </div>
-        <i class="fa fa-minus minus pr-4 pt-3" (click)="removeSubRow(k, i)"></i>
       </div>
-      </div>
-      <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>
-      <div *ngIf="i == 0" class="pt-4 mt-2">
-      <button class="btn btn-submit ml-4" (click)="sendData()">Otsi</button>
-      </div>
-    </div>
-    </div>
-    <div class="row">
-      <i class="fa fa-plus plus pt-1 pr-2"></i>
-      <a (click)="addRow()">Lisa peakategooria</a>
-    </div>
-  </form>
-  <div class="pt-4">
-    <b>Otsingu tulemused ( <span>{{itemsCount}}</span> )</b>
-    <div class="float-right">
-      <label for="select">Näita</label>
-      <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize">
-        <option [ngValue]="10">10</option>
-        <option [ngValue]="20">20</option>
-        <option [ngValue]="30">30</option>
-        <option [ngValue]="50">50</option>
-        <option [ngValue]="100">100</option>
-        <option [ngValue]=" this.itemsCount">kõik</option>
-      </select>
-    </div>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria</th>
-        <th scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria</th>
-        <th scope="col" sortable="langlevel" (sort)="onSort($event)">Keeletase</th>
-        <th scope="col" sortable="level" (sort)="onSort($event)">Kirjeldus</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let item of words$ | async">
-        <td>
-          <ngb-highlight [result]="item.maincategory_name"></ngb-highlight>
-        </td>
-        <td>
-          <ngb-highlight [result]="item.subcategory_name"></ngb-highlight>
-        </td>
-        <td>
-          <ngb-highlight class="color-{{item.langlevel}}" [result]="item.langlevel"></ngb-highlight>
-        </td>
-        <td>
-          <ngb-highlight [result]="item.can_do_statement"></ngb-highlight>
-          <div class="row">
-            <span class="features">TUNNUSED</span>
-            <div *ngFor="let obj of item.descriptors | keys">
-              {{obj.descriptor}} <span class="features-category">{{obj.values}}</span>
+      <div formArrayName="category">
+        <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
+          <div class="form-group pr-1">
+            <label for="exampleFormControlSelect1">Peakategooria</label>
+            <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
+                    (change)="getChildValues(form.value.category[i].maincategory, i)">
+              <option value="" hidden>Vali peakategooria</option>
+              <option *ngFor="let category of categoriesList" value="{{category.category}}">{{category.name}}</option>
+            </select>
+          </div>
+          <div class="form-group pr-2">
+            <label for="exampleFormControlSelect2">Alamkategooriad</label>
+            <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
+                    (change)="getTypeValues(form.value.category[i].subcategory, i)">
+              <option value="">Vali alamkategooria</option>
+              <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
+            </select>
+          </div>
+          <div *ngIf="row.controls.subCategory.controls.length > 0" class="arrow-left"></div>
+          <div *ngIf="row.controls.subCategory.controls.length > 0" formArrayName="subCategory"
+               class="dark-bg mt-4 pb-2 col-6 p-0">
+            <div class="pl-4 row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;"
+                 [formGroupName]="k">
+              <div class="col-5 p-0 ml-2">
+                <select class="form-control mt-2" formControlName="descriptor"
+                        (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
+                  <option value="">Tunnus</option>
+                  <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
+                </select>
+              </div>
+              <div *ngIf="valTypeLists[i]" class="col-6 p-0 ml-2">
+                <select class="form-control mt-2" formControlName="values">
+                  <option value="undefined">Tunnuse liik</option>
+                  <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
+                </select>
+              </div>
+              <i class="fa fa-minus minus pr-4 pt-3" (click)="removeSubRow(k, i)"></i>
             </div>
           </div>
-          <div class="row">
-            Näitelause: {{item.firstexample}}
+          <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>
+          <div *ngIf="i == 0" class="pt-4 mt-2">
+            <button class="btn btn-submit ml-4" (click)="sendData()">Otsi</button>
           </div>
-        </td>
-        <td>
-          <ngb-highlight class="more-link" result="Lisainfo" (click)="toDetail(item)"></ngb-highlight>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <div>
-      <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize">
-        <ng-template ngbPaginationPrevious>Eelmine</ng-template>
-        <ng-template ngbPaginationNext>Järgmine</ng-template>
-      </ngb-pagination>
+        </div>
+      </div>
+      <div class="row">
+        <i class="fa fa-plus plus pt-1 pr-2"></i>
+        <a (click)="addRow()">Lisa peakategooria</a>
+      </div>
+    </form>
+    <div class="pt-4">
+      <b>Otsingu tulemused ( <span>{{itemsCount}}</span> )</b>
+      <div class="float-right">
+        <label for="select">Näita</label>
+        <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize">
+          <option [ngValue]="10">10</option>
+          <option [ngValue]="20">20</option>
+          <option [ngValue]="30">30</option>
+          <option [ngValue]="50">50</option>
+          <option [ngValue]="100">100</option>
+          <option [ngValue]=" this.itemsCount">kõik</option>
+        </select>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria</th>
+          <th scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria</th>
+          <th scope="col" sortable="langlevel" (sort)="onSort($event)">Keeletase</th>
+          <th scope="col" sortable="level" (sort)="onSort($event)">Kirjeldus</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of words$ | async">
+          <td>
+            <ngb-highlight [result]="item.maincategory_name"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="item.subcategory_name"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight class="color-{{item.langlevel}}" [result]="item.langlevel"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="item.can_do_statement"></ngb-highlight>
+            <div class="row">
+              <span class="features">TUNNUSED</span>
+              <div *ngFor="let obj of item.descriptors | keys">
+                {{obj.descriptor}} <span class="features-category">{{obj.values}}</span>
+              </div>
+            </div>
+            <div class="row">
+              Näitelause: {{item.firstexample}}
+            </div>
+          </td>
+          <td>
+            <ngb-highlight class="more-link" result="Lisainfo" (click)="toDetail(item)"></ngb-highlight>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div>
+        <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize">
+          <ng-template ngbPaginationPrevious>Eelmine</ng-template>
+          <ng-template ngbPaginationNext>Järgmine</ng-template>
+        </ngb-pagination>
+      </div>
     </div>
+    <app-feedback-modal></app-feedback-modal>
   </div>
-  <app-feedback-modal></app-feedback-modal>
 </div>

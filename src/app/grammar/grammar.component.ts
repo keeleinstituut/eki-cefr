@@ -80,6 +80,7 @@ export class GrammarComponent implements OnInit {
   public total$: Observable<number>;
   @ViewChild(FeedbackModalComponent, {static: false})
   private modal: FeedbackModalComponent;
+  public showSpinner = false;
 
   private _state: State = {
     page: 1,
@@ -306,6 +307,7 @@ export class GrammarComponent implements OnInit {
   }
 
   sendData() {
+    this.showSpinner = true;
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null);
@@ -338,7 +340,7 @@ export class GrammarComponent implements OnInit {
       this._search$.next();
       this.words$ = this._words$.asObservable();
       this.total$ = this._total$.asObservable();
-    });
+    }, () => {}, () => { setTimeout(() => this.showSpinner = false, 1000); });
   }
 
   toDetail(item) {
