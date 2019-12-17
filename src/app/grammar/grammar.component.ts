@@ -221,8 +221,8 @@ export class GrammarComponent implements OnInit {
           lang: new FormArray([]),
           types: new FormArray([])
         });
-        this.getChildData();
         this.addRow();
+        this.getChildData();
       }
     });
   }

@@ -22,7 +22,6 @@
   border-radius: 4px;
 }
 
-
 .arrow-left {
   margin-top: 2.5rem;
   width: 0;
@@ -31,4 +30,10 @@
   border-bottom: 10px solid transparent;
 
   border-right:10px solid #CCD9E0;
+}
+
+.more-link {
+  color: #0053B3;
+  font-size: 16px;
+  cursor: pointer;
 }

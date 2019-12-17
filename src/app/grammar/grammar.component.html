@@ -89,7 +89,7 @@
     <b>Otsingu tulemused ( <span>{{itemsCount}}</span> )</b>
     <div class="float-right">
       <label for="select">Näita</label>
-      <select id="select" class="custom-select select" name="pageSize" [(ngModel)]="pageSize">
+      <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize">
         <option [ngValue]="10">10</option>
         <option [ngValue]="20">20</option>
         <option [ngValue]="30">30</option>
@@ -131,7 +131,7 @@
           </div>
         </td>
         <td>
-          <ngb-highlight result="Lisainfo" (click)="toDetail(item)"></ngb-highlight>
+          <ngb-highlight class="more-link" result="Lisainfo" (click)="toDetail(item)"></ngb-highlight>
         </td>
       </tr>
       </tbody>

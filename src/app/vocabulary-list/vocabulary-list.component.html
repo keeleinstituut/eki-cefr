@@ -60,10 +60,10 @@
     </form>
     <div class="col-8">
       <div class="float-right">
-        <a class="pr-2" (click)="sendToFile('txt')">TXT</a>
-        <a class="pr-2" (click)="sendToFile('xlsx')">XLSX</a>
+        <span class="pr-2 download-link" (click)="sendToFile('txt')">TXT</span>
+        <span class="pr-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
         <label for="select">Näita</label>
-        <select id="select" class="custom-select select" name="pageSize" [(ngModel)]="pageSize">
+        <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize">
           <option [ngValue]="10">10</option>
           <option [ngValue]="20">20</option>
           <option [ngValue]="30">30</option>
