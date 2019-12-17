@@ -33,7 +33,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * Kopeeri angular failid serverisse /opt kausta
 * muuda index.html failis base url
 * muuda Apache confi
-----
+`
 Alias "/ww/teacher-tools" "/opt/teacher-tools"
 
 <Directory /opt/teacher-tools>
@@ -46,6 +46,6 @@ Require all granted
 <Location "/ww/teacher-tools">
 ProxyPass "!"
 </Location>
-----
+`
 
 * taaskäivita apache teenus
