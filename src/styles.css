@@ -268,3 +268,9 @@ select{
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+.content-panel{
+  background-color: transparent !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+}
