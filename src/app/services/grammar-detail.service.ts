@@ -12,6 +12,10 @@ export class GrammarDetailService {
     localStorage.setItem('data', item);
   }
 
+  saveSearchData(item) {
+    localStorage.setItem('search', JSON.stringify(item));
+  }
+
   getData() {
     return this.http.get('https://elo.eki.ee/etLex/api/v1.0/gramprofiles/' + localStorage.getItem('data'));
   }

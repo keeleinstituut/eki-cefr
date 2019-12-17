@@ -23,7 +23,7 @@ interface State {
   sortDirection: SortDirection;
 }
 
-@Pipe({ name: 'keys',  pure: false })
+@Pipe({name: 'keys', pure: false})
 export class KeysPipe implements PipeTransform {
   transform(value: any, args: any[] = null): any {
     return Object.values(value).sort((a: any, b: any) => a.ord - b.ord);
@@ -44,6 +44,7 @@ function sort(countries: any[], column: string, direction: string): any[] {
     });
   }
 }
+
 @Component({
   selector: 'app-grammar',
   templateUrl: './grammar.component.html',
@@ -91,28 +92,45 @@ export class GrammarComponent implements OnInit {
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(private listService: GrammarService,  private formBuilder: FormBuilder, private pipe: DecimalPipe, private router: Router,
+  constructor(private listService: GrammarService, private formBuilder: FormBuilder, private pipe: DecimalPipe, private router: Router,
               private detailService: GrammarDetailService) {
-
-    this.form = this.formBuilder.group({
-      category: new FormArray([]),
-      list: 'noor',
-      lang: new FormArray([]),
-      types: new FormArray([])
-    });
-    this.addRow();
   }
 
-  get loading$() { return this._loading$.asObservable(); }
-  get page() { return this._state.page; }
-  get pageSize() { return this._state.pageSize; }
-  get searchTerm() { return this._state.searchTerm; }
+  get loading$() {
+    return this._loading$.asObservable();
+  }
 
-  set page(page: number) { this._set({page}); }
-  set pageSize(pageSize: number) { this._set({pageSize}); }
-  set searchTerm(searchTerm: string) { this._set({searchTerm}); }
-  set sortColumn(sortColumn: string) { this._set({sortColumn}); }
-  set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
+  get page() {
+    return this._state.page;
+  }
+
+  get pageSize() {
+    return this._state.pageSize;
+  }
+
+  get searchTerm() {
+    return this._state.searchTerm;
+  }
+
+  set page(page: number) {
+    this._set({page});
+  }
+
+  set pageSize(pageSize: number) {
+    this._set({pageSize});
+  }
+
+  set searchTerm(searchTerm: string) {
+    this._set({searchTerm});
+  }
+
+  set sortColumn(sortColumn: string) {
+    this._set({sortColumn});
+  }
+
+  set sortDirection(sortDirection: SortDirection) {
+    this._set({sortDirection});
+  }
 
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
@@ -156,18 +174,56 @@ export class GrammarComponent implements OnInit {
     });
   }
 
+  private langCheckboxes(item: any) {
+    this.langLevel = this.childLangLevel;
+    this.langLevel.forEach((o, i) => {
+      const control = new FormControl(item[i]);
+      (this.form.controls.lang as FormArray).push(control);
+    });
+  }
+
   ngOnInit() {
     this.listService.getCheckboxData().subscribe((data: any) => {
       this.adultLangLevel = data.items.etLex.levels;
       this.childLangLevel = data.items.noor.levels;
       this.adultWordTypes = data.items.etLex.poslist;
       this.childWordTypes = data.items.noor.poslist;
-      this.getChildData();
     });
-
     this.listService.getTypeData().subscribe((data: any) => {
       this.categoriesList = data.items.filter(item => item.parent === null);
       this.categories = data.items;
+
+      if (localStorage.getItem('search')) {
+        const value = JSON.parse(localStorage.getItem('search'));
+        // this.form.controls.category.setValue(value.category);
+        this.form = this.formBuilder.group({
+          category: new FormArray(value.category.map((item, index) => {
+            const group = this.initSection();
+            this.getChildValues(item.maincategory, index);
+            group.patchValue({
+              maincategory: item.maincategory,
+              subcategory: item.subcategory
+            });
+            return group;
+          })),
+          list: 'noor',
+          lang: new FormArray([]),
+          types: new FormArray([])
+        });
+        this.langCheckboxes(value.lang);
+
+        this.sendData();
+        localStorage.removeItem('search');
+      } else {
+        this.form = this.formBuilder.group({
+          category: new FormArray([]),
+          list: 'noor',
+          lang: new FormArray([]),
+          types: new FormArray([])
+        });
+        this.getChildData();
+        this.addRow();
+      }
     });
   }
 
@@ -204,6 +260,7 @@ export class GrammarComponent implements OnInit {
     this.form.controls.types.controls = [];
     this.addCheckboxes();
   }
+
   getChildData() {
     this.form.controls.lang.controls = [];
     this.langLevel = this.childLangLevel;
@@ -211,6 +268,14 @@ export class GrammarComponent implements OnInit {
     this.form.controls.lang.controls = [];
     this.form.controls.types.controls = [];
     this.addCheckboxes();
+  }
+
+  initSection() {
+    return this.formBuilder.group({
+      maincategory: [],
+      subcategory: [],
+      subCategory: new FormArray([]),
+    });
   }
 
   addRow() {
@@ -241,13 +306,11 @@ export class GrammarComponent implements OnInit {
   }
 
   sendData() {
-    console.log(this.form.value.category);
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null);
 
     for (const item of this.form.value.category) {
-      console.log(item);
       let valueArray = {};
       const descriptors = [];
       for (const part of item.subCategory) {
@@ -256,7 +319,6 @@ export class GrammarComponent implements OnInit {
       valueArray = {maincategory: item.maincategory, subcategory: item.subcategory, descriptors};
       this.valuesArray.push(valueArray);
     }
-    console.log(this.valuesArray);
     this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), langLevel).subscribe((data: any) => {
       this.valuesArray = [];
       this.itemsCount = data.count;
@@ -278,8 +340,10 @@ export class GrammarComponent implements OnInit {
       this.total$ = this._total$.asObservable();
     });
   }
+
   toDetail(item) {
     this.detailService.sendData(item.id);
     this.router.navigate(['/grammar-detail']);
+    this.detailService.saveSearchData(this.form.value);
   }
 }
