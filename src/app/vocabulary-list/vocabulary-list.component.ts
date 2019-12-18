@@ -6,7 +6,7 @@ import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/co
 import {VocabularyListService} from './vocabulary-list.service';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
-
+import { environment } from './../../environments/environment';
 
 interface SearchResult {
   words: any[];
@@ -64,6 +64,7 @@ export class VocabularyListComponent implements OnInit {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
+  public  APIEndpoint = environment.APIEndpoint;
 
   private _state: State = {
     page: 1,

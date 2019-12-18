@@ -9,7 +9,7 @@ export class VocabularyListService {
   constructor(private http: HttpClient) { }
 
   getCheckboxData() {
-    return this.http.get('http://elo.eki.ee/etLex/api/v1.0/projects?asdict=1');
+    return this.http.get('https://elo.eki.ee/etLex/api/v1.0/projects?asdict=1');
   }
 
   sendToFile(search: string, list: string, item: string,  level?: string, words?: string) {

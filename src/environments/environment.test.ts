@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  APIEndpoint: 'https://sonaveeb.ee/'
+  APIEndpoint: 'https://ekitest.tripledev.ee/'
 };

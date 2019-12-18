@@ -92,7 +92,7 @@ Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta ots
           <tbody>
           <tr *ngFor="let item of words$ | async">
             <td>
-              <a [attr.href]="'https://www.sonaveeb.ee/search/est-est/detail/'+item.lemma_text">
+              <a [attr.href]="APIEndpoint + 'search/est-est/detail/'+item.lemma_text">
                 <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
               </a>
             </td>

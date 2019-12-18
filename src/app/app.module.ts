@@ -18,6 +18,7 @@ import { FeedbackModalComponent } from './feedback-modal/feedback-modal.componen
 import { GrammarDetailComponent } from './grammar-detail/grammar-detail.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import {AutosizeModule} from 'ngx-autosize';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import {AutosizeModule} from 'ngx-autosize';
     ReactiveFormsModule,
     AutosizeModule
   ],
-  providers: [FeedbackModalComponent],
+  providers: [FeedbackModalComponent, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
