@@ -59,7 +59,7 @@ export class VocabularyListComponent implements OnInit {
   public words$: Observable<object[]>;
   public total$: Observable<number>;
   @ViewChild(FeedbackModalComponent, {static: false})
-  private modal: FeedbackModalComponent;
+  public modal: FeedbackModalComponent;
   public levelLongString = '';
   public wordLongString = '';
   public searchLongString = '';

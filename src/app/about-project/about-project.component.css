@@ -1,0 +1,8 @@
+.dots ul {
+  list-style-type: circle;
+  margin-left: 40px;
+}
+.alpha ul {
+  list-style-type: upper-roman;
+  margin-left: 80px;
+}

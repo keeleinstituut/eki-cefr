@@ -10,8 +10,10 @@
         <h3>Grammatika</h3>
       </div>
       <div class="col-8 pr-4">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+        <p>Grammatika osa sisaldab noore keeleõppija (keeleoskustasemed eelA1, A1, A2, B1) soovitusliku grammatilise
+          pädevuse kirjeldust. Täiskasvanute grammatilise pädevuse kirjeldus on väljatöötamisel.<br><br>
+          Keeleoskustasemete määramisel on aluseks Euroopa keeleõppe raamdokument (2007) ja selle sõsarväljaanne (2018)
+          ning Euroopa Nõukogu levitanud noorte õppijate tasemekirjeldused (vanustele 7-10 ja 11-15).</p>
       </div>
       <div class="col-4">
         <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
@@ -45,7 +47,7 @@
       </div>
       <div formArrayName="category">
         <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
-          <div class="form-group pr-1">
+          <div class="form-group pr-1 input-w">
             <label for="exampleFormControlSelect1">Peakategooria</label>
             <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
                     (change)="getChildValues(form.value.category[i].maincategory, i)">
@@ -53,7 +55,7 @@
               <option *ngFor="let category of categoriesList" value="{{category.category}}">{{category.name}}</option>
             </select>
           </div>
-          <div class="form-group pr-2">
+          <div class="form-group pr-2 input-w-two">
             <label for="exampleFormControlSelect2">Alamkategooriad</label>
             <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
                     (change)="getTypeValues(form.value.category[i].subcategory, i)">
@@ -73,13 +75,15 @@
                   <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
                 </select>
               </div>
-              <div *ngIf="valTypeLists[i]" class="col-6 p-0 ml-2">
+              <div *ngIf="typeLists[i]" class="col-6 p-0 ml-2">
                 <select class="form-control mt-2" formControlName="values">
-                  <option value="undefined">Tunnuse liik</option>
-                  <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
+                  <option value="">Tunnuse liik</option>
+                  <ng-container *ngIf="valTypeLists[i][k]?.values">
+                    <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
+                  </ng-container>
                 </select>
               </div>
-              <i class="fa fa-minus minus pr-4 pt-3" (click)="removeSubRow(k, i)"></i>
+              <i class="fa fa-minus minus pt-3" (click)="removeSubRow(k, i)"></i>
             </div>
           </div>
           <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>

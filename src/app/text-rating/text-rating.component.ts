@@ -17,13 +17,13 @@ export class TextRatingComponent {
   public levels = [];
   public notAllowed = [];
   @ViewChild(FeedbackModalComponent, {static: false})
-  private modal: FeedbackModalComponent;
+  public modal: FeedbackModalComponent;
 
   constructor(private formBuilder: FormBuilder, private service: TextService) {
     this.form = this.formBuilder.group({
       list: 'etLex',
       lang: new FormArray([]),
-      text: '',
+      text: 'Eesti keeles on 14 käänet, mille üle eestlased on iseäranis uhked. Selletõttu aga ei ole eesti keele lauses sõnade järjekord kindlate reeglitega määratud, nagu on seda paljudes indo-euroopa keeltes. Käänete rohkus ei garanteeri veel, et lauseliikmete süntaktilised funktsioonid oleks nende käänete vahel võrdselt ära jaotatud. Ei, nii lihtne eesti keel siiski ei ole! Enamasti sõltub sõna süntaktiline funktsioon ka veel lause tähendusest, see aga on arvutile seni veel ületamatu raskus. Näiteks kui vaadata kahte lauset «Lapsed sõid need kommid ära» ja «Need kommid sõid lapsed ära», siis nendes lausetes saab alust ja sihitist määrata ainult lause tähendust teades.',
       result: ''
     });
   }

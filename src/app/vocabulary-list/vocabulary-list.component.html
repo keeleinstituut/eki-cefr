@@ -37,7 +37,10 @@
         <div class="pl-3 pb-4 row">
           <input type="text" formControlName="search" class="form-control w-50">
           <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
-          <span class="alert-icn-search"></span>
+          <span class="alert-icn-search" ngbPopover="Ühe sõna otsimiseks trüki sõna otsingulahtrisse. NB! Jäta keeleoskustaseme ja sõnaliigi filtrid valimata!
+Kindla alguse või lõpuga sõnade loendi saamiseks kasuta tärni, nt “k*” (kõik k-ga algavad sõnad) või “*tar” (kõik tar-lõpulised sõnad).
+Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta otsingulahter tühjaks."
+                triggers="mouseenter:mouseleave"></span>
         </div>
         <div class="row">
           <div class="col-5">

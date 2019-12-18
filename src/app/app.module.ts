@@ -17,6 +17,7 @@ import { AboutProjectComponent } from './about-project/about-project.component';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 import { GrammarDetailComponent } from './grammar-detail/grammar-detail.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import {AutosizeModule} from 'ngx-autosize';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutosizeModule
   ],
   providers: [FeedbackModalComponent],
   bootstrap: [AppComponent]

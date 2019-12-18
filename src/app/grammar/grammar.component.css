@@ -37,3 +37,10 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.input-w {
+  width: 190px;
+}
+.input-w-two {
+  width: 240px;
+}

@@ -33,7 +33,7 @@
       <div class="col-5">
         <div class="form-group">
           <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
-          <textarea class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="8"
+          <textarea autosize class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="8"
                     maxlength="2000"></textarea>
           <small class="counter">{{this.form.controls.text.value.length}}/2000</small>
         </div>

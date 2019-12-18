@@ -79,7 +79,7 @@ export class GrammarComponent implements OnInit {
   public words$: Observable<object[]>;
   public total$: Observable<number>;
   @ViewChild(FeedbackModalComponent, {static: false})
-  private modal: FeedbackModalComponent;
+  public modal: FeedbackModalComponent;
   public showSpinner = false;
 
   private _state: State = {
@@ -189,42 +189,43 @@ export class GrammarComponent implements OnInit {
       this.childLangLevel = data.items.noor.levels;
       this.adultWordTypes = data.items.etLex.poslist;
       this.childWordTypes = data.items.noor.poslist;
-    });
-    this.listService.getTypeData().subscribe((data: any) => {
-      this.categoriesList = data.items.filter(item => item.parent === null);
-      this.categories = data.items;
+    }, () => {}, () => {
+      this.listService.getTypeData().subscribe((data: any) => {
+        this.categoriesList = data.items.filter(item => item.parent === null);
+        this.categories = data.items;
 
-      if (localStorage.getItem('search')) {
-        const value = JSON.parse(localStorage.getItem('search'));
-        // this.form.controls.category.setValue(value.category);
-        this.form = this.formBuilder.group({
-          category: new FormArray(value.category.map((item, index) => {
-            const group = this.initSection();
-            this.getChildValues(item.maincategory, index);
-            group.patchValue({
-              maincategory: item.maincategory,
-              subcategory: item.subcategory
-            });
-            return group;
-          })),
-          list: 'noor',
-          lang: new FormArray([]),
-          types: new FormArray([])
-        });
-        this.langCheckboxes(value.lang);
+        if (localStorage.getItem('search')) {
+          const value = JSON.parse(localStorage.getItem('search'));
+          // this.form.controls.category.setValue(value.category);
+          this.form = this.formBuilder.group({
+            category: new FormArray(value.category.map((item, index) => {
+              const group = this.initSection();
+              this.getChildValues(item.maincategory, index);
+              group.patchValue({
+                maincategory: item.maincategory,
+                subcategory: item.subcategory
+              });
+              return group;
+            })),
+            list: 'noor',
+            lang: new FormArray([]),
+            types: new FormArray([])
+          });
+          this.langCheckboxes(value.lang);
 
-        this.sendData();
-        localStorage.removeItem('search');
-      } else {
-        this.form = this.formBuilder.group({
-          category: new FormArray([]),
-          list: 'noor',
-          lang: new FormArray([]),
-          types: new FormArray([])
-        });
-        this.addRow();
-        this.getChildData();
-      }
+          this.sendData();
+          localStorage.removeItem('search');
+        } else {
+          this.form = this.formBuilder.group({
+            category: new FormArray([]),
+            list: 'noor',
+            lang: new FormArray([]),
+            types: new FormArray([])
+          });
+          this.addRow();
+          this.getChildData();
+        }
+      });
     });
   }
 
