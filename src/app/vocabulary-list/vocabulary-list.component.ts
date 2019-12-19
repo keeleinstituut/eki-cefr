@@ -6,7 +6,7 @@ import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/co
 import {VocabularyListService} from './vocabulary-list.service';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
-import { environment } from './../../environments/environment';
+import {environment} from './../../environments/environment';
 
 interface SearchResult {
   words: any[];
@@ -64,7 +64,7 @@ export class VocabularyListComponent implements OnInit {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
-  public  APIEndpoint = environment; // .APIEndpoint;
+  public APIEndpoint = environment; // .APIEndpoint;
 
   private _state: State = {
     page: 1,
@@ -246,11 +246,20 @@ export class VocabularyListComponent implements OnInit {
       this._search$.next();
       this.words$ = this._words$.asObservable();
       this.total$ = this._total$.asObservable();
-    }, () => {}, () => { setTimeout(() => this.showSpinner = false, 1000); });
+    }, () => {
+    }, () => {
+      setTimeout(() => this.showSpinner = false, 1000);
+    });
   }
 
   sendToFile(item) {
     this.listService.sendToFile(this.searchLongString, this.form.value.list, item, this.levelLongString, this.wordLongString);
+  }
+
+  checkAll() {
+    this.form.controls.types.setValue(
+      this.form.controls.types.value.map(value => value = true)
+    );
   }
 
 }

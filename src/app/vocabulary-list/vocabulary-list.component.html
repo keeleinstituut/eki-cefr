@@ -12,7 +12,11 @@
       <div class="col-8 pr-4">
         <p>Sõnavara osa sisaldab eri vanuses eri keeleoskustasemetega õppijate sõnavaraloendeid.
           Eristatud on noored keeleõppijad (keeleoskustasemed eelA1, A1, A2, B1) ja täiskasvanud
-          (keeleoskustasemed A1, A2, B1, B2, C1).</p>
+          (keeleoskustasemed A1, A2, B1, B2, C1).<br><br>
+          Ühe sõna otsimiseks trüki sõna otsingulahtrisse. NB! Jäta keeleoskustaseme ja sõnaliigi filtrid valimata!
+          Kindla alguse või lõpuga sõnade loendi saamiseks kasuta tärni, nt “k*” (kõik k-ga algavad sõnad) või “*tar”
+          (kõik tar-lõpulised sõnad).
+          Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta otsingulahter tühjaks.</p>
       </div>
       <div class="col-4">
         <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
@@ -25,8 +29,7 @@
           <div class="custom-control custom-radio col-6">
             <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
                    class="custom-control-input">
-            <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
-              class="alert-icn"></span></label>
+            <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
           </div>
           <div class="custom-control custom-radio col-6">
             <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
@@ -37,10 +40,6 @@
         <div class="pl-3 pb-4 row">
           <input type="text" formControlName="search" class="form-control w-50">
           <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
-          <span class="alert-icn-search" ngbPopover="Ühe sõna otsimiseks trüki sõna otsingulahtrisse. NB! Jäta keeleoskustaseme ja sõnaliigi filtrid valimata!
-Kindla alguse või lõpuga sõnade loendi saamiseks kasuta tärni, nt “k*” (kõik k-ga algavad sõnad) või “*tar” (kõik tar-lõpulised sõnad).
-Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta otsingulahter tühjaks."
-                triggers="mouseenter:mouseleave"></span>
         </div>
         <div class="row">
           <div class="col-5">
@@ -64,8 +63,11 @@ Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta ots
             </label>
           </div>
         </div>
-
-        <a class="remove-filters" (click)="form.controls.lang.reset(); form.controls.types.reset();">Tühista filtrid</a>
+        <div class="pt-2">
+          <a class="remove-filters pr-2" (click)="checkAll()">Kõik sõnaliigid</a>
+          <a class="remove-filters" (click)="form.controls.lang.reset(); form.controls.types.reset();">Tühista
+            filtrid</a>
+        </div>
       </form>
       <div class="col-8">
         <div class="float-right">
