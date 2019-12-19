@@ -26,12 +26,12 @@
       <form class="col-4" [formGroup]="form">
         <b>Keeleõppija:</b>
         <div class="pl-3 pb-4 row">
-          <div class="custom-control custom-radio col-6">
+          <div class="custom-control custom-radio col-5">
             <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
                    class="custom-control-input">
             <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
           </div>
-          <div class="custom-control custom-radio col-6">
+          <div class="custom-control custom-radio col-7">
             <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
                    class="custom-control-input" value="etLex">
             <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
@@ -42,8 +42,8 @@
           <button class="btn btn-submit ml-2" (click)="sendData()">Otsi</button>
         </div>
         <div class="row">
-          <div class="col-5">
-            <h4>Keeletase:</h4>
+          <div class="col-4">
+            <b>Keeletase:</b>
             <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
               <div class="custom-control custom-checkbox pb-2">
                 <input class="custom-control-input" type="checkbox" [formControlName]="i" [id]="i">
@@ -53,23 +53,26 @@
               </div>
             </div>
           </div>
-        </div>
-        <h4>Sõnaliik</h4>
-        <div formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
-          <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" [formControlName]="i" id="'type'+{{i}}">
-            <label class="custom-control-label" for="'type'+{{i}}">
-              {{wordTypes[i].name}}
-            </label>
+          <div class="col-8">
+            <b>Sõnaliik:</b>
+            <div formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" [formControlName]="i" id="'type'+{{i}}">
+                <label class="custom-control-label" for="'type'+{{i}}">
+                  {{wordTypes[i].name}}
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="pt-2">
-          <a class="remove-filters pr-2" (click)="checkAll()">Kõik sõnaliigid</a>
-          <a class="remove-filters" (click)="form.controls.lang.reset(); form.controls.types.reset();">Tühista
+        <div class="pt-4">
+          <a class="remove-filters pr-4" (click)="checkAll()">Kõik sõnaliigid</a>
+          <a class="remove-filters"
+             (click)="form.controls.lang.reset(); form.controls.types.reset();this.noResult = false;">Tühista
             filtrid</a>
         </div>
       </form>
-      <div class="col-8">
+      <div class="col-8" *ngIf="!noResult">
         <div class="float-right">
           <span class="pr-2 download-link" (click)="sendToFile('txt')">TXT</span>
           <span class="pr-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
@@ -94,7 +97,7 @@
           <tbody>
           <tr *ngFor="let item of words$ | async">
             <td>
-              <a [attr.href]="APIEndpoint + 'search/est-est/detail/'+item.lemma_text">
+              <a (click)="sendToTab(APIEndpoint + 'search/est-est/detail/'+item.lemma_text)">
                 <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
               </a>
             </td>
@@ -113,6 +116,10 @@
             <ng-template ngbPaginationNext>Järgmine</ng-template>
           </ngb-pagination>
         </div>
+      </div>
+      <div class="col-8" *ngIf="noResult">
+        <p class="no-result">Selle sõna tasemekohasus ei ole määratud. Vaata sõna tähendust <a
+          [attr.href]="APIEndpoint">sõnaveebist</a>.</p>
       </div>
     </div>
     <app-feedback-modal></app-feedback-modal>

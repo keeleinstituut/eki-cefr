@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ##Kausta tekitamine, mis läheb serverisse
 
-* Kirjuta terminali käsk kui soovid sõnaveebi rakendust lisada: ng build --configuration=prod
+* Kirjuta terminali käsk kui soovid sõnaveebi rakendust lisada: ng build --prod
 
 * Kirjuta terminali käsk kui soovid testserverisse rakendust lisada: ng build --configuration=test
 

@@ -64,7 +64,8 @@ export class VocabularyListComponent implements OnInit {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
-  public APIEndpoint = environment; // .APIEndpoint;
+  public APIEndpoint = environment.APIEndpoint;
+  public noResult = false;
 
   private _state: State = {
     page: 1,
@@ -230,26 +231,33 @@ export class VocabularyListComponent implements OnInit {
       this.searchLongString = 'word=' + this.form.value.search;
     }
 
-    this.listService.getTableData(this.searchLongString, this.form.value.list, this.levelLongString, this.wordLongString).subscribe((data: any) => {
-      this.tableData = data.items;
-      this._search$.pipe(
-        tap(() => this._loading$.next(true)),
-        debounceTime(200),
-        switchMap(() => this._search()),
-        delay(200),
-        tap(() => this._loading$.next(false))
-      ).subscribe(result => {
-        this._words$.next(result.words);
-        this._total$.next(result.total);
-      });
+    this.listService.getTableData(this.searchLongString, this.form.value.list, this.levelLongString, this.wordLongString)
+      .subscribe((data: any) => {
+        this.tableData = data.items;
+        this._search$.pipe(
+          tap(() => this._loading$.next(true)),
+          debounceTime(200),
+          switchMap(() => this._search()),
+          delay(200),
+          tap(() => this._loading$.next(false))
+        ).subscribe(result => {
+          this._words$.next(result.words);
+          this._total$.next(result.total);
+        });
 
-      this._search$.next();
-      this.words$ = this._words$.asObservable();
-      this.total$ = this._total$.asObservable();
-    }, () => {
-    }, () => {
-      setTimeout(() => this.showSpinner = false, 1000);
-    });
+        this._search$.next();
+        this.words$ = this._words$.asObservable();
+        this.total$ = this._total$.asObservable();
+      }, () => {
+      }, () => {
+        if (this.tableData.length === 0) {
+          console.log('here');
+          this.noResult = true;
+        } else {
+          this.noResult = false;
+        }
+        setTimeout(() => this.showSpinner = false, 1000);
+      });
   }
 
   sendToFile(item) {
@@ -260,6 +268,10 @@ export class VocabularyListComponent implements OnInit {
     this.form.controls.types.setValue(
       this.form.controls.types.value.map(value => value = true)
     );
+  }
+
+  sendToTab(url: any) {
+    window.open(url);
   }
 
 }
