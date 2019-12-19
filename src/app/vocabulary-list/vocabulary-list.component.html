@@ -65,7 +65,7 @@ Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta ots
           </div>
         </div>
 
-        <a class="remove-filters" (click)="form.reset()">Tühista filtrid</a>
+        <a class="remove-filters" (click)="form.controls.lang.reset(); form.controls.types.reset();">Tühista filtrid</a>
       </form>
       <div class="col-8">
         <div class="float-right">

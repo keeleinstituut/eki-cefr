@@ -1,4 +1,29 @@
-<div class="container-fluid bottom-gutter content-panel">
-  <p>Eesti keele kui teise keele õpetaja tööriistad on abiks keeleõpetajatele ja teistele keeleõppega seotud
-    spetsialistidele õppematerjalide, harjutusvara ja testide koostamisel.</p>
+<div class="container-fluid bottom-gutter content-panel w-50">
+  <div class="row pt-4 d-flex justify-content-center">
+    <a [routerLink]="['/vocabulary']" class="col-2 text-center pt-2">
+      <span class="main-item">Sõnavara otsing</span>
+    </a>
+    <a [routerLink]="['/rating']" class="col-3 text-center pt-2">
+      <span class="main-item">Teksti sõnavara hindamine</span>
+    </a>
+    <a [routerLink]="['/grammar']" class="col-2 text-center pt-2">
+      <span class="main-item">Grammatika</span>
+    </a>
+  </div>
+  <div class="row text-center pt-4">
+    <p>Eesti keele kui teise keele õpetaja tööriistad on abiks keeleõpetajatele ja teistele keeleõppega seotud
+      spetsialistidele õppematerjalide, harjutusvara ja testide koostamisel.</p>
+  </div>
+  <div class="row pl-4 pt-4">
+    <div class="col-4">
+      <img src="./assets/images/ESFLogo.svg">
+    </div>
+    <div class="col-4">
+      <img src="./assets/images/EKILogo.svg">
+    </div>
+    <div class="col-4">
+      <img src="./assets/images/HtmLogo.svg">
+    </div>
+  </div>
+
 </div>

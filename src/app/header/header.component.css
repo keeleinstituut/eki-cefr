@@ -1,4 +1,4 @@
-.main-menu-item{
+.main-menu-item {
   font-family: Klavika, serif;
   font-size: 1rem;
 
@@ -6,24 +6,26 @@
 }
 
 .logo, .back {
-  right: 0!important;
+  right: 0 !important;
   left: auto;
 }
+
 .icon-small {
   font-size: 1.1rem;
 }
 
-.item-active{
+.item-active {
   color: #0053B3;
   background-color: transparent;
-  text-decoration:none!important;
+  text-decoration: none !important;
   border-bottom: 2px solid #0053B3;
 }
 
-a:hover{
-  text-decoration: none!important;
+a:hover {
+  text-decoration: none !important;
 }
 
-a:focus{
-  text-decoration: none!important;
+a:focus {
+  text-decoration: none !important;
 }
+
