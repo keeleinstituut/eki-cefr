@@ -64,7 +64,7 @@ export class VocabularyListComponent implements OnInit {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
-  public APIEndpoint = environment.APIEndpoint;
+  public APIEndpoint = environment; // .APIEndpoint;
   public noResult = false;
 
   private _state: State = {
@@ -233,6 +233,7 @@ export class VocabularyListComponent implements OnInit {
 
     this.listService.getTableData(this.searchLongString, this.form.value.list, this.levelLongString, this.wordLongString)
       .subscribe((data: any) => {
+        console.log(data);
         this.tableData = data.items;
         this._search$.pipe(
           tap(() => this._loading$.next(true)),
@@ -271,7 +272,8 @@ export class VocabularyListComponent implements OnInit {
   }
 
   sendToTab(url: any) {
-    window.open(url);
+    console.log(url);
+    window.open(url, '_blank');
   }
 
 }

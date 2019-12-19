@@ -97,7 +97,7 @@
           <tbody>
           <tr *ngFor="let item of words$ | async">
             <td>
-              <a (click)="sendToTab(APIEndpoint + 'search/est-est/detail/'+item.lemma_text)">
+              <a class="download-link" (click)="sendToTab(item.url)">
                 <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
               </a>
             </td>
