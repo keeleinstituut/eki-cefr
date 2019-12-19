@@ -1,40 +1,12 @@
 import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable.directive';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {VocabularyListService} from './vocabulary-list.service';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 import {environment} from './../../environments/environment';
 
-interface SearchResult {
-  words: any[];
-  total: number;
-}
-
-interface State {
-  page: number;
-  pageSize: number;
-  searchTerm: string;
-  sortColumn: string;
-  sortDirection: SortDirection;
-}
-
-function compare(v1, v2) {
-  return v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
-}
-
-function sort(countries: any[], column: string, direction: string): any[] {
-  if (direction === '') {
-    return countries;
-  } else {
-    return [...countries].sort((a, b) => {
-      const res = compare(a[column], b[column]);
-      return direction === 'asc' ? res : -res;
-    });
-  }
-}
 
 @Component({
   selector: 'app-vocabulary-list',
@@ -52,11 +24,6 @@ export class VocabularyListComponent implements OnInit {
   public wordTypes: any[];
   public form;
   public tableData: object[];
-  private _loading$ = new BehaviorSubject<boolean>(true);
-  private _search$ = new Subject<void>();
-  private _words$ = new BehaviorSubject<any[]>([]);
-  private _total$ = new BehaviorSubject<number>(0);
-  public words$: Observable<object[]>;
   public total$: Observable<number>;
   @ViewChild(FeedbackModalComponent, {static: false})
   public modal: FeedbackModalComponent;
@@ -66,15 +33,8 @@ export class VocabularyListComponent implements OnInit {
   public showSpinner = false;
   public APIEndpoint = environment; // .APIEndpoint;
   public noResult = false;
-
-  private _state: State = {
-    page: 1,
-    pageSize: 20,
-    searchTerm: '',
-    sortColumn: '',
-    sortDirection: ''
-  };
-
+  public page = 1;
+  public pageSize = 20;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
@@ -88,71 +48,19 @@ export class VocabularyListComponent implements OnInit {
     });
   }
 
-  get loading$() {
-    return this._loading$.asObservable();
-  }
-
-  get page() {
-    return this._state.page;
-  }
-
-  get pageSize() {
-    return this._state.pageSize;
-  }
-
-  get searchTerm() {
-    return this._state.searchTerm;
-  }
-
-  set page(page: number) {
-    this._set({page});
-  }
-
-  set pageSize(pageSize: number) {
-    this._set({pageSize});
-  }
-
-  set searchTerm(searchTerm: string) {
-    this._set({searchTerm});
-  }
-
-  set sortColumn(sortColumn: string) {
-    this._set({sortColumn});
-  }
-
-  set sortDirection(sortDirection: SortDirection) {
-    this._set({sortDirection});
-  }
-
-  private _set(patch: Partial<State>) {
-    Object.assign(this._state, patch);
-    this._search$.next();
-  }
-
-
-  private _search(): Observable<SearchResult> {
-    const {sortColumn, sortDirection, pageSize, page} = this._state;
-
-    // 1. sort
-    let words = sort(this.tableData, sortColumn, sortDirection);
-
-    const total = words.length;
-
-    // 3. paginate
-    words = words.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({words, total});
-  }
-
   onSort({column, direction}: SortEvent) {
+
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
         header.direction = '';
       }
     });
-
-    this.sortColumn = column;
-    this.sortDirection = direction;
+    if (direction === '') {
+      // api request
+    } else {
+      //api request
+    }
   }
 
   private addCheckboxes() {
@@ -228,31 +136,19 @@ export class VocabularyListComponent implements OnInit {
     }
 
     if (this.form.value.search !== '') {
-      this.searchLongString = 'word=' + this.form.value.search;
+      this.searchLongString = '&word=' + this.form.value.search;
     }
+    const offset = (this.page - 1) * this.pageSize + 1;
 
-    this.listService.getTableData(this.searchLongString, this.form.value.list, this.levelLongString, this.wordLongString)
+    this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
+      this.levelLongString, this.wordLongString)
       .subscribe((data: any) => {
         console.log(data);
         this.tableData = data.items;
-        this._search$.pipe(
-          tap(() => this._loading$.next(true)),
-          debounceTime(200),
-          switchMap(() => this._search()),
-          delay(200),
-          tap(() => this._loading$.next(false))
-        ).subscribe(result => {
-          this._words$.next(result.words);
-          this._total$.next(result.total);
-        });
-
-        this._search$.next();
-        this.words$ = this._words$.asObservable();
-        this.total$ = this._total$.asObservable();
+        this.total$ = data.total_count;
       }, () => {
       }, () => {
         if (this.tableData.length === 0) {
-          console.log('here');
           this.noResult = true;
         } else {
           this.noResult = false;
