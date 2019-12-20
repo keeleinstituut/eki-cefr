@@ -24,7 +24,7 @@ export class VocabularyListComponent implements OnInit {
   public wordTypes: any[];
   public form;
   public tableData: object[];
-  public total$: Observable<number>;
+  public total$: number;
   @ViewChild(FeedbackModalComponent, {static: false})
   public modal: FeedbackModalComponent;
   public levelLongString = '';
@@ -141,18 +141,13 @@ export class VocabularyListComponent implements OnInit {
     const offset = (this.page - 1) * this.pageSize + 1;
 
     this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
-      this.column, this.direction, this.levelLongString, this.wordLongString,)
+      this.column, this.direction, this.levelLongString, this.wordLongString)
       .subscribe((data: any) => {
-        console.log(data);
         this.tableData = data.items;
         this.total$ = data.total_count;
       }, () => {
       }, () => {
-        if (this.tableData.length === 0) {
-          this.noResult = true;
-        } else {
-          this.noResult = false;
-        }
+        this.noResult = this.tableData.length === 0;
         setTimeout(() => this.showSpinner = false, 1000);
       });
   }

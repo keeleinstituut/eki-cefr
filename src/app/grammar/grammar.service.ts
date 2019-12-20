@@ -21,10 +21,9 @@ export class GrammarService {
     return this.http.get('https://elo.eki.ee/etLex/api/v1.0/gramdescriptors');
   }
 
-  getTableData(wordsString: string, level: string) {
-    if (level !== '') {
-      level = '&level=' + level;
-    }
-    return this.http.get('https://elo.eki.ee/etLex/api/v1.0/gramprofiles?project=noor&filter_json=' + wordsString + level);
+  getTableData(wordsString: string, level: string, size: number, page: number,
+               column: string, direction: string) {
+    return this.http
+      .get('https://elo.eki.ee/etLex/api/v1.0/gramprofiles?project=noor&limit=' + size + '&offset=' + page + column + direction + '&filter_json=' + wordsString + level);
   }
 }

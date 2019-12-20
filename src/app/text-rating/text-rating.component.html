@@ -13,35 +13,35 @@
     </div>
   </div>
   <form [formGroup]="form">
-    <div class="row pt-4 pb-4">
-      <div class="col-6">
         <b>Keeleõppija:</b>
-        <div class="custom-control custom-radio">
+    <div class="pl-3 pb-4 row">
+        <div class="custom-control custom-radio d-inline-block mr-4">
           <input type="radio" id="customRadio1" name="list" class="custom-control-input"
                  formControlName="list" value="noor">
-          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
-            class="alert-icn"></span></label>
+          <label class="custom-control-label" for="customRadio1">noor keeleõppija </label>
         </div>
-        <div class="custom-control custom-radio">
+        <div class="custom-control custom-radio d-inline-block">
           <input type="radio" id="customRadio2" name="list" class="custom-control-input"
                  formControlName="list" value="etLex">
           <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
         </div>
-      </div>
-    </div>
+        </div>
     <div class="row">
       <div class="col-5">
-        <div class="form-group">
+        <div class="form-group d-flex flex-column h-100">
+          <div class="d-flex flex-row">
           <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
-          <textarea autosize class="form-control" formControlName="text" id="exampleFormControlTextarea1" rows="8"
-                    maxlength="2000"></textarea>
-          <small class="counter">{{this.form.controls.text.value.length}}/2000</small>
+          <small class="counter ml-auto mt-auto">{{this.form.controls.text.value.length}}/2000</small>
+          </div>
+          <div style="flex: 2">
+          <textarea autosize class="form-control h-100 p-3" formControlName="text" id="exampleFormControlTextarea1"
+                    maxlength="2000" style="overflow: hidden; height: 370px;"></textarea>
+          </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="form-group">
           <div class="row">
-            <label for="exampleFormControlTextarea2"><b>Keeletase:</b></label>
+            <label><b>Keeletase:</b></label>
 
             <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
               <div class="custom-control custom-checkbox pr-2">
@@ -53,21 +53,21 @@
               </div>
             </div>
           </div>
-          <div class="row text-bg-white">
-            <div class="pr-2" id="exampleFormControlTextarea2" *ngFor="let word of this.resultData; let i = index">
+          <div class="row text-bg-white text-list border border-dark">
+            <div class="pr-2" [id]="i" *ngFor="let word of this.resultData; let i = index">
               <p [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
             </div>
           </div>
-        </div>
       </div>
-      <div class="col ml-4 mr-4 rating-table">
+      <div class="col pt-4">
+      <div class="bg-white rating-table bg-white py-1 px-3 border border-dark">
         Sõnu kokku: {{wordCount}}
         <div class="row table-border m-0">
-          <div class="col-4 pl-0">
+          <div class="col-5 pl-0">
             Keeletase
           </div>
-          <div class="col-4 pl-0">
+          <div class="col-3 pl-0">
             Sõnu
           </div>
           <div class="col-4 pl-0">
@@ -75,16 +75,17 @@
           </div>
         </div>
         <div class="row" *ngFor="let item of smTable">
-          <div class="col-4">
+          <div class="col-5">
             {{item.label}}
           </div>
-          <div class="col-4">
+          <div class="col-3">
             {{item.count}}
           </div>
           <div class="col-4 pl-0">
             {{item.percentage}}
           </div>
         </div>
+      </div>
       </div>
     </div>
     <button class="btn btn-submit" (click)="getData()">Hinda</button>

@@ -1,7 +1,6 @@
 import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable.directive';
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {Observable} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {GrammarService} from './grammar.service';
@@ -9,39 +8,10 @@ import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component
 import {Router} from '@angular/router';
 import {GrammarDetailService} from '../services/grammar-detail.service';
 
-
-interface SearchResult {
-  words: any[];
-  total: number;
-}
-
-interface State {
-  page: number;
-  pageSize: number;
-  searchTerm: string;
-  sortColumn: string;
-  sortDirection: SortDirection;
-}
-
 @Pipe({name: 'keys', pure: false})
 export class KeysPipe implements PipeTransform {
   transform(value: any, args: any[] = null): any {
     return Object.values(value).sort((a: any, b: any) => a.ord - b.ord);
-  }
-}
-
-function compare(v1, v2) {
-  return v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
-}
-
-function sort(countries: any[], column: string, direction: string): any[] {
-  if (direction === '') {
-    return countries;
-  } else {
-    return [...countries].sort((a, b) => {
-      const res = compare(a[column], b[column]);
-      return direction === 'asc' ? res : -res;
-    });
   }
 }
 
@@ -72,24 +42,16 @@ export class GrammarComponent implements OnInit {
   public valuesArray = [];
   public list = [];
   itemsCount: number;
-  private _loading$ = new BehaviorSubject<boolean>(true);
-  private _search$ = new Subject<void>();
-  private _words$ = new BehaviorSubject<any[]>([]);
-  private _total$ = new BehaviorSubject<number>(0);
-  public words$: Observable<object[]>;
-  public total$: Observable<number>;
+  public total$: number;
   @ViewChild(FeedbackModalComponent, {static: false})
   public modal: FeedbackModalComponent;
   public showSpinner = false;
-
-  private _state: State = {
-    page: 1,
-    pageSize: 20,
-    searchTerm: '',
-    sortColumn: '',
-    sortDirection: ''
-  };
-
+  public noResult = false;
+  public page = 1;
+  public pageSize = 20;
+  public column = '';
+  public direction = '';
+  public levelLongString = '';
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
@@ -97,71 +59,16 @@ export class GrammarComponent implements OnInit {
               private detailService: GrammarDetailService) {
   }
 
-  get loading$() {
-    return this._loading$.asObservable();
-  }
-
-  get page() {
-    return this._state.page;
-  }
-
-  get pageSize() {
-    return this._state.pageSize;
-  }
-
-  get searchTerm() {
-    return this._state.searchTerm;
-  }
-
-  set page(page: number) {
-    this._set({page});
-  }
-
-  set pageSize(pageSize: number) {
-    this._set({pageSize});
-  }
-
-  set searchTerm(searchTerm: string) {
-    this._set({searchTerm});
-  }
-
-  set sortColumn(sortColumn: string) {
-    this._set({sortColumn});
-  }
-
-  set sortDirection(sortDirection: SortDirection) {
-    this._set({sortDirection});
-  }
-
-  private _set(patch: Partial<State>) {
-    Object.assign(this._state, patch);
-    this._search$.next();
-  }
-
-
-  private _search(): Observable<SearchResult> {
-    const {sortColumn, sortDirection, pageSize, page} = this._state;
-
-    // 1. sort
-    let words = sort(this.tableData, sortColumn, sortDirection);
-
-    const total = words.length;
-
-    // 3. paginate
-    words = words.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({words, total});
-  }
-
   onSort({column, direction}: SortEvent) {
+    this.column = '&sort=' + column;
+    this.direction = '&direction=' + direction;
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
         header.direction = '';
       }
     });
-
-    this.sortColumn = column;
-    this.sortDirection = direction;
+    this.sendData();
   }
 
   private addCheckboxes() {
@@ -189,7 +96,8 @@ export class GrammarComponent implements OnInit {
       this.childLangLevel = data.items.noor.levels;
       this.adultWordTypes = data.items.etLex.poslist;
       this.childWordTypes = data.items.noor.poslist;
-    }, () => {}, () => {
+    }, () => {
+    }, () => {
       this.listService.getTypeData().subscribe((data: any) => {
         this.categoriesList = data.items.filter(item => item.parent === null);
         this.categories = data.items;
@@ -236,7 +144,17 @@ export class GrammarComponent implements OnInit {
 
   getTypeValues(selected: string, index: number) {
     this.typeList = this.categories.find(item => item.category === selected);
-    this.typeLists[index] = this.typeList;
+    this.typeList.names = [];
+    console.log(this.typeList);
+    this.listService.getTypeValues().subscribe((data: any) => {
+      for (const item of this.typeList.descriptors) {
+        const desc = data.items.find(x => x.descriptor === item);
+        console.log(desc.name);
+        this.typeList.names.push(desc.name);
+      }
+      this.typeLists[index] = this.typeList;
+      console.log(this.typeLists);
+    });
   }
 
   getTypes(selected: string, index: number, indexTwo: number) {
@@ -313,9 +231,20 @@ export class GrammarComponent implements OnInit {
 
   sendData() {
     this.showSpinner = true;
+    this.levelLongString = '';
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null);
+
+    for (const lang of langLevel) {
+      let levelString = '';
+      if (lang === langLevel[0] && this.form.value.search === '') {
+        levelString = 'level=' + lang;
+      } else {
+        levelString = '&level=' + lang;
+      }
+      this.levelLongString = this.levelLongString + levelString;
+    }
 
     for (const item of this.form.value.category) {
       let valueArray = {};
@@ -326,26 +255,20 @@ export class GrammarComponent implements OnInit {
       valueArray = {maincategory: item.maincategory, subcategory: item.subcategory, descriptors};
       this.valuesArray.push(valueArray);
     }
-    this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), langLevel).subscribe((data: any) => {
+    const offset = (this.page - 1) * this.pageSize + 1;
+
+    this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
+      this.column, this.direction).subscribe((data: any) => {
       this.valuesArray = [];
       this.itemsCount = data.count;
       this.tableData = data.items;
+      this.total$ = data.total_count;
 
-      this._search$.pipe(
-        tap(() => this._loading$.next(true)),
-        debounceTime(200),
-        switchMap(() => this._search()),
-        delay(200),
-        tap(() => this._loading$.next(false))
-      ).subscribe(result => {
-        this._words$.next(result.words);
-        this._total$.next(result.total);
-      });
-
-      this._search$.next();
-      this.words$ = this._words$.asObservable();
-      this.total$ = this._total$.asObservable();
-    }, () => {}, () => { setTimeout(() => this.showSpinner = false, 1000); });
+    }, () => {
+    }, () => {
+      this.noResult = this.tableData.length === 0;
+      setTimeout(() => this.showSpinner = false, 1000);
+    });
   }
 
   toDetail(item) {

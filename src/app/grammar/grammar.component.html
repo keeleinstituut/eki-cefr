@@ -72,7 +72,7 @@
                 <select class="form-control mt-2" formControlName="descriptor"
                         (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
                   <option value="">Tunnus</option>
-                  <option *ngFor="let type of typeLists[i].descriptors" value="{{type}}">{{type}}</option>
+                  <option *ngFor="let type of typeLists[i]?.descriptors; let z = index;" value="{{type}}">{{typeLists[i].names[z]}}</option>
                 </select>
               </div>
               <div *ngIf="typeLists[i]" class="col-6 p-0 ml-2">
@@ -100,30 +100,31 @@
         <a class="more-link" (click)="addRow()">Lisa peakategooria</a>
       </div>
     </form>
-    <div class="pt-4">
+    <div class="pt-4" *ngIf="!noResult">
       <b>Otsingu tulemused ( <span>{{itemsCount}}</span> )</b>
       <div class="float-right">
         <label for="select">Näita</label>
-        <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize">
+        <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="sendData()">
           <option [ngValue]="10">10</option>
           <option [ngValue]="20">20</option>
           <option [ngValue]="30">30</option>
           <option [ngValue]="50">50</option>
           <option [ngValue]="100">100</option>
-          <option [ngValue]=" this.itemsCount">kõik</option>
+          <option [ngValue]="total$">kõik</option>
         </select>
       </div>
       <table class="table table-striped">
         <thead>
         <tr>
-          <th scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria</th>
-          <th scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria</th>
-          <th scope="col" sortable="langlevel" (sort)="onSort($event)">Keeletase</th>
-          <th scope="col" sortable="level" (sort)="onSort($event)">Kirjeldus</th>
+          <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria<span class="arrow-icon"></span></th>
+          <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria<span class="arrow-icon"></span></th>
+          <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">Keeletase<span class="arrow-icon"></span></th>
+          <th scope="col" sortable="summary" (sort)="onSort($event)">Kirjeldus<span class="arrow-icon"></span></th>
+          <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of words$ | async">
+        <tr *ngFor="let item of tableData">
           <td>
             <ngb-highlight [result]="item.maincategory_name"></ngb-highlight>
           </td>
@@ -134,15 +135,15 @@
             <ngb-highlight class="color-{{item.langlevel}}" [result]="item.langlevel"></ngb-highlight>
           </td>
           <td>
-            <ngb-highlight [result]="item.can_do_statement"></ngb-highlight>
+            <ngb-highlight class="row" [result]="item.can_do_statement"></ngb-highlight>
             <div class="row">
               <span class="features">TUNNUSED</span>
               <div *ngFor="let obj of item.descriptors | keys">
-                {{obj.descriptor}} <span class="features-category">{{obj.values}}</span>
+                {{obj.name}} <span class="features-category">{{obj.values}}</span>
               </div>
             </div>
             <div class="row">
-              Näitelause: {{item.firstexample}}
+             <b>Näitelause:</b> <i>{{ item.firstexample}}</i>
             </div>
           </td>
           <td>
@@ -152,11 +153,15 @@
         </tbody>
       </table>
       <div>
-        <ngb-pagination [collectionSize]="total$ | async" [(page)]="page" [pageSize]="pageSize">
+        <ngb-pagination [collectionSize]="total$" [(page)]="page" [pageSize]="pageSize"
+                        (pageChange)="sendData()" [maxSize]="10">
           <ng-template ngbPaginationPrevious>Eelmine</ng-template>
           <ng-template ngbPaginationNext>Järgmine</ng-template>
         </ngb-pagination>
       </div>
+    </div>
+    <div class="pt-4" *ngIf="noResult">
+      <p class="no-result">Tulemused puuduvad.</p>
     </div>
     <app-feedback-modal></app-feedback-modal>
   </div>

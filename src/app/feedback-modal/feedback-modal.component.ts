@@ -24,8 +24,8 @@ export class FeedbackModalComponent {
       sender: '',
       email: '',
       feedbackType: 'comment',
-      lastSearch: '<sõna pole>',
-      word: '<sõna pole>',
+      lastSearch: '<õpetaja tööriistad>',
+      word: '<õpetaja tööriistad>',
     });
   }
 

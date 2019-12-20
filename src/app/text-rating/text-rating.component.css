@@ -5,19 +5,21 @@
 }
 
 .rating-table{
-  margin-top: 2rem;
+  margin-top: 7px;
   border-radius: 10px;
   background: #FFFFFF;
-  height: 195px;
+  height: 200px;
+  min-width: 195px;
 }
 
 .counter {
-  position: absolute;
-  bottom: 22px;
-  right: 25px;
   color: #5D606E;
 }
 
 .table-border {
   border-bottom: 1px solid #3F3F3F;
+}
+
+.text-list p{
+  margin-bottom: 5px;
 }
