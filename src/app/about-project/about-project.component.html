@@ -1,28 +1,29 @@
 <div class="container-fluid bottom-gutter row content-panel">
-  <nav id="navbar-example3" class="navbar navbar-light bg-light col-2 pl-0">
-    <nav class="nav nav-pills flex-column">
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-1" (click)="onAnchorClick()">Keeleoskustasemete
-        määramine</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-2" (click)="onAnchorClick()">Sõnavaraloendid</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-3" (click)="onAnchorClick()">Koolieelikute
-        sõnavaraloendid</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-4" (click)="onAnchorClick()">Noore keeleõppija (vanus
-        7-15) sõnavaraloendid</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-5" (click)="onAnchorClick()">Täiskasvanute
-        sõnavaraloendid</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-6" (click)="onAnchorClick()">Grammatika</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-7" (click)="onAnchorClick()">Grammatilise profiili
-        koostamise allikmaterjalid</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-8" (click)="onAnchorClick()">Teksti sõnavara hindamine</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-9" (click)="onAnchorClick()">Kuidas viidata</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-10" (click)="onAnchorClick()">Kasutus- ja privaatsustingimused</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-11" (click)="onAnchorClick()">Kasutajate privaatsus</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-12" (click)="onAnchorClick()">Rahastajad</a>
-      <a class="nav-link" [routerLink]="['/about']" fragment="item-13" (click)="onAnchorClick()">Lisainfo</a>
-    </nav>
+  <nav id="main" class="navbar navbar-light bg-light col-2 pl-0">
+      <aside role="navigation" id="sidebar">
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-1" (click)="onAnchorClick()">Keeleoskustasemete
+          määramine</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-2" (click)="onAnchorClick()">Sõnavaraloendid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-3" (click)="onAnchorClick()">Koolieelikute
+          sõnavaraloendid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-4" (click)="onAnchorClick()">Noore keeleõppija (vanus
+          7-15) sõnavaraloendid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-5" (click)="onAnchorClick()">Täiskasvanute
+          sõnavaraloendid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-6" (click)="onAnchorClick()">Grammatika</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-7" (click)="onAnchorClick()">Grammatilise profiili
+          koostamise allikmaterjalid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-8" (click)="onAnchorClick()">Teksti sõnavara hindamine</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-9" (click)="onAnchorClick()">Kuidas viidata</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-10" (click)="onAnchorClick()">Kasutus- ja privaatsustingimused</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-11" (click)="onAnchorClick()">Kasutajate privaatsus</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-12" (click)="onAnchorClick()">Rahastajad</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-13" (click)="onAnchorClick()">Lisainfo</a>
+      </aside>
   </nav>
-  <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="col-10">
-    <h3>Projektist</h3>
+  <div class="col-2"></div>
+  <div data-spy="scroll" data-target="#main" data-offset="0" class="col-8 pb-4 mb-4">
+    <h3 id="item-0">Projektist</h3>
     <h4 id="item-1">Keeleoskustasemete määramine</h4>
     <p>
       <b> Täiskasvanute </b> sõnavara tasemekohasuse määramisel on aluseks „Euroopa keeleõppe raamdokument: õppimine,
@@ -401,3 +402,6 @@
     </p>
   </div>
 </div>
+<a class="top-button" [routerLink]="['/about']" fragment="item-0" (click)="onAnchorClick()" title="Tagasi päisesse">
+  <span class="icon icon-chevron-left"></span>
+</a>
