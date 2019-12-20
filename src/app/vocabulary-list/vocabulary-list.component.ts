@@ -35,6 +35,8 @@ export class VocabularyListComponent implements OnInit {
   public noResult = false;
   public page = 1;
   public pageSize = 20;
+  public column = '';
+  public direction = '';
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
@@ -49,18 +51,16 @@ export class VocabularyListComponent implements OnInit {
   }
 
   onSort({column, direction}: SortEvent) {
-
+    this.column = '&sort=' + column;
+    this.direction = '&direction=' + direction;
+    console.log(direction);
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
         header.direction = '';
       }
     });
-    if (direction === '') {
-      // api request
-    } else {
-      //api request
-    }
+    this.sendData();
   }
 
   private addCheckboxes() {
@@ -141,7 +141,7 @@ export class VocabularyListComponent implements OnInit {
     const offset = (this.page - 1) * this.pageSize + 1;
 
     this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
-      this.levelLongString, this.wordLongString)
+      this.column, this.direction, this.levelLongString, this.wordLongString,)
       .subscribe((data: any) => {
         console.log(data);
         this.tableData = data.items;

@@ -17,9 +17,9 @@ export class VocabularyListService {
     return window.location.href = 'https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?' + search + level + words + '&format=' + item;
   }
 
-  getTableData(search: string, list: string, size: number, page: number, level?: string, words?: string) {
+  getTableData(search: string, list: string, size: number, page: number, column: string, direction: string, level?: string, words?: string) {
     console.log(page);
     return this.http
-      .get('https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + search + level + words);
+      .get('https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + column + direction + search + level + words);
   }
 }
