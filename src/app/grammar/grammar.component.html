@@ -86,6 +86,9 @@
               <i class="fa fa-minus minus pt-3" (click)="removeSubRow(k, i)"></i>
             </div>
           </div>
+          <div *ngIf="row.controls.subCategory.controls.length === 0 && i!==0">
+          <i class="fa fa-times plus filter-icon pt-3" (click)="removeRow(i)"></i>
+          </div>
           <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>
           <div *ngIf="i == 0" class="pt-4 mt-2">
             <button class="btn btn-submit ml-4" (click)="sendData()">Otsi</button>
@@ -94,7 +97,7 @@
       </div>
       <div class="row">
         <i class="fa fa-plus plus pt-1 pr-2"></i>
-        <a (click)="addRow()">Lisa peakategooria</a>
+        <a class="more-link" (click)="addRow()">Lisa peakategooria</a>
       </div>
     </form>
     <div class="pt-4">

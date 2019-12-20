@@ -288,6 +288,10 @@ export class GrammarComponent implements OnInit {
     }));
   }
 
+  removeRow(index: number) {
+    this.form.controls.category.removeAt(index);
+  }
+
   addSubRow(index: number) {
     (this.form.get('category')).controls[index].controls.subCategory.push(this.formBuilder.group({
       descriptor: [],
