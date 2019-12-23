@@ -21,4 +21,8 @@ export class AboutProjectComponent {
     });
   }
 
+  toTop() {
+    window.scrollTo(0, 0);
+  }
+
 }

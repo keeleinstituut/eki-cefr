@@ -127,11 +127,7 @@ export class VocabularyListComponent implements OnInit {
 
     for (const word of wordList) {
       let wordString = '';
-      if (word === wordList[0] && this.levelLongString === '') {
-        wordString = 'pos=' + word;
-      } else {
-        wordString = '&pos=' + word;
-      }
+      wordString = '&pos=' + word;
       this.wordLongString = this.wordLongString + wordString;
     }
 
@@ -163,7 +159,6 @@ export class VocabularyListComponent implements OnInit {
   }
 
   sendToTab(url: any) {
-    console.log(url);
     window.open(url, '_blank');
   }
 

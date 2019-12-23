@@ -25,8 +25,7 @@
         <div class="custom-control custom-radio pr-4">
           <input formControlName="list" type="radio" id="customRadio1" value="noor" (click)="getChildData()"
                  class="custom-control-input">
-          <label class="custom-control-label" for="customRadio1">noor keeleõppija <span
-            class="alert-icn"></span></label>
+          <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
         </div>
         <div class="custom-control custom-radio">
           <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
@@ -50,16 +49,18 @@
           <div class="form-group pr-1 input-w">
             <label for="exampleFormControlSelect1">Peakategooria</label>
             <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
-                    (change)="getChildValues(form.value.category[i].maincategory, i)">
-              <option value="" hidden>Vali peakategooria</option>
+                    (change)="getChildValues(form.value.category[i].maincategory, i); row.controls.subcategory.reset();
+                    row.controls.subCategory.reset()"
+                    [value]="null">
+              <option [value]="null">Vali peakategooria</option>
               <option *ngFor="let category of categoriesList" value="{{category.category}}">{{category.name}}</option>
             </select>
           </div>
           <div class="form-group pr-2 input-w-two">
             <label for="exampleFormControlSelect2">Alamkategooriad</label>
             <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
-                    (change)="getTypeValues(form.value.category[i].subcategory, i)">
-              <option value="">Vali alamkategooria</option>
+                    (change)="getTypeValues(form.value.category[i].subcategory, i); row.controls.subCategory.reset()" [value]="null">
+              <option [value]="null">Vali alamkategooria</option>
               <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
             </select>
           </div>
@@ -69,15 +70,16 @@
             <div class="pl-4 row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;"
                  [formGroupName]="k">
               <div class="col-5 p-0 ml-2">
-                <select class="form-control mt-2" formControlName="descriptor"
+                <select class="form-control mt-2" formControlName="descriptor" [value]="null"
                         (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
-                  <option value="">Tunnus</option>
-                  <option *ngFor="let type of typeLists[i]?.descriptors; let z = index;" value="{{type}}">{{typeLists[i].names[z]}}</option>
+                  <option [value]="null">Tunnus</option>
+                  <option *ngFor="let type of typeLists[i]?.descriptors; let z = index;"
+                          value="{{type}}">{{typeLists[i].names[z]}}</option>
                 </select>
               </div>
               <div *ngIf="typeLists[i]" class="col-6 p-0 ml-2">
-                <select class="form-control mt-2" formControlName="values">
-                  <option value="">Tunnuse liik</option>
+                <select class="form-control mt-2" formControlName="values" [value]="null">
+                  <option [value]="null">Tunnuse liik</option>
                   <ng-container *ngIf="valTypeLists[i][k]?.values">
                     <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
                   </ng-container>
@@ -87,7 +89,7 @@
             </div>
           </div>
           <div *ngIf="row.controls.subCategory.controls.length === 0 && i!==0">
-          <i class="fa fa-times plus filter-icon pt-3" (click)="removeRow(i)"></i>
+            <i class="fa fa-times plus filter-icon pt-3" (click)="removeRow(i)"></i>
           </div>
           <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>
           <div *ngIf="i == 0" class="pt-4 mt-2">
@@ -101,7 +103,7 @@
       </div>
     </form>
     <div class="pt-4" *ngIf="!noResult">
-      <b>Otsingu tulemused ( <span>{{itemsCount}}</span> )</b>
+      <b>Otsingu tulemused ( <span>{{total$}}</span> )</b>
       <div class="float-right">
         <label for="select">Näita</label>
         <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="sendData()">
@@ -116,9 +118,12 @@
       <table class="table table-striped">
         <thead>
         <tr>
-          <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria<span class="arrow-icon"></span></th>
-          <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria<span class="arrow-icon"></span></th>
-          <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">Keeletase<span class="arrow-icon"></span></th>
+          <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria<span
+            class="arrow-icon"></span></th>
+          <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria<span
+            class="arrow-icon"></span></th>
+          <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">Keeletase<span
+            class="arrow-icon"></span></th>
           <th scope="col" sortable="summary" (sort)="onSort($event)">Kirjeldus<span class="arrow-icon"></span></th>
           <th scope="col"></th>
         </tr>
@@ -135,15 +140,17 @@
             <ngb-highlight class="color-{{item.langlevel}}" [result]="item.langlevel"></ngb-highlight>
           </td>
           <td>
-            <ngb-highlight class="row" [result]="item.can_do_statement"></ngb-highlight>
             <div class="row">
-              <span class="features">TUNNUSED</span>
+              <p><span><b class="pr-1">Oskab-lause:</b></span>{{item.can_do_statement}}</p>
+            </div>
+            <div class="row">
+              <span class="features"><b>TUNNUSED</b></span>
               <div *ngFor="let obj of item.descriptors | keys">
                 {{obj.name}} <span class="features-category">{{obj.values}}</span>
               </div>
             </div>
             <div class="row">
-             <b>Näitelause:</b> <i>{{ item.firstexample}}</i>
+              <b class="pr-1">Näitelause:</b> <i>{{ item.firstexample}}</i>
             </div>
           </td>
           <td>

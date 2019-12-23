@@ -66,10 +66,10 @@
           </div>
         </div>
         <div class="pt-4">
-          <a class="remove-filters pr-4" (click)="checkAll()">Kõik sõnaliigid</a>
-          <a class="remove-filters"
+          <a class="remove-filters pr-4"
              (click)="form.controls.lang.reset(); form.controls.types.reset();this.noResult = false;">Tühista
             filtrid</a>
+          <a class="remove-filters" (click)="checkAll()">Kõik sõnaliigid</a>
         </div>
       </form>
       <div class="col-8" *ngIf="!noResult">

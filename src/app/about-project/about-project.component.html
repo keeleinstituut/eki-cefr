@@ -1,4 +1,4 @@
-<div class="container-fluid bottom-gutter row content-panel">
+<div id="item-0" class="container-fluid bottom-gutter row content-panel">
   <nav id="main" class="navbar navbar-light bg-light col-2 pl-0">
       <aside role="navigation" id="sidebar">
         <a class="nav-link" [routerLink]="['/about']" fragment="item-1" (click)="onAnchorClick()">Keeleoskustasemete
@@ -23,7 +23,7 @@
   </nav>
   <div class="col-2"></div>
   <div data-spy="scroll" data-target="#main" data-offset="0" class="col-8 pb-4 mb-4">
-    <h3 id="item-0">Projektist</h3>
+    <h3>Projektist</h3>
     <h4 id="item-1">Keeleoskustasemete määramine</h4>
     <p>
       <b> Täiskasvanute </b> sõnavara tasemekohasuse määramisel on aluseks „Euroopa keeleõppe raamdokument: õppimine,
@@ -402,6 +402,6 @@
     </p>
   </div>
 </div>
-<a class="top-button" [routerLink]="['/about']" fragment="item-0" (click)="onAnchorClick()" title="Tagasi päisesse">
+<a class="top-button" (click)="toTop()" title="Tagasi päisesse">
   <span class="icon icon-chevron-left"></span>
 </a>

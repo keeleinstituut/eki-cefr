@@ -15,6 +15,7 @@ export class KeysPipe implements PipeTransform {
   }
 }
 
+
 @Component({
   selector: 'app-grammar',
   templateUrl: './grammar.component.html',
@@ -138,19 +139,20 @@ export class GrammarComponent implements OnInit {
   }
 
   getChildValues(selected: string, index: number) {
+    this.childLists[index] = [];
     this.childCatList = this.categories.filter(item => item.parent === selected);
     this.childLists[index] = this.childCatList;
   }
 
   getTypeValues(selected: string, index: number) {
     this.typeList = this.categories.find(item => item.category === selected);
-    this.typeList.names = [];
+    this.typeList['names'] = [];
     console.log(this.typeList);
     this.listService.getTypeValues().subscribe((data: any) => {
-      for (const item of this.typeList.descriptors) {
+      for (const item of this.typeList['descriptors']) {
         const desc = data.items.find(x => x.descriptor === item);
         console.log(desc.name);
-        this.typeList.names.push(desc.name);
+        this.typeList['names'].push(desc.name);
       }
       this.typeLists[index] = this.typeList;
       console.log(this.typeLists);
@@ -259,6 +261,7 @@ export class GrammarComponent implements OnInit {
 
     this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
       this.column, this.direction).subscribe((data: any) => {
+        console.log(data);
       this.valuesArray = [];
       this.itemsCount = data.count;
       this.tableData = data.items;
