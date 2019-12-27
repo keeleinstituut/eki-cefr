@@ -10,6 +10,7 @@
   background: #FFFFFF;
   height: 200px;
   min-width: 195px;
+  font-size: 12px;
 }
 
 .counter {
@@ -22,4 +23,7 @@
 
 .text-list p{
   margin-bottom: 5px;
+}
+.text-area {
+  min-height: 202px;
 }

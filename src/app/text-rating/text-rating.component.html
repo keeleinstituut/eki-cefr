@@ -27,19 +27,19 @@
         </div>
         </div>
     <div class="row">
-      <div class="col-5">
+      <div class="col-4">
         <div class="form-group d-flex flex-column h-100">
           <div class="d-flex flex-row">
           <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
           <small class="counter ml-auto mt-auto">{{this.form.controls.text.value.length}}/2000</small>
           </div>
           <div style="flex: 2">
-          <textarea autosize class="form-control h-100 p-3" formControlName="text" id="exampleFormControlTextarea1"
-                    maxlength="2000" style="overflow: hidden; height: 370px;"></textarea>
+          <textarea class="form-control text-area p-3" formControlName="text" id="exampleFormControlTextarea1"
+                    maxlength="2000"></textarea>
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-6">
           <div class="row">
             <label><b>Keeletase:</b></label>
 
@@ -60,7 +60,7 @@
             </div>
           </div>
       </div>
-      <div class="col pt-4">
+      <div class="col-2 pt-4">
       <div class="bg-white rating-table bg-white py-1 px-3 border border-dark">
         Sõnu kokku: {{wordCount}}
         <div class="row table-border m-0">

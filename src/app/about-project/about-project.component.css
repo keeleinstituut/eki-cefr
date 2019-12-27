@@ -10,3 +10,8 @@
 a{
   color: #0053B3;
 }
+
+.set-nav{
+  top:0;
+  position: sticky;
+}
