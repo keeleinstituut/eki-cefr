@@ -2,16 +2,17 @@
   list-style-type: circle;
   margin-left: 40px;
 }
+
 .alpha ul {
   list-style-type: upper-roman;
   margin-left: 80px;
 }
 
-a{
+a {
   color: #0053B3;
 }
 
-.set-nav{
-  top:0;
+.set-nav {
+  top: 60px;
   position: sticky;
 }

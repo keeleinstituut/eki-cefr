@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ekilex-tools';
-  isIE = /msie\s/i.test(window.navigator.userAgent);
+  isIE = /msie\s|trident\//i.test(window.navigator.userAgent);
 
 }

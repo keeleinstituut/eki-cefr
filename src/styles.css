@@ -347,3 +347,8 @@ th[sortable] .arrow-icon {
   justify-content: center;
   justify-items: center;
 }
+.header-wrap{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
