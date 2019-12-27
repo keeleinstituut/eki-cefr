@@ -2,7 +2,7 @@ import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable
 import {Observable} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
 import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {FormArray, FormBuilder, FormControl} from '@angular/forms';
+import {Form, FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {GrammarService} from './grammar.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 import {Router} from '@angular/router';
@@ -105,21 +105,24 @@ export class GrammarComponent implements OnInit {
 
         if (localStorage.getItem('search')) {
           const value = JSON.parse(localStorage.getItem('search'));
-          // this.form.controls.category.setValue(value.category);
           this.form = this.formBuilder.group({
             category: new FormArray(value.category.map((item, index) => {
               const group = this.initSection();
               this.getChildValues(item.maincategory, index);
               group.patchValue({
                 maincategory: item.maincategory,
-                subcategory: item.subcategory
+                subcategory: item.subcategory,
+                subCategory: item.subCategory
               });
+              group.setControl('subCategory', this.addCont(item, index));
               return group;
-            })),
+            })
+            ),
             list: 'noor',
             lang: new FormArray([]),
             types: new FormArray([])
           });
+
           this.langCheckboxes(value.lang);
 
           this.sendData();
@@ -138,6 +141,19 @@ export class GrammarComponent implements OnInit {
     });
   }
 
+  addCont(item, index): FormArray {
+    return new FormArray(item.subCategory.map((obj, i) => {
+      const secGroup = this.initSecSection();
+      this.getTypeValues(item.subcategory, index);
+      this.getTypes(obj.descriptor, index, i);
+      secGroup.patchValue({
+        descriptor: obj.descriptor,
+        values: obj.values
+      });
+      return secGroup;
+    }));
+  }
+
   getChildValues(selected: string, index: number) {
     this.childLists[index] = [];
     this.childCatList = this.categories.filter(item => item.parent === selected);
@@ -145,17 +161,14 @@ export class GrammarComponent implements OnInit {
   }
 
   getTypeValues(selected: string, index: number) {
-    this.typeList = this.categories.find(item => item.category === selected);
-    this.typeList['names'] = [];
-    console.log(this.typeList);
     this.listService.getTypeValues().subscribe((data: any) => {
+      this.typeList = this.categories.find(item => item.category === selected);
+      this.typeList['names'] = [];
       for (const item of this.typeList['descriptors']) {
         const desc = data.items.find(x => x.descriptor === item);
-        console.log(desc.name);
         this.typeList['names'].push(desc.name);
       }
       this.typeLists[index] = this.typeList;
-      console.log(this.typeLists);
     });
   }
 
@@ -197,6 +210,13 @@ export class GrammarComponent implements OnInit {
       maincategory: [],
       subcategory: [],
       subCategory: new FormArray([]),
+    });
+  }
+
+  initSecSection() {
+    return this.formBuilder.group({
+      descriptor: [],
+      values: []
     });
   }
 
@@ -254,6 +274,9 @@ export class GrammarComponent implements OnInit {
       for (const part of item.subCategory) {
         descriptors.push([part.descriptor, part.values]);
       }
+      if (item.maincategory === 'null') {
+        item.maincategory = null;
+      }
       valueArray = {maincategory: item.maincategory, subcategory: item.subcategory, descriptors};
       this.valuesArray.push(valueArray);
     }
@@ -261,7 +284,6 @@ export class GrammarComponent implements OnInit {
 
     this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
       this.column, this.direction).subscribe((data: any) => {
-        console.log(data);
       this.valuesArray = [];
       this.itemsCount = data.count;
       this.tableData = data.items;

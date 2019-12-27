@@ -117,11 +117,7 @@ export class VocabularyListComponent implements OnInit {
 
     for (const lang of langLevel) {
       let levelString = '';
-      if (lang === langLevel[0] && this.form.value.search === '') {
-        levelString = 'level=' + lang;
-      } else {
-        levelString = '&level=' + lang;
-      }
+      levelString = '&level=' + lang;
       this.levelLongString = this.levelLongString + levelString;
     }
 

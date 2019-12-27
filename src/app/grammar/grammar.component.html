@@ -50,8 +50,7 @@
             <label for="exampleFormControlSelect1">Peakategooria</label>
             <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
                     (change)="getChildValues(form.value.category[i].maincategory, i); row.controls.subcategory.reset();
-                    row.controls.subCategory.reset()"
-                    [value]="null">
+                    row.controls.subCategory.reset();">
               <option [value]="null">Vali peakategooria</option>
               <option *ngFor="let category of categoriesList" value="{{category.category}}">{{category.name}}</option>
             </select>
@@ -59,26 +58,26 @@
           <div class="form-group pr-2 input-w-two">
             <label for="exampleFormControlSelect2">Alamkategooriad</label>
             <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
-                    (change)="getTypeValues(form.value.category[i].subcategory, i); row.controls.subCategory.reset()" [value]="null">
+                    (change)="getTypeValues(form.value.category[i].subcategory, i); row.controls.subCategory.reset()">
               <option [value]="null">Vali alamkategooria</option>
               <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
             </select>
           </div>
           <div *ngIf="row.controls.subCategory.controls.length > 0" class="arrow-left"></div>
           <div *ngIf="row.controls.subCategory.controls.length > 0" formArrayName="subCategory"
-               class="dark-bg mt-4 pb-2 col-6 p-0">
+               class="dark-bg mt-4 pb-2 p-0 col-4">
             <div class="pl-4 row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;"
                  [formGroupName]="k">
-              <div class="col-5 p-0 ml-2">
-                <select class="form-control mt-2" formControlName="descriptor" [value]="null"
+              <div class="col-5 p-0 ml-3">
+                <select class="form-control mt-2" formControlName="descriptor"
                         (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
                   <option [value]="null">Tunnus</option>
                   <option *ngFor="let type of typeLists[i]?.descriptors; let z = index;"
-                          value="{{type}}">{{typeLists[i].names[z]}}</option>
+                          value="{{type}}">{{typeLists[i]?.names[z]}}</option>
                 </select>
               </div>
-              <div *ngIf="typeLists[i]" class="col-6 p-0 ml-2">
-                <select class="form-control mt-2" formControlName="values" [value]="null">
+              <div *ngIf="typeLists[i]" class="col-5 p-0 ml-2 mr-2">
+                <select class="form-control mt-2" formControlName="values">
                   <option [value]="null">Tunnuse liik</option>
                   <ng-container *ngIf="valTypeLists[i][k]?.values">
                     <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
@@ -93,7 +92,7 @@
           </div>
           <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>
           <div *ngIf="i == 0" class="pt-4 mt-2">
-            <button class="btn btn-submit ml-4" (click)="sendData()">Otsi</button>
+            <button class="btn btn-submit ml-4" (click)="page=1; sendData()">Otsi</button>
           </div>
         </div>
       </div>
