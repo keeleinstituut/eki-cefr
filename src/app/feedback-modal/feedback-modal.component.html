@@ -1,35 +1,68 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Tagasiside</h4>
-    <span class="icon icon-close" aria-label="Close" (click)="d('Cross click')"></span>
+    <span class="icon icon-close" aria-label="Close" (click)="close()"></span>
   </div>
   <div class="modal-body">
+    <ngb-alert *ngIf="success" type="success" [dismissible]="false">
+      Tagasiside saatmine õnnestus
+    </ngb-alert>
+    <ngb-alert *ngIf="error" type="danger" [dismissible]="false">
+      Viga! Tagasiside saatmine ebaõnnestus
+    </ngb-alert>
     <form [formGroup]="form">
-    <div class="row p-4">
-      <label for="comment">
+      <div class="row pl-4">
+        <p>Kõik väljad on kohustuslikud</p>
+      </div>
+    <div class="row pl-4 pr-4 pb-4">
+      <label for="comment" class="ml-0">
         Kommentaar
       </label>
-      <input type="text" formControlName="comments" id="comment" class="form-control">
+      <textarea [class.is-invalid]="error && this.form.controls.comments.invalid" type="text" formControlName="comments" id="comment" class="form-control" required></textarea>
+      <div *ngIf="error && this.form.controls.comments.invalid" class="invalid-origin-feedback">
+        Välja täitmine on kohustuslik
+      </div>
     </div>
-    <div class="row p-4">
-      <label for="name">
+      <div class="row">
+    <div class="col-6 p-4">
+      <label for="name" class="ml-0">
         Nimi
       </label>
-      <input type="text" formControlName="sender" id="name" class="form-control">
+      <input type="text" [class.is-invalid]="error && this.form.controls.sender.invalid" formControlName="sender" id="name" class="form-control" required>
+      <div *ngIf="error && this.form.controls.sender.invalid" class="invalid-origin-feedback">
+        Välja täitmine on kohustuslik
+      </div>
     </div>
-    <div class="row p-4">
-      <label for="email">
+    <div class="col-6 p-4">
+      <label for="email" class="ml-0">
         E-post
       </label>
-      <input type="email" formControlName="email" id="email" class="form-control">
+      <input type="email" [class.is-invalid]="error && this.form.controls.email.invalid" formControlName="email" id="email" class="form-control" required>
+      <div *ngIf="error && this.form.controls.email.invalid" class="invalid-origin-feedback">
+        Välja täitmine on kohustuslik
+      </div>
     </div>
+      </div>
     </form>
+    <div class="row pl-3">
+      <div class="custom-control custom-checkbox mt-2">
+        <input type="checkbox" class="custom-control-input modal-check" id="modalCheck1" [(ngModel)]="agree">
+        <label class="custom-control-label" for="modalCheck1">
+          <span *ngIf="!error || (agree === true)">Postitades kommentaari nõustud</span>
+          <span *ngIf="error && (agree === false)" class="invalid-text-feedback">Postitades kommentaari nõustud</span>
+          <a role="link" class="pl-2" [attr.href]="APIEndpoint + '/regulations'" data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
+        </label>
+        <div *ngIf="error && (agree === false)" class="invalid-origin-feedback">
+          Välja täitmine on kohustuslik
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <div class="col-12 p-0 mt-2">
       <div class="text-right">
         <a role="button" class="mr-3" (click)="close()">Sulge</a>
-        <button role="button" type="button" class="btn btn-primary" name="feedbackSendBtn" (click)="sendData(); close()">Saada</button>
+        <button [disabled]="agree === false" role="button" type="button" class="btn btn-primary" name="feedbackSendBtn" (click)="sendData()">Saada</button>
       </div>
     </div>
   </div>

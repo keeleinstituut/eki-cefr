@@ -1,7 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
-import {FormArray, FormBuilder} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {FeedbackModalService} from './feedback-modal.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-feedback-modal',
@@ -13,6 +14,10 @@ export class FeedbackModalComponent {
 
   @ViewChild('content', {static: false}) content;
   public form;
+  public APIEndpoint = environment; // .APIEndpoint;
+  public success = false;
+  public error = false;
+  public agree = false;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder,
               private service: FeedbackModalService) {
@@ -32,11 +37,30 @@ export class FeedbackModalComponent {
   open() {
     this.modalService.open(this.content);
   }
+
   close() {
     this.modalService.dismissAll();
+    this.success = false;
+    this.error = false;
   }
 
   sendData() {
-    this.service.sendFeedback(this.form.value).subscribe();
+    this.error = false;
+    this.success = false;
+    this.service.sendFeedback(this.form.value).subscribe((data) => {
+        if (data.status === 'error') {
+          this.error = true;
+        } else {
+          if (this.agree === false) {
+            this.error = true;
+          } else {
+            this.success = true;
+            this.form.controls.comments.reset();
+            this.form.controls.sender.reset();
+            this.form.controls.email.reset();
+          }
+        }
+      }
+    );
   }
 }
