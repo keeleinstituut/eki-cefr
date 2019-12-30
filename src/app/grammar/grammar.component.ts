@@ -107,16 +107,16 @@ export class GrammarComponent implements OnInit {
           const value = JSON.parse(localStorage.getItem('search'));
           this.form = this.formBuilder.group({
             category: new FormArray(value.category.map((item, index) => {
-              const group = this.initSection();
-              this.getChildValues(item.maincategory, index);
-              group.patchValue({
-                maincategory: item.maincategory,
-                subcategory: item.subcategory,
-                subCategory: item.subCategory
-              });
-              group.setControl('subCategory', this.addCont(item, index));
-              return group;
-            })
+                const group = this.initSection();
+                this.getChildValues(item.maincategory, index);
+                group.patchValue({
+                  maincategory: item.maincategory,
+                  subcategory: item.subcategory,
+                  subCategory: item.subCategory
+                });
+                group.setControl('subCategory', this.addCont(item, index));
+                return group;
+              })
             ),
             list: 'noor',
             lang: new FormArray([]),
@@ -155,37 +155,53 @@ export class GrammarComponent implements OnInit {
   }
 
   getChildValues(selected: string, index: number) {
-    this.childLists[index] = [];
-    this.childCatList = this.categories.filter(item => item.parent === selected);
-    this.childLists[index] = this.childCatList;
+    if (selected !== 'null') {
+      this.childLists[index] = [];
+      this.childCatList = this.categories.filter(item => item.parent === selected);
+      this.childLists[index] = this.childCatList;
+    } else {
+      this.childLists[index] = [];
+      this.typeLists[index] = [];
+      this.valTypeLists[index] = [];
+    }
   }
 
   getTypeValues(selected: string, index: number) {
-    this.listService.getTypeValues().subscribe((data: any) => {
-      this.typeList = this.categories.find(item => item.category === selected);
-      this.typeList['names'] = [];
-      for (const item of this.typeList['descriptors']) {
-        const desc = data.items.find(x => x.descriptor === item);
-        this.typeList['names'].push(desc.name);
-      }
-      this.typeLists[index] = this.typeList;
-    });
+
+    if (selected !== 'null') {
+      this.listService.getTypeValues().subscribe((data: any) => {
+        this.typeList = this.categories.find(item => item.category === selected);
+        this.typeList['names'] = [];
+        for (const item of this.typeList['descriptors']) {
+          const desc = data.items.find(x => x.descriptor === item);
+          this.typeList['names'].push(desc.name);
+        }
+        this.typeLists[index] = this.typeList;
+      });
+    } else {
+      this.typeLists[index] = [];
+      this.valTypeLists[index] = [];
+    }
   }
 
   getTypes(selected: string, index: number, indexTwo: number) {
-    this.listService.getTypeValues().subscribe((data: any) => {
-      this.valTypeList = data.items.find(item => item.descriptor === selected);
+    if (selected !== 'null') {
+      this.listService.getTypeValues().subscribe((data: any) => {
+        this.valTypeList = data.items.find(item => item.descriptor === selected);
 
-      if (this.valTypeLists[index] === undefined) {
-        this.list = [];
-        this.list[indexTwo] = this.valTypeList;
-        this.valTypeLists[index] = this.list;
-      } else {
-        const tempList = this.valTypeLists[index];
-        tempList[indexTwo] = this.valTypeList;
-        this.valTypeLists[index] = tempList;
-      }
-    });
+        if (this.valTypeLists[index] === undefined) {
+          this.list = [];
+          this.list[indexTwo] = this.valTypeList;
+          this.valTypeLists[index] = this.list;
+        } else {
+          const tempList = this.valTypeLists[index];
+          tempList[indexTwo] = this.valTypeList;
+          this.valTypeLists[index] = tempList;
+        }
+      });
+    } else {
+      this.valTypeLists[index] = [];
+    }
   }
 
   getAdultData() {
@@ -243,6 +259,10 @@ export class GrammarComponent implements OnInit {
     (this.form.get('category')).controls[i].controls.subCategory.removeAt(k);
   }
 
+  emptySub() {
+    console.log('here');
+  }
+
   get category() {
     return (this.form.get('category')).controls;
   }
@@ -272,10 +292,19 @@ export class GrammarComponent implements OnInit {
       let valueArray = {};
       const descriptors = [];
       for (const part of item.subCategory) {
+        if (part.descriptor === 'null') {
+          part.descriptor = null;
+        }
+        if (part.values === 'null') {
+          part.values = null;
+        }
         descriptors.push([part.descriptor, part.values]);
       }
       if (item.maincategory === 'null') {
         item.maincategory = null;
+      }
+      if (item.subcategory === 'null') {
+        item.subcategory = null;
       }
       valueArray = {maincategory: item.maincategory, subcategory: item.subcategory, descriptors};
       this.valuesArray.push(valueArray);

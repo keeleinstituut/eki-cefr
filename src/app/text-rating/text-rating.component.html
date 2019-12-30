@@ -17,12 +17,12 @@
     <div class="pl-3 pb-4 row">
         <div class="custom-control custom-radio d-inline-block mr-4">
           <input type="radio" id="customRadio1" name="list" class="custom-control-input"
-                 formControlName="list" value="noor">
+                 formControlName="list" value="noor" (ngModelChange)="setlangList()">
           <label class="custom-control-label" for="customRadio1">noor keeleõppija </label>
         </div>
         <div class="custom-control custom-radio d-inline-block">
           <input type="radio" id="customRadio2" name="list" class="custom-control-input"
-                 formControlName="list" value="etLex">
+                 formControlName="list" value="etLex" (ngModelChange)="setlangList()">
           <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
         </div>
         </div>
