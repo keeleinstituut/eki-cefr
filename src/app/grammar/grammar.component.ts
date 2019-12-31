@@ -1,5 +1,4 @@
 import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable.directive';
-import {Observable} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
 import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Form, FormArray, FormBuilder, FormControl} from '@angular/forms';

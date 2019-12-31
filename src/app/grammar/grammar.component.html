@@ -45,9 +45,9 @@
         </div>
       </div>
       <div formArrayName="category">
-        <div class="row" *ngFor="let row of category; let i = index;" [formGroupName]="i">
+        <div class="row" [class.main-border]="i!==0" *ngFor="let row of category; let i = index;" [formGroupName]="i">
           <div class="form-group pr-1 input-w">
-            <label for="exampleFormControlSelect1">Peakategooria</label>
+            <label for="exampleFormControlSelect1" class="pt-2"><b>Peakategooria</b></label>
             <select class="form-control" id="exampleFormControlSelect1" formControlName="maincategory"
                     (change)="getChildValues(form.value.category[i].maincategory, i); row.controls.subcategory.reset();
                     row.controls.subCategory.reset();">
@@ -56,7 +56,7 @@
             </select>
           </div>
           <div class="form-group pr-2 input-w-two">
-            <label for="exampleFormControlSelect2">Alamkategooriad</label>
+            <label for="exampleFormControlSelect2" class="pt-2"><b>Alamkategooriad</b></label>
             <select class="form-control" id="exampleFormControlSelect2" formControlName="subcategory"
                     (change)="getTypeValues(form.value.category[i].subcategory, i); row.controls.subCategory.reset()">
               <option [value]="null">Vali alamkategooria</option>
@@ -65,10 +65,10 @@
           </div>
           <div *ngIf="row.controls.subCategory.controls.length > 0" class="arrow-left"></div>
           <div *ngIf="row.controls.subCategory.controls.length > 0" formArrayName="subCategory"
-               class="dark-bg mt-4 pb-2 p-0 col-4">
-            <div class="pl-4 row" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;"
+               class="dark-bg  mb-3 p-0 col-4">
+            <div class="pl-4 row" [class.upper-border]="k!==0" *ngFor="let subRow of row.controls.subCategory.controls; let k = index;"
                  [formGroupName]="k">
-              <div class="col-5 p-0 ml-3">
+              <div class="col-4 p-0 ml-3">
                 <select class="form-control mt-2" formControlName="descriptor"
                         (change)="getTypes(form.value.category[i].subCategory[k].descriptor, i, k)">
                   <option [value]="null">Tunnus</option>
@@ -84,15 +84,20 @@
                   </ng-container>
                 </select>
               </div>
-              <i class="fa fa-minus minus pt-3" (click)="removeSubRow(k, i)"></i>
+              <i class="fa fa-times minus pt-3 pr-3 pb-4" (click)="removeSubRow(k, i)"></i>
             </div>
           </div>
-          <div *ngIf="row.controls.subCategory.controls.length === 0 && i!==0">
-            <i class="fa fa-times plus filter-icon pt-3" (click)="removeRow(i)"></i>
+          <div class="pl-2 pr-2 add-bg" *ngIf="(row.controls.subCategory.controls.length > 0)" >
+            <button type="button" class="btn-plus" (click)="addSubRow(i)"><i class="fa fa-plus plus"></i></button>
           </div>
-          <i class="fa fa-plus plus filter-icon pt-3" (click)="addSubRow(i)"></i>
-          <div *ngIf="i == 0" class="pt-4 mt-2">
-            <button class="btn btn-submit ml-4" (click)="page=1; sendData()">Otsi</button>
+          <div *ngIf="row.controls.subCategory.controls.length <= 0"  class="add-arguments-wrap mt-4">
+            <button type="button" class="btn-plus" (click)="addSubRow(i)"><i class="fa fa-plus plus"></i></button>
+          </div>
+          <div *ngIf="i!==0" class="ml-auto">
+            <button type="button" class="btn-remove" (click)="removeRow(i)"><i class="fa fa-times"></i></button>
+          </div>
+          <div *ngIf="i == 0" class="pt-4 mt-2 ml-auto">
+            <button type="button" class="btn btn-submit ml-4" (click)="page=1; sendData()">Otsi</button>
           </div>
         </div>
       </div>

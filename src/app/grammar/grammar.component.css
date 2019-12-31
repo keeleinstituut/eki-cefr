@@ -4,8 +4,6 @@
 
 .minus {
   color: #8A98A5;
-  padding-left: 2.5rem;
-  margin-right: -45px;
 }
 
 .filter-icon {
@@ -17,19 +15,31 @@
   padding-top: 1.9rem !important;
 }
 
-.dark-bg{
+.dark-bg {
   background: #CCD9E0;
-  border-radius: 4px;
+  margin-top: 2rem;
+  border-radius: 4px 0 0 4px;
+}
+
+.add-bg{
+  border-radius: 0 4px 4px 0;
+  background: #CCD9E0;
+  margin-top: 2rem;
+  padding-left: 20px;
+  margin-bottom: 1rem;
+  margin-left: 2px;
+  z-index: 1;
+  padding-top: 0.7rem;
 }
 
 .arrow-left {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   width: 0;
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 
-  border-right:10px solid #CCD9E0;
+  border-right: 10px solid #CCD9E0;
 }
 
 .more-link {
@@ -41,6 +51,79 @@
 .input-w {
   width: 190px;
 }
+
 .input-w-two {
   width: 240px;
+}
+
+.add-arguments-wrap{
+  background:#CCD9E0;
+  padding:8px;
+  border-radius:4px;
+  display:inline-block;
+  position:relative;
+  align-self:center;
+  margin-left:10px;
+}
+.add-arguments-wrap:before{
+  content:"";
+  display:block;
+  position:absolute;
+  background:#CCD9E0;
+  width:10px;
+  height:10px;
+  top:50%;
+  left:-5px;
+  transform:translateY(-50%) rotate(45deg);
+  z-index:-1;
+}
+
+.btn-plus {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #8A98A5;
+  padding: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 2px;
+  background: #FFFFFF;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-remove {
+  color: #FFFFFF;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #8A98A5;
+  padding: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 2px;
+  background: #8A98A5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.add-border{
+  border-right: 2px solid #F2F2F2;
+}
+
+.main-border{
+  border-top: 1px dashed #8A98A5;
+}
+
+.upper-border{
+  border-top: 2px solid #F2F2F2;
 }
