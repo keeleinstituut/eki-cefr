@@ -76,10 +76,10 @@
                           value="{{type}}">{{typeLists[i]?.names[z]}}</option>
                 </select>
               </div>
-              <div *ngIf="typeLists[i]" class="col-5 p-0 ml-2 mr-2">
+              <div class="col-5 p-0 ml-2 mr-2">
                 <select class="form-control mt-2" formControlName="values">
                   <option [value]="null">Tunnuse liik</option>
-                  <ng-container *ngIf="valTypeLists[i][k]?.values">
+                  <ng-container *ngIf="valTypeLists[i]">
                     <option *ngFor="let type of valTypeLists[i][k]?.values" value="{{type}}">{{type}}</option>
                   </ng-container>
                 </select>
