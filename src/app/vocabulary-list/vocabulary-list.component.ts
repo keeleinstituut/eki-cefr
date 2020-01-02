@@ -31,7 +31,7 @@ export class VocabularyListComponent implements OnInit {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
-  public APIEndpoint = environment; // .APIEndpoint;
+  public APIEndpoint = environment; //.APIEndpoint;
   public noResult = false;
   public page = 1;
   public pageSize = 20;
@@ -102,6 +102,7 @@ export class VocabularyListComponent implements OnInit {
   }
 
   sendData() {
+    window.scrollTo(0, 0);
     this.showSpinner = true;
     this.levelLongString = '';
     this.wordLongString = '';

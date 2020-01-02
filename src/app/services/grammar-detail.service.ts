@@ -12,8 +12,11 @@ export class GrammarDetailService {
     localStorage.setItem('data', item);
   }
 
-  saveSearchData(item) {
+  saveSearchData(item: any, size: number, page: number) {
     localStorage.setItem('search', JSON.stringify(item));
+    localStorage.setItem('size', JSON.stringify(size));
+    localStorage.setItem('page', JSON.stringify(page));
+
   }
 
   getData() {

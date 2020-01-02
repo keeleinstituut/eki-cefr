@@ -9,7 +9,7 @@ import {environment} from '../../environments/environment';
 export class HeaderComponent implements OnInit {
 
   public menuItem: string;
-  public  APIEndpoint = environment; // .APIEndpoint;
+  public  APIEndpoint = environment; //.APIEndpoint;
 
   constructor() {
   }

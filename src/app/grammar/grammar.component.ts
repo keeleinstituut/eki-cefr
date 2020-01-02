@@ -1,11 +1,13 @@
 import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable.directive';
 import {DecimalPipe} from '@angular/common';
-import {Component, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, Input, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Form, FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {GrammarService} from './grammar.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 import {Router} from '@angular/router';
 import {GrammarDetailService} from '../services/grammar-detail.service';
+import {NgbPagination, NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationLinkContext} from '@ng-bootstrap/ng-bootstrap/pagination/pagination';
 
 @Pipe({name: 'keys', pure: false})
 export class KeysPipe implements PipeTransform {
@@ -45,9 +47,11 @@ export class GrammarComponent implements OnInit {
   public total$: number;
   @ViewChild(FeedbackModalComponent, {static: false})
   public modal: FeedbackModalComponent;
+  @ViewChild(NgbPagination, {static: false})
+  public pageConf: NgbPagination;
   public showSpinner = false;
   public noResult = false;
-  public page = 1;
+ @Input() public page = 1;
   public pageSize = 20;
   public column = '';
   public direction = '';
@@ -57,6 +61,7 @@ export class GrammarComponent implements OnInit {
 
   constructor(private listService: GrammarService, private formBuilder: FormBuilder, private pipe: DecimalPipe, private router: Router,
               private detailService: GrammarDetailService) {
+
   }
 
   onSort({column, direction}: SortEvent) {
@@ -123,7 +128,6 @@ export class GrammarComponent implements OnInit {
           });
 
           this.langCheckboxes(value.lang);
-
           this.sendData();
           localStorage.removeItem('search');
         } else {
@@ -258,10 +262,6 @@ export class GrammarComponent implements OnInit {
     (this.form.get('category')).controls[i].controls.subCategory.removeAt(k);
   }
 
-  emptySub() {
-    console.log('here');
-  }
-
   get category() {
     return (this.form.get('category')).controls;
   }
@@ -271,6 +271,7 @@ export class GrammarComponent implements OnInit {
   }
 
   sendData() {
+    window.scrollTo(0, 0);
     this.showSpinner = true;
     this.levelLongString = '';
     const langLevel = this.form.value.lang
@@ -316,6 +317,14 @@ export class GrammarComponent implements OnInit {
       this.itemsCount = data.count;
       this.tableData = data.items;
       this.total$ = data.total_count;
+      if (localStorage.getItem('page')) {
+        this.pageSize = JSON.parse(localStorage.getItem('size'));
+        this.page = JSON.parse(localStorage.getItem('page'));
+        this.sendData();
+        localStorage.removeItem('size');
+        localStorage.removeItem('page');
+      }
+
 
     }, () => {
     }, () => {
@@ -327,6 +336,6 @@ export class GrammarComponent implements OnInit {
   toDetail(item) {
     this.detailService.sendData(item.id);
     this.router.navigate(['/grammar-detail']);
-    this.detailService.saveSearchData(this.form.value);
+    this.detailService.saveSearchData(this.form.value, this.pageSize, this.page);
   }
 }

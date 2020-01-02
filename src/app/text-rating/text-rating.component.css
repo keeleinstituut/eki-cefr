@@ -2,6 +2,7 @@
   background: #FFFFFF;
   min-height: 202px;
   border-radius: .25rem;
+  align-content: flex-start;
 }
 
 .rating-table{
