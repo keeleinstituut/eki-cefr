@@ -89,12 +89,14 @@
   -ms-user-select: none;
   user-select: none;
   border: 1px solid #8A98A5;
-  padding: auto;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 2px;
   background: #FFFFFF;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding-top: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 .btn-remove {
   color: #FFFFFF;

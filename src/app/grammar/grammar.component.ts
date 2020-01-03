@@ -14,7 +14,14 @@ export class KeysPipe implements PipeTransform {
     return Object.values(value).sort((a: any, b: any) => a.ord - b.ord);
   }
 }
-
+export interface DataItem {
+  maincategory_name: string;
+  subcategory_name: string;
+  langlevel: string;
+  can_do_statement: string;
+  firstexample: string;
+  descriptors: string;
+}
 
 @Component({
   selector: 'app-grammar',
@@ -29,9 +36,8 @@ export class GrammarComponent implements OnInit {
   public adultWordTypes: string[];
   public childWordTypes: string[];
   public langLevel: string[];
-  public wordTypes: any[];
   public form;
-  public tableData: object[];
+  public tableData: DataItem[];
   public categoriesList: any[];
   public childCatList = [];
   public childLists = [];
@@ -79,10 +85,6 @@ export class GrammarComponent implements OnInit {
     this.langLevel.forEach((o, i) => {
       const control = new FormControl();
       (this.form.controls.lang as FormArray).push(control);
-    });
-    this.wordTypes.forEach((o, i) => {
-      const control = new FormControl();
-      (this.form.controls.types as FormArray).push(control);
     });
   }
 
@@ -208,7 +210,6 @@ export class GrammarComponent implements OnInit {
 
   getAdultData() {
     this.langLevel = this.adultLangLevel;
-    this.wordTypes = this.adultWordTypes;
     this.form.controls.lang.controls = [];
     this.form.controls.types.controls = [];
     this.addCheckboxes();
@@ -217,7 +218,6 @@ export class GrammarComponent implements OnInit {
   getChildData() {
     this.form.controls.lang.controls = [];
     this.langLevel = this.childLangLevel;
-    this.wordTypes = this.childWordTypes;
     this.form.controls.lang.controls = [];
     this.form.controls.types.controls = [];
     this.addCheckboxes();

@@ -1,5 +1,4 @@
-import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable.directive';
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {NgbdSortableHeader, SortEvent} from '../services/sortable.directive';
 import {DecimalPipe} from '@angular/common';
 import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {VocabularyListService} from './vocabulary-list.service';
@@ -7,13 +6,20 @@ import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 import {environment} from './../../environments/environment';
 
-
+export interface TableItem {
+  url: string;
+  lemma_text: string;
+  pos_text: string;
+  level: string;
+}
 @Component({
   selector: 'app-vocabulary-list',
   templateUrl: './vocabulary-list.component.html',
   styleUrls: ['./vocabulary-list.component.css'],
   providers: [DecimalPipe]
 })
+
+
 export class VocabularyListComponent implements OnInit {
 
   public adultLangLevel: string[];
@@ -23,7 +29,7 @@ export class VocabularyListComponent implements OnInit {
   public langLevel: string[];
   public wordTypes: any[];
   public form;
-  public tableData: object[];
+  public tableData: TableItem[];
   public total$: number;
   @ViewChild(FeedbackModalComponent, {static: false})
   public modal: FeedbackModalComponent;
@@ -53,7 +59,6 @@ export class VocabularyListComponent implements OnInit {
   onSort({column, direction}: SortEvent) {
     this.column = '&sort=' + column;
     this.direction = '&direction=' + direction;
-    console.log(direction);
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
@@ -155,7 +160,7 @@ export class VocabularyListComponent implements OnInit {
     );
   }
 
-  sendToTab(url: any) {
+  sendToTab(url: string) {
     if (url !== null) {
       window.open(url, '_blank');
     }
