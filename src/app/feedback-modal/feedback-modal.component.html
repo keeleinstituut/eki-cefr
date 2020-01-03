@@ -62,7 +62,7 @@
     <div class="col-12 p-0 mt-2">
       <div class="text-right">
         <a role="button" class="mr-3" (click)="close()">Sulge</a>
-        <button [disabled]="agree === false" role="button" type="button" class="btn btn-primary" name="feedbackSendBtn" (click)="sendData()">Saada</button>
+        <button [disabled]="agree === false" [class.disabled]="agree === false" role="button" type="button" class="btn btn-primary" name="feedbackSendBtn" (click)="sendData()">Saada</button>
       </div>
     </div>
   </div>

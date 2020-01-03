@@ -47,20 +47,24 @@ export class FeedbackModalComponent {
   sendData() {
     this.error = false;
     this.success = false;
-    this.service.sendFeedback(this.form.value).subscribe((data) => {
-        if (data.status === 'error') {
-          this.error = true;
-        } else {
-          if (this.agree === false) {
+    if (this.form.controls.comments.invalid) {
+      this.error = true;
+    } else {
+      this.service.sendFeedback(this.form.value).subscribe((data) => {
+          if (data.status === 'error') {
             this.error = true;
           } else {
-            this.success = true;
-            this.form.controls.comments.reset();
-            this.form.controls.sender.reset();
-            this.form.controls.email.reset();
+            if (this.agree === false) {
+              this.error = true;
+            } else {
+              this.success = true;
+              this.form.controls.comments.reset();
+              this.form.controls.sender.reset();
+              this.form.controls.email.reset();
+            }
           }
         }
-      }
-    );
+      );
+    }
   }
 }

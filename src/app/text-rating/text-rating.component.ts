@@ -16,6 +16,7 @@ export class TextRatingComponent {
   public wordCount = '';
   public levels = [];
   public notAllowed = [];
+  public clicked = false;
   @ViewChild(FeedbackModalComponent, {static: false})
   public modal: FeedbackModalComponent;
 
@@ -30,12 +31,20 @@ export class TextRatingComponent {
   }
 
   setlangList() {
+    this.notAllowed = [];
     this.service.getLevels(this.form.value.list).subscribe((data: any) => {
       this.levels = [];
       this.levels = data.item.evaluationLevels;
-      this.form.controls.lang.controls = [];
-      this.addCheckboxes();
+      (this.form.controls.lang as FormArray).clear();
+      this.levels.forEach((o, i) => {
+        const control = new FormControl(i >= 0);
+        (this.form.controls.lang as FormArray).push(control);
+      });
+
     });
+    if (this.clicked === true) {
+      this.getData();
+    }
   }
 
 

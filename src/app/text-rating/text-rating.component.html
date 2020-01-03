@@ -46,14 +46,14 @@
             <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
               <div class="custom-control custom-checkbox pr-2">
                 <input class="custom-control-input" type="checkbox" [formControlName]="i"
-                       [id]="i" (change)="wordColor(levels[i], lang.value)">
+                       [id]="i" (ngModelChange)="wordColor(levels[i], lang.value)">
                 <label class="color-{{levels[i]}} custom-control-label" [for]="i">
                   {{levels[i]}}
                 </label>
               </div>
             </div>
           </div>
-          <div class="row text-bg-white text-list border border-dark p-3">
+          <div class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between">
             <div class="pr-2 h-25" [id]="i" *ngFor="let word of this.resultData; let i = index">
               <p [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
@@ -88,7 +88,7 @@
       </div>
       </div>
     </div>
-    <button class="btn btn-submit mt-3" (click)="getData()">Hinda</button>
+    <button class="btn btn-submit mt-3" (click)="getData(); clicked = true;">Hinda</button>
   </form>
   <app-feedback-modal></app-feedback-modal>
 </div>

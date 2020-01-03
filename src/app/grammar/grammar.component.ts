@@ -6,8 +6,7 @@ import {GrammarService} from './grammar.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 import {Router} from '@angular/router';
 import {GrammarDetailService} from '../services/grammar-detail.service';
-import {NgbPagination, NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
-import {NgbPaginationLinkContext} from '@ng-bootstrap/ng-bootstrap/pagination/pagination';
+import {NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 
 @Pipe({name: 'keys', pure: false})
 export class KeysPipe implements PipeTransform {
@@ -203,7 +202,7 @@ export class GrammarComponent implements OnInit {
         }
       });
     } else {
-      this.valTypeLists[index] = [];
+        this.valTypeLists[index][indexTwo].values = [];
     }
   }
 

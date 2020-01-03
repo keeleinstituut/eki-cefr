@@ -31,7 +31,7 @@ export class VocabularyListComponent implements OnInit {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
-  public APIEndpoint = environment; //.APIEndpoint;
+  public APIEndpoint = environment; // .APIEndpoint;
   public noResult = false;
   public page = 1;
   public pageSize = 20;
@@ -156,7 +156,9 @@ export class VocabularyListComponent implements OnInit {
   }
 
   sendToTab(url: any) {
-    window.open(url, '_blank');
+    if (url !== null) {
+      window.open(url, '_blank');
+    }
   }
 
 }
