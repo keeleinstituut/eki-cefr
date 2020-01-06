@@ -14,7 +14,8 @@ export class FeedbackModalComponent {
 
   @ViewChild('content', {static: false}) content;
   public form;
-  public APIEndpoint = environment; //.APIEndpoint;
+
+  public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public success = false;
   public error = false;
   public agree = false;

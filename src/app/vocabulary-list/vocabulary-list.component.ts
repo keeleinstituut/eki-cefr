@@ -37,7 +37,7 @@ export class VocabularyListComponent implements OnInit {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
-  public APIEndpoint = environment; // .APIEndpoint;
+  public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public noResult = false;
   public page = 1;
   public pageSize = 20;

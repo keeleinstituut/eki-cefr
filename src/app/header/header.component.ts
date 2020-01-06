@@ -9,7 +9,7 @@ import {environment} from '../../environments/environment';
 export class HeaderComponent {
 
   public menuItem: string;
-  public APIEndpoint = environment; //.APIEndpoint;
+  public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
 
   setItem(selected: string) {
     this.menuItem = selected;
