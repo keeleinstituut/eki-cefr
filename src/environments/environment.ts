@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  APIEndpoint: null
+  APIEndpoint: null,
+  FeedBackEndpoint: null
 };
 
 /*
