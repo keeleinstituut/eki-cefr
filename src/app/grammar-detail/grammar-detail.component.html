@@ -11,100 +11,115 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-2">
       Keeletase:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       <span class="color-{{obj.langlevel}}" >{{obj.langlevel}}</span>
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-2">
       Peakategooria:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       {{obj.maincategory_name}}
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-2">
       Alamkategooria:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       {{obj.subcategory_name}}
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-2">
       <b>Oskab-lause:</b>
     </div>
-    <div class="col-8">
+    <div class="col-10">
       <b>{{obj.can_do_statement}}</b>
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-2">
       Tunnused:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       <div *ngFor="let item of obj.descriptors | keys">
-        {{item.descriptor}} <span class="features-category">{{item.values}}</span>
+        {{item.name}} <span class="features-category">{{item.values}}</span>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-4">
+  <div class="row" *ngIf="obj.function_sem">
+    <div class="col-2">
       Semantiline funktsioon:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       {{obj.function_sem}}
     </div>
   </div>
-  <div class="row">
-    <div class="col-4">
+  <div class="row" *ngIf="obj.function_synt">
+    <div class="col-2">
       Süntaktiline funktsioon:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       {{obj.function_synt}}
     </div>
   </div>
-  <div class="row">
-    <div class="col-4">
+  <div class="row" *ngIf="obj.function_pragm">
+    <div class="col-2">
       Pragmaatiline funktsioon:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       {{obj.function_pragm}}
     </div>
   </div>
   <hr>
-  <div class="row pb-4">
-    <div class="col-4">
+  <div class="row pb-4"  *ngIf="obj.comment">
+    <div class="col-2">
       Märkus:
     </div>
-    <div class="col-8">
+    <div class="col-10">
       {{obj.comment}}
     </div>
   </div>
   <div *ngFor="let example of obj.examples; let i = index">
-    <div class="row">
-      <div class="col-4">
-        Näitelause {{i + 1}}:
+    <div class="row" *ngIf="i===0">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-6">
+        Näide
       </div>
       <div class="col-4">
+        Allikas
+      </div>
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+    <div class="row">
+      <div class="col-2">
+        {{i + 1}}.
+      </div>
+      <div class="col-6">
         {{example.text}}
       </div>
       <div class="col-4">
-        {{example.source}}
+        <span *ngIf="example.source">{{example.source}}</span><span *ngIf="!example.source">projekti eksperdid</span>
       </div>
     </div>
-    <div class="row pb-4">
-      <div class="col-4">
+    <div class="row pb-4" *ngIf="example.text_fixed">
+      <div class="col-2">
         Parandatud
       </div>
-      <div class="col-8">
+      <div class="col-10">
         {{example.text_fixed}}
       </div>
     </div>
+    
   </div>
   <app-feedback-modal></app-feedback-modal>
 </div>

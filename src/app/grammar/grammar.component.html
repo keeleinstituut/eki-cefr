@@ -27,7 +27,7 @@
                  class="custom-control-input">
           <label class="custom-control-label" for="customRadio1">noor keeleõppija</label>
         </div>
-        <div class="custom-control custom-radio">
+        <div class="custom-control custom-radio" *ngIf="0">
           <input formControlName="list" type="radio" id="customRadio2" (click)="getAdultData()"
                  class="custom-control-input" value="etLex" disabled>
           <label class="custom-control-label" for="customRadio2">täiskasvanu</label>
@@ -106,7 +106,7 @@
         <a class="more-link" (click)="addRow()">Lisa peakategooria</a>
       </div>
     </form>
-    <div class="pt-4" *ngIf="!noResult">
+    <div class="pt-4" *ngIf="!noResult && total$">
       <b>Otsingu tulemused ( <span>{{total$}}</span> )</b>
       <div class="float-right">
         <label for="select">Näita</label>
@@ -126,7 +126,7 @@
             class="arrow-icon"></span></th>
           <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria<span
             class="arrow-icon"></span></th>
-          <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">Keeletase<span
+          <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">Tase<span
             class="arrow-icon"></span></th>
           <th scope="col" sortable="summary" (sort)="onSort($event)">Kirjeldus<span class="arrow-icon"></span></th>
           <th scope="col"></th>
@@ -144,17 +144,22 @@
             <ngb-highlight class="color-{{item.langlevel}}" [result]="item.langlevel"></ngb-highlight>
           </td>
           <td>
-            <div class="row">
-              <p><span><b class="pr-1">Oskab-lause:</b></span>{{item.can_do_statement}}</p>
-            </div>
-            <div class="row">
-              <span class="features"><b>TUNNUSED</b></span>
-              <div *ngFor="let obj of item.descriptors | keys">
-                {{obj.name}} <span class="features-category">{{obj.values}}</span>
+            <div class="container">
+              <div class="row">
+                <span class="features">{{item.topic}}</span>
               </div>
-            </div>
-            <div class="row">
-              <b class="pr-1">Näitelause:</b> <i>{{ item.firstexample}}</i>
+              <div class="row">
+                {{item.can_do_statement}}
+              </div>
+              <div class="row">
+                <b class="pr-1">Näide:</b> <i>{{item.firstexample}}</i>
+              </div>
+              <div class="row">
+                <span><b class="pr-1">Tunnused:</b></span>
+                <div *ngFor="let obj of item.descriptors | keys">
+                 {{obj.name}} <span class="features-category" *ngFor="let value of obj.values">{{value}}</span>
+                </div>
+              </div>
             </div>
           </td>
           <td>
