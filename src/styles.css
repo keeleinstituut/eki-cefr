@@ -210,6 +210,12 @@ ngb-popover-window.bs-popover-bottom > .arrow, ngb-popover-window.bs-popover-top
   background: #F2F2F2;
 }
 
+.color-no {
+  border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 .color-A1 {
   background: #A0DCF8;
   border-radius: 6px;

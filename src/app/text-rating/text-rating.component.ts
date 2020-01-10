@@ -76,7 +76,7 @@ export class TextRatingComponent {
   colors(level): string {
     for (const color of this.notAllowed) {
       if (color === level) {
-        return '';
+        return 'color-no';
       }
     }
     return 'color-' + level;
