@@ -195,7 +195,7 @@ ngb-popover-window.bs-popover-bottom > .arrow, ngb-popover-window.bs-popover-top
   position: relative;
   display: block;
   padding: .5rem .75rem;
-  line-height: 1.25;
+  line-height: 1.0;
   color: #3173B8;
   border: 1px solid #3173B8;
   background: #ECF0F2;
@@ -257,13 +257,17 @@ ngb-popover-window.bs-popover-bottom > .arrow, ngb-popover-window.bs-popover-top
   border-radius: 6px;
   padding-left: 4px;
   padding-right: 4px;
+ 
+ 
 }
 
 .features-category {
-  background: #FEC2AF;
+  background: #ABEBC6;
   border-radius: 6px;
   padding-left: 4px;
   padding-right: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 select {
