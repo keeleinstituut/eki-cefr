@@ -12,11 +12,14 @@
       <div class="col-8 pr-4">
         <p>Sõnavara osa sisaldab eri vanuses eri keeleoskustasemetega õppijate sõnavaraloendeid.
           Eristatud on noored keeleõppijad (keeleoskustasemed eelA1, A1, A2, B1) ja täiskasvanud
-          (keeleoskustasemed A1, A2, B1, B2, C1).<br><br>
-          Ühe sõna otsimiseks trüki sõna otsingulahtrisse. NB! Jäta keeleoskustaseme ja sõnaliigi filtrid valimata!
-          Kindla alguse või lõpuga sõnade loendi saamiseks kasuta tärni, nt “k*” (kõik k-ga algavad sõnad) või “*tar”
-          (kõik tar-lõpulised sõnad).
-          Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta otsingulahter tühjaks.</p>
+          (keeleoskustasemed A1, A2, B1, B2, C1).</p>
+        <div class="container">
+          <ul style="list-style-type: square;">
+            <li>Ühe sõna otsimiseks trüki sõna otsingulahtrisse. NB! Jäta keeleoskustaseme ja sõnaliigi filtrid valimata!</li>
+            <li>Ainult keeleoskustaseme ja/või sõnaliigiga piiratud loendi saamiseks jäta otsingulahter tühjaks.</li>
+            <li>Kindla alguse või lõpuga sõnade loendi saamiseks kasuta tärni, nt “k*” (kõik k-ga algavad sõnad) või “*tar” (kõik tar-lõpulised sõnad).</li>
+          </ul>
+        </div>
       </div>
       <div class="col-4">
         <button class="btn btn-submit float-right" (click)="modal.open()">Tagasiside</button>
@@ -120,8 +123,7 @@
         </div>
       </div>
       <div class="col-8" *ngIf="noResult">
-        <p class="no-result">Selle sõna tasemekohasus ei ole määratud. Vaata sõna tähendust <a
-          [attr.href]="APIEndpoint">sõnaveebist</a>.</p>
+        <p class="no-result">Otsing ei tagastanud ühtegi tulemust.</p>
       </div>
     </div>
     <app-feedback-modal></app-feedback-modal>
