@@ -36,10 +36,18 @@
   </div>
   <div class="row">
     <div class="col-2">
-      <b>Oskab-lause:</b>
+      Teema:
     </div>
     <div class="col-10">
-      <b>{{obj.can_do_statement}}</b>
+       {{obj.topic}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Oskab-lause:
+    </div>
+    <div class="col-10">
+       <span  [innerHTML]="obj.can_do_statement">{{obj.can_do_statement}}</span>
     </div>
   </div>
   <div class="row">

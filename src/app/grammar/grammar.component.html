@@ -149,7 +149,7 @@
                 <span class="features">{{item.topic}}</span>
               </div>
               <div class="row">
-                {{item.can_do_statement}}
+                <span  [innerHTML]="item.can_do_statement">{{item.can_do_statement}}</span>
               </div>
               <div class="row">
                 <b class="pr-1">Näide:</b> <i>{{item.firstexample}}</i>
