@@ -18,7 +18,7 @@
       <span class="color-{{obj.langlevel}}" >{{obj.langlevel}}</span>
     </div>
   </div>
-  <div class="row">
+  <div class="row pt-1">
     <div class="col-2">
       Peakategooria:
     </div>
@@ -26,7 +26,7 @@
       {{obj.maincategory_name}}
     </div>
   </div>
-  <div class="row">
+  <div class="row pt-1">
     <div class="col-2">
       Alamkategooria:
     </div>
@@ -34,33 +34,33 @@
       {{obj.subcategory_name}}
     </div>
   </div>
-  <div class="row">
+  <div class="row pt-1">
     <div class="col-2">
       Teema:
     </div>
     <div class="col-10">
-       {{obj.topic}}
+      <span class="text-size-larger">{{obj.topic}}</span>
     </div>
   </div>
-  <div class="row">
+  <div class="row pt-1">
     <div class="col-2">
       Oskab-lause:
     </div>
-    <div class="col-10">
+    <div class="col-10 text-justify">
        <span  [innerHTML]="obj.can_do_statement">{{obj.can_do_statement}}</span>
     </div>
   </div>
-  <div class="row">
+  <div class="row pt-1">
     <div class="col-2">
       Tunnused:
     </div>
     <div class="col-10">
-      <div *ngFor="let item of obj.descriptors | keys">
+      <div *ngFor="let item of obj.descriptors | keys" class="small">
         {{item.name}} <span class="features-category">{{item.values}}</span>
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="obj.function_sem">
+  <div class="row pt-1" *ngIf="obj.function_sem">
     <div class="col-2">
       Semantiline funktsioon:
     </div>
@@ -68,7 +68,7 @@
       {{obj.function_sem}}
     </div>
   </div>
-  <div class="row" *ngIf="obj.function_synt">
+  <div class="row pt-1" *ngIf="obj.function_synt">
     <div class="col-2">
       Süntaktiline funktsioon:
     </div>
@@ -76,7 +76,7 @@
       {{obj.function_synt}}
     </div>
   </div>
-  <div class="row" *ngIf="obj.function_pragm">
+  <div class="row pt-1" *ngIf="obj.function_pragm">
     <div class="col-2">
       Pragmaatiline funktsioon:
     </div>

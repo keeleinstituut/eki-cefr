@@ -102,7 +102,7 @@
         </div>
       </div>
       <div class="row">
-        <i class="fa fa-plus plus pt-1 pr-2"></i>
+        <i class="fa fa-plus plus pt-1 pr-2" (click)="addRow()"></i>
         <a class="more-link" (click)="addRow()">Lisa peakategooria</a>
       </div>
     </form>
@@ -145,18 +145,18 @@
           </td>
           <td>
             <div class="container">
-              <div class="row">
-                <span class="features">{{item.topic}}</span>
+              <div class="row text-size-larger">
+                <span>{{item.topic}}</span>
               </div>
-              <div class="row">
-                <span  [innerHTML]="item.can_do_statement">{{item.can_do_statement}}</span>
+              <div class="row pt-1">
+                <span  [innerHTML]="item.can_do_statement" class="text-justify">{{item.can_do_statement}}</span>
               </div>
-              <div class="row">
-                <b class="pr-1">Näide:</b> <i>{{item.firstexample}}</i>
+              <div class="row pt-1" >
+                <i>Näide: {{item.firstexample}}</i>
               </div>
-              <div class="row">
-                <span><b class="pr-1">Tunnused:</b></span>
-                <div *ngFor="let obj of item.descriptors | keys">
+              <div class="row small pt-1" >
+                Tunnused:&nbsp;
+                <div *ngFor="let obj of item.descriptors | keys" >
                  {{obj.name}} <span class="features-category" *ngFor="let value of obj.values">{{value}}</span>
                 </div>
               </div>
