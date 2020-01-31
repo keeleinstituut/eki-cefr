@@ -145,8 +145,8 @@
           </td>
           <td>
             <div class="container">
-              <div class="row text-size-larger">
-                <span>{{item.topic}}</span>
+              <div class="row pt-1">
+                <span [innerHTML]="item.topic" class="gramprofile-topic">{{item.topic}}</span>
               </div>
               <div class="row pt-1">
                 <span  [innerHTML]="item.can_do_statement" class="text-justify">{{item.can_do_statement}}</span>

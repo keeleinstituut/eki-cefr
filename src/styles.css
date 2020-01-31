@@ -276,6 +276,12 @@ ngb-popover-window.bs-popover-bottom > .arrow, ngb-popover-window.bs-popover-top
   margin-right: 2px;
 }
 
+.gramprofile-topic {
+  background: #A9CBFF;
+  border-radius: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
 .text-size-larger {
   font-size: larger;
 }
