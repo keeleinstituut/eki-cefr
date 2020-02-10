@@ -116,10 +116,9 @@
         {{example.text}}
       </div>
       <div class="col-4">
-        <span *ngIf="example.type=='textbook'"><a href="https://metashare.ut.ee/repository/browse/estonian-as-a-second-language-school-coursebook-corpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a" target="_blank">Kooliõpikute lausete korpus 2020</a></span>
-        <span *ngIf="example.type=='learnerlanguage' && example.source.indexOf('EMMA')>-1"><a href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-kooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a" target="_blank">EMMA</a></span>
-        <span *ngIf="example.type=='learnerlanguage' && example.source.indexOf('EMMA')==-1">{{example.source}}</span>
-        <span *ngIf="!example.source">projekti eksperdid</span>
+        <span *ngIf="example.source_url"><a href="{{example.source_url}}" target="_blank">{{example.source_name}}</a></span>
+        <span *ngIf="!example.source_url">{{example.source_name}}</span>
+       
       </div>
     </div>
     <div class="row pb-4" *ngIf="example.text_fixed">
