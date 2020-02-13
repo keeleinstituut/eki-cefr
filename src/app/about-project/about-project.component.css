@@ -22,3 +22,14 @@ a {
   height:100px; /* fixed header height*/
   margin:-100px 0 0; /* negative fixed header height */
 }
+
+.table-sm th,
+.table-sm td {
+  border-top: 1px solid #D8D8D8;
+  padding: 0.3rem;
+}
+
+.table-sm thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #D8D8D8;
+}
