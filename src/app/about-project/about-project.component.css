@@ -33,3 +33,11 @@ a {
   vertical-align: bottom;
   border-bottom: 2px solid #D8D8D8;
 }
+
+.nav-link {
+  padding: .0rem 1rem;
+}
+
+.set-nav {
+	padding-top: 1rem;
+}
