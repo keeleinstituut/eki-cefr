@@ -39,7 +39,7 @@
       Teema:
     </div>
     <div class="col-10">
-      <span class="gramprofile-topic">{{obj.topic}}</span>
+      <span class="gramprofile-topic" [innerHTML]="obj.topic">{{obj.topic}}</span>
     </div>
   </div>
   <div class="row pt-1">
@@ -60,7 +60,7 @@
       </div>
     </div>
   </div>
-  <div class="row pt-1" *ngIf="obj.function_sem">
+  <div class="row pt-1" *ngIf="0 && obj.function_sem">
     <div class="col-2">
       Semantiline funktsioon:
     </div>
@@ -76,7 +76,7 @@
       {{obj.function_synt}}
     </div>
   </div>
-  <div class="row pt-1" *ngIf="obj.function_pragm">
+  <div class="row pt-1" *ngIf="0 && obj.function_pragm">
     <div class="col-2">
       Pragmaatiline funktsioon:
     </div>
