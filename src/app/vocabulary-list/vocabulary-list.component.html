@@ -101,8 +101,9 @@
           <tr *ngFor="let item of tableData">
             <td>
               <a [class.download-link]="item.url !== null" (click)="sendToTab(item.url)">
-                <ngb-highlight [result]="item.lemma_text"></ngb-highlight>
+                <ngb-highlight [result]="item.lemma"></ngb-highlight>
               </a>
+              <span *ngIf="item.specification"> ({{item.specification}})</span>
             </td>
             <td>
               <ngb-highlight [result]="item.pos_text"></ngb-highlight>
