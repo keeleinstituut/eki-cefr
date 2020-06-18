@@ -1,484 +1,859 @@
-<div class="container-fluid bottom-gutter row content-panel">
-  <nav id="main" class="navbar navbar-light bg-light col-4 pl-0">
+<div class="wrapper">
+  <div class="container-fluid bottom-gutter row content-panel m-0 pl-0 pr-0">
+    <nav id="main" class="navbar navbar-light bg-light col-4 pl-0 d-md-block d-none">
       <aside role="navigation" class="set-nav">
         <a class="nav-link" [routerLink]="['/about']" fragment="item-1" (click)="onAnchorClick()">Projektist</a>
-        <a class="nav-link" [routerLink]="['/about']" fragment="item-2" (click)="onAnchorClick()">Keeleoskustasemete määramine</a>
-        <a class="nav-link" [routerLink]="['/about']" fragment="item-3" (click)="onAnchorClick()">Projekti eesmärgid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-2" (click)="onAnchorClick()">Keeleoskustasemete
+          määramine</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-3" (click)="onAnchorClick()">Projekti
+          eesmärgid</a>
         <a class="nav-link" [routerLink]="['/about']" fragment="item-4" (click)="onAnchorClick()">Sõnavaraloendid</a>
-        <a class="nav-link" [routerLink]="['/about']" fragment="item-5" (click)="onAnchorClick()">Noore  keeleõppija sõnavaraloendid</a>
-        <a class="nav-link" [routerLink]="['/about']" fragment="item-6" (click)="onAnchorClick()">Täiskasvanute sõnavaraloendid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-5" (click)="onAnchorClick()">Noore
+          keeleõppija sõnavaraloendid</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-6" (click)="onAnchorClick()">Täiskasvanute
+          sõnavaraloendid</a>
         <a class="nav-link" [routerLink]="['/about']" fragment="item-7" (click)="onAnchorClick()">Grammatika</a>
-        <a class="nav-link" [routerLink]="['/about']" fragment="item-8" (click)="onAnchorClick()">Teksti sõnavara hindamine</a>
-        <a class="nav-link" [routerLink]="['/about']" fragment="item-9" (click)="onAnchorClick()">Kuidas viidata</a>
-        <a class="nav-link" [routerLink]="['/about']" fragment="item-10" (click)="onAnchorClick()">Kasutus- ja privaatsustingimused</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-8" (click)="onAnchorClick()">Teksti
+          sõnavara hindamine</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-9" (click)="onAnchorClick()">Kuidas
+          viidata</a>
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-10" (click)="onAnchorClick()">Kasutus-
+          ja privaatsustingimused</a>
         <a class="nav-link" [routerLink]="['/about']" fragment="item-11" (click)="onAnchorClick()">Rahastajad</a>
         <a class="nav-link" [routerLink]="['/about']" fragment="item-12" (click)="onAnchorClick()">Meeskond</a>
-		<a class="nav-link" [routerLink]="['/about']" fragment="item-13" (click)="onAnchorClick()">Kontakt</a>
-
+        <a class="nav-link" [routerLink]="['/about']" fragment="item-13" (click)="onAnchorClick()">Kontakt</a>
       </aside>
-  </nav>
-  <div data-spy="scroll" data-target="#main" data-offset="0" class="col-8 pb-4 mb-4">
-    <h3 class="jumptarget" id="item-1">Projektist</h3>
-    <h4 class="jumptarget" id="item-2">Keeleoskustasemete määramine</h4>
-    <p>
-      <b>Täiskasvanute</b> keeleoskustasemete määramisel on aluseks <a href="https://www.hm.ee/sites/default/files/euroopa_keele6ppe_raamdokument.pdf">“Euroopa keeleõppe raamdokument: õppimine, õpetamine, hindamine” (Tartu: Haridus- ja Teadusministeerium, 2007)</a>, <a href="https://rm.coe.int/cefr-companion-volume-with-new-descriptors-2018/1680787989">"Euroopa keeleõppe raamdokument: õppimine, õpetamine ja hindamine. Uute tasemekirjeldustega sõsarväljaanne" (2018)</a> ning eesti keele tasemete kirjeldused <a href="https://www.ester.ee/record=b2545503*est">“Läbimurre. A1-taseme eesti keele oskus” (2010)</a>, <a href="https://www.ester.ee/record=b2450521*est">“Algaja keelekasutaja. A2-taseme eesti keele oskus” (2008)</a>, <a href="https://www.ester.ee/record=b2391511*est">“Iseseisev keelekasutaja. B1- ja B2-taseme eesti keele oskus” (2008)</a>, <a href="https://www.ester.ee/record=b1011622*est">“Eesti keele suhtluslävi” (1997)</a> ja <a href="https://www.ester.ee/record=b2424713*est">“Vilunud keelekasutaja. C1-taseme eesti keele oskus” (2008)</a>. Täiskasvanud keeleõppija puhul eristatakse raamdokumendi sõsarväljaande kohaselt eelA1-, A1-, A2-, B1-, B2-, C1-, C2-tasemeid ning plusstasemeid. Plusstasemed tähistavad väga head oskust tasemel, mis ei vasta veel järgmise taseme miinimumnõuetele. Kõrgeimat taset (C2) ei seostata mingil viisil keelesooritusega, mida nimetatakse ideaalse või haritud emakeelekõneleja keeleoskuseks või ka emakeelekõnelejale lähedaseks keeleoskuseks. C2-tase iseloomustab eriti edukale õppijale omast täpset, kerget ja asjakohast keelekasutust.<br/>
-	  <br/>
-	  Loetelu täiskasvanud keeleõppijale aastatel 2000–2019 ilmunud õpikutest on leitav <a href="https://entu.keeleressursid.ee/shared/7654/jiEl3oSG54n8Jeipp1ycx8eO9O6H3WpHyFLBcOVglkN0gGYfCCk140HcjQhIwCAJ">SIIT</a>.<br/>
-	  <br/>
-      <b>Noore keeleõppija</b> keeleoskustasemete määramisel on aluseks Euroopa Nõukogu noorte õppijate tasemekirjeldused vanustele <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fca">7–10</a> ja <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fc9">11–15</a> ning <a href="https://www.riigiteataja.ee/akt/129082014020?leiaKehtiv">põhikooli riiklik õppekava (PRÕK)</a>. Noore keeleõppija puhul eristatakse eelA1-, A1-, A2-, B1-, B2-, C1-, C2-tasemeid ja plusstasemeid.
-	  <br/>
-	  Kehtiva <a href="https://www.riigiteataja.ee/akt/129082014020?leiaKehtiv">riikliku õppekava</a> järgi on vene õppekeelega kooli 3. klassi lõpetaja oodatav eesti keele oskuse tase A1.2, 6. klassi lõpetajal A2.2 ja 9. klassi lõpetajal B1.2. Eesti keel kui teine keel (E2) kuulub PRÕKi kohaselt võõrkeelte ainevaldkonda. Ainekava on täpsemalt kirjeldatud <a href="https://www.riigiteataja.ee/aktilisa/1290/8201/4020/1m%20lisa2.pdf#">PRÕKi Lisas 2</a>.
-	  <br/>
-	  Koolieelikute keeleoskust käsitletakse antud projektis tinglikult eelA1-tasemena ning selle kirjeldamisel lähtutakse <a href="https://www.riigiteataja.ee/akt/12970917?leiaKehtiv">koolieelse lasteasutuse riikliku õppekava (RT I 2008, 23, 152)</a> eesti keele kui teise keele õppe- ja kasvatustegevuse valdkonna sisust ning eeldatavatest tulemustest.<br/>
-	  <br/>
-	  Loetelu noorele keeleõppijale aastatel 1994–2019 ilmunud õpikutest on leitav <a href="https://entu.keeleressursid.ee/shared/7651/i0dlyZzK10EwMagk19tBuawQP1uVVuWW2eIQI3ZXFz4MVavZa91VAvWn0OtXtAyR">SIIT</a>.
-    </p>
-	<h4 class="jumptarget" id="item-3">Projekti eesmärgid</h4>
-    <p>
-      “Õpetaja tööriistad” on Haridus- ja Teadusministeeriumi tellitud projekt, mis sai alguse aastal 2019. Projekti põhieesmärk on töötada välja kõigi tasemete süstemaatiline <b>keelepädevuse</b> kirjeldus komponentide kaupa: sõnavara-, grammatika-, hääldus- ja õigekirjapädevus. Eesmärk ei ole teha keeleõppega seotud tegevustele ettekirjutusi, vaid luua eesti keele kui teise keele valdkonnas ühtne raamistik, samuti kujundada eesti keele kui teise keele sõnavara- ja grammatikapädevuse käsitlemiseks ühtne metakeel, mis lihtsustaks eesti keele kui teise keele kursuste kavandamist ning looks seose keeleõppe ja keeleoskuse hindamise vahel. Projekti sihtgrupp on eelkõige õppekavade koostajad ja õpetajad, mitte õppijad ise.<br/>
-	  <br/>
-	  Projekt on planeeritud mitmeaastasena. 2019. aastal töötati välja täiskasvanud keeleõppija A1–C1 taseme sõnavaraloendid, noore keeleõppija A1–B1 taseme sõnavaraloendid ja  grammatikapädevuse kirjeldused. Sõnavaraloendid on abiks õppematerjalide koostamisel, tekstide valikul ja tasemekohasuse hindamisel. Grammatikapädevuse kirjeldustest saab teada, MIDA keelekasutaja või keeleõppija oskab teha ja kui HÄSTI ta seda oskab. Aastal 2020 lisanduvad noore keeleõppija eelA1- ja B2-taseme kirjeldused, samuti noore keeleõppija (vanused 7–10 ja 10–15) keelekasutusolukorrad koos tasemeid eristavate piirangute ja tingimustega.<br/>
-    </p>
-	<h3 class="jumptarget" id="item-4">Sõnavaraloendid</h3>
-	<p> 
-	  Sõnade tasemetesse jagamise põhimõtted on järgmised: 1) sagedus korpustes (täiskasvanud keeleõppija puhul eelkõige <a href="https://metashare.ut.ee/repository/browse/eesti-keele-uhendkorpus-2017/b616ceda30ce11e8a6e4005056b40024880158b577154c01bd3d3fcfc9b762b3/">Eesti keele ühendkorpus 2017</a> ja <a href="https://metashare.ut.ee/repository/browse/eesti-keele-a1-c1-opikute-korpus-2018/42a08b9a30d211e8a6e4005056b400245d0bc80d6a9a4d5dba5824a3e7c662f8/">Eesti keele A1–C1 õpikute korpus 2018</a>; noore keeleõppija puhul <a href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">Eesti keele kui teise keele kooliõpikute lausete korpus 2020</a>, <a href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">Eesti keele õppija korpus EMMA</a> ( eesti keele teise keelena taseme- ja eksamitööd) ning lastekeelekorpuse <a href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a> eesti keele alamkorpused); 2) tuumsus (vt lähemalt <a href="https://dspace.ut.ee/handle/10062/40738">Pajusalu, R., Tragel, I., Veismann, A., Vija, M. 2004. Tuumsõnade semantikat ja pragmaatikat. Tartu.</a>); 3) kasutatavus suulises ja kirjalikus tekstiloomes (vt lähemalt <a href="http://arhiiv.rakenduslingvistika.ee/ajakirjad/index.php/aastaraamat/article/view/ERYa5.12/96">Pajupuu, H., Kerge, K., Alp, P. 2009. Sõnavara loomulik rikkus haritud keeleoskaja tekstides. – Eesti rakenduslingvistika ühingu aastaraamat V. Tallinn.</a>); 4) vajalikkus igapäevaelu valdkondades; 5) sõnavara ajakohasus.<br/>
-	  <br/>	
-	  Loendites on sõnad esitatud algvormis, mis aga ei tähenda, et keeleõppija oskab moodustada ja kasutada nende sõnade kõiki vorme, näiteks omandatakse sõna <i>tohtima</i> esimesena kindla kõneviisi eitavas vormis <i>ei tohi</i>. Keelepagasi sõnavormipõhist ulatust iseloomustavad andmed lisatakse. Ei analüüsitud ka sõnade eri tähenduste tasemekohasust, mis kuulub samuti edasiarenduste hulka.<br/>
-	  <br/>
-	  Kui sõna kuulub kahte sõnaliiki (nt <i>hea</i> – nii omadussõna kui ka nimisõna), analüüsitakse iga sõnaliigi tasemekohasust eraldi.
-	</p>
-    <h4 class="jumptarget" id="item-5">Noore keeleõppija sõnavaraloendid </h4>
-      <p>Noore keeleõppija tasemekirjelduste vastavused keelepädevusega on järgmised: eelA1 = koolieelikud (6–7-aastased), A1 = I kooliaste (1.–3. klass), A2 = II kooliaste (4.–6. klass) ja B1 = III kooliaste (7.–9. klass).<br/>
-	  <br/>
-	  <b>Koolieelikute</b> sõnaloend on koostatud alusharidust omandava keeleõppija vajadusi silmas pidades ja seda sobib kasutada alushariduse õppevara koostamisel. Sõnaloend sisaldab koolieelse lasteasutuse riikliku õppekava kõnearendusteemadest tulenevalt 6–7-aastase keeleõppija sõnavara. Loendi koostamisel on kasutatud järgmisi allikmaterjale:</p>
-		<ol>
-			<li>lastekeelekorpuse <a href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a> eesti keele alamkorpust,</li>
-			<li>Haridus- ja Teadusministeeriumi ekspertide Tiina Petersoni ja Viivian Jõemetsa sõnaloendi algset ettepanekut,</li>
-			<li><a href="https://entu.keeleressursid.ee/shared/7630/r7n5nKdfHVmIQroOW84zB9J8d25lA24G7pY3Sz9ESJn3Ba8mBXSOt1HVXjYyk7cn">Argus, R., Maiberg, L., Koho, M., Kallas, J., Koppel, K. 2019. Eesti keele kui teise keele sõnavara koolieelikutele. Tallinn: Eesti Keele Instituut.</a></li>
-			<li>eesti keelest erineva kodukeelega laste keeleõppeks välja töötatud <a href="https://www.innove.ee/oppevara-ja-metoodikad/muu-kodukeelega-laps/abimaterjalid-lasteaedadele/">materjale</a> lasteaedadele ja õpetajatele.</li>
-		</ol>
-	  <p>Lastekeelekorpuse <a href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a> eesti keele alamkorpus sisaldab laste ja nende vanemate spontaanse kõne lindistusi, mis on tehtud kodustes igapäevasituatsioonides nagu söömine, mängimine, riietumine jms. Spontaanse suulise kõne keelematerjal sobib sõnaloendi aluseks seetõttu, et esimese ja teise keele omandamine kulgeb suures osas sarnaselt ning nii nagu ükskeelne laps vajab ka kakskeelne laps sõnavara, mis võimaldab tal suhelda mitteformaalsetes lapsekesksetes igapäevasituatsioonides.<br/>
-	  <br/>
-	  Koolieelikute sõnaloendi koostamisel lähtuti sõnade valikul peamiselt sellest, mis vanuses laste kõnes teatud sõna korpuses esines ning kui sage see laste ja nende vanemate keelekasutuses oli. Näiteks kui sõna esineb eesti keelt emakeelena omandavate laste kõnes enne nende kaheaastaseks saamist ja on alamkorpuses sage, siis on põhjust arvata, et see sõna on omane lapsekesksetele kõnesituatsioonidele ning sellisena vajalik ka eesti keelt kui teist keelt omandavatele lastele. Samas on oluline rõhutada, et kuna teise keele õppija keelekonstruktsioonid on lihtsamad kui emakeele õppijal, siis on sõnaloend väiksema mahuga kui lapse sõnavara emakeeles.<br/>
-	  <br/>
-	  Koolieelikute sõnaloendite koostamisel analüüsiti süstemaatiliselt ka temaatilist sõnavara (kehaosad, loomad, linnud, toit, transport jms) ning rühmaruumiga seotud sõnavara (rühmaruumis olevad asjad ja lasteaia tegevustes kasutatavad vahendid), lisati Eesti kultuuri tundmise seisukohalt oluline sõnavara, nt riiklike ja rahvakalendri tähtpäevade ning riigipühade nimetused (jaanipäev, emadepäev, isadepäev, vastlapäev jms).<br/>
-	  <br/>
-	  Suurem osa Eesti lasteaedu on liitunud programmiga „Kiusamisest vaba lasteaed“ ja tervist edendavate lasteaedade võrgustikuga. Seetõttu on sõnaloendis algul raskena tunduvaid sõnu, kuid need on vajalikud vastavates programmides osalemise tõttu.<br/>
-	  <br/>
-	  <b>Noore keeleõppija</b> A1-, A2- ja B1-taseme sõnaloendite koostamisel on kasutatud järgmisi allikmaterjale:</p>
-		<ol>
-			<li><a href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">Eesti keele õppija korpus EMMA</a>, millest kasutati 6. klassi eesti keele kui teise keele tasemetööde kirjalikku osa (2016–2018; 1614 tööd); põhikooli eesti keele kui teise keele lõpueksami kirjalikku osa (2016–2018; 902 tööd). </li>
-			<li><a href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">Eesti keele kui teise keele kooliõpikute lausete korpus 2020</a>. Korpus sisaldab 20 õpikud 1.–9. klassile, millest kasutati 3., 6. ja 9. klassi õpikuid. </li>
-		</ol>
-	  <p>Võrdlusmaterjalina kasutati täiskasvanute sõnavaraloendeid. Erinevused täiskasvanud ja noore keeleõppija sõnavaravalikus on tingitud eelkõige sihtrühmade kognitiivse, sotsiaalse ja kogemusliku võimekuse ning keelekasutuse põhivaldkondade erinevusest. Noore keeleõppija puhul on lisaks arvestatud ka ainekava eesmärke ja oodatavaid tulemusi.<br/>
-	  <br/>
-	  Kokku on tasemetesse eelA1 kuni B1 jaotatud umbes 5000 sõna.
+    </nav>
+    <div data-spy="scroll" data-target="#main" data-offset="0" class="col-md-8 col-12 pb-4 mb-4">
+      <div class="d-md-none">
+        <div class="form-group pr-sm-1 pr-0 pt-2 input-w">
+          <label for="select-nav"><b>Liigu kohta:</b></label>
+          <select class="form-control category-select" id="select-nav"
+                  (change)="onAnchorClick($event.target.value)">
+            <option value="item-1">Projektist</option>
+            <option value="item-2">Keeleoskustasemete määramine</option>
+            <option value="item-3">Projekti eesmärgid</option>
+            <option value="item-4">Sõnavaraloendid</option>
+            <option value="item-5">Noore keeleõppija sõnavaraloendid</option>
+            <option value="item-6">Täiskasvanute sõnavaraloendid</option>
+            <option value="item-7">Grammatika</option>
+            <option value="item-8">Teksti sõnavara hindamine</option>
+            <option value="item-9">Kuidas viidata</option>
+            <option value="item-10">Kasutus- ja privaatsustingimused</option>
+            <option value="item-11">Rahastajad</option>
+            <option value="item-12">Meeskond</option>
+            <option value="item-13">Kontakt</option>
+          </select>
+        </div>
+      </div>
+      <h3 class="jumptarget" id="item-1">Projektist</h3>
+      <h4 class="jumptarget lang-lvl-text" id="item-2">Keeleoskustasemete määramine</h4>
+      <p class="pt-md-0 pt-2">
+        <b>Täiskasvanute</b> keeleoskustasemete määramisel on aluseks <a
+        href="https://www.hm.ee/sites/default/files/euroopa_keele6ppe_raamdokument.pdf">“Euroopa
+        keeleõppe raamdokument: õppimine, õpetamine, hindamine” (Tartu: Haridus- ja
+        Teadusministeerium, 2007)</a>, <a
+        href="https://rm.coe.int/cefr-companion-volume-with-new-descriptors-2018/1680787989">"Euroopa
+        keeleõppe raamdokument: õppimine, õpetamine ja hindamine. Uute tasemekirjeldustega
+        sõsarväljaanne" (2018)</a> ning eesti keele tasemete kirjeldused <a
+        href="https://www.ester.ee/record=b2545503*est">“Läbimurre. A1-taseme eesti keele oskus”
+        (2010)</a>, <a href="https://www.ester.ee/record=b2450521*est">“Algaja keelekasutaja.
+        A2-taseme eesti keele oskus” (2008)</a>, <a href="https://www.ester.ee/record=b2391511*est">“Iseseisev
+        keelekasutaja. B1- ja B2-taseme eesti keele oskus” (2008)</a>, <a
+        href="https://www.ester.ee/record=b1011622*est">“Eesti keele suhtluslävi” (1997)</a> ja <a
+        href="https://www.ester.ee/record=b2424713*est">“Vilunud keelekasutaja. C1-taseme eesti
+        keele
+        oskus” (2008)</a>. Täiskasvanud keeleõppija puhul eristatakse raamdokumendi sõsarväljaande
+        kohaselt eelA1-, A1-, A2-, B1-, B2-, C1-, C2-tasemeid ning plusstasemeid. Plusstasemed
+        tähistavad väga head oskust tasemel, mis ei vasta veel järgmise taseme miinimumnõuetele.
+        Kõrgeimat taset (C2) ei seostata mingil viisil keelesooritusega, mida nimetatakse ideaalse
+        või
+        haritud emakeelekõneleja keeleoskuseks või ka emakeelekõnelejale lähedaseks keeleoskuseks.
+        C2-tase iseloomustab eriti edukale õppijale omast täpset, kerget ja asjakohast
+        keelekasutust.<br />
+        <br />
+        Loetelu täiskasvanud keeleõppijale aastatel 2000–2019 ilmunud õpikutest on leitav <a
+        href="https://entu.keeleressursid.ee/shared/7654/jiEl3oSG54n8Jeipp1ycx8eO9O6H3WpHyFLBcOVglkN0gGYfCCk140HcjQhIwCAJ">SIIT</a>.<br />
+        <br />
+        <b>Noore keeleõppija</b> keeleoskustasemete määramisel on aluseks Euroopa Nõukogu noorte
+        õppijate tasemekirjeldused vanustele <a
+        href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fca">7–10</a>
+        ja <a
+        href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fc9">11–15</a>
+        ning <a href="https://www.riigiteataja.ee/akt/129082014020?leiaKehtiv">põhikooli riiklik
+        õppekava (PRÕK)</a>. Noore keeleõppija puhul eristatakse eelA1-, A1-, A2-, B1-, B2-, C1-,
+        C2-tasemeid ja plusstasemeid.
+        <br />
+        Kehtiva <a href="https://www.riigiteataja.ee/akt/129082014020?leiaKehtiv">riikliku
+        õppekava</a> järgi on vene õppekeelega kooli 3. klassi lõpetaja oodatav eesti keele oskuse
+        tase A1.2, 6. klassi lõpetajal A2.2 ja 9. klassi lõpetajal B1.2. Eesti keel kui teine keel
+        (E2) kuulub PRÕKi kohaselt võõrkeelte ainevaldkonda. Ainekava on täpsemalt kirjeldatud <a
+        href="https://www.riigiteataja.ee/aktilisa/1290/8201/4020/1m%20lisa2.pdf#">PRÕKi Lisas 2</a>.
+        <br />
+        Koolieelikute keeleoskust käsitletakse antud projektis tinglikult eelA1-tasemena ning selle
+        kirjeldamisel lähtutakse <a href="https://www.riigiteataja.ee/akt/12970917?leiaKehtiv">koolieelse
+        lasteasutuse riikliku õppekava (RT I 2008, 23, 152)</a> eesti keele kui teise keele õppe- ja
+        kasvatustegevuse valdkonna sisust ning eeldatavatest tulemustest.<br />
+        <br />
+        Loetelu noorele keeleõppijale aastatel 1994–2019 ilmunud õpikutest on leitav <a
+        href="https://entu.keeleressursid.ee/shared/7651/i0dlyZzK10EwMagk19tBuawQP1uVVuWW2eIQI3ZXFz4MVavZa91VAvWn0OtXtAyR">SIIT</a>.
       </p>
-    <h4 class="jumptarget" id="item-6">Täiskasvanute sõnavaraloendid</h4>
-      <p>Täiskasvanute puhul on eristatud algtasemel keeleõppija (A1 ja A2), iseseisev keelekasutaja (B1 ja B2) ja vilunud keelekasutaja (C1 ja C2).<br/>
-	  <br/>
-	  Täiskasvanute sõnaloend sisaldab ligikaudu 13 500 keeletasemega A1–C1 märgendatud sõna. Eri tasemete sõnavara suuruse määramisel on lähtekohaks Krista Kerge koostatud „<a href="	https://www.ester.ee/record=b1058279*est">Funktsionaalse keeleoskuse taseme määratlemine</a>“ (Tallinn: Haridusministeerium, 1996), mille kohaselt ulatub eesti keelt algtasemel valdava inimese sõnavara 1500–2000 sõnani, kesktaseme korral aga umbes 5000 sõnani.<br/>
-	  <br/>
-	  Sõnavaraloendite koostamisel olid aluseks kolme tüüpi allikad.<br/>
-	  <br/>
-	  1. Seni ilmunud keeleoskustasemete sõnavara kirjeldused</p>
-	  <div class="container">
-		<ul style="list-style-type:disc;">
-			<li><a href="https://www.ester.ee/record=b1230005*est">Laur, M. 1998. Tuumiksõnade loend. – M. Laur. 1998. Esimene verstapost. Eesti keele suhtluse algtase. Tallinn: REKK.</a></li>
-			<li><a href="https://www.innove.ee/wp-content/uploads/2017/12/Algaja-keelekasutaja.-A2-tase.pdf">Kerge, K., Pajupuu, H., Ilves, M. 2008. Esmane sõnastik. – M. Ilves. Algaja keelekasutaja. A2-taseme eesti keele oskus. Tallinn: Eesti Keele Sihtasutus, Tallinna Ülikool, Haridus- ja Teadusministeerium.</a></li>
-			<li><a href="https://www.ester.ee/record=b1011622*est">Ehala, M., Saarso, K., Vare, S., Õispuu, J. 1997. Suhtlusläve sõnaindeks. – Eesti keele suhtluslävi. Kultuurikoostöö Nõukogu. Strasbourg: Council of Europe Publishing.</a></li>
-		</ul>
-	  </div>
-	  <p>2. Eesti Keele Instituudis koostatud õppesõnastikud ja sõnaloendid</p>
-	  <div class="container">
-		<ul style="list-style-type:disc;">
-			<li><a href="https://www.ester.ee/record=b1217684*est">Pärn, H., Simm, L. 1989. Eesti keele baassõnastik = Базовый словарь эстонского языка. Tallinn: Keele ja Kirjanduse Instituut.</a></li>
-			<li><a href="http://www.eki.ee/dict/psv/">Eesti keele põhisõnavara sõnastik 2015. Veebiväljaanne. Koostanud ja toimetanud M. Tuulik, M. Tiits, J. Kallas, K. Koppel ja M. Jürviste. Tehniline tugi: I. Hein, Ü. Viks ja A. Teesalu.</a></li>
-			<li><a href="http://www.eki.ee/dict/kol/index.cgi">Eesti keele naabersõnad 2018. Veebiväljaanne. Koostanud ja toimetanud J. Kallas, K. Koppel, G. Paulsen ja M. Tuulik. Tehniline tugi: I. Hein ja Ü. Viks.	</a></li>
-			<li><a href="https://entu.keeleressursid.ee/shared/7612/BZlcLkmv70Wr98Ex3j80yMyXLGY69xE9rM0wGfloW0JBxTBeRVFLRsS2sssYY7Do">Kallas, J., Koppel, K. 2018. Eesti keele A1-taseme sõnavara. Tallinn: Eesti Keele Instituut.</a></li>
-			<li><a href="https://entu.keeleressursid.ee/shared/7624/VhWFGjRGVFkuPOAR1CDkAmeZA6aLcWI4nlflQUdhXyHAJKzAy4mhRHrdtINyB59H">Kallas, J., Koppel, K. 2018. Eesti keele A2-taseme sõnavara. Tallinn: Eesti Keele Instituut.</a></li>
-			<li><a href="https://entu.keeleressursid.ee/shared/7627/q2HmwInAR9UvOhTKtyGDBtff05z7oojLn8srxJqlKt6rvGkSqjHBjGjuXHZRVo9C">Kallas, J., Koppel, K. 2018. Eesti keele B1-taseme sõnavara. Tallinn: Eesti Keele Instituut.</a></li>
-		</ul>
-	  </div>
-	  <p>3. Eesti keele korpused</p>
-	  <div class="container">
-		<ul style="list-style-type:disc;">
-			<li><a href="https://metashare.ut.ee/repository/browse/eesti-keele-a1-c1-opikute-korpus-2018/42a08b9a30d211e8a6e4005056b400245d0bc80d6a9a4d5dba5824a3e7c662f8/">Eesti keele A1–C1 õpikute korpus 2018</a>. Korpus sisaldab A1-, A2-, B1-, B2- ja C1-keeleoskustasemel eesti keele õppijatele suunatud õpikute materjali, sh sõnavaraloendeid, tekste ja harjutusi.</li>
-			<li><a href="https://metashare.ut.ee/repository/browse/eesti-keele-uhendkorpus-2017/b616ceda30ce11e8a6e4005056b40024880158b577154c01bd3d3fcfc9b762b3/">Eesti keele ühendkorpus 2017</a>. Ühendkorpuse suurus on 1,3 miljardit sõnet.</li>
-		</ul>
-	  </div>
-	  <p>Loendid koostati mitmes etapis.<br/>
-	  <br/>	  
-	  Alustuseks loodi seni koostatud sõnavaraloenditest ühtne elektrooniline andmebaas, mis võimaldas välja selgitada loenditevahelisi kattuvusi ja erinevusi. Analüüsi käigus kõrvaldati loendites esinenud vananenud sõnavara, näiteks sõnad <i>ühiskorter</i>, <i>kooperatiivkorter</i>, <i>komposteerima</i>, <i>panderoll</i>, <i>telefonikabiin</i>, <i>videomagnetofon</i>, <i>kassettmagnetofon</i>.<br/>
-	  <br/>	
-	  Seejärel lisati andmebaasi <a href="https://metashare.ut.ee/repository/browse/eesti-keele-a1-c1-opikute-korpus-2018/42a08b9a30d211e8a6e4005056b400245d0bc80d6a9a4d5dba5824a3e7c662f8/">Eesti keele A1–C1 õpikute korpuse 2018</a> ja <a href="https://metashare.ut.ee/repository/browse/eesti-keele-uhendkorpus-2017/b616ceda30ce11e8a6e4005056b40024880158b577154c01bd3d3fcfc9b762b3/">Eesti keele ühendkorpuse 2017</a> andmed. Eesti keele A1–C1 õpikute korpus andis ülevaate, milliseid sõnu on õpikute autorid pidanud vajalikuks teatud keeleoskustaseme sõnavarapädevuse arendamisel. Kokku oli õpikutes kasutatud ligikaudu 13 000 sõna. Andmebaasi otsustati jätta vaid sõnad, mis esinesid õpikus vähemalt kaks korda. Eesti keele ühendkorpuse 2017 alusel genereeritud sagedusloend (umbes 60 000 sõna) võimaldas kontrollida senistes loendites ja õpikutes kasutatud sõnavara ajakohasust ning lisada korpuses sagedasti esinevaid sõnu, mis olid varasematest loenditest ja ka õpikute tekstist välja jäänud.
+      <h4 class="jumptarget" id="item-3">Projekti eesmärgid</h4>
+      <p>
+        “Õpetaja tööriistad” on Haridus- ja Teadusministeeriumi tellitud projekt, mis sai alguse
+        aastal 2019. Projekti põhieesmärk on töötada välja kõigi tasemete süstemaatiline <b>keelepädevuse</b>
+        kirjeldus komponentide kaupa: sõnavara-, grammatika-, hääldus- ja õigekirjapädevus. Eesmärk
+        ei
+        ole teha keeleõppega seotud tegevustele ettekirjutusi, vaid luua eesti keele kui teise keele
+        valdkonnas ühtne raamistik, samuti kujundada eesti keele kui teise keele sõnavara- ja
+        grammatikapädevuse käsitlemiseks ühtne metakeel, mis lihtsustaks eesti keele kui teise keele
+        kursuste kavandamist ning looks seose keeleõppe ja keeleoskuse hindamise vahel. Projekti
+        sihtgrupp on eelkõige õppekavade koostajad ja õpetajad, mitte õppijad ise.<br />
+        <br />
+        Projekt on planeeritud mitmeaastasena. 2019. aastal töötati välja täiskasvanud keeleõppija
+        A1–C1 taseme sõnavaraloendid, noore keeleõppija A1–B1 taseme sõnavaraloendid ja
+        grammatikapädevuse kirjeldused. Sõnavaraloendid on abiks õppematerjalide koostamisel,
+        tekstide
+        valikul ja tasemekohasuse hindamisel. Grammatikapädevuse kirjeldustest saab teada, MIDA
+        keelekasutaja või keeleõppija oskab teha ja kui HÄSTI ta seda oskab. Aastal 2020 lisanduvad
+        noore keeleõppija eelA1- ja B2-taseme kirjeldused, samuti noore keeleõppija (vanused 7–10 ja
+        10–15) keelekasutusolukorrad koos tasemeid eristavate piirangute ja tingimustega.<br />
       </p>
-    <h3 class="jumptarget" id="item-7">Grammatika</h3>
-    <p>
-	  Grammatikapädevuse kirjeldus annab suunised, mis grammatilisi kategooriaid keeleõppija tunneb, mis funktsioonides ja milliste piirangutega ta neid kasutada oskab. Kirjeldatakse koolieelikute (eelA1 = 6–7-aastased), 3. klassi lõpetajate (A1 = I kooliaste), 6. klassi lõpetajate (A2 = II kooliaste) ja 9. klassi lõpetajate (B1 = III kooliaste) oodatavat grammatikapädevust. Kirjeldus on abiks  õppekavade, kursuste ja harjutusvara koostamisel.<br/>
-	  <br/> 
-	  Grammatikapädevuse kirjeldamisel on lähtekohaks eelkõige: 
-	  <ol>
-		<li><a href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-kooliopikute-sisu-korpus-2020/fcbf72f04e4611eaa6e4005056b400241a31747bffbb4512a6180da74cce441a/">Eesti keele kui teise keele kooliõpikute sisu korpus 2020</a>. Korpus sisaldab 20 õpikut 1.–9. klassile.</li>
-		<li><a href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">Eesti keele kui teise keele kooliõpikute lausete korpus 2020</a>. Korpus sisaldab täislauseid 20 õpikust 1.–9. klassile, millest kasutati lauseid 3., 6. ja 9. klassi õpikutest.</li>
-		<li><a href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">Eesti keele õppija korpus EMMA</a>, millest kasutati 6. klassi eesti keele kui teise keele tasemetööde kirjalikku osa (2016–2018; 1614 tööd); põhikooli eesti keele kui teise keele lõpueksami kirjalikku osa (2016–2018; 902 tööd).</li>
-	  </ol>
-	  EelA1-taseme grammatikapädevuse kirjeldamisel oli aluseks ka
-	  <ol  start="4">
-		<li>lastekeelekorpuse <a href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a>  eesti keele alamkorpused Vija, Kapanen ja Zupping. Korpused sisaldavad laste ja nende vanemate argisuhtluse lindistusi.</li>
-	  </ol>
-	  Grammatikapädevus on kirjeldatud vormi-, sõna- ja fraasimoodustuse tasandil. Esmalt analüüsiti eesti keele kui teise keele kooliõpikute sisu korpuse põhjal, mida on õpikute autorid seni pidanud oluliseks õpetada eri kooliastmete õpikutes. Veendumaks, et kirjeldused vastavad õppija tegelikele saavutustele, võrreldi grammatiliste kategooriate esinemist EMMA korpuse teise keele õppija tekstidega. Kui kategooria seal esines, siis kirjeldati see vastaval keeleoskustasemel. Grammatilistele kategooriatele lisati näited eesti keele kui teise keele kooliõpikute lausete korpusest. Õppijakeele näited lisatakse hiljem.<br/>
-	  <br/> 
-	  Grammatikapädevuse kirjeldus on üles ehitatud laienevalt: lihtsamast keerulisemani. Grammatilised kategooriad on kirjeldatud kõigil keeleoskustasemetel (<i>oskab</i>-lauses), kuid nende kasutustfunktsioone ja piiranguid (kui tihti õppija eksib ja milles eksimus seisneb) on täpsustatud vastavalt keeleoskuse arengule. Selline kirjeldus aitab ühelt poolt keeletasemeid eristada ning teiselt poolt seada edasisi eesmärke.<br/>
-	  <br/> 
-	  Kirjeldus on esitatud lähtuvalt peakategooriatest (vormi-, sõna- ja fraasimoodustus), millel on kokku 16 alamkategooriat. Igal alamkategoorial on grammatilised tunnused (nt vormimoodustuse osas on nimisõnal tunnused <i>arv</i> ja <i>kääne</i>). Igal tunnusel on omakorda tunnuse liigid (nt tunnusel <i>arv</i> on liigid <i>ainsus</i> ja <i>mitmus</i>). Tunnused ja nende liigid võimaldavad päringu tulemusi kitsendada ja filtreerida. Nii saab vormimoodustuse osas vaadata näiteks nimisõna sisseütlevat käänet puudutavaid ridu.
-	<table class="table-sm">
-      <thead>
-      <tr>
-        <th scope="col">PEAKATEGOORIA</th>
-        <th scope="col">ALAMKATEGOORIA</th>
-		<th scope="col">Tunnus</th>
-        <th scope="col">Tunnuse liik</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>VORMIMOODUSTUS</td>
-        <td>TEGUSÕNA</td>
-		<td>kõneviis</td>
-		<td>kindel, tingiv, käskiv, kaudne, möönev</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-		<td>tegumood</td>
-		<td>isikuline, umbisikuline</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-		<td>aeg</td>
-		<td>1, 2, 3</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-		<td>arv</td>
-		<td>ainsus, mitmus</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-		<td>tegevusnimed</td>
-		<td>-<i>ma</i>, -<i>da</i>, -<i>vat</i></td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>käändelised vormid</td>
-		<td>-<i>mas</i>, -<i>mast</i>, -<i>maks</i>, -<i>mata</i>, -<i>des</i></td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>kesksõnad</td>
-		<td>-<i>v</i>, -<i>tav</i>, -<i>nud</i>, -<i>tud</i></td>
-      </tr>	  
-	  <tr>
-        <td></td>
-        <td>NIMISÕNA</td>
-		<td>arv</td>
-		<td>ainsus, mitmus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>kääne</td>
-		<td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev, alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>OMADUSSÕNA</td>
-		<td>arv</td>
-		<td>ainsus, mitmus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>kääne</td>
-		<td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev, alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>võrdlusaste</td>
-		<td>algvõrre, keskvõrre, pikk ülivõrre, lühike ülivõrre</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>ARVSÕNA</td>
-		<td>arv</td>
-		<td>ainsus, mitmus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>kääne</td>
-		<td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev, alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>arvsõnaliik</td>
-		<td>põhiarvsõna, järgarvsõna</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>ASESÕNA</td>
-		<td>arv</td>
-		<td>ainsus, mitmus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>kääne</td>
-		<td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev, alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>asesõnaliik</td>
-		<td>isikuline, enesekohane, vastastikune, näitav, küsiv-siduv, umbmäärane</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>MÄÄRSÕNA</td>
-		<td>võrdlusaste</td>
-		<td>algvõrre, keskvõrre, pikk ülivõrre, lühike ülivõrre</td>
-      </tr>	  
-	  <tr>
-        <td>SÕNAMOODUSTUS</td>
-        <td>TEGUSÕNAMOODUSTUS</td>
-		<td>tuletus</td>
-		<td>sufiksituletus, prefiksituletus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>liitmine</td>
-		<td>liitsõnamoodustus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>ühendid</td>
-		<td>ühendverb, väljendverb, ahelverb</td>
-      </tr>
-      <tr>	  
-        <td></td>
-        <td>NIMISÕNAMOODUSTUS</td>
-		<td>tuletus</td>
-		<td>sufiksituletus, prefiksituletus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>liitmine</td>
-		<td>liitsõnamoodustus</td>
-      </tr>
-      <tr>	  
-        <td></td>
-        <td>OMADUSSÕNAMOODUSTUS</td>
-		<td>tuletus</td>
-		<td>sufiksituletus, prefiksituletus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>liitmine</td>
-		<td>liitsõnamoodustus</td>
-      </tr>
-      <tr>	  
-        <td></td>
-        <td>MÄÄRSÕNAMOODUSTUS</td>
-		<td>tuletus</td>
-		<td>sufiksituletus, prefiksituletus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>liitmine</td>
-		<td>liitsõnamoodustus</td>
-      </tr>
-      <tr>	  
-        <td>FRAASIMOODUSTUS</td>
-        <td>NIMISÕNAFRAAS</td>
-		<td>laiend</td>
-		<td>omadussõna, nimisõna, arvsõna, määrsõna, asesõna, kaassõnafraas, <i>ma</i>-/<i>da</i>-tegevusnimi</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>ühildumine</td>
-		<td>täielik, mittetäielik, ühildumatu</td>
-      </tr>
-      <tr>	  
-        <td></td>
-        <td>HULGAFRAAS</td>
-		<td>põhi</td>
-		<td>põhiarvsõna, asesõna, nimisõna, määrsõna</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>laiend</td>
-		<td>nimisõna</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>laiendi kääne</td>
-		<td>omastav, seestütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>laiendi arv</td>
-		<td>ainsus, mitmus</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>ühildumine</td>
-		<td>täielik, mittetäielik, ühildumatu</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>OMADUSSÕNAFRAAS</td>
-		<td>laiend</td>
-		<td>nimisõna, määrsõna, kaassõnafraas, <i>ma</i>-/<i>da</i>-tegevusnimi</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>laiendi kääne</td>
-		<td>omastav, sisseütlev, seesütlev, seestütlev, alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>ühildumine</td>
-		<td>täielik, mittetäielik, ühildumatu</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>MÄÄRSÕNAFRAAS</td>
-		<td>laiend</td>
-		<td>määrsõna, nimisõna, kaassõnafraas</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>laiendi kääne</td>
-		<td>omastav, osastav, seestütlev, saav, rajav, olev, ilmaütlev, kaasaütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>KAASSÕNAFRAAS</td>
-		<td>laiend</td>
-		<td>nimisõna</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>laiendi kääne</td>
-		<td>omastav, osastav, seestütlev, rajav, ilmaütlev, kaasaütlev</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td></td>
-		<td>kaassõnaliik</td>
-		<td>eessõna, tagasõna</td>
-      </tr>
-	  <tr>
-        <td></td>
-        <td>TEGUSÕNAFRAAS</td>
-		<td>laiend</td>
-		<td>nimisõna, omadussõna, määrsõna, tegusõna käändeline vorm, kaassõnafraas, tegevusnimi, <i>des</i>-vorm</td>
-      </tr>
-      </tbody>
-    </table>
-	<br/>
-	  <p>Iga kirjelduse juures on esitatud ka näitelaused, mis illustreerivad kirjeldatud kategooria kasutamist. Lauseid on kolme tüüpi: projekti grammatikaekspertide koostatud laused (põhikoostajad on Raili Pool, Reili Agrus ja Annika Bauer), <a href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">õpikute korpuse laused</a> ja <a href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">õppijakeele laused</a>. Iga lause juures on näidatud selle allikas. Õpikute ja õppijakeele laused kuvatakse ainult <i>Lisainfo</i> vaates. Vormimoodustuse kirjeldustes on lisatud ka grammatilise kategooria süntaktiline funktsioon, näiteks <i>järgarvsõna ainsuse nimetavas</i> süntaktilised funktsioonid on <i>täiend</i> ja <i>öeldistäide</i>. Funktsioonid kuvatakse samuti ainult <i>Lisainfo</i> vaates.<br/> 
-	  <br/>
-	   Kuna koolieelikute eesti keele kui teise keele omandamist puudutavad allikmaterjalid puuduvad, lähtuti koolieelikute grammatikapädevuse kirjeldamisel eelkõige eesti keelt emakeelena omandava lapse keelepädevusest. Kirjelduse koostamisel on lähtutud eeldusest, et grammatilised kategooriad, mis on esimese keele omandajate varases repertuaaris, omandatakse varakult ka siis, kui laps omandab teist keelt. Koolieelikute grammatikapädevuse kirjeldamisel on lähtutud kasutuspõhiste keeleomandamisteooriate seisukohtadest, mille järgi omandatakse varakult need kategooriad, mis on sagedased ja produktiivsed (vt nt Dressler, Wolfgang U. 2012. On the acquisition of inflectional morphology: Introduction. – Morphology, 22, 1, lk 1–8; Dressler, Wolfgang. U., M. Kilani-Schoch, S. Klampfer 2002. How does a child detect morphology? Evidence from production. Trends in Linguistics. Studies and Monographs 151, lk 391–425. Berlin: Mouton de Gruyter). Kasutuspõhiste lähenemiste ideestikuga on seotud ka arusaam tüüpilisest keeleomandamise keskkonnast ja keelendite sagedusest. Eeldatakse, et koolieelik omandab keele mitteformaalses situatsioonis lapsekesksele keskkonnale omaste igapäevategevuste ja suhtluse käigus (nt lasteaias mängulistes tegevustes, mitte niivõrd koolitunnis). Seetõttu vajab koolieelik eelkõige neid kategooriaid ja vorme, mis on igapäevasituatsioonides kõige sagedasemad. Kategooriate ja vormide valikul ning koolieelikute näitelausete leidmisel on kasutatud kolme kõige süsteemsemalt kogutud eesti laste suulise kõne korpust (<a href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a>). Kategooriate esitamisel on lähtutud kolmest tingimusest. Kategooria on esitatud profiilis siis, kui 1) laste materjalis esines see varases eas (enne kolmeaastaseks saamist), 2) vorm/kategooria oli produktiivselt kasutatud ehk omandatud (st sama vormi kasutas laps mitmest sõnast ning vähemalt ühest sõnast oli kasutatud ka teisi vorme) enne kolmeaastaseks saamist, ning 3) kategooria/vorm oli laste kõnes sage (st vorme, mida lastekeelekorpuses leidus vaid 2-3 korral, grammatilises profiilis ei esitatud).<br/>
-	  <br/>
-	  Aastal 2020 lisandub lausemoodustuse kirjeldus ja B2-taseme grammatikapädevuse kirjeldus.
-	</p>
-    <h3 class="jumptarget" id="item-8">Teksti sõnavara hindamine</h3>
-    <p>
-	  Teksti hindamise tööriist aitab määrata sõnade keerukust tekstis ja on abiks otsustamisel, kas tekst on lugejale tasemekohane. Teksti sõnavara hindamisel (keeleoskustaseme määramisel) on aluseks koolieelikute, noore keeleõppija ja täiskasvanute sõnavaraloendid.<br/>
-	  <br/>
-	  Teksti sõnavara hindaja töötab eesti keele töötlusprogrammi <a href="https://github.com/estnltk/estnltk">estNLTK v 1.6</a> teekidel, mis pakuvad tekstide töötlemiseks vajalikke funktsioone (lemmatiseerimist ehk eestikeelsete sõnade algvormide leidmist ja morfoloogilist analüüs ehk sõna algvormi ja selle grammatilise vormi, nt käände või pöörde, tuvastamist). Kuna tegemist on automaattöötlusega, siis võib esineda vigu. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel, arvestamata sõnade eri tähendusi ja homonüümide tasemekohasust. Homonüümide puhul (nt <i>tamm</i> ‘puu’ ja <i>tamm</i> ‘veevoolu tõkestav rajatis’) annab programm madalama keeletaseme hinnangu. Samuti ei analüüsi programm eraldi mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).<br/>
-	  <br/>
-	  Edasiarendusena on plaanis luua tööriist ka teksti grammatilise keerukuse hindamiseks.
-    </p>
-    <h3 class="jumptarget" id="item-9">Kuidas viidata</h3>
-    <p>
-	  Õpetaja tööriistades esitatud infole palume viidata nii:<br/>
-	  Eesti keele kui teise keele õpetaja tööriistad. DOI: 10.15155/3-00-0000-0000-0000-08357L <a href="https://sonaveeb.ee/teacher-tools">https://sonaveeb.ee/teacher-tools</a> (05.03.2020)
-    </p>
-    <h3 class="jumptarget" id="item-10">Kasutus- ja privaatsustingimused</h3>
-    <p>
-	  <b>Õpetaja tööriistade kasutamine</b><br/>
-	  <br/>
-	  Õpetaja tööriistad on Eesti Keele Instituudi portaali Sõnaveeb alamleht, kuhu on koondatud kolm tööriista: keeleoskustasemetega märgendatud sõnavaraloendid, teksti sõnavara hindamise tööriist ning eesti keele kui teise keele keeleoskustasemetega seotud grammatiline profiil. Õpetaja tööriistade keskkonnas pakutava teabe kohta kehtib litsents Creative Commons BY 4.0, mis tähendab, et materjali on lubatud töödelda ja esitada mis tahes vajalikul moel, näiteks õppematerjaliks, äpi loomiseks jne. Kommertskasutust ei piirata, kuid sellise rakenduse juures tuleb säilitada viide Eesti Keele Instituudile. Samuti tuleb kirjeldada omapoolseid muudatusi.<br/>
-	  <br/>
-	  <b>Kasutajate privaatsus</b><br/>
-	  <br/>
-	  Õpetaja tööriistade teenused on avaliku juurdepääsuga. Õpetaja tööriistade kasutaja edastab meile teavet, mis on vajalik vastavate teenuste mugavaks tarbimiseks. Kogume ainult teenuse pakkumisega seotud informatsiooni. Portaal kasutab e-teenuste osutamisel üldtunnustatud privaatsuspõhimõtteid.<br/>
-	  <br/>
-	  Isikuandmeid sisaldava teabe kogumisel ja säilitamisel lähtub portaal isikuandmete kaitse reeglitest.<br/>
-	  <br/>
-	  Portaal tagab kõikide andmete täpsuse ja vastavuse tegelikkusele.<br/>
-	  <br/>
-	  <b>Teave, mida portaal salvestab</b><br/>
-	  <br/>
-	  Portaali kasutamisega tekib meie serverisse teave kasutaja toimingute kohta (logid), mis sisaldab lisaks konkreetse teenuste kasutamise kirjetele järgnevat:</p>
-	  <div class="container">
-		<ul style="list-style-type:disc;">
-			<li>missuguseid teenuseid kasutati, milliseid tööriistu, sõnaloendeid, linke vms vaadati (nt otsingud, klikitud lingid, andmekogud);</li>
-			<li>teenuse kasutamise aeg ja kasutaja IP aadress (unikaalne aadress kohtvõrgus, mille kaudu on vajadusel võimalik tuvastada kasutaja asukoht füüsilises võrgus).</li>
-			<li>Õpetaja tööriistad kasutab ajutisi ehk seansi küpsiseid, mis kustuvad pärast sessiooni lõpetamist ja veebilehitseja sulgemist. Küpsiseid kasutatakse keelevaliku meeldejätmiseks.</li>
-		</ul>
-	  </div>
-	  <p><b>Andmete hoiustamise aeg</b><br/>
-	  <br/>
-	  Kasutame kogutud statistilisi andmeid analüüside jaoks ühe aasta vältelpärast andmete kogumist.<br/>
-	  <br/>
-	  <b>Küsimused ja kommentaarid</b><br/>
-	  <br/>
-	  Palume kõik küsimused, tähelepanekud ja ettepanekud saata tagasiside vormi kaudu või Eesti Keele Instituudi e-posti aadressil eki@eki.ee.
+      <h3 class="jumptarget" id="item-4">Sõnavaraloendid</h3>
+      <p>
+        Sõnade tasemetesse jagamise põhimõtted on järgmised: 1) sagedus korpustes (täiskasvanud
+        keeleõppija puhul eelkõige <a
+        href="https://metashare.ut.ee/repository/browse/eesti-keele-uhendkorpus-2017/b616ceda30ce11e8a6e4005056b40024880158b577154c01bd3d3fcfc9b762b3/">Eesti
+        keele ühendkorpus 2017</a> ja <a
+        href="https://metashare.ut.ee/repository/browse/eesti-keele-a1-c1-opikute-korpus-2018/42a08b9a30d211e8a6e4005056b400245d0bc80d6a9a4d5dba5824a3e7c662f8/">Eesti
+        keele A1–C1 õpikute korpus 2018</a>; noore keeleõppija puhul <a
+        href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">Eesti
+        keele kui teise keele kooliõpikute lausete korpus 2020</a>, <a
+        href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">Eesti
+        keele õppija korpus EMMA</a> ( eesti keele teise keelena taseme- ja eksamitööd) ning
+        lastekeelekorpuse <a
+        href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a> eesti
+        keele alamkorpused); 2) tuumsus (vt lähemalt <a
+        href="https://dspace.ut.ee/handle/10062/40738">Pajusalu, R., Tragel, I., Veismann, A., Vija,
+        M. 2004. Tuumsõnade semantikat ja pragmaatikat. Tartu.</a>); 3) kasutatavus suulises ja
+        kirjalikus tekstiloomes (vt lähemalt <a
+        href="http://arhiiv.rakenduslingvistika.ee/ajakirjad/index.php/aastaraamat/article/view/ERYa5.12/96">Pajupuu,
+        H., Kerge, K., Alp, P. 2009. Sõnavara loomulik rikkus haritud keeleoskaja tekstides. – Eesti
+        rakenduslingvistika ühingu aastaraamat V. Tallinn.</a>); 4) vajalikkus igapäevaelu
+        valdkondades; 5) sõnavara ajakohasus.<br />
+        <br />
+        Loendites on sõnad esitatud algvormis, mis aga ei tähenda, et keeleõppija oskab moodustada
+        ja
+        kasutada nende sõnade kõiki vorme, näiteks omandatakse sõna <i>tohtima</i> esimesena kindla
+        kõneviisi eitavas vormis <i>ei tohi</i>. Keelepagasi sõnavormipõhist ulatust iseloomustavad
+        andmed lisatakse. Ei analüüsitud ka sõnade eri tähenduste tasemekohasust, mis kuulub samuti
+        edasiarenduste hulka.<br />
+        <br />
+        Kui sõna kuulub kahte sõnaliiki (nt <i>hea</i> – nii omadussõna kui ka nimisõna),
+        analüüsitakse iga sõnaliigi tasemekohasust eraldi.
       </p>
-    <h3 class="jumptarget" id="item-11">Rahastajad</h3>
-    <p>
-	  Eesti keele kui teise keele õpetaja tööriistade loomist on toetanud Eesti Keele Instituudi, Haridus- ja Teadusministeeriumi <a href="https://www.hm.ee/et/digipoorde-programm">digipöörde programm</a> ning Haridus- ja Teadusministeeriumi üldhariduse osakond. Õpetaja tööriistade koostajad soovivad eraldi tänada Viivian Jõemetsa.
-    </p>
-	<h3 class="jumptarget" id="item-12">Meeskond</h3>
-<p>
-	  Projekti meeskond: Pilvi Alp (SA Innove, noore keeleõppija (vanused 7–10 ja 10–15) keelekasutusolukordade piirangute ja tingimuste analüüs), Reili Argus (Tallinna Ülikool, koolieelikute sõnavaraloendid ja grammatikapädevuse kirjeldus), Annika Bauer (Tallinna Ülikool, koolieelikute grammatikapädevuse kirjeldus), Anu Epner (SA Innove, noore keeleõppija (vanused 7–10 ja 10–15) keelekasutusolukordade piirangute ja tingimuste analüüs), Jelena Kallas (Eesti Keele Instituut, projektijuht), Krista Kerge (Tallinna Ülikool, Eesti Keele Instituut; A1-B2-taseme keelepädevuse analüüs), Kristina Koppel (Eesti Keele Instituut, sõnavaraloendid ja korpuste arendamine), Raili Pool (Tartu Ülikool, Eesti Keele Instituut; noore keeleõppija A1–B1 taseme grammatikapädevuse kirjeldus), Mai Tiits (Eesti Keele Instituut, grammatikapädevuse kirjelduste toimetamine), Katrin Tsepelina (Eesti Keele Instituut, tarkvaraarendaja) ja Tiiu Üksik (Eesti Keele Instituut, grammatikapädevuse kirjelduse põhimõtted ja korpuste arendamine). Koolieelikute sõnaloendi koostamisel osalesid ekspertidena lasteaiaõpetaja ja eesti keele õpikute autor Lea Maiberg ning lasteaiaõpetaja Mariana Koho. </p>
-    <h3 class="jumptarget" id="item-13">Kontakt</h3>
-    <p>
-	  Jelena Kallas (EKI vanemarvutileksikograaf-projektijuht) jelena.kallas@eki.ee<br/>
-	  Kristina Koppel (EKI arvutileksikograaf) kristina.koppel@eki.ee<br/>
-	  Tiiu Üksik (EKI arvutilingvist) tiiu.yksik@eki.ee<br/>
-	  Katrin Tsepelina (EKI tarkvaraarendaja) katrin.tsepelina@gmail.com
-    </p>
+      <h4 class="jumptarget" id="item-5">Noore keeleõppija sõnavaraloendid </h4>
+      <p>Noore keeleõppija tasemekirjelduste vastavused keelepädevusega on järgmised: eelA1 =
+        koolieelikud (6–7-aastased), A1 = I kooliaste (1.–3. klass), A2 = II kooliaste (4.–6. klass)
+        ja B1 = III kooliaste (7.–9. klass).<br />
+        <br />
+        <b>Koolieelikute</b> sõnaloend on koostatud alusharidust omandava keeleõppija vajadusi
+        silmas
+        pidades ja seda sobib kasutada alushariduse õppevara koostamisel. Sõnaloend sisaldab
+        koolieelse lasteasutuse riikliku õppekava kõnearendusteemadest tulenevalt 6–7-aastase
+        keeleõppija sõnavara. Loendi koostamisel on kasutatud järgmisi allikmaterjale:</p>
+      <ol>
+        <li>lastekeelekorpuse <a
+          href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a>
+          eesti
+          keele alamkorpust,
+        </li>
+        <li>Haridus- ja Teadusministeeriumi ekspertide Tiina Petersoni ja Viivian Jõemetsa
+          sõnaloendi
+          algset ettepanekut,
+        </li>
+        <li><a
+          href="https://entu.keeleressursid.ee/shared/7630/r7n5nKdfHVmIQroOW84zB9J8d25lA24G7pY3Sz9ESJn3Ba8mBXSOt1HVXjYyk7cn">Argus,
+          R., Maiberg, L., Koho, M., Kallas, J., Koppel, K. 2019. Eesti keele kui teise keele
+          sõnavara
+          koolieelikutele. Tallinn: Eesti Keele Instituut.</a></li>
+        <li>eesti keelest erineva kodukeelega laste keeleõppeks välja töötatud <a
+          href="https://www.innove.ee/oppevara-ja-metoodikad/muu-kodukeelega-laps/abimaterjalid-lasteaedadele/">materjale</a>
+          lasteaedadele ja õpetajatele.
+        </li>
+      </ol>
+      <p>Lastekeelekorpuse <a
+        href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a> eesti
+        keele alamkorpus sisaldab laste ja nende vanemate spontaanse kõne lindistusi, mis on tehtud
+        kodustes igapäevasituatsioonides nagu söömine, mängimine, riietumine jms. Spontaanse suulise
+        kõne keelematerjal sobib sõnaloendi aluseks seetõttu, et esimese ja teise keele omandamine
+        kulgeb suures osas sarnaselt ning nii nagu ükskeelne laps vajab ka kakskeelne laps sõnavara,
+        mis võimaldab tal suhelda mitteformaalsetes lapsekesksetes igapäevasituatsioonides.<br />
+        <br />
+        Koolieelikute sõnaloendi koostamisel lähtuti sõnade valikul peamiselt sellest, mis vanuses
+        laste kõnes teatud sõna korpuses esines ning kui sage see laste ja nende vanemate
+        keelekasutuses oli. Näiteks kui sõna esineb eesti keelt emakeelena omandavate laste kõnes
+        enne
+        nende kaheaastaseks saamist ja on alamkorpuses sage, siis on põhjust arvata, et see sõna on
+        omane lapsekesksetele kõnesituatsioonidele ning sellisena vajalik ka eesti keelt kui teist
+        keelt omandavatele lastele. Samas on oluline rõhutada, et kuna teise keele õppija
+        keelekonstruktsioonid on lihtsamad kui emakeele õppijal, siis on sõnaloend väiksema mahuga
+        kui
+        lapse sõnavara emakeeles.<br />
+        <br />
+        Koolieelikute sõnaloendite koostamisel analüüsiti süstemaatiliselt ka temaatilist sõnavara
+        (kehaosad, loomad, linnud, toit, transport jms) ning rühmaruumiga seotud sõnavara
+        (rühmaruumis
+        olevad asjad ja lasteaia tegevustes kasutatavad vahendid), lisati Eesti kultuuri tundmise
+        seisukohalt oluline sõnavara, nt riiklike ja rahvakalendri tähtpäevade ning riigipühade
+        nimetused (jaanipäev, emadepäev, isadepäev, vastlapäev jms).<br />
+        <br />
+        Suurem osa Eesti lasteaedu on liitunud programmiga „Kiusamisest vaba lasteaed“ ja tervist
+        edendavate lasteaedade võrgustikuga. Seetõttu on sõnaloendis algul raskena tunduvaid sõnu,
+        kuid need on vajalikud vastavates programmides osalemise tõttu.<br />
+        <br />
+        <b>Noore keeleõppija</b> A1-, A2- ja B1-taseme sõnaloendite koostamisel on kasutatud
+        järgmisi
+        allikmaterjale:</p>
+      <ol>
+        <li><a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">Eesti
+          keele õppija korpus EMMA</a>, millest kasutati 6. klassi eesti keele kui teise keele
+          tasemetööde kirjalikku osa (2016–2018; 1614 tööd); põhikooli eesti keele kui teise keele
+          lõpueksami kirjalikku osa (2016–2018; 902 tööd).
+        </li>
+        <li><a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">Eesti
+          keele kui teise keele kooliõpikute lausete korpus 2020</a>. Korpus sisaldab 20 õpikud
+          1.–9.
+          klassile, millest kasutati 3., 6. ja 9. klassi õpikuid.
+        </li>
+      </ol>
+      <p>Võrdlusmaterjalina kasutati täiskasvanute sõnavaraloendeid. Erinevused täiskasvanud ja
+        noore
+        keeleõppija sõnavaravalikus on tingitud eelkõige sihtrühmade kognitiivse, sotsiaalse ja
+        kogemusliku võimekuse ning keelekasutuse põhivaldkondade erinevusest. Noore keeleõppija
+        puhul
+        on lisaks arvestatud ka ainekava eesmärke ja oodatavaid tulemusi.<br />
+        <br />
+        Kokku on tasemetesse eelA1 kuni B1 jaotatud umbes 5000 sõna.
+      </p>
+      <h4 class="jumptarget" id="item-6">Täiskasvanute sõnavaraloendid</h4>
+      <p>Täiskasvanute puhul on eristatud algtasemel keeleõppija (A1 ja A2), iseseisev keelekasutaja
+        (B1 ja B2) ja vilunud keelekasutaja (C1 ja C2).<br />
+        <br />
+        Täiskasvanute sõnaloend sisaldab ligikaudu 13 500 keeletasemega A1–C1 märgendatud sõna. Eri
+        tasemete sõnavara suuruse määramisel on lähtekohaks Krista Kerge koostatud „<a
+          href="	https://www.ester.ee/record=b1058279*est">Funktsionaalse keeleoskuse taseme
+          määratlemine</a>“ (Tallinn: Haridusministeerium, 1996), mille kohaselt ulatub eesti keelt
+        algtasemel valdava inimese sõnavara 1500–2000 sõnani, kesktaseme korral aga umbes 5000
+        sõnani.<br />
+        <br />
+        Sõnavaraloendite koostamisel olid aluseks kolme tüüpi allikad.<br />
+        <br />
+        1. Seni ilmunud keeleoskustasemete sõnavara kirjeldused</p>
+      <div class="container">
+        <ul style="list-style-type:disc;">
+          <li><a href="https://www.ester.ee/record=b1230005*est">Laur, M. 1998. Tuumiksõnade loend.
+            –
+            M. Laur. 1998. Esimene verstapost. Eesti keele suhtluse algtase. Tallinn: REKK.</a></li>
+          <li><a
+            href="https://www.innove.ee/wp-content/uploads/2017/12/Algaja-keelekasutaja.-A2-tase.pdf">Kerge,
+            K., Pajupuu, H., Ilves, M. 2008. Esmane sõnastik. – M. Ilves. Algaja keelekasutaja.
+            A2-taseme eesti keele oskus. Tallinn: Eesti Keele Sihtasutus, Tallinna Ülikool, Haridus-
+            ja Teadusministeerium.</a></li>
+          <li><a href="https://www.ester.ee/record=b1011622*est">Ehala, M., Saarso, K., Vare, S.,
+            Õispuu, J. 1997. Suhtlusläve sõnaindeks. – Eesti keele suhtluslävi. Kultuurikoostöö
+            Nõukogu. Strasbourg: Council of Europe Publishing.</a></li>
+        </ul>
+      </div>
+      <p>2. Eesti Keele Instituudis koostatud õppesõnastikud ja sõnaloendid</p>
+      <div class="container">
+        <ul style="list-style-type:disc;">
+          <li><a href="https://www.ester.ee/record=b1217684*est">Pärn, H., Simm, L. 1989. Eesti
+            keele
+            baassõnastik = Базовый словарь эстонского языка. Tallinn: Keele ja Kirjanduse
+            Instituut.</a></li>
+          <li><a href="http://www.eki.ee/dict/psv/">Eesti keele põhisõnavara sõnastik 2015.
+            Veebiväljaanne. Koostanud ja toimetanud M. Tuulik, M. Tiits, J. Kallas, K. Koppel ja M.
+            Jürviste. Tehniline tugi: I. Hein, Ü. Viks ja A. Teesalu.</a></li>
+          <li><a href="http://www.eki.ee/dict/kol/index.cgi">Eesti keele naabersõnad 2018.
+            Veebiväljaanne. Koostanud ja toimetanud J. Kallas, K. Koppel, G. Paulsen ja M. Tuulik.
+            Tehniline tugi: I. Hein ja Ü. Viks. </a></li>
+          <li><a
+            href="https://entu.keeleressursid.ee/shared/7612/BZlcLkmv70Wr98Ex3j80yMyXLGY69xE9rM0wGfloW0JBxTBeRVFLRsS2sssYY7Do">Kallas,
+            J., Koppel, K. 2018. Eesti keele A1-taseme sõnavara. Tallinn: Eesti Keele Instituut.</a>
+          </li>
+          <li><a
+            href="https://entu.keeleressursid.ee/shared/7624/VhWFGjRGVFkuPOAR1CDkAmeZA6aLcWI4nlflQUdhXyHAJKzAy4mhRHrdtINyB59H">Kallas,
+            J., Koppel, K. 2018. Eesti keele A2-taseme sõnavara. Tallinn: Eesti Keele Instituut.</a>
+          </li>
+          <li><a
+            href="https://entu.keeleressursid.ee/shared/7627/q2HmwInAR9UvOhTKtyGDBtff05z7oojLn8srxJqlKt6rvGkSqjHBjGjuXHZRVo9C">Kallas,
+            J., Koppel, K. 2018. Eesti keele B1-taseme sõnavara. Tallinn: Eesti Keele Instituut.</a>
+          </li>
+        </ul>
+      </div>
+      <p>3. Eesti keele korpused</p>
+      <div class="container">
+        <ul style="list-style-type:disc;">
+          <li><a
+            href="https://metashare.ut.ee/repository/browse/eesti-keele-a1-c1-opikute-korpus-2018/42a08b9a30d211e8a6e4005056b400245d0bc80d6a9a4d5dba5824a3e7c662f8/">Eesti
+            keele A1–C1 õpikute korpus 2018</a>. Korpus sisaldab A1-, A2-, B1-, B2- ja
+            C1-keeleoskustasemel eesti keele õppijatele suunatud õpikute materjali, sh
+            sõnavaraloendeid, tekste ja harjutusi.
+          </li>
+          <li><a
+            href="https://metashare.ut.ee/repository/browse/eesti-keele-uhendkorpus-2017/b616ceda30ce11e8a6e4005056b40024880158b577154c01bd3d3fcfc9b762b3/">Eesti
+            keele ühendkorpus 2017</a>. Ühendkorpuse suurus on 1,3 miljardit sõnet.
+          </li>
+        </ul>
+      </div>
+      <p>Loendid koostati mitmes etapis.<br />
+        <br />
+        Alustuseks loodi seni koostatud sõnavaraloenditest ühtne elektrooniline andmebaas, mis
+        võimaldas välja selgitada loenditevahelisi kattuvusi ja erinevusi. Analüüsi käigus
+        kõrvaldati
+        loendites esinenud vananenud sõnavara, näiteks sõnad <i>ühiskorter</i>,
+        <i>kooperatiivkorter</i>, <i>komposteerima</i>, <i>panderoll</i>, <i>telefonikabiin</i>, <i>videomagnetofon</i>,
+        <i>kassettmagnetofon</i>.<br />
+        <br />
+        Seejärel lisati andmebaasi <a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-a1-c1-opikute-korpus-2018/42a08b9a30d211e8a6e4005056b400245d0bc80d6a9a4d5dba5824a3e7c662f8/">Eesti
+          keele A1–C1 õpikute korpuse 2018</a> ja <a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-uhendkorpus-2017/b616ceda30ce11e8a6e4005056b40024880158b577154c01bd3d3fcfc9b762b3/">Eesti
+          keele ühendkorpuse 2017</a> andmed. Eesti keele A1–C1 õpikute korpus andis ülevaate,
+        milliseid sõnu on õpikute autorid pidanud vajalikuks teatud keeleoskustaseme
+        sõnavarapädevuse
+        arendamisel. Kokku oli õpikutes kasutatud ligikaudu 13 000 sõna. Andmebaasi otsustati jätta
+        vaid sõnad, mis esinesid õpikus vähemalt kaks korda. Eesti keele ühendkorpuse 2017 alusel
+        genereeritud sagedusloend (umbes 60 000 sõna) võimaldas kontrollida senistes loendites ja
+        õpikutes kasutatud sõnavara ajakohasust ning lisada korpuses sagedasti esinevaid sõnu, mis
+        olid varasematest loenditest ja ka õpikute tekstist välja jäänud.
+      </p>
+      <h3 class="jumptarget" id="item-7">Grammatika</h3>
+      <p>
+        Grammatikapädevuse kirjeldus annab suunised, mis grammatilisi kategooriaid keeleõppija
+        tunneb,
+        mis funktsioonides ja milliste piirangutega ta neid kasutada oskab. Kirjeldatakse
+        koolieelikute (eelA1 = 6–7-aastased), 3. klassi lõpetajate (A1 = I kooliaste), 6. klassi
+        lõpetajate (A2 = II kooliaste) ja 9. klassi lõpetajate (B1 = III kooliaste) oodatavat
+        grammatikapädevust. Kirjeldus on abiks õppekavade, kursuste ja harjutusvara
+        koostamisel.<br />
+        <br />
+        Grammatikapädevuse kirjeldamisel on lähtekohaks eelkõige:
+      <ol>
+        <li><a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-kooliopikute-sisu-korpus-2020/fcbf72f04e4611eaa6e4005056b400241a31747bffbb4512a6180da74cce441a/">Eesti
+          keele kui teise keele kooliõpikute sisu korpus 2020</a>. Korpus sisaldab 20 õpikut 1.–9.
+          klassile.
+        </li>
+        <li><a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">Eesti
+          keele kui teise keele kooliõpikute lausete korpus 2020</a>. Korpus sisaldab täislauseid 20
+          õpikust 1.–9. klassile, millest kasutati lauseid 3., 6. ja 9. klassi õpikutest.
+        </li>
+        <li><a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">Eesti
+          keele õppija korpus EMMA</a>, millest kasutati 6. klassi eesti keele kui teise keele
+          tasemetööde kirjalikku osa (2016–2018; 1614 tööd); põhikooli eesti keele kui teise keele
+          lõpueksami kirjalikku osa (2016–2018; 902 tööd).
+        </li>
+      </ol>
+      EelA1-taseme grammatikapädevuse kirjeldamisel oli aluseks ka
+      <ol start="4">
+        <li>lastekeelekorpuse <a
+          href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a>
+          eesti
+          keele alamkorpused Vija, Kapanen ja Zupping. Korpused sisaldavad laste ja nende vanemate
+          argisuhtluse lindistusi.
+        </li>
+      </ol>
+      Grammatikapädevus on kirjeldatud vormi-, sõna- ja fraasimoodustuse tasandil. Esmalt analüüsiti
+      eesti keele kui teise keele kooliõpikute sisu korpuse põhjal, mida on õpikute autorid seni
+      pidanud oluliseks õpetada eri kooliastmete õpikutes. Veendumaks, et kirjeldused vastavad
+      õppija
+      tegelikele saavutustele, võrreldi grammatiliste kategooriate esinemist EMMA korpuse teise
+      keele
+      õppija tekstidega. Kui kategooria seal esines, siis kirjeldati see vastaval keeleoskustasemel.
+      Grammatilistele kategooriatele lisati näited eesti keele kui teise keele kooliõpikute lausete
+      korpusest. Õppijakeele näited lisatakse hiljem.<br />
+      <br />
+      Grammatikapädevuse kirjeldus on üles ehitatud laienevalt: lihtsamast keerulisemani.
+      Grammatilised kategooriad on kirjeldatud kõigil keeleoskustasemetel (<i>oskab</i>-lauses),
+      kuid
+      nende kasutustfunktsioone ja piiranguid (kui tihti õppija eksib ja milles eksimus seisneb) on
+      täpsustatud vastavalt keeleoskuse arengule. Selline kirjeldus aitab ühelt poolt keeletasemeid
+      eristada ning teiselt poolt seada edasisi eesmärke.<br />
+      <br />
+      Kirjeldus on esitatud lähtuvalt peakategooriatest (vormi-, sõna- ja fraasimoodustus), millel
+      on
+      kokku 16 alamkategooriat. Igal alamkategoorial on grammatilised tunnused (nt vormimoodustuse
+      osas on nimisõnal tunnused <i>arv</i> ja <i>kääne</i>). Igal tunnusel on omakorda tunnuse
+      liigid
+      (nt tunnusel <i>arv</i> on liigid <i>ainsus</i> ja <i>mitmus</i>). Tunnused ja nende liigid
+      võimaldavad päringu tulemusi kitsendada ja filtreerida. Nii saab vormimoodustuse osas vaadata
+      näiteks nimisõna sisseütlevat käänet puudutavaid ridu.
+      <div class="table-responsive-md">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">PEAKATEGOORIA</th>
+            <th scope="col">ALAMKATEGOORIA</th>
+            <th scope="col">Tunnus</th>
+            <th scope="col">Tunnuse liik</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>VORMIMOODUSTUS</td>
+            <td>TEGUSÕNA</td>
+            <td>kõneviis</td>
+            <td>kindel, tingiv, käskiv, kaudne, möönev</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>tegumood</td>
+            <td>isikuline, umbisikuline</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>aeg</td>
+            <td>1, 2, 3</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>arv</td>
+            <td>ainsus, mitmus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>tegevusnimed</td>
+            <td>-<i>ma</i>, -<i>da</i>, -<i>vat</i></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>käändelised vormid</td>
+            <td>-<i>mas</i>, -<i>mast</i>, -<i>maks</i>, -<i>mata</i>, -<i>des</i></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>kesksõnad</td>
+            <td>-<i>v</i>, -<i>tav</i>, -<i>nud</i>, -<i>tud</i></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>NIMISÕNA</td>
+            <td>arv</td>
+            <td>ainsus, mitmus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>kääne</td>
+            <td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev,
+              alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>OMADUSSÕNA</td>
+            <td>arv</td>
+            <td>ainsus, mitmus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>kääne</td>
+            <td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev,
+              alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>võrdlusaste</td>
+            <td>algvõrre, keskvõrre, pikk ülivõrre, lühike ülivõrre</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>ARVSÕNA</td>
+            <td>arv</td>
+            <td>ainsus, mitmus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>kääne</td>
+            <td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev,
+              alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>arvsõnaliik</td>
+            <td>põhiarvsõna, järgarvsõna</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>ASESÕNA</td>
+            <td>arv</td>
+            <td>ainsus, mitmus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>kääne</td>
+            <td>nimetav, omastav, osastav, sisseütlev, lühike sisseütlev, seesütlev, seestütlev,
+              alaleütlev, alalütlev, alaltütlev, saav, rajav, olev, ilmaütlev, kaasaütlev
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>asesõnaliik</td>
+            <td>isikuline, enesekohane, vastastikune, näitav, küsiv-siduv, umbmäärane</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>MÄÄRSÕNA</td>
+            <td>võrdlusaste</td>
+            <td>algvõrre, keskvõrre, pikk ülivõrre, lühike ülivõrre</td>
+          </tr>
+          <tr>
+            <td>SÕNAMOODUSTUS</td>
+            <td>TEGUSÕNAMOODUSTUS</td>
+            <td>tuletus</td>
+            <td>sufiksituletus, prefiksituletus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>liitmine</td>
+            <td>liitsõnamoodustus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>ühendid</td>
+            <td>ühendverb, väljendverb, ahelverb</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>NIMISÕNAMOODUSTUS</td>
+            <td>tuletus</td>
+            <td>sufiksituletus, prefiksituletus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>liitmine</td>
+            <td>liitsõnamoodustus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>OMADUSSÕNAMOODUSTUS</td>
+            <td>tuletus</td>
+            <td>sufiksituletus, prefiksituletus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>liitmine</td>
+            <td>liitsõnamoodustus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>MÄÄRSÕNAMOODUSTUS</td>
+            <td>tuletus</td>
+            <td>sufiksituletus, prefiksituletus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>liitmine</td>
+            <td>liitsõnamoodustus</td>
+          </tr>
+          <tr>
+            <td>FRAASIMOODUSTUS</td>
+            <td>NIMISÕNAFRAAS</td>
+            <td>laiend</td>
+            <td>omadussõna, nimisõna, arvsõna, määrsõna, asesõna, kaassõnafraas,
+              <i>ma</i>-/<i>da</i>-tegevusnimi
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>ühildumine</td>
+            <td>täielik, mittetäielik, ühildumatu</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>HULGAFRAAS</td>
+            <td>põhi</td>
+            <td>põhiarvsõna, asesõna, nimisõna, määrsõna</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>laiend</td>
+            <td>nimisõna</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>laiendi kääne</td>
+            <td>omastav, seestütlev</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>laiendi arv</td>
+            <td>ainsus, mitmus</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>ühildumine</td>
+            <td>täielik, mittetäielik, ühildumatu</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>OMADUSSÕNAFRAAS</td>
+            <td>laiend</td>
+            <td>nimisõna, määrsõna, kaassõnafraas, <i>ma</i>-/<i>da</i>-tegevusnimi</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>laiendi kääne</td>
+            <td>omastav, sisseütlev, seesütlev, seestütlev, alaleütlev, alalütlev, alaltütlev, saav,
+              rajav, olev, ilmaütlev, kaasaütlev
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>ühildumine</td>
+            <td>täielik, mittetäielik, ühildumatu</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>MÄÄRSÕNAFRAAS</td>
+            <td>laiend</td>
+            <td>määrsõna, nimisõna, kaassõnafraas</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>laiendi kääne</td>
+            <td>omastav, osastav, seestütlev, saav, rajav, olev, ilmaütlev, kaasaütlev</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>KAASSÕNAFRAAS</td>
+            <td>laiend</td>
+            <td>nimisõna</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>laiendi kääne</td>
+            <td>omastav, osastav, seestütlev, rajav, ilmaütlev, kaasaütlev</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>kaassõnaliik</td>
+            <td>eessõna, tagasõna</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>TEGUSÕNAFRAAS</td>
+            <td>laiend</td>
+            <td>nimisõna, omadussõna, määrsõna, tegusõna käändeline vorm, kaassõnafraas,
+              tegevusnimi,
+              <i>des</i>-vorm
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <p>Iga kirjelduse juures on esitatud ka näitelaused, mis illustreerivad kirjeldatud kategooria
+        kasutamist. Lauseid on kolme tüüpi: projekti grammatikaekspertide koostatud laused
+        (põhikoostajad on Raili Pool, Reili Agrus ja Annika Bauer), <a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-kui-teise-keele-pohikooliopikute-lausete-korpus-2020/4a7648b03dd611eaa6e4005056b4002450f59a2ef91e4156b081a6c678d4425a/">õpikute
+          korpuse laused</a> ja <a
+          href="https://metashare.ut.ee/repository/browse/eesti-keele-oppija-korpus-veebiliidese-kaudu/1af964c406e911eaa6e4005056b40024007f4445a103461ab9d3da94e1257646/">õppijakeele
+          laused</a>. Iga lause juures on näidatud selle allikas. Õpikute ja õppijakeele laused
+        kuvatakse ainult <i>Lisainfo</i> vaates. Vormimoodustuse kirjeldustes on lisatud ka
+        grammatilise kategooria süntaktiline funktsioon, näiteks <i>järgarvsõna ainsuse
+          nimetavas</i>
+        süntaktilised funktsioonid on <i>täiend</i> ja <i>öeldistäide</i>. Funktsioonid kuvatakse
+        samuti ainult <i>Lisainfo</i> vaates.<br />
+        <br />
+        Kuna koolieelikute eesti keele kui teise keele omandamist puudutavad allikmaterjalid
+        puuduvad,
+        lähtuti koolieelikute grammatikapädevuse kirjeldamisel eelkõige eesti keelt emakeelena
+        omandava lapse keelepädevusest. Kirjelduse koostamisel on lähtutud eeldusest, et
+        grammatilised
+        kategooriad, mis on esimese keele omandajate varases repertuaaris, omandatakse varakult ka
+        siis, kui laps omandab teist keelt. Koolieelikute grammatikapädevuse kirjeldamisel on
+        lähtutud
+        kasutuspõhiste keeleomandamisteooriate seisukohtadest, mille järgi omandatakse varakult need
+        kategooriad, mis on sagedased ja produktiivsed (vt nt Dressler, Wolfgang U. 2012. On the
+        acquisition of inflectional morphology: Introduction. – Morphology, 22, 1, lk 1–8; Dressler,
+        Wolfgang. U., M. Kilani-Schoch, S. Klampfer 2002. How does a child detect morphology?
+        Evidence
+        from production. Trends in Linguistics. Studies and Monographs 151, lk 391–425. Berlin:
+        Mouton
+        de Gruyter). Kasutuspõhiste lähenemiste ideestikuga on seotud ka arusaam tüüpilisest
+        keeleomandamise keskkonnast ja keelendite sagedusest. Eeldatakse, et koolieelik omandab
+        keele
+        mitteformaalses situatsioonis lapsekesksele keskkonnale omaste igapäevategevuste ja suhtluse
+        käigus (nt lasteaias mängulistes tegevustes, mitte niivõrd koolitunnis). Seetõttu vajab
+        koolieelik eelkõige neid kategooriaid ja vorme, mis on igapäevasituatsioonides kõige
+        sagedasemad. Kategooriate ja vormide valikul ning koolieelikute näitelausete leidmisel on
+        kasutatud kolme kõige süsteemsemalt kogutud eesti laste suulise kõne korpust (<a
+          href="https://childes.talkbank.org/browser/index.php?url=Other/Estonian/">CHILDES</a>).
+        Kategooriate esitamisel on lähtutud kolmest tingimusest. Kategooria on esitatud profiilis
+        siis, kui 1) laste materjalis esines see varases eas (enne kolmeaastaseks saamist), 2)
+        vorm/kategooria oli produktiivselt kasutatud ehk omandatud (st sama vormi kasutas laps
+        mitmest
+        sõnast ning vähemalt ühest sõnast oli kasutatud ka teisi vorme) enne kolmeaastaseks saamist,
+        ning 3) kategooria/vorm oli laste kõnes sage (st vorme, mida lastekeelekorpuses leidus vaid
+        2-3 korral, grammatilises profiilis ei esitatud).<br />
+        <br />
+        Aastal 2020 lisandub lausemoodustuse kirjeldus ja B2-taseme grammatikapädevuse kirjeldus.
+      </p>
+      <h3 class="jumptarget" id="item-8">Teksti sõnavara hindamine</h3>
+      <p>
+        Teksti hindamise tööriist aitab määrata sõnade keerukust tekstis ja on abiks otsustamisel,
+        kas
+        tekst on lugejale tasemekohane. Teksti sõnavara hindamisel (keeleoskustaseme määramisel) on
+        aluseks koolieelikute, noore keeleõppija ja täiskasvanute sõnavaraloendid.<br />
+        <br />
+        Teksti sõnavara hindaja töötab eesti keele töötlusprogrammi <a
+        href="https://github.com/estnltk/estnltk">estNLTK v 1.6</a> teekidel, mis pakuvad tekstide
+        töötlemiseks vajalikke funktsioone (lemmatiseerimist ehk eestikeelsete sõnade algvormide
+        leidmist ja morfoloogilist analüüs ehk sõna algvormi ja selle grammatilise vormi, nt käände
+        või pöörde, tuvastamist). Kuna tegemist on automaattöötlusega, siis võib esineda vigu.
+        Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel, arvestamata sõnade eri tähendusi ja
+        homonüümide tasemekohasust. Homonüümide puhul (nt <i>tamm</i> ‘puu’ ja <i>tamm</i> ‘veevoolu
+        tõkestav rajatis’) annab programm madalama keeletaseme hinnangu. Samuti ei analüüsi programm
+        eraldi mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid
+        (nt
+        <i>silma paistma</i>).<br />
+        <br />
+        Edasiarendusena on plaanis luua tööriist ka teksti grammatilise keerukuse hindamiseks.
+      </p>
+      <h3 class="jumptarget" id="item-9">Kuidas viidata</h3>
+      <p>
+        Õpetaja tööriistades esitatud infole palume viidata nii:<br />
+        Eesti keele kui teise keele õpetaja tööriistad. DOI: 10.15155/3-00-0000-0000-0000-08357L <a
+        href="https://sonaveeb.ee/teacher-tools">https://sonaveeb.ee/teacher-tools</a> (05.03.2020)
+      </p>
+      <h3 class="jumptarget" id="item-10">Kasutus- ja privaatsustingimused</h3>
+      <p>
+        <b>Õpetaja tööriistade kasutamine</b><br />
+        <br />
+        Õpetaja tööriistad on Eesti Keele Instituudi portaali Sõnaveeb alamleht, kuhu on koondatud
+        kolm tööriista: keeleoskustasemetega märgendatud sõnavaraloendid, teksti sõnavara hindamise
+        tööriist ning eesti keele kui teise keele keeleoskustasemetega seotud grammatiline profiil.
+        Õpetaja tööriistade keskkonnas pakutava teabe kohta kehtib litsents Creative Commons BY 4.0,
+        mis tähendab, et materjali on lubatud töödelda ja esitada mis tahes vajalikul moel, näiteks
+        õppematerjaliks, äpi loomiseks jne. Kommertskasutust ei piirata, kuid sellise rakenduse
+        juures
+        tuleb säilitada viide Eesti Keele Instituudile. Samuti tuleb kirjeldada omapoolseid
+        muudatusi.<br />
+        <br />
+        <b>Kasutajate privaatsus</b><br />
+        <br />
+        Õpetaja tööriistade teenused on avaliku juurdepääsuga. Õpetaja tööriistade kasutaja edastab
+        meile teavet, mis on vajalik vastavate teenuste mugavaks tarbimiseks. Kogume ainult teenuse
+        pakkumisega seotud informatsiooni. Portaal kasutab e-teenuste osutamisel üldtunnustatud
+        privaatsuspõhimõtteid.<br />
+        <br />
+        Isikuandmeid sisaldava teabe kogumisel ja säilitamisel lähtub portaal isikuandmete kaitse
+        reeglitest.<br />
+        <br />
+        Portaal tagab kõikide andmete täpsuse ja vastavuse tegelikkusele.<br />
+        <br />
+        <b>Teave, mida portaal salvestab</b><br />
+        <br />
+        Portaali kasutamisega tekib meie serverisse teave kasutaja toimingute kohta (logid), mis
+        sisaldab lisaks konkreetse teenuste kasutamise kirjetele järgnevat:</p>
+      <div class="container">
+        <ul style="list-style-type:disc;">
+          <li>missuguseid teenuseid kasutati, milliseid tööriistu, sõnaloendeid, linke vms vaadati
+            (nt
+            otsingud, klikitud lingid, andmekogud);
+          </li>
+          <li>teenuse kasutamise aeg ja kasutaja IP aadress (unikaalne aadress kohtvõrgus, mille
+            kaudu
+            on vajadusel võimalik tuvastada kasutaja asukoht füüsilises võrgus).
+          </li>
+          <li>Õpetaja tööriistad kasutab ajutisi ehk seansi küpsiseid, mis kustuvad pärast sessiooni
+            lõpetamist ja veebilehitseja sulgemist. Küpsiseid kasutatakse keelevaliku
+            meeldejätmiseks.
+          </li>
+        </ul>
+      </div>
+      <p><b>Andmete hoiustamise aeg</b><br />
+        <br />
+        Kasutame kogutud statistilisi andmeid analüüside jaoks ühe aasta vältelpärast andmete
+        kogumist.<br />
+        <br />
+        <b>Küsimused ja kommentaarid</b><br />
+        <br />
+        Palume kõik küsimused, tähelepanekud ja ettepanekud saata tagasiside vormi kaudu või Eesti
+        Keele Instituudi e-posti aadressil eki@eki.ee.
+      </p>
+      <h3 class="jumptarget" id="item-11">Rahastajad</h3>
+      <p>
+        Eesti keele kui teise keele õpetaja tööriistade loomist on toetanud Eesti Keele Instituudi,
+        Haridus- ja Teadusministeeriumi <a href="https://www.hm.ee/et/digipoorde-programm">digipöörde
+        programm</a> ning Haridus- ja Teadusministeeriumi üldhariduse osakond. Õpetaja tööriistade
+        koostajad soovivad eraldi tänada Viivian Jõemetsa.
+      </p>
+      <h3 class="jumptarget" id="item-12">Meeskond</h3>
+      <p>
+        Projekti meeskond: Pilvi Alp (SA Innove, noore keeleõppija (vanused 7–10 ja 10–15)
+        keelekasutusolukordade piirangute ja tingimuste analüüs), Reili Argus (Tallinna Ülikool,
+        koolieelikute sõnavaraloendid ja grammatikapädevuse kirjeldus), Annika Bauer (Tallinna
+        Ülikool, koolieelikute grammatikapädevuse kirjeldus), Anu Epner (SA Innove, noore
+        keeleõppija
+        (vanused 7–10 ja 10–15) keelekasutusolukordade piirangute ja tingimuste analüüs), Jelena
+        Kallas (Eesti Keele Instituut, projektijuht), Krista Kerge (Tallinna Ülikool, Eesti Keele
+        Instituut; A1-B2-taseme keelepädevuse analüüs), Kristina Koppel (Eesti Keele Instituut,
+        sõnavaraloendid ja korpuste arendamine), Raili Pool (Tartu Ülikool, Eesti Keele Instituut;
+        noore keeleõppija A1–B1 taseme grammatikapädevuse kirjeldus), Mai Tiits (Eesti Keele
+        Instituut, grammatikapädevuse kirjelduste toimetamine), Katrin Tsepelina (Eesti Keele
+        Instituut, tarkvaraarendaja) ja Tiiu Üksik (Eesti Keele Instituut, grammatikapädevuse
+        kirjelduse põhimõtted ja korpuste arendamine). Koolieelikute sõnaloendi koostamisel osalesid
+        ekspertidena lasteaiaõpetaja ja eesti keele õpikute autor Lea Maiberg ning lasteaiaõpetaja
+        Mariana Koho. </p>
+      <h3 class="jumptarget" id="item-13">Kontakt</h3>
+      <p>
+        Jelena Kallas (EKI vanemarvutileksikograaf-projektijuht) jelena.kallas@eki.ee<br />
+        Kristina Koppel (EKI arvutileksikograaf) kristina.koppel@eki.ee<br />
+        Tiiu Üksik (EKI arvutilingvist) tiiu.yksik@eki.ee<br />
+        Katrin Tsepelina (EKI tarkvaraarendaja) katrin.tsepelina@gmail.com
+      </p>
+    </div>
   </div>
+  <a class="top-button" (click)="toTop()" title="Tagasi päisesse">
+    <span class="icon icon-chevron-left"></span>
+  </a>
 </div>
-<a class="top-button" (click)="toTop()" title="Tagasi päisesse">
-  <span class="icon icon-chevron-left"></span>
-</a>
-
 
 

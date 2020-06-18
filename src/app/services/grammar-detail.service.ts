@@ -16,7 +16,6 @@ export class GrammarDetailService {
     localStorage.setItem('search', JSON.stringify(item));
     localStorage.setItem('size', JSON.stringify(size));
     localStorage.setItem('page', JSON.stringify(page));
-
   }
 
   getData() {

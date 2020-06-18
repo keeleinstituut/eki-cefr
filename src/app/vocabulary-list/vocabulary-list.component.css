@@ -1,8 +1,11 @@
-
 .filter-btn {
   background: #00874F;
   border-radius: 6px;
   color: #FFFFFF;
+}
+
+.vocabulary-manual {
+  font-size: 0.85rem;
 }
 
 .remove-filters {
@@ -35,28 +38,6 @@
   background-size: 50% 50%;
 }
 
-.sm-search-btn {
-  background: #00874F;
-  border-radius: 0 6px 6px 0;
-  color: #FFFFFF;
-
-  display: inline-block;
-  text-transform: none;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  border-color: #00892E;
-}
-
 .alert-icn-search {
   position: relative;
   right: 0;
@@ -77,4 +58,32 @@
 
 .no-result{
   padding-top: 5rem;
+}
+
+.table thead th {
+  border-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .search-info-dl {
+    font-size: 12px;
+  }
+
+  .no-result {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-results {
+    padding: 0;
+  }
+
+  .search-results-text {
+    padding-left: 1.25rem;
+  }
+
+  .search-info-dl {
+    padding-right: 1.25rem;
+  }
 }

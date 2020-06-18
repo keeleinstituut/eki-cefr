@@ -1,4 +1,19 @@
-.footer-text{
+.footer-text {
+  font-size: 0.875rem;
   color: #d8d8d8;
   margin-bottom: 0;
+}
+
+@media (max-width: 575px) {
+  .footer-copyright {
+    font-size: 0.75rem;
+    text-align: left;
+    color: #ffffff;
+    line-height: 0.9375rem;
+  }
+
+  .footer-text {
+    line-height: 1.625rem;
+    color: #ECF0F2;
+  }
 }

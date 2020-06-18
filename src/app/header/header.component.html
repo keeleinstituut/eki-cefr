@@ -1,26 +1,48 @@
-<div class="search-wrap header-wrap">
-  <div class="row col-12">
-    <div class="col-10">
-      <div class="row">
-        <div class="col-3"><a [routerLink]="['/home']"><img width="165" src="./assets/images/icons/main-logo.svg"></a>
-        </div>
-        <a [routerLink]="['/vocabulary']" class="col-2 text-center pt-2 " (click)="setItem('vocabulary')">
-          <span class="main-menu-item" [class.item-active]="menuItem === 'vocabulary'">Sõnavara</span>
-        </a>
-        <a [routerLink]="['/grammar']" class="col-2 text-center pt-2 " (click)="setItem('grammar')">
-          <span class="main-menu-item" [class.item-active]="menuItem === 'grammar'">Grammatika</span>
-        </a>
-        <a [routerLink]="['/rating']" class="col-3 text-center pt-2 " (click)="setItem('rating')">
-          <span class="main-menu-item" [class.item-active]="menuItem === 'rating'">Teksti hindamine</span>
-        </a>
-        <a [routerLink]="['/about']" class="col-2 text-center pt-2" (click)="setItem('about')">
-          <span class="main-menu-item" [class.item-active]="menuItem === 'about'">Projektist</span>
-        </a>
+<!--<div class="search-wrap header-wrap position-fixed">-->
+    <nav class="navbar p-3 d-flex fixed-top navbar-expand-lg
+    navbar-light justify-content-between align-items-center"
+         [class.navbar-open]="!collapsed"
+         [class.navbar-closed]="collapsed"
+    >
+    <span class="navbar-brand">
+      <a [routerLink]="['/home']" (click)="setItem('home')">
+        <img class="main-logo" width="165" alt='õpetaja tööriistad logo' src="./assets/images/icons/main-logo.svg"
+             [class.logo-navbar-open]="!collapsed">
+      </a>
+    </span>
+      <span role="button" class="icon menu-btn m-0 d-md-none pt-3"
+            [class.icon-menu]="collapsed"
+            [class.icon-close]="!collapsed" aria-controls="navbarContent"
+            [attr.aria-expanded]="!collapsed" aria-label="Toggle navigation"
+            (click)="collapsed = !collapsed">
+    </span>
+      <div class="navbar-collapse pt-md-0 pt-0 pl-md-0 pl-1 align-items-center" [class.collapse]="collapsed"
+           id="navbarContent">
+          <a [routerLink]="['/vocabulary']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
+             (click)="setItem('vocabulary')">
+            <span class="main-menu-item"
+                  [class.item-active]="menuItem === 'vocabulary'">Sõnavara</span>
+          </a>
+          <a [routerLink]="['/grammar']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
+             (click)="setItem('grammar')">
+            <span class="main-menu-item"
+                  [class.item-active]="menuItem === 'grammar'">Grammatika</span>
+          </a>
+          <a [routerLink]="['/rating']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
+             (click)="setItem('rating')">
+          <span class="main-menu-item"
+                [class.item-active]="menuItem === 'rating'">Teksti hindamine</span>
+          </a>
+          <a [routerLink]="['/about']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
+             (click)="setItem('about')">
+            <span class="main-menu-item"
+                  [class.item-active]="menuItem === 'about'">Projektist</span>
+          </a>
       </div>
-    </div>
-    <a [attr.href]="APIEndpoint" aria-label="Sõnaveebi" role="link" class="logo">
-      <span class="icon icon-logo-s d-md-none"></span>
-      <span class="icon-small icon-logo d-none d-md-block"></span>
-    </a>
-  </div>
-</div>
+      <a [attr.href]="APIEndpoint" aria-label="Sõnaveebi" role="link"
+         class="logo position-relative d-md-block d-none" [class.d-block]="!collapsed"
+      >
+        <span class="icon-small icon-logo" [class.logo-navbar-open]="!collapsed"></span>
+      </a>
+    </nav>
+<!--</div>-->

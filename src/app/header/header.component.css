@@ -1,13 +1,20 @@
 .main-menu-item {
-  font-family: Klavika, serif;
+  font-family: Inter, serif;
   font-size: 1rem;
-
   color: #0053B3;
 }
 
 .logo, .back {
   right: 0 !important;
   left: auto;
+}
+
+.navbar {
+  display: flex;
+  white-space: nowrap;
+  width: 81%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .icon-small {
@@ -29,3 +36,62 @@ a:focus {
   text-decoration: none !important;
 }
 
+.navbar-closed {
+  background-color: #F2F2F2 !important;
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    transition: 0.5s;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .item-active {
+    border-bottom: 0;
+  }
+
+  .main-menu-item {
+    display: flex;
+    color: white;
+    padding-top: 1rem;
+  }
+
+  .menu-btn {
+    color: #0053b3;
+    font-size: 2rem;
+  }
+
+  .main-logo {
+    width: 105px;
+  }
+
+  .logo-navbar-open {
+    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(129deg) brightness(106%) contrast(102%);
+  }
+
+  .navbar-open {
+    background-color: black !important;
+  }
+
+  .logo {
+    padding: 1.2rem 1rem 1rem 0.1rem;
+  }
+
+  .icon-close {
+    color: #FFFFFF;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .collapse {
+    display: block !important;
+  }
+}

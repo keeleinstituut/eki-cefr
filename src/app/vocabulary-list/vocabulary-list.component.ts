@@ -107,7 +107,6 @@ export class VocabularyListComponent implements OnInit {
   }
 
   sendData() {
-    window.scrollTo(0, 0);
     this.showSpinner = true;
     this.levelLongString = '';
     this.wordLongString = '';
@@ -166,4 +165,7 @@ export class VocabularyListComponent implements OnInit {
     }
   }
 
+  scrollTo(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
+  }
 }

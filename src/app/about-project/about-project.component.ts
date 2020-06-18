@@ -7,14 +7,21 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './about-project.component.html',
   styleUrls: ['./about-project.component.css']
 })
+
 export class AboutProjectComponent {
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  onAnchorClick() {
+  onAnchorClick(value?: string) {
     this.route.fragment.subscribe(f => {
-      const element = document.querySelector('#' + f);
+      let element;
+
+      if (value) {
+        element = document.querySelector('#' + value);
+      } else {
+        element = document.querySelector('#' + f);
+      }
+
       if (element) {
         element.scrollIntoView(true);
       }
@@ -24,5 +31,4 @@ export class AboutProjectComponent {
   toTop() {
     window.scrollTo(0, 0);
   }
-
 }

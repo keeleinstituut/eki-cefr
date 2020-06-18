@@ -1,19 +1,29 @@
-import {NgbdSortableHeader, SortDirection, SortEvent} from '../services/sortable.directive';
-import {DecimalPipe} from '@angular/common';
-import {Component, Input, OnInit, Pipe, PipeTransform, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {Form, FormArray, FormBuilder, FormControl} from '@angular/forms';
-import {GrammarService} from './grammar.service';
-import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
-import {Router} from '@angular/router';
-import {GrammarDetailService} from '../services/grammar-detail.service';
-import {NgbPagination} from '@ng-bootstrap/ng-bootstrap';
+import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
+import { DecimalPipe } from '@angular/common';
+import {
+  Component,
+  Input,
+  OnInit,
+  Pipe,
+  PipeTransform,
+  QueryList,
+  ViewChild,
+  ViewChildren
+} from '@angular/core';
+import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import { GrammarService } from './grammar.service';
+import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
+import { Router } from '@angular/router';
+import { GrammarDetailService } from '../services/grammar-detail.service';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
-@Pipe({name: 'keys', pure: false})
+@Pipe({ name: 'keys', pure: false })
 export class KeysPipe implements PipeTransform {
   transform(value: any, args: any[] = null): any {
     return Object.values(value).sort((a: any, b: any) => a.ord - b.ord);
   }
 }
+
 export interface DataItem {
   maincategory_name: string;
   subcategory_name: string;
@@ -50,13 +60,13 @@ export class GrammarComponent implements OnInit {
   public list = [];
   itemsCount: number;
   public total$: number;
-  @ViewChild(FeedbackModalComponent, {static: false})
+  @ViewChild(FeedbackModalComponent, { static: false })
   public modal: FeedbackModalComponent;
-  @ViewChild(NgbPagination, {static: false})
+  @ViewChild(NgbPagination, { static: false })
   public pageConf: NgbPagination;
   public showSpinner = false;
   public noResult = false;
- @Input() public page = 1;
+  @Input() public page = 1;
   public pageSize = 20;
   public column = '';
   public direction = '';
@@ -69,7 +79,15 @@ export class GrammarComponent implements OnInit {
 
   }
 
-  onSort({column, direction}: SortEvent) {
+  get category() {
+    return (this.form.get('category')).controls;
+  }
+
+  get subCategory() {
+    return (this.form.get('category')).controls;
+  }
+
+  onSort({ column, direction }: SortEvent) {
     this.column = '&sort=' + column;
     this.direction = '&direction=' + direction;
     // resetting other headers
@@ -79,21 +97,6 @@ export class GrammarComponent implements OnInit {
       }
     });
     this.sendData();
-  }
-
-  private addCheckboxes() {
-    this.langLevel.forEach((o, i) => {
-      const control = new FormControl();
-      (this.form.controls.lang as FormArray).push(control);
-    });
-  }
-
-  private langCheckboxes(item: any) {
-    this.langLevel = this.childLangLevel;
-    this.langLevel.forEach((o, i) => {
-      const control = new FormControl(item[i]);
-      (this.form.controls.lang as FormArray).push(control);
-    });
   }
 
   ngOnInit() {
@@ -159,7 +162,7 @@ export class GrammarComponent implements OnInit {
   }
 
   getChildValues(selected: string, index: number) {
-    if (selected !== 'null') {
+    if (selected !== null) {
       this.childLists[index] = [];
       this.childCatList = this.categories.filter(item => item.parent === selected);
       this.childLists[index] = this.childCatList;
@@ -171,15 +174,17 @@ export class GrammarComponent implements OnInit {
   }
 
   getTypeValues(selected: string, index: number) {
-
     if (selected !== 'null') {
       this.listService.getTypeValues().subscribe((data: any) => {
         this.typeList = this.categories.find(item => item.category === selected);
-        this.typeList['names'] = [];
-        for (const item of this.typeList['descriptors']) {
-          const desc = data.items.find(x => x.descriptor === item);
-          this.typeList['names'].push(desc.name);
+        if (this.typeList) {
+          this.typeList['names'] = [];
+          for (const item of this.typeList['descriptors']) {
+            const desc = data.items.find(x => x.descriptor === item);
+            this.typeList['names'].push(desc.name);
+          }
         }
+
         this.typeLists[index] = this.typeList;
       });
     } else {
@@ -204,7 +209,9 @@ export class GrammarComponent implements OnInit {
         }
       });
     } else {
-        this.valTypeLists[index][indexTwo].values = [];
+      return this.valTypeLists && this.valTypeLists.length
+        ? this.valTypeLists[index][indexTwo].values = []
+        : null;
     }
   }
 
@@ -261,16 +268,7 @@ export class GrammarComponent implements OnInit {
     (this.form.get('category')).controls[i].controls.subCategory.removeAt(k);
   }
 
-  get category() {
-    return (this.form.get('category')).controls;
-  }
-
-  get subCategory() {
-    return (this.form.get('category')).controls;
-  }
-
   sendData() {
-    window.scrollTo(0, 0);
     this.showSpinner = true;
     this.levelLongString = '';
     const langLevel = this.form.value.lang
@@ -305,7 +303,7 @@ export class GrammarComponent implements OnInit {
       if (item.subcategory === 'null') {
         item.subcategory = null;
       }
-      valueArray = {maincategory: item.maincategory, subcategory: item.subcategory, descriptors};
+      valueArray = { maincategory: item.maincategory, subcategory: item.subcategory, descriptors };
       this.valuesArray.push(valueArray);
     }
     const offset = (this.page - 1) * this.pageSize + 1;
@@ -336,5 +334,24 @@ export class GrammarComponent implements OnInit {
     this.detailService.sendData(item.id);
     this.router.navigate(['/grammar-detail']);
     this.detailService.saveSearchData(this.form.value, this.pageSize, this.page);
+  }
+
+  scrollTo(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
+  }
+
+  private addCheckboxes() {
+    this.langLevel.forEach((o, i) => {
+      const control = new FormControl();
+      (this.form.controls.lang as FormArray).push(control);
+    });
+  }
+
+  private langCheckboxes(item: any) {
+    this.langLevel = this.childLangLevel;
+    this.langLevel.forEach((o, i) => {
+      const control = new FormControl(item[i]);
+      (this.form.controls.lang as FormArray).push(control);
+    });
   }
 }

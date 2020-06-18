@@ -11,8 +11,10 @@ export class HeaderComponent {
   public menuItem: string;
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
 
+  collapsed = true;
+
   setItem(selected: string) {
     this.menuItem = selected;
+    this.collapsed = true;
   }
-
 }

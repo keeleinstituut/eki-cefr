@@ -21,7 +21,7 @@
   border-radius: 4px 0 0 4px;
 }
 
-.add-bg{
+.add-bg {
   border-radius: 0 4px 4px 0;
   background: #CCD9E0;
   margin-top: 2rem;
@@ -49,33 +49,33 @@
 }
 
 .input-w {
-  width: 190px;
+  width: 240px;
 }
 
 .input-w-two {
   width: 240px;
 }
 
-.add-arguments-wrap{
-  background:#CCD9E0;
-  padding:8px;
-  border-radius:4px;
-  display:inline-block;
-  position:relative;
-  align-self:center;
-  margin-left:10px;
+.add-arguments-wrap {
+  background: #CCD9E0;
+  padding: 8px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  align-self: center;
+  margin-left: 10px;
 }
-.add-arguments-wrap:before{
-  content:"";
-  display:block;
-  position:absolute;
-  background:#CCD9E0;
-  width:10px;
-  height:10px;
-  top:50%;
-  left:-5px;
-  transform:translateY(-50%) rotate(45deg);
-  z-index:-1;
+
+.add-arguments-wrap:before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: #CCD9E0;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: -5px;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .btn-plus {
@@ -98,6 +98,7 @@
   padding-left: 7px;
   padding-right: 7px;
 }
+
 .btn-remove {
   color: #FFFFFF;
   display: inline-block;
@@ -113,19 +114,229 @@
   padding: auto;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 2px;
+  border-radius: 0 0 0 0.125rem;
   background: #8A98A5;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.add-border{
+.add-border {
   border-right: 2px solid #F2F2F2;
 }
 
-.main-border{
-  border-top: 1px dashed #8A98A5;
+.main-border {
+  border: 1px solid #7D8C9B;
+  border-radius: 0.125rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
 }
 
-.upper-border{
+.upper-border {
   border-top: 2px solid #F2F2F2;
 }
+
+.section-separator {
+  height: 2.625rem;
+  border-top: 1px solid #D8D8D8;
+  border-bottom: 1px solid #D8D8D8;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+}
+
+/*The select element is set to required*/
+/*as long as the selected options value*/
+/*is empty the element is not valid.*/
+.category-select:invalid {
+  color: #00fffb;
+}
+
+/*Styling for browsers which do support*/
+/*styling select option elements directly*/
+option:disabled {
+  color: gray;
+}
+
+option {
+  color: #000000;
+}
+
+.grammar-text {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 767px) {
+  .category-select {
+    font-size: 14px;
+  }
+
+  .icon-close-main-cat {
+    padding: 0 !important;
+    color: #FFFFFF !important;
+    font-size: 2.2rem;
+  }
+
+  .btn-remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -0.55rem;
+    margin-top: -0.05rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0 0.125rem 0 0.125rem;
+  }
+
+  .minus {
+    position: relative;
+    right: -5px;
+    top: -12px;
+    padding-right: 1rem;
+    font-size: xx-large;
+  }
+
+  .dark-bg {
+    margin-top: 0;
+    padding-top: 0.5rem;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .arrow-left {
+    margin-top: 0;
+    align-self: center;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ccd9e0;
+  }
+
+  .input-w {
+    width: 14.75rem;
+  }
+
+  .sm-search-btn {
+    width: 14.75rem;
+  }
+
+  .btn-plus {
+    width: 100%;
+  }
+
+  .add-arguments-wrap {
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+  }
+
+  .add-arguments-wrap:before {
+    top: 0;
+    left: 49.1%;
+  }
+
+  .add-bg {
+    margin-left: 0;
+    margin-top: 0.15rem;
+    border-radius: 0 0 4px 4px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .add-main-cat {
+    justify-content: center;
+    padding-top: 1rem;
+  }
+
+  .sm-search-btn {
+    width: 100%;
+  }
+
+  .main-border {
+    margin-bottom: 1.625rem;
+    margin-left: -1.8rem;
+    margin-right: -1.8rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .main-border:last-child {
+    margin-bottom: 0;
+  }
+
+  .show-on-mobile {
+    display: block;
+  }
+
+  .cat-attribute {
+    justify-content: flex-end;
+  }
+
+  .icon-close {
+    color: #7D8C9B;
+    padding-right: 1.25rem;
+  }
+
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .lang-settings {
+    flex-direction: column;
+  }
+
+  .input-w {
+    width: 100%;
+  }
+
+  .input-w-two {
+    width: 100%;
+  }
+
+  .btn-plus {
+    width: 100%;
+  }
+
+  .add-arguments-wrap:before {
+    left: 48.4%;
+  }
+
+  .search-results-text {
+    font-size: 12px;
+    padding-left: 1.25rem;
+  }
+
+  table {
+    margin-left: -1.25rem;
+  }
+
+  tr {
+    margin-right: -2.5rem;
+  }
+}
+
+

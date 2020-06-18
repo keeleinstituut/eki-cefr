@@ -16,11 +16,12 @@ a {
   top: 60px;
   position: sticky;
 }
+
 .jumptarget::before {
-  content:"";
-  display:block;
-  height:100px; /* fixed header height*/
-  margin:-100px 0 0; /* negative fixed header height */
+  content: "";
+  display: block;
+  height: 100px; /* fixed header height*/
+  margin: -100px 0 0; /* negative fixed header height */
 }
 
 .table-sm th,
@@ -39,5 +40,17 @@ a {
 }
 
 .set-nav {
-	padding-top: 1rem;
+  padding-top: 1rem;
+}
+
+@media (max-width: 767px) {
+  .lang-lvl-text {
+    font-size: 18px;
+    width: 80%;
+  }
+
+  .form-control {
+    padding: 0.35rem .75rem;
+    font-size: 0.875rem;
+  }
 }

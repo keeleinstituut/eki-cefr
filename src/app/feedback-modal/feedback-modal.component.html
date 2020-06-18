@@ -14,43 +14,49 @@
       <div class="row pl-4">
         <p>Kõik väljad on kohustuslikud</p>
       </div>
-    <div class="row pl-4 pr-4 pb-4">
-      <label for="comment" class="ml-0">
-        Kommentaar
-      </label>
-      <textarea [class.is-invalid]="error && this.form.controls.comments.invalid" type="text" formControlName="comments" id="comment" class="form-control" required></textarea>
-      <div *ngIf="error && this.form.controls.comments.invalid" class="invalid-origin-feedback">
-        Välja täitmine on kohustuslik
+      <div class="row pl-4 pr-4">
+        <label for="comment" class="ml-0">
+          Kommentaar
+        </label>
+        <textarea [class.is-invalid]="error && this.form.controls.comments.invalid" type="text"
+                  formControlName="comments" id="comment" class="form-control comment"
+                  required></textarea>
+        <div *ngIf="error && this.form.controls.comments.invalid" class="invalid-origin-feedback">
+          Välja täitmine on kohustuslik
+        </div>
       </div>
-    </div>
       <div class="row">
-    <div class="col-6 p-4">
-      <label for="name" class="ml-0">
-        Nimi
-      </label>
-      <input type="text" [class.is-invalid]="error && this.form.controls.sender.invalid" formControlName="sender" id="name" class="form-control" required>
-      <div *ngIf="error && this.form.controls.sender.invalid" class="invalid-origin-feedback">
-        Välja täitmine on kohustuslik
-      </div>
-    </div>
-    <div class="col-6 p-4">
-      <label for="email" class="ml-0">
-        E-post
-      </label>
-      <input type="email" [class.is-invalid]="error && this.form.controls.email.invalid" formControlName="email" id="email" class="form-control" required>
-      <div *ngIf="error && this.form.controls.email.invalid" class="invalid-origin-feedback">
-        Välja täitmine on kohustuslik
-      </div>
-    </div>
+        <div class="col-sm-6 col-12 p-4 form-field">
+          <label for="name" class="ml-0">
+            Nimi
+          </label>
+          <input type="text" [class.is-invalid]="error && this.form.controls.sender.invalid"
+                 formControlName="sender" id="name" class="form-control" required>
+          <div *ngIf="error && this.form.controls.sender.invalid" class="invalid-origin-feedback">
+            Välja täitmine on kohustuslik
+          </div>
+        </div>
+        <div class="col-sm-6 col-12 p-4 form-field">
+          <label for="email" class="ml-0">
+            E-post
+          </label>
+          <input type="email" [class.is-invalid]="error && this.form.controls.email.invalid"
+                 formControlName="email" id="email" class="form-control" required>
+          <div *ngIf="error && this.form.controls.email.invalid" class="invalid-origin-feedback">
+            Välja täitmine on kohustuslik
+          </div>
+        </div>
       </div>
     </form>
-    <div class="row pl-3">
-      <div class="custom-control custom-checkbox mt-2">
-        <input type="checkbox" class="custom-control-input modal-check" id="modalCheck1" [(ngModel)]="agree">
+    <div class="row pl-3 mr-0">
+      <div class="custom-control custom-checkbox mt-2 modal-checkbox">
+        <input type="checkbox" class="custom-control-input modal-check" id="modalCheck1"
+               [(ngModel)]="agree">
         <label class="custom-control-label" for="modalCheck1">
           <span *ngIf="!error || (agree === true)">Postitades kommentaari nõustud</span>
           <span *ngIf="error && (agree === false)" class="invalid-text-feedback">Postitades kommentaari nõustud</span>
-          <a role="link" class="pl-2" [attr.href]="APIEndpoint + '/regulations'" data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
+          <a role="link" class="pl-2" [attr.href]="APIEndpoint + '/regulations'"
+             data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
         </label>
         <div *ngIf="error && (agree === false)" class="invalid-origin-feedback">
           Välja täitmine on kohustuslik
@@ -59,10 +65,13 @@
     </div>
   </div>
   <div class="modal-footer">
-    <div class="col-12 p-0 mt-2">
+    <div class="col-12 p-0">
       <div class="text-right">
-        <a role="button" class="mr-3" (click)="close()">Sulge</a>
-        <button [disabled]="agree === false" [class.disabled]="agree === false" role="button" type="button" class="btn btn-primary" name="feedbackSendBtn" (click)="sendData()">Saada</button>
+        <a role="button" class="mr-3 modal-footer-btn" (click)="close()">Sulge</a>
+        <button [disabled]="agree === false" [class.disabled]="agree === false" role="button"
+                type="button" class="btn btn-primary modal-footer-btn" name="feedbackSendBtn" (click)="sendData()">
+          Saada
+        </button>
       </div>
     </div>
   </div>

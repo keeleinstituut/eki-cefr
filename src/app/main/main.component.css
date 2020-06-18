@@ -1,4 +1,26 @@
 .main-item {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: #0053B3;
+}
+
+@media (max-width: 767px) {
+  .main-item {
+    padding-bottom: 2rem;
+  }
+
+  .main-text {
+    font-size: 14px;
+    padding-top: 0.5rem !important;
+  }
+
+  .main-items-block {
+    padding-top: 0 !important;
+    margin-top: -2rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .esf-img {
+    width: 150px;
+  }
 }
