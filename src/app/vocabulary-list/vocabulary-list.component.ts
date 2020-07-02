@@ -1,10 +1,11 @@
-import {NgbdSortableHeader, SortEvent} from '../services/sortable.directive';
-import {DecimalPipe} from '@angular/common';
-import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {VocabularyListService} from './vocabulary-list.service';
-import {FormArray, FormBuilder, FormControl} from '@angular/forms';
-import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
-import {environment} from './../../environments/environment';
+import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
+import { DecimalPipe } from '@angular/common';
+import { Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { VocabularyListService } from './vocabulary-list.service';
+import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
+import { environment } from './../../environments/environment';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 export interface TableItem {
   url: string;
@@ -12,6 +13,7 @@ export interface TableItem {
   pos_text: string;
   level: string;
 }
+
 @Component({
   selector: 'app-vocabulary-list',
   templateUrl: './vocabulary-list.component.html',
@@ -19,9 +21,7 @@ export interface TableItem {
   providers: [DecimalPipe]
 })
 
-
-export class VocabularyListComponent implements OnInit {
-
+export class VocabularyListComponent implements OnInit, OnDestroy {
   public adultLangLevel: string[];
   public childLangLevel: string[];
   public adultWordTypes: string[];
@@ -31,7 +31,7 @@ export class VocabularyListComponent implements OnInit {
   public form;
   public tableData: TableItem[];
   public total$: number;
-  @ViewChild(FeedbackModalComponent, {static: false})
+  @ViewChild(FeedbackModalComponent, { static: false })
   public modal: FeedbackModalComponent;
   public levelLongString = '';
   public wordLongString = '';
@@ -39,24 +39,40 @@ export class VocabularyListComponent implements OnInit {
   public showSpinner = false;
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public noResult = false;
-  public page = 1;
+  public page = 0;
+  public showTable = true;
   public pageSize = 20;
   public column = '';
   public direction = '';
+  public routeHandler: any;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(private listService: VocabularyListService, private formBuilder: FormBuilder, private pipe: DecimalPipe) {
 
+  constructor(private listService: VocabularyListService, private formBuilder: FormBuilder,
+              private pipe: DecimalPipe, private router: Router, private activatedRoute: ActivatedRoute) {
     this.form = this.formBuilder.group({
       search: '',
       list: 'etLex',
       lang: new FormArray([]),
       types: new FormArray([])
     });
+
+    this.routeHandler = router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.page = +this.activatedRoute.snapshot.queryParamMap.get('page');
+
+        if (this.page > 0) {
+          this.showTable = true;
+          this.sendData(this.page);
+        } else {
+          this.showTable = false;
+        }
+      }
+    });
   }
 
-  onSort({column, direction}: SortEvent) {
+  onSort({ column, direction }: SortEvent) {
     this.column = '&sort=' + column;
     this.direction = '&direction=' + direction;
     // resetting other headers
@@ -68,17 +84,6 @@ export class VocabularyListComponent implements OnInit {
     this.sendData();
   }
 
-  private addCheckboxes() {
-    this.langLevel.forEach((o, i) => {
-      const control = new FormControl();
-      (this.form.controls.lang as FormArray).push(control);
-    });
-    this.wordTypes.forEach((o, i) => {
-      const control = new FormControl();
-      (this.form.controls.types as FormArray).push(control);
-    });
-  }
-
   ngOnInit() {
     this.listService.getCheckboxData().subscribe((data: any) => {
       this.adultLangLevel = data.items.etLex.levels;
@@ -87,6 +92,10 @@ export class VocabularyListComponent implements OnInit {
       this.childWordTypes = data.items.noor.poslist;
       this.getAdultData();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.routeHandler.unsubscribe();
   }
 
   getAdultData() {
@@ -106,7 +115,15 @@ export class VocabularyListComponent implements OnInit {
     this.addCheckboxes();
   }
 
-  sendData() {
+  sendData(pageNr?: number) {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        page: pageNr,
+      },
+      queryParamsHandling: 'merge',
+    });
+
     this.showSpinner = true;
     this.levelLongString = '';
     this.wordLongString = '';
@@ -135,6 +152,7 @@ export class VocabularyListComponent implements OnInit {
     if (this.form.value.search !== '') {
       this.searchLongString = '&word=' + this.form.value.search;
     }
+
     const offset = (this.page - 1) * this.pageSize + 1;
 
     this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
@@ -166,6 +184,17 @@ export class VocabularyListComponent implements OnInit {
   }
 
   scrollTo(el: HTMLElement) {
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  private addCheckboxes() {
+    this.langLevel.forEach((o, i) => {
+      const control = new FormControl();
+      (this.form.controls.lang as FormArray).push(control);
+    });
+    this.wordTypes.forEach((o, i) => {
+      const control = new FormControl();
+      (this.form.controls.types as FormArray).push(control);
+    });
   }
 }

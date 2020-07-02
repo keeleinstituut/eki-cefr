@@ -14,6 +14,8 @@ export class AppComponent {
   isIE = /msie\s|trident\//i.test(window.navigator.userAgent);
 
   constructor(public router: Router) {
+    const urlParams = ['#', '?'];
+
     this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
           gtag('config', 'UA-134441495-1',
@@ -23,7 +25,7 @@ export class AppComponent {
           );
         }
 
-        if (!this.router.url.includes('/about#')) {
+        if (!urlParams.some(char => this.router.url.includes(char))) {
           window.scroll({
             top: 0,
             left: 0,

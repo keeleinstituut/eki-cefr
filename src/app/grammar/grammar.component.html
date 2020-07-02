@@ -106,7 +106,7 @@
             <button type="button" class="btn-remove d-md-block d-none" (click)="removeRow(i)"><i class="fa fa-times"></i></button>
           </div>
           <div *ngIf="i == 0" class="pt-4 pb-md-0 pb-4 mt-3 d-md-block d-none">
-            <button type="button" class="btn sm-search-btn ml-md-4 ml-0" (click)="page=1; sendData()">Otsi</button>
+            <button type="button" class="btn sm-search-btn ml-md-4 ml-0" (click)="page=1; sendData(1)">Otsi</button>
           </div>
         </div>
       </div>
@@ -115,14 +115,14 @@
         <a class="more-link" (click)="addRow()">Lisa peakategooria</a>
       </div>
       <div class="row pt-4 pb-md-0 mt-3 pb-md-4 pb-3 d-md-none">
-        <button type="button" class="btn sm-search-btn ml-md-4 ml-0" (click)="page=1; sendData()">Otsi</button>
+        <button type="button" class="btn sm-search-btn ml-md-4 ml-0" (click)="page=1; sendData(1)">Otsi</button>
       </div>
     </form>
-    <div #searchResults class="pt-md-4 pt-0 d-flex flex-column" *ngIf="!noResult && total$">
+    <div #searchResults class="pt-md-4 pt-0 d-flex flex-column" *ngIf="!noResult && total$ && showTable">
       <b>Otsingu tulemused ( <span>{{total$}}</span> )</b>
       <div class="float-right ml-auto search-results-text">
         <label for="select">Näita</label>
-        <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="sendData()">
+        <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="sendData(page)">
           <option [ngValue]="10">10</option>
           <option [ngValue]="20">20</option>
           <option [ngValue]="30">30</option>
@@ -132,7 +132,7 @@
         </select>
       </div>
       <div class="section-separator d-sm-none"></div>
-      <table class="table table-striped">
+      <table class="table table-striped" *ngIf="showTable">
         <thead>
         <tr>
           <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria<span
@@ -185,9 +185,9 @@
         </tr>
         </tbody>
       </table>
-      <div>
+      <div *ngIf="showTable">
         <ngb-pagination [collectionSize]="total$" [(page)]="page" [pageSize]="pageSize"
-                        (pageChange)="sendData(); scrollTo(searchResults)" [maxSize]="10">
+                        (pageChange)="page > 0 && sendData($event); scrollTo(searchResults)" [maxSize]="10">
           <ng-template ngbPaginationPrevious>Eelmine</ng-template>
           <ng-template ngbPaginationNext>Järgmine</ng-template>
         </ngb-pagination>

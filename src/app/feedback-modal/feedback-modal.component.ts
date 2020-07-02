@@ -11,10 +11,8 @@ import {environment} from '../../environments/environment';
   providers: [NgbModalConfig, NgbModal]
 })
 export class FeedbackModalComponent {
-
   @ViewChild('content', {static: false}) content;
   public form;
-
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public success = false;
   public error = false;

@@ -3,6 +3,7 @@ import { DecimalPipe } from '@angular/common';
 import {
   Component,
   Input,
+  OnDestroy,
   OnInit,
   Pipe,
   PipeTransform,
@@ -13,7 +14,7 @@ import {
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { GrammarService } from './grammar.service';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GrammarDetailService } from '../services/grammar-detail.service';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
@@ -39,7 +40,7 @@ export interface DataItem {
   styleUrls: ['./grammar.component.css'],
   providers: [DecimalPipe]
 })
-export class GrammarComponent implements OnInit {
+export class GrammarComponent implements OnInit, OnDestroy {
 
   public adultLangLevel: string[];
   public childLangLevel: string[];
@@ -66,17 +67,31 @@ export class GrammarComponent implements OnInit {
   public pageConf: NgbPagination;
   public showSpinner = false;
   public noResult = false;
-  @Input() public page = 1;
+  @Input() public page = 0;
   public pageSize = 20;
   public column = '';
   public direction = '';
   public levelLongString = '';
+  public routeHandler: any;
+  public showTable = true;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
   constructor(private listService: GrammarService, private formBuilder: FormBuilder, private pipe: DecimalPipe, private router: Router,
-              private detailService: GrammarDetailService) {
+              private detailService: GrammarDetailService, private activatedRoute: ActivatedRoute) {
 
+    this.routeHandler = router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.page = +this.activatedRoute.snapshot.queryParamMap.get('page');
+
+        if (this.page > 0) {
+          this.showTable = true;
+          this.sendData(this.page);
+        } else {
+          this.showTable = false;
+        }
+      }
+    });
   }
 
   get category() {
@@ -146,6 +161,10 @@ export class GrammarComponent implements OnInit {
         }
       });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.routeHandler.unsubscribe();
   }
 
   addCont(item, index): FormArray {
@@ -268,7 +287,15 @@ export class GrammarComponent implements OnInit {
     (this.form.get('category')).controls[i].controls.subCategory.removeAt(k);
   }
 
-  sendData() {
+  sendData(pageNr?: number) {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        page: pageNr,
+      },
+      queryParamsHandling: 'merge',
+    });
+
     this.showSpinner = true;
     this.levelLongString = '';
     const langLevel = this.form.value.lang
@@ -337,7 +364,7 @@ export class GrammarComponent implements OnInit {
   }
 
   scrollTo(el: HTMLElement) {
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView({ behavior: 'smooth' });
   }
 
   private addCheckboxes() {
