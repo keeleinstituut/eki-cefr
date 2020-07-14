@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 import {GrammarDetailService} from '../services/grammar-detail.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-grammar-detail',
@@ -15,7 +16,9 @@ export class GrammarDetailComponent implements OnInit {
   isDataAvailable = false;
   public lang = '';
 
-  constructor(private detailService: GrammarDetailService) {
+  constructor(
+    public location: Location,
+    private detailService: GrammarDetailService) {
   }
 
   ngOnInit() {

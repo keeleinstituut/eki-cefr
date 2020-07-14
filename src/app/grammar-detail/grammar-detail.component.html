@@ -5,7 +5,7 @@
         <h3>Detailinfo</h3>
       </div>
       <div class="col-8 pr-4 pb-2 mt-md-0 mt-2">
-        <a [routerLink]="['/grammar']" class="back-link">Tagasi</a>
+        <a (click)="location.back()" href="javascript:void(0)" class="back-link">Tagasi</a>
       </div>
       <div class="col-4 pb-md-0 pb-2">
         <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>

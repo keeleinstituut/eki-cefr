@@ -115,7 +115,7 @@
         <a class="more-link" (click)="addRow()">Lisa peakategooria</a>
       </div>
       <div class="row pt-4 pb-md-0 mt-3 pb-md-4 pb-3 d-md-none">
-        <button type="button" class="btn sm-search-btn ml-md-4 ml-0" (click)="page=1; sendData(1)">Otsi</button>
+        <button type="button" class="btn sm-search-btn ml-md-4 ml-0" (click)="sendData(1)">Otsi</button>
       </div>
     </form>
     <div #searchResults class="pt-md-4 pt-0 d-flex flex-column" *ngIf="!noResult && total$ && showTable">
@@ -187,7 +187,7 @@
       </table>
       <div *ngIf="showTable">
         <ngb-pagination [collectionSize]="total$" [(page)]="page" [pageSize]="pageSize"
-                        (pageChange)="page > 0 && sendData($event); scrollTo(searchResults)" [maxSize]="10">
+                        (pageChange)="handleOnPageChange($event); scrollTo(searchResults)" [maxSize]="10">
           <ng-template ngbPaginationPrevious>Eelmine</ng-template>
           <ng-template ngbPaginationNext>Järgmine</ng-template>
         </ngb-pagination>

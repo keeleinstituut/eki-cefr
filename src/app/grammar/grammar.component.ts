@@ -2,6 +2,7 @@ import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
 import { DecimalPipe } from '@angular/common';
 import {
   Component,
+  ElementRef,
   Input,
   OnDestroy,
   OnInit,
@@ -76,9 +77,15 @@ export class GrammarComponent implements OnInit, OnDestroy {
   public showTable = true;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
+  @ViewChild('searchResults', { static: true }) searchResults: ElementRef;
 
-  constructor(private listService: GrammarService, private formBuilder: FormBuilder, private pipe: DecimalPipe, private router: Router,
-              private detailService: GrammarDetailService, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private listService: GrammarService,
+    private formBuilder: FormBuilder,
+    private pipe: DecimalPipe,
+    private router: Router,
+    private detailService: GrammarDetailService,
+    private activatedRoute: ActivatedRoute) {
 
     this.routeHandler = router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -100,6 +107,12 @@ export class GrammarComponent implements OnInit, OnDestroy {
 
   get subCategory() {
     return (this.form.get('category')).controls;
+  }
+
+  handleOnPageChange(pageNr) {
+    if (pageNr) {
+      this.sendData(pageNr);
+    }
   }
 
   onSort({ column, direction }: SortEvent) {
@@ -288,19 +301,22 @@ export class GrammarComponent implements OnInit, OnDestroy {
   }
 
   sendData(pageNr?: number) {
-    this.router.navigate([], {
-      relativeTo: this.activatedRoute,
-      queryParams: {
-        page: pageNr,
-      },
-      queryParamsHandling: 'merge',
-    });
+    if (pageNr) {
+      this.router.navigate([], {
+        relativeTo: this.activatedRoute,
+        queryParams: {
+          page: pageNr,
+        },
+        queryParamsHandling: 'merge',
+      });
+    }
 
     this.showSpinner = true;
     this.levelLongString = '';
-    const langLevel = this.form.value.lang
+
+    const langLevel = this.form ? this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
-      .filter(v => v !== null);
+      .filter(v => v !== null) : [];
 
     for (const lang of langLevel) {
       let levelString = '';
@@ -312,7 +328,9 @@ export class GrammarComponent implements OnInit, OnDestroy {
       this.levelLongString = this.levelLongString + levelString;
     }
 
-    for (const item of this.form.value.category) {
+    const category = this.form ? this.form.value.category : [];
+
+    for (const item of category) {
       let valueArray = {};
       const descriptors = [];
       for (const part of item.subCategory) {
@@ -333,7 +351,8 @@ export class GrammarComponent implements OnInit, OnDestroy {
       valueArray = { maincategory: item.maincategory, subcategory: item.subcategory, descriptors };
       this.valuesArray.push(valueArray);
     }
-    const offset = (this.page - 1) * this.pageSize + 1;
+
+    const offset =  (this.page - 1) * this.pageSize + 1;
 
     this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
       this.column, this.direction).subscribe((data: any) => {
@@ -363,7 +382,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
     this.detailService.saveSearchData(this.form.value, this.pageSize, this.page);
   }
 
-  scrollTo(el: HTMLElement) {
+  scrollTo(el) {
     el.scrollIntoView({ behavior: 'smooth' });
   }
 
