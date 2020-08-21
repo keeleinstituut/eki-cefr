@@ -81,7 +81,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
         header.direction = '';
       }
     });
-    this.sendData();
+    this.sendData(this.page);
   }
 
   ngOnInit() {
