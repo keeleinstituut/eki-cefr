@@ -13,12 +13,17 @@ export class VocabularyListService {
     return this.http.get('https://elo.eki.ee/etLex/api/v1.0/projects?asdict=1');
   }
 
-  sendToFile(search: string, list: string, item: string, level?: string, words?: string) {
-    return window.location.href = 'https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?' + search + level + words + '&format=' + item;
+
+  getThemesData() {
+    return this.http.get('https://elo.eki.ee/etLex/api/v1.0/themes');
   }
 
-  getTableData(search: string, list: string, size: number, page: number, column: string, direction: string, level?: string, words?: string) {
+  sendToFile(search: string, list: string, item: string, level?: string, words?: string, theme?: string) {
+    return window.location.href = 'https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?' + search + level + words + theme + '&format=' + item;
+  }
+
+  getTableData(search: string, list: string, size: number, page: number, column: string, direction: string, level?: string, words?: string, theme?: string) {
     return this.http
-      .get('https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + column + direction + search + level + words);
+      .get('https://elo.eki.ee/etLex/api/v1.0/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + column + direction + search + level + words + theme);
   }
 }

@@ -47,6 +47,7 @@
           <input type="text" formControlName="search" class="form-control col-sm-7 col-md-6 col-9">
           <button class="btn sm-search-btn ml-2" (click)="page = 1; sendData(1)">Otsi</button>
         </div>
+
         <div class="row">
           <div class="col-4">
             <b>Keeletase:</b>
@@ -71,9 +72,19 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-lg-8 col-sm-6 col-md-7 ">
+            <b>Temaatilised loendid:</b>
+            <select class="form-control form-control-lg" formControlName="theme">
+              <option value=""></option>
+              <option *ngFor="let theme of themesList" value="{{theme.id}}">{{theme.name}}</option>
+            </select>
+
+          </div>
+        </div>
         <div class="pt-4 pb-md-0 pb-4">
           <a class="remove-filters pr-4"
-             (click)="form.controls.lang.reset(); form.controls.types.reset();this.noResult = false;">Tühista
+             (click)="form.controls.lang.reset(); form.controls.types.reset(); form.controls.theme.reset();this.noResult = false;">Tühista
             filtrid</a>
           <a class="remove-filters" (click)="checkAll()">Kõik sõnaliigid</a>
         </div>

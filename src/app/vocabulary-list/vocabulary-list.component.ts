@@ -22,6 +22,7 @@ export interface TableItem {
 })
 
 export class VocabularyListComponent implements OnInit, OnDestroy {
+  public themesList: string[];
   public adultLangLevel: string[];
   public childLangLevel: string[];
   public adultWordTypes: string[];
@@ -37,6 +38,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   public wordLongString = '';
   public searchLongString = '';
   public showSpinner = false;
+  public themeLongString = '';
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public noResult = false;
   public page = 0;
@@ -54,6 +56,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       search: '',
       list: 'etLex',
+      theme: '',
       lang: new FormArray([]),
       types: new FormArray([])
     });
@@ -92,6 +95,9 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
       this.childWordTypes = data.items.noor.poslist;
       this.getAdultData();
     });
+    this.listService.getThemesData().subscribe((data: any) => {
+      this.themesList = data.items;
+    });
   }
 
   ngOnDestroy(): void {
@@ -128,6 +134,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
     this.levelLongString = '';
     this.wordLongString = '';
     this.searchLongString = '';
+    this.themeLongString = '';
 
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
@@ -153,10 +160,14 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
       this.searchLongString = '&word=' + this.form.value.search;
     }
 
+    if (this.form.value.theme !== '' && this.form.value.theme !== null) {
+      this.themeLongString = '&themes=' + this.form.value.theme;
+    }
+    
     const offset = (this.page - 1) * this.pageSize + 1;
 
     this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
-      this.column, this.direction, this.levelLongString, this.wordLongString)
+      this.column, this.direction, this.levelLongString, this.wordLongString, this.themeLongString)
       .subscribe((data: any) => {
         this.tableData = data.items;
         this.total$ = data.total_count;
@@ -168,7 +179,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   }
 
   sendToFile(item) {
-    this.listService.sendToFile(this.searchLongString, this.form.value.list, item, this.levelLongString, this.wordLongString);
+    this.listService.sendToFile(this.searchLongString, this.form.value.list, item, this.levelLongString, this.wordLongString, this.themeLongString);
   }
 
   checkAll() {
