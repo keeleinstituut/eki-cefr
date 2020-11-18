@@ -85,7 +85,6 @@
         {{obj.function_pragm}}
       </div>
     </div>
-    <hr>
     <div class="row pb-4" *ngIf="obj.comment">
       <div class="col-md-2 col-12">
         Märkus:
@@ -94,49 +93,75 @@
         {{obj.comment}}
       </div>
     </div>
-    <div class="d-flex flex-md-column flex-column-reverse" *ngFor="let example of obj.examples; let i = index">
-      <div class="row" *ngIf="i===0">
-        <div class="col-md-2 col-12 d-md-block d-none">
-          &nbsp;
-        </div>
-        <div class="col-md-6 col-12 d-md-block d-none">
-          Näide
-        </div>
-        <div class="col-md-4 col-12 d-md-block d-none">
-          Allikas
-        </div>
-      </div>
+    <hr>
+    <div class="d-flex flex-md-column flex-column-reverse" *ngIf="obj.examples">
       <div class="row">
-        &nbsp;
-      </div>
-      <div class="row">
-        <div class="col-md-2 col-12 pb-md-0 pb-3 d-md-block d-none">
-          {{i + 1}}.
-        </div>
-        <div class="col-md-6 col-12 d-md-none">
-          {{i + 1}}. Näide
-        </div>
-        <div class="col-md-6 col-12 pb-md-0 pb-3">
-          <i>{{example.text}}</i>
-        </div>
-        <div class="col-md-4 col-12 d-md-none">
-          Allikas
-        </div>
-        <div class="col-md-4 col-12">
-          <span *ngIf="example.source_url"><a href="{{example.source_url}}"
-                                              target="_blank">{{example.source_name}}</a></span>
-          <span *ngIf="!example.source_url">{{example.source_name}}</span>
-        </div>
-      </div>
-      <div class="row pb-4" *ngIf="example.text_fixed">
         <div class="col-md-2 col-12">
-          Parandatud
+          Allikas
         </div>
         <div class="col-md-10 col-12">
-          {{example.text_fixed}}
+          Näitelaused
         </div>
       </div>
-    </div>
+      <div class="row  mt-3" *ngIf="obj.examples_nosource.length" >
+        <div class="col-md-2 col-12">
+          <span *ngIf="obj.examples_nosource[0]['source_url']">
+            <a href="{{obj.examples_nosource[0]['source_url']}}" target="_blank">
+              {{obj.examples_nosource[0]['source_name']}}
+            </a>
+          </span>
+          <span *ngIf="!obj.examples_nosource[0]['source_url']">
+            {{obj.examples_nosource[0]['source_name']}}
+          </span>
+        </div>
+        <div class="col-md-10 col-12">
+          <div *ngFor="let example of obj.examples_nosource; let i = index" class="mt-1">
+            {{example.text}}
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3" *ngIf="obj.examples_textbook.length">
+        <div class="col-md-2 col-12 ">
+          <span *ngIf="obj.examples_textbook[0]['source_url']">
+            <a href="{{obj.examples_textbook[0]['source_url']}}" target="_blank">
+              {{obj.examples_textbook[0]['source_name']}}
+            </a>
+          </span>
+          <span *ngIf="!obj.examples_textbook[0]['source_url']">
+            {{obj.examples_textbook[0]['source_name']}}
+          </span>
+        </div>
+        <div class="col-md-10 col-12">
+          <div *ngFor="let example of obj.examples_textbook; let i = index" class="mt-1">
+            {{example.text}}
+          </div>
+        </div>
+      </div>
+      <div class="row  mt-3" *ngIf="obj.examples_learnerlanguage.length">
+        <div class="col-md-2 col-12" rowspan="2">
+          <span *ngIf="obj.examples_learnerlanguage[0]['source_url']">
+            <a href="{{obj.examples_learnerlanguage[0]['source_url']}}" target="_blank">
+              {{obj.examples_learnerlanguage[0]['source_name']}}
+            </a>
+          </span>
+          <span *ngIf="!obj.examples_learnerlanguage[0]['source_url']">
+            {{obj.examples_learnerlanguage[0]['source_name']}}
+          </span>
+        </div>
+        <div class="col">
+          <div class="row  mt-1" *ngFor="let example of obj.examples_learnerlanguage; let i = index">
+            <div class="col-md-6 col-sm-6 col-12">
+              <span *ngIf="i==0" class="d-none d-md-block"><i>Algupärane lause</i><br/></span>
+              <i class="d-md-none">Algupärane lause: </i>{{example.text}}
+            </div>
+            <div class="col-md-6 col-sm-6 col-12">
+              <span *ngIf="i==0" class="d-none d-md-block"><i>Parandatud lause</i><br/></span>
+              <i class="d-md-none">Parandatud lause: </i>{{example.text_fixed}}
+            </div>
+          </div>
+        </div>
+      </div>
     <app-feedback-modal></app-feedback-modal>
   </div>
+</div>
 </div>
