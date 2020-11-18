@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="pb-4 ml-md-0 ml-auto row">
-          <input type="text" formControlName="search" class="form-control col-sm-7 col-md-6 col-9">
+          <input type="text" formControlName="search" placeholder="Otsi sõna" class="form-control col-sm-7 col-md-6 col-9">
           <button class="btn sm-search-btn ml-2" (click)="page = 1; sendData(1)">Otsi</button>
         </div>
 
@@ -76,7 +76,7 @@
           <div class="col-lg-8 col-sm-6 col-md-7 ">
             <b>Temaatilised loendid:</b>
             <select class="form-control form-control-lg" formControlName="theme">
-              <option value=""></option>
+              <option value="" >Vali teema</option>
               <option *ngFor="let theme of themesList" value="{{theme.id}}">{{theme.name}}</option>
             </select>
 
