@@ -169,7 +169,7 @@
                 <span  [innerHTML]="item.can_do_statement" class="text-justify">{{item.can_do_statement}}</span>
               </div>
               <div class="row pt-1" >
-                Näide: <i class="pl-1">{{item.firstexample}}</i>
+                Näited: <i class="pl-1" *ngIf="!(item.langlevel=='B2') || !item.examples_textbook;else elseBlock">{{item.examples_nosource}}</i><ng-template #elseBlock><i class="pl-1" >{{item.examples_textbook}}</i></ng-template>
               </div>
               <div class="row small pt-1" >
                 Tunnused:&nbsp;
