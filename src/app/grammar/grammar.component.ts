@@ -131,6 +131,12 @@ export class GrammarComponent implements OnInit, OnDestroy {
     this.listService.getCheckboxData().subscribe((data: any) => {
       this.adultLangLevel = data.items.etLex.levels;
       this.childLangLevel = data.items.noor.levels;
+      //remove C1
+      var index = this.childLangLevel.indexOf('C1');
+      if (index > -1) {
+        this.childLangLevel.splice(index, 1);
+      }
+
       this.adultWordTypes = data.items.etLex.poslist;
       this.childWordTypes = data.items.noor.poslist;
     }, () => {
