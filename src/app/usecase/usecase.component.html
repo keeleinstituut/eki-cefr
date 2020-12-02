@@ -13,17 +13,10 @@
         <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
       </div>
       <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 grammar-text">
-        <p><b>Kasutusolukordade</b> moodul annab ülevaate, millistes igapäevastes keelekasutusolukordades suudab keeleõppija end väljendada ja milliseid ülesandeid täita.<br/>
-          Moodulis kuvatakse valitud tasemele</p>
-        <ol> 
-          <li>tüüpilised ja tasemekohased keelekasutusolukorrad; </li>
-          <li>piirangud ehk millistel tingimustel keelekasutaja suhtlusülesandega toime tuleb</li>
-          <li><i>oskan</i>-nendingud  - need on näited konkreetsetest olukordadest, mis põhinevad noore keeleõppija koonddokumendis esitatud olukorrakirjeldustel;</li>
-          <li>tunnustena on esitatud kasutusolukorrale iseloomulik suhtlusvorm (suuline, kirjalik) ja  valik tekstiliigi, teksti alaliigi ja teemade näiteid. </li>
-        </ol>
-        <p>
-Kirjeldused toetuvad uute tasemekirjeldustega sõsarväljaande (2021) skaaladele. 
-          Noore keeleõppija keeleoskustasemed on kirjeldatud järgmiselt: eelA1 = koolieelikud (6–7-aastased), A1 = I kooliaste (1.–3. klass), A2 = II kooliaste (4.–6. klass), B1 = III kooliaste (7.–9. klass) ja B2 = gümnaasium (10.-12. klass).</p>
+        <p class="text-justify">Moodul kirjeldab suhtlustoimingute (teksti vastuvõtt, teksti loome, suhtlus, vahendamine) lõikes tüüpilisi keelekasutusolukordi ja millistel tingimustel/piirangutel eri tasemel keelekasutaja nendes toime tuleb.</p>
+        <p class="text-justify"><i>Oskan</i>-nending on noore keeleõppija enda oskuste kirjeldused, mis põhinevad  Euroopa Nõukogu noorte õppijate tasemekirjeldustel vanustele <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fca">7–10</a> ja <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fc9">11–15</a>.</p>
+        <p class="text-justify">Keelekasutusolukorra tunnused on suhtlusvorm (suuline, kirjalik),  teema, tekstiliik ja tekstitüüp.</p>
+        <p>Noore keeleõppija keeleoskustasemed on kirjeldatud järgmiselt: eelA1 = koolieelikud (6–7-aastased), A1 = I kooliaste (1.–3. klass), A2 = II kooliaste (4.–6. klass), B1 = III kooliaste (7.–9. klass) ja B2 = gümnaasium (10.-12. klass).</p>
       </div>
     </div>
     <form *ngIf="form" class="col-12" [formGroup]="form">
@@ -61,20 +54,20 @@ Kirjeldused toetuvad uute tasemekirjeldustega sõsarväljaande (2021) skaaladele
             <button type="button" class="btn-remove d-md-none" (click)="removeRow(i)"><span class="icon-close icon-close-main-cat"></span></button>
           </div>
           <div class="form-group pr-sm-1 pr-0 input-w">
-            <label for="exampleFormControlSelect1" class="pt-2"><b>Peakategooria</b></label>
+            <label for="exampleFormControlSelect1" class="pt-2"><b>Suhtlustoiming</b></label>
             <select class="form-control category-select" id="exampleFormControlSelect1" formControlName="maincategory"
                     (change)="getChildValues(form.value.category[i].maincategory, i); row.controls.subcategory.reset();
                     row.controls.subCategory.reset();">
-              <option disabled [value]="null">Vali peakategooria</option>
+              <option disabled [value]="null">Vali suhtlustoiming</option>
               <option [value]="null">-- määramata --</option>
               <option *ngFor="let category of categoriesList" value="{{category.category}}">{{category.name}}</option>
             </select>
           </div>
           <div class="form-group pr-sm-2 pr-0 input-w-two">
-            <label for="exampleFormControlSelect2" class="pt-sm-2 pt-0"><b>Alamkategooriad</b></label>
+            <label for="exampleFormControlSelect2" class="pt-sm-2 pt-0"><b>Kasutusolukord</b></label>
             <select class="form-control category-select" id="exampleFormControlSelect2" formControlName="subcategory"
                     (change)="getTypeValues(form.value.category[i].subcategory, i); row.controls.subCategory.reset()">
-              <option disabled [value]="null">Vali alamkategooria</option>
+              <option disabled [value]="null">Vali kasutusolukord</option>
               <option [value]="null">-- määramata --</option>
               <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
             </select>
@@ -122,7 +115,7 @@ Kirjeldused toetuvad uute tasemekirjeldustega sõsarväljaande (2021) skaaladele
       </div>
       <div class="row add-main-cat">
         <i class="fa fa-plus plus pt-1 pr-2" (click)="addRow()"></i>
-        <a class="more-link" (click)="addRow()">Lisa peakategooria</a>
+        <a class="more-link" (click)="addRow()">Lisa suhtlustoiming</a>
       </div>
       <div class="row pt-4 pb-md-0 mt-3 pb-md-4 pb-3 d-md-none">
         <button type="button" class="btn sm-search-btn ml-md-4 ml-0" (click)="sendData(1)">Otsi</button>
@@ -145,9 +138,9 @@ Kirjeldused toetuvad uute tasemekirjeldustega sõsarväljaande (2021) skaaladele
       <table class="table table-striped" *ngIf="showTable">
         <thead>
         <tr>
-          <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">Peakategooria<span
+          <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">Suhtlustoiming<span
             class="arrow-icon"></span></th>
-          <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Alamkategooria<span
+          <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Kasutusolukord<span
             class="arrow-icon"></span></th>
           <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">Tase<span
             class="arrow-icon"></span></th>
@@ -158,11 +151,11 @@ Kirjeldused toetuvad uute tasemekirjeldustega sõsarväljaande (2021) skaaladele
         <tbody>
         <tr *ngFor="let item of tableData">
           <td>
-            <span class="d-md-none d-block font-weight-bold">Peakategooria</span>
+            <span class="d-md-none d-block font-weight-bold">Suhtlustoiming</span>
             <ngb-highlight [result]="item.maincategory_name"></ngb-highlight>
           </td>
           <td>
-            <span class="d-md-none d-block font-weight-bold">Alamkategooria</span>
+            <span class="d-md-none d-block font-weight-bold">Kasutusolukord</span>
             <ngb-highlight [result]="item.subcategory_name"></ngb-highlight>
           </td>
           <td>
@@ -179,7 +172,7 @@ Kirjeldused toetuvad uute tasemekirjeldustega sõsarväljaande (2021) skaaladele
                 <span  [innerHTML]="'<b>Tingimused/piirangud</b>: '+item.can_do_statement" class="text-justify">{{item.can_do_statement}}</span>
               </div>
               <div class="row pt-1" >
-				  <span  class="text-justify"><b><i>Oskan</i>-nending</b>: <i *ngIf="item.example">{{item.example}}</i></span>
+                <span  class="text-justify"><b><i>Oskan</i>-ne<span  style="font-weight: 500;">ndin</span>g</b>: <i *ngIf="item.example">{{item.example}}</i></span>
               </div>
               <div class="row small pt-1" >
                 Tunnused:&nbsp;
