@@ -31,6 +31,11 @@
             <span class="main-menu-item"
                   [class.item-active]="menuItem === 'grammar'">Grammatika</span>
       </a>
+      <a [routerLink]="['/usecase']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
+         (click)="setItem('usecase')">
+            <span class="main-menu-item"
+                  [class.item-active]="menuItem === 'usecase'">Kasutusolukorrad</span>
+      </a>
       <a [routerLink]="['/rating']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
          (click)="setItem('rating')">
           <span class="main-menu-item"
