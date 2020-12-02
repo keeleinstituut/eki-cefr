@@ -13,6 +13,7 @@ import { VocabularyListComponent} from './vocabulary-list/vocabulary-list.compon
 import {NgbdSortableHeader} from './services/sortable.directive';
 import { TextRatingComponent } from './text-rating/text-rating.component';
 import {GrammarComponent, KeysPipe} from './grammar/grammar.component';
+import {UsecaseComponent} from './usecase/usecase.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 import { GrammarDetailComponent } from './grammar-detail/grammar-detail.component';
@@ -30,6 +31,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     VocabularyListComponent,
     TextRatingComponent,
     GrammarComponent,
+    UsecaseComponent,
     AboutProjectComponent,
     KeysPipe,
     FeedbackModalComponent,
