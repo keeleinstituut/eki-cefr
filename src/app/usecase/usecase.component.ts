@@ -132,9 +132,13 @@ export class UsecaseComponent implements OnInit, OnDestroy {
       this.adultLangLevel = data.items.etLex.levels;
       this.childLangLevel = data.items.noor.levels;
       //remove C1
-      var index = this.childLangLevel.indexOf('C1');
-      if (index > -1) {
-        this.childLangLevel.splice(index, 1);
+      var index1 = this.childLangLevel.indexOf('C1');
+      if (index1 > -1) {
+        this.childLangLevel.splice(index1, 1);
+      }
+      var index2 = this.childLangLevel.indexOf('eelA1');
+      if (index2 > -1) {
+        this.childLangLevel.splice(index2, 1);
       }
       this.adultWordTypes = data.items.etLex.poslist;
       this.childWordTypes = data.items.noor.poslist;
