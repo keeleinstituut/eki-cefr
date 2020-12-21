@@ -13,10 +13,11 @@
         <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
       </div>
       <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 grammar-text">
-        <p class="text-justify">Moodul kirjeldab suhtlustoimingute (teksti vastuvõtt, teksti loome, suhtlus, vahendamine) lõikes tüüpilisi keelekasutusolukordi ja millistel tingimustel/piirangutel eri tasemel keelekasutaja nendes toime tuleb.</p>
-        <p class="text-justify"><i>Oskan</i>-nending on noore keeleõppija enda oskuste kirjeldused, mis põhinevad  Euroopa Nõukogu noorte õppijate tasemekirjeldustel vanustele <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fca">7–10</a> ja <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fc9">11–15</a>.</p>
-        <p class="text-justify">Keelekasutusolukorra tunnused on suhtlusvorm (suuline, kirjalik),  teema, tekstiliik ja tekstitüüp.</p>
-        <p>Noore keeleõppija keeleoskustasemed on kirjeldatud järgmiselt: eelA1 = koolieelikud (6–7-aastased), A1 = I kooliaste (1.–3. klass), A2 = II kooliaste (4.–6. klass), B1 = III kooliaste (7.–9. klass) ja B2 = gümnaasium (10.-12. klass).</p>
+        <p class="text-justify">Kasutusolukordade moodul kirjeldab keeleoskustasemetele iseloomulikke keelekasutusolukordi ning näitab, millistel tingimustel/piirangutel eri tasemel keelekasutaja toime tuleb. Kirjelduse aluseks on <a href="https://rm.coe.int/common-european-framework-of-reference-for-languages-learning-teaching/16809ea0d4">raamdokumendi sõsarväljaande (2018)</a> suhtlustoimingute liigitus (teksti vastuvõtt, teksti loome, suhtlus, vahendamine) ja näidisskaalad.</p>
+        <p class="text-justify">Kasutusolukordade näidised on võetud Euroopa Nõukogu koostatud noorte õppijate tasemekirjeldustest vanustele <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fca">7–10</a> ja <a href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fc9">11–15</a>. Materjal põhineb eri riikide Euroopa Keelemappide enesehindamisskaaladel ja sel põhjusel on kasutusolukordade näidised sõnastatud <i>mina</i>-vormis.</p>
+        <p class="text-justify">Keelekasutusolukorra tunnused on suhtlusvorm (suuline, kirjalik), teema, tekstiliik ja tekstitüüp. Tunnuseid kasutades tuleb arvestada, et tegemist ei ole lõplike loeteludega, vaid näidetega, mis antud kasutusolukorda ja keeleoskustaset iseloomustavad.</p>
+		<p class="text-justify">Kui kasutusolukorra näidis või mõni tunnustest kirjeldusest puudub, siis ei olnud seda võimalik algmaterjali põhjal välja tuua.</p>
+        <p>Mooduli eesmärk on raamdokumendi skaalasid õpilastele eakohaselt tõlgendada. Noore keeleõppija keeleoskustasemed on kirjeldatud järgmiselt: A1 ja A2 taseme kasutusolukorrad on sobivad vanusele 7–10 a ning B1 ja B2 taseme kasutusolukorrad on sobivad vanuserühmale 11–15 a.</p>
       </div>
     </div>
     <form *ngIf="form" class="col-12" [formGroup]="form">
@@ -64,10 +65,10 @@
             </select>
           </div>
           <div class="form-group pr-sm-2 pr-0 input-w-two">
-            <label for="exampleFormControlSelect2" class="pt-sm-2 pt-0"><b>Kasutusolukord</b></label>
+            <label for="exampleFormControlSelect2" class="pt-sm-2 pt-0"><b>Näidisskaala</b></label>
             <select class="form-control category-select" id="exampleFormControlSelect2" formControlName="subcategory"
                     (change)="getTypeValues(form.value.category[i].subcategory, i); row.controls.subCategory.reset()">
-              <option disabled [value]="null">Vali kasutusolukord</option>
+              <option disabled [value]="null">Vali näidisskaala</option>
               <option [value]="null">-- määramata --</option>
               <option *ngFor="let category of childLists[i]" value="{{category.category}}">{{category.name}}</option>
             </select>
@@ -140,7 +141,7 @@
         <tr>
           <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">Suhtlustoiming<span
             class="arrow-icon"></span></th>
-          <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Kasutusolukord<span
+          <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">Näidisskaala<span
             class="arrow-icon"></span></th>
           <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">Tase<span
             class="arrow-icon"></span></th>
@@ -155,7 +156,7 @@
             <ngb-highlight [result]="item.maincategory_name"></ngb-highlight>
           </td>
           <td>
-            <span class="d-md-none d-block font-weight-bold">Kasutusolukord</span>
+            <span class="d-md-none d-block font-weight-bold">Näidisskaala</span>
             <ngb-highlight [result]="item.subcategory_name"></ngb-highlight>
           </td>
           <td>
@@ -166,13 +167,13 @@
             <span class="d-md-none d-block font-weight-bold pb-1">Kirjeldus</span>
             <div class="container">
               <div class="row">
-                <span [innerHTML]="item.topic" class="gramprofile-topic">{{item.topic}}</span>
+                <span [innerHTML]="'<b>Kasutusolukord</b>: '+item.topic" class="gramprofile-topic">{{item.topic}}</span>
               </div>
               <div class="row pt-1">
                 <span  [innerHTML]="'<b>Tingimused/piirangud</b>: '+item.can_do_statement" class="text-justify">{{item.can_do_statement}}</span>
               </div>
               <div class="row pt-1" >
-                <span  class="text-justify"><b><i>Oskan</i>-ne<span  style="font-weight: 500;">ndin</span>g</b>: <i *ngIf="item.example">{{item.example}}</i></span>
+                <span  class="text-justify"><b>Kasutusolukordade näited</b>: <i *ngIf="item.example">{{item.example}}</i></span>
               </div>
               <div class="row small pt-1" >
                 Tunnused:&nbsp;
