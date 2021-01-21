@@ -161,6 +161,30 @@
           </div>
         </div>
       </div>
+     <div class="row  mt-3" *ngIf="obj.examples_teachersurvey.length">
+        <div class="col-md-2 col-12" rowspan="2">
+          <span *ngIf="obj.examples_teachersurvey[0]['source_url']">
+            <a href="{{obj.examples_teachersurvey[0]['source_url']}}" target="_blank">
+              {{obj.examples_teachersurvey[0]['source_name']}}
+            </a>
+          </span>
+          <span *ngIf="!obj.examples_teachersurvey[0]['source_url']">
+            {{obj.examples_teachersurvey[0]['source_name']}}
+          </span>
+        </div>
+        <div class="col">
+          <div class="row  mt-1" *ngFor="let example of obj.examples_teachersurvey; let i = index">
+            <div class="col-md-6 col-sm-6 col-12">
+              <span *ngIf="i==0" class="d-none d-md-block"><i>Algupärane lause</i><br/></span>
+              <i class="d-md-none">Algupärane lause: </i>{{example.text}}
+            </div>
+            <div class="col-md-6 col-sm-6 col-12">
+              <span *ngIf="i==0" class="d-none d-md-block"><i>Parandatud lause</i><br/></span>
+              <i class="d-md-none">Parandatud lause: </i>{{example.text_fixed}}
+            </div>
+          </div>
+        </div>
+      </div>
     <app-feedback-modal></app-feedback-modal>
   </div>
 </div>
