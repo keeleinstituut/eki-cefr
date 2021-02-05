@@ -19,12 +19,14 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 //import { GrammarDetailService } from '../services/grammar-detail.service';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
+/*
 @Pipe({ name: 'keys', pure: false })
 export class KeysPipe implements PipeTransform {
   transform(value: any, args: any[] = null): any {
     return Object.values(value).sort((a: any, b: any) => a.ord - b.ord);
   }
 }
+*/
 
 export interface DataItem {
   maincategory_name: string;
