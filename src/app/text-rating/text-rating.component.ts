@@ -49,15 +49,20 @@ export class TextRatingComponent {
 
 
   getData() {
-
     this.service.getTextData(encodeURI(this.form.value.text), this.form.value.list).subscribe((data: any) => {
       this.resultData = data.evaluatedText;
       this.smTable = data.textStat.tables.by_level;
       this.wordCount = data.textStat.wordCount;
+      this.form.controls.text.setValue(this.form.value.text);
       this.form.controls.result.setValue(this.form.value.text);
     });
   }
 
+
+clearText() {
+  this.form.controls.text.setValue('');
+  this.form.value.text = '';
+}
   private addCheckboxes() {
     this.levels.forEach((o, i) => {
       const control = new FormControl(i >= 0);

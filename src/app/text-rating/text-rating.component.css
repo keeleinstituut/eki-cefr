@@ -29,6 +29,9 @@
 .text-list p {
   margin-bottom: 5px;
 }
+.gray {
+  color: gray;
+}
 
 .text-area {
   min-height: 202px;
@@ -66,4 +69,9 @@
   .sm-search-btn {
     width: 100%;
   }
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }

@@ -38,10 +38,13 @@
               <small class="counter ml-auto mt-auto">{{this.form.controls.text.value.length}}
                 /2000</small>
             </div>
-            <div style="flex: 2">
+            <div style="flex: 2; position:relative">
+              
           <textarea class="form-control text-area p-3" formControlName="text"
                     id="exampleFormControlTextarea1"
                     maxlength="2000"></textarea>
+              <button class="btn btn-lg  btn-outline-dark float-right gray"  style="position:absolute;top:0;right:0;padding:8px;padding-top:4px" (click)="clearText();getData(); clicked = true;" ngbPopover="Puhasta tekstiväli"
+                 triggers="mouseenter:mouseleave" placement="top"><i class="fa fa-times"></i></button>
             </div>
           </div>
         </div>
@@ -96,6 +99,7 @@
           </div>
         </div>
       </div>
+      
       <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true;">
         Hinda
       </button>
