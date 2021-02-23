@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { TextRatingComponent } from './text-rating/text-rating.component';
+import { TextRatingGlobalComponent } from './text-rating-global/text-rating-global.component';
 import { VocabularyListComponent } from './vocabulary-list/vocabulary-list.component';
 import { GrammarComponent } from './grammar/grammar.component';
 import { UsecaseComponent } from './usecase/usecase.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: MainComponent },
   { path: 'vocabulary', component: VocabularyListComponent },
   { path: 'rating', component: TextRatingComponent },
+  { path: 'ratingglobal', component: TextRatingGlobalComponent },
   { path: 'grammar', component: GrammarComponent },
   { path: 'usecase', component: UsecaseComponent },
   { path: 'about', component: AboutProjectComponent },

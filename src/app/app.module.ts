@@ -12,6 +12,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VocabularyListComponent} from './vocabulary-list/vocabulary-list.component';
 import {NgbdSortableHeader} from './services/sortable.directive';
 import { TextRatingComponent } from './text-rating/text-rating.component';
+import { TextRatingGlobalComponent } from './text-rating-global/text-rating-global.component';
 import {GrammarComponent, KeysPipe} from './grammar/grammar.component';
 import {UsecaseComponent} from './usecase/usecase.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
@@ -30,6 +31,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     NgbdSortableHeader,
     VocabularyListComponent,
     TextRatingComponent,
+    TextRatingGlobalComponent,
     GrammarComponent,
     UsecaseComponent,
     AboutProjectComponent,

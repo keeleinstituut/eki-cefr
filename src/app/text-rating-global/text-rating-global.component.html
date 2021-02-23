@@ -1,0 +1,109 @@
+<div class="wrapper">
+  <div class="container-fluid bottom-gutter content-panel">
+    <div class="row flex-row-reverse">
+      <div class="col-12">
+        <h3>Teksti sõnavara hindamine</h3>
+      </div>
+      <div class="col-md-4 col-12">
+        <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
+      </div>
+      <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 text-rating-info">
+        <p><b>Teksti sõnavara hindamise</b> tööriist analüüsib tekste sõnavaraloendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).
+        </p>
+      </div>
+    </div>
+    <form [formGroup]="form">
+      <b>Keeleõppija:</b>
+      <div class="pb-md-4 pb-3 pt-md-0 pt-3 ml-auto row">
+        <div class="form-check d-inline-block mr-4">
+          <input formControlName="list" name="list" class="form-check-input form-control-1x" type="radio"
+                 id="customRadio1" value="noor" (ngModelChange)="setlangList()">
+          <label class="form-check-label" for="customRadio1">
+            noor keeleõppija
+          </label>
+        </div>
+        <div class="form-check d-inline-block">
+          <input formControlName="list" class="form-check-input form-control-1x" type="radio"
+                 id="customRadio2" value="etLex" (ngModelChange)="setlangList()">
+          <label class="form-check-label" for="customRadio2">
+            täiskasvanu
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-12">
+          <div class="form-group d-flex flex-column h-100">
+            <div class="d-flex flex-row">
+              <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
+              <small class="counter ml-auto mt-auto">{{this.form.controls.text.value.length}}
+                /2000</small>
+            </div>
+            <div style="flex: 2; position:relative">
+              
+          <textarea class="form-control text-area p-3" formControlName="text"
+                    id="exampleFormControlTextarea1"
+                    maxlength="2000"></textarea>
+              <button class="btn btn-lg  btn-outline-dark float-right gray"  style="position:absolute;top:0;right:0;padding:8px;padding-top:4px" (click)="clearText();getData(); clicked = true;" ngbPopover="Puhasta tekstiväli"
+                 triggers="mouseenter:mouseleave" placement="top"><i class="fa fa-times"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="row lang-settings">
+            <label class="lang-lvl pr-2"><b>Keeleoskustase:</b></label>
+            <div class="pb-md-0 pb-3" formArrayName="lang"
+                 *ngFor="let lang of form.controls.lang.controls; let i = index">
+              <div class="form-check pb-2 pr-3">
+                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i"
+                       (ngModelChange)="wordColor(levels[i], lang.value)">
+                <label class="color-{{levels[i]}} form-check-label" [for]="i">
+                  {{levels[i]}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div
+            class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
+            <div class="pr-md-2 pr-0 h-25" [id]="i"
+                 *ngFor="let word of this.resultData; let i = index">
+              <p class="mixed-text" [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
+                 triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-12 pt-md-4 pt-2">
+          <div class="bg-white rating-table bg-white py-1 px-3 border border-dark mixed-text">
+            Sõnu kokku: {{wordCount}}
+            <div class="row table-border m-0">
+              <div class="col-5 pl-0">
+                Tase
+              </div>
+              <div class="col-3 pl-0">
+                Sõnu
+              </div>
+              <div class="col-4 pl-0">
+                %
+              </div>
+            </div>
+            <div class="row" *ngFor="let item of smTable">
+              <div class="col-5">
+                {{item.label}}
+              </div>
+              <div class="col-3 result-word-column">
+                {{item.count}}
+              </div>
+              <div class="col-4 pl-0 pl-0-md pl-2">
+                {{item.percentage}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true;">
+        Hinda
+      </button>
+    </form>
+    <app-feedback-modal></app-feedback-modal>
+  </div>
+</div>
