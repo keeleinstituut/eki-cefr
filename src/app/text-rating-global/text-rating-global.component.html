@@ -2,7 +2,7 @@
   <div class="container-fluid bottom-gutter content-panel">
     <div class="row flex-row-reverse">
       <div class="col-12">
-        <h3>Teksti sõnavara hindamine</h3>
+        <h3>Teksti vormimoodustuse hindamine</h3>
       </div>
       <div class="col-md-4 col-12">
         <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
@@ -66,7 +66,7 @@
             class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
             <div class="pr-md-2 pr-0 h-25" [id]="i"
                  *ngFor="let word of this.resultData; let i = index">
-              <p class="mixed-text" [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
+              <p class="mixed-text" [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text + ': ' + word.text + '; vorm: ' + word.formXinfo}}"
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
             </div>
           </div>
@@ -96,6 +96,13 @@
                 {{item.percentage}}
               </div>
             </div>
+            <br/>
+            <u>Teksti loetavus</u><br/>
+            Formaalsusindeks: {{Findex}}<br/>
+            Lix-indeks: {{LixIndex}}<br/>
+            Mõisteline tihedus: {{Ldindex}}<br/>
+            Nominaalsus (nimi- ja tegusõnade suhe): {{NindexSproportion}} : {{NindexVproportion}}<br/>
+            <br/>
           </div>
         </div>
       </div>
