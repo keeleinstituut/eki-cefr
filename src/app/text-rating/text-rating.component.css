@@ -13,7 +13,8 @@
   margin-top: 7px;
   border-radius: .25rem;
   background: #FFFFFF;
-  height: 284px;
+  min-height: 200px;
+  max-height: 310px;
   min-width: 195px;
   font-size: 12px;
 }
