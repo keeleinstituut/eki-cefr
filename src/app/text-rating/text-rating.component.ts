@@ -14,6 +14,11 @@ export class TextRatingComponent {
   public resultData = '';
   public smTable = '';
   public wordCount = '';
+  public Findex = '';
+  public Ldindex = '';
+  public NindexVproportion = '';
+  public NindexSproportion = '';
+  public LixIndex = '';
   public levels = [];
   public notAllowed = [];
   public clicked = false;
@@ -53,6 +58,11 @@ export class TextRatingComponent {
       this.resultData = data.evaluatedText;
       this.smTable = data.textStat.tables.by_level;
       this.wordCount = data.textStat.wordCount;
+      this.Findex = data.textStat.Findex;
+      this.LixIndex = data.textStat.LixIndex;
+      this.Ldindex = data.textStat.Ldindex;
+      this.NindexSproportion = data.textStat.NindexSproportion;
+      this.NindexVproportion = data.textStat.NindexVproportion;
       this.form.controls.text.setValue(this.form.value.text);
       this.form.controls.result.setValue(this.form.value.text);
     });

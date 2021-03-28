@@ -66,7 +66,8 @@
             class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
             <div class="pr-md-2 pr-0 h-25" [id]="i"
                  *ngFor="let word of this.resultData; let i = index">
-              <p class="mixed-text" [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text + ': ' + word.text + '; vorm: ' + word.formXinfo}}"
+              <ng-template #popContent>{{word.pos_text}}: <i>{{word.text}}</i>;<br/> vorm: <i>{{word.formXinfo}}</i></ng-template>
+              <p class="mixed-text" [ngClass]="colors(word.level)" [ngbPopover]="popContent"
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
             </div>
           </div>
@@ -97,11 +98,20 @@
               </div>
             </div>
             <br/>
-            <u>Teksti loetavus</u><br/>
-            Formaalsusindeks: {{Findex}}<br/>
-            Lix-indeks: {{LixIndex}}<br/>
-            Mõisteline tihedus: {{Ldindex}}<br/>
-            Nominaalsus (nimi- ja tegusõnade suhe): {{NindexSproportion}} : {{NindexVproportion}}<br/>
+            <u>Teksti loetavus</u> 
+            <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html='true' ngbPopover="Loetavust hinnatakse, kui tekstis on vähemalt 100 sõna."> (?)</a><br/>
+            Formaalsusindeks 
+            <ng-template #Findexdescription>Teksti ühemõttelisuse aste. Formaalsuse vastandiks on kontekstuaalsus. Nimisõnad kannavad teksti põhisisu ega toetu seega kontekstile, nagu teevad tegu-, määr- ja eriti asesõnad. Põhineb sõnaliikide sageduse võrldusel. <br/>Keskmise F-indeksi näited: <br/>ametnike kirjad 69,1 <br/>kirjalik tekst 49,6 <br/> suuline tekst 34,8</ng-template>
+            <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html='true' [ngbPopover]="Findexdescription">(?)</a>:  {{Findex}}<br/>
+            Lix-indeks 
+            <ng-template #lixindexdescription>Teksti hoomatavus ehk tehniline raskusaste. Liidetakse lause keskmine pikkus ja pikkade sõnade (6 või enam tähte) osatähtsus ja ümardatakse täisarvuks. <br/>väga kerge = 0-24 <br/>kerge = 25-34 <br/>keskmine = 35-44 <br/>raske = 45-54 <br/>väga raske = 55+</ng-template>
+            <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="lixindexdescription">(?)</a>:  {{LixIndex}}<br/>
+            Mõisteline tihedus
+            <ng-template #ldindexdescritption>Leksikaalne tihedus ehk sisusõnade (nimi-, tegu-, omadus- ja määrsõnade) protsent.</ng-template>
+            <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="ldindexdescritption">(?)</a>: {{Ldindex}}%<br/>
+            Nominaalsus (nimi- ja tegusõnade suhe)
+            <ng-template #nindexdescritption>Stiiliindeks. Mida rohkem nimisõnu, seda raskem on teksti mõista.</ng-template>
+            <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="nindexdescritption">(?)</a>: {{NindexSproportion}} : {{NindexVproportion}}<br/>
             <br/>
           </div>
         </div>
