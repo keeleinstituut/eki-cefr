@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
-import {TextRatingService} from './text-rating.service';
+import {TextRatingGlobalService} from './text-rating-global.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 
 @Component({
@@ -25,7 +25,7 @@ export class TextRatingGlobalComponent {
   @ViewChild(FeedbackModalComponent, {static: false})
   public modal: FeedbackModalComponent;
 
-  constructor(private formBuilder: FormBuilder, private service: TextRatingService) {
+  constructor(private formBuilder: FormBuilder, private service: TextRatingGlobalService) {
     this.form = this.formBuilder.group({
       list: 'etLex',
       lang: new FormArray([]),

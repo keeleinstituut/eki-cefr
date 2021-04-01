@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class TextRatingService {
+export class TextRatingGlobalService {
 
   constructor(private http: HttpClient) { }
 
