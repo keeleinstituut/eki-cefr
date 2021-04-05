@@ -62,9 +62,9 @@ export class GrammarComponent implements OnInit, OnDestroy {
   public list = [];
   itemsCount: number;
   public total$: number;
-  @ViewChild(FeedbackModalComponent, { static: false })
+  @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
-  @ViewChild(NgbPagination, { static: false })
+  @ViewChild(NgbPagination)
   public pageConf: NgbPagination;
   public showSpinner = false;
   public noResult = false;

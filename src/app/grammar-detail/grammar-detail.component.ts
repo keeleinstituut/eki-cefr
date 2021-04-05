@@ -10,7 +10,7 @@ import {Location} from '@angular/common';
 })
 export class GrammarDetailComponent implements OnInit {
 
-  @ViewChild(FeedbackModalComponent, {static: false})
+  @ViewChild(FeedbackModalComponent)
   private modal: FeedbackModalComponent;
   public obj = {};
   isDataAvailable = false;

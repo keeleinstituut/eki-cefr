@@ -22,7 +22,7 @@ export class TextRatingGlobalComponent {
   public levels = [];
   public notAllowed = [];
   public clicked = false;
-  @ViewChild(FeedbackModalComponent, {static: false})
+  @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
 
   constructor(private formBuilder: FormBuilder, private service: TextRatingGlobalService) {

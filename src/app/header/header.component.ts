@@ -10,7 +10,7 @@ import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.compone
 export class HeaderComponent implements AfterViewInit {
   public menuItem: string;
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
-  @ViewChild(FeedbackModalComponent, { static: false })
+  @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
   public collapsed = true;
 
