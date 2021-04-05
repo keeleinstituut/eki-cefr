@@ -25,8 +25,8 @@ export class FeedbackModalComponent {
 
     this.form = this.formBuilder.group({
       comments: '',
-      sender: '',
-      email: '',
+      senderName: '',
+      senderEmail: '',
       feedbackType: 'comment',
       lastSearch: '<õpetaja tööriistad>',
       word: '<õpetaja tööriistad>',
@@ -58,8 +58,8 @@ export class FeedbackModalComponent {
             } else {
               this.success = true;
               this.form.controls.comments.reset();
-              this.form.controls.sender.reset();
-              this.form.controls.email.reset();
+              this.form.controls.senderName.reset();
+              this.form.controls.senderEmail.reset();
             }
           }
         }

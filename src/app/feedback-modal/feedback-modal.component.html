@@ -30,9 +30,9 @@
           <label for="name" class="ml-0">
             Nimi
           </label>
-          <input type="text" [class.is-invalid]="error && this.form.controls.sender.invalid"
-                 formControlName="sender" id="name" class="form-control" required>
-          <div *ngIf="error && this.form.controls.sender.invalid" class="invalid-origin-feedback">
+          <input type="text" [class.is-invalid]="error && this.form.controls.senderName.invalid"
+                 formControlName="senderName" id="name" class="form-control" required>
+          <div *ngIf="error && this.form.controls.senderName.invalid" class="invalid-origin-feedback">
             Välja täitmine on kohustuslik
           </div>
         </div>
@@ -40,9 +40,9 @@
           <label for="email" class="ml-0">
             E-post
           </label>
-          <input type="email" [class.is-invalid]="error && this.form.controls.email.invalid"
-                 formControlName="email" id="email" class="form-control" required>
-          <div *ngIf="error && this.form.controls.email.invalid" class="invalid-origin-feedback">
+          <input type="email" [class.is-invalid]="error && this.form.controls.senderEmail.invalid"
+                 formControlName="senderEmail" id="email" class="form-control" required>
+          <div *ngIf="error && this.form.controls.senderEmail.invalid" class="invalid-origin-feedback">
             Välja täitmine on kohustuslik
           </div>
         </div>
@@ -55,7 +55,7 @@
         <label class="custom-control-label" for="modalCheck1">
           <span *ngIf="!error || (agree === true)">Postitades kommentaari nõustud</span>
           <span *ngIf="error && (agree === false)" class="invalid-text-feedback">Postitades kommentaari nõustud</span>
-          <a role="link" class="pl-2" [attr.href]="APIEndpoint + '/regulations'"
+          <a role="link" class="pl-2" [attr.href]="APIEndpoint + 'regulations'" target="wordweb_regulations"
              data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
         </label>
         <div *ngIf="error && (agree === false)" class="invalid-origin-feedback">
