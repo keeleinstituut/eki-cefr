@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { GrammarDetailComponent } from './grammar-detail.component';
 
 describe('GrammarDetailComponent', () => {
@@ -8,6 +10,7 @@ describe('GrammarDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [ GrammarDetailComponent ]
     })
     .compileComponents();

@@ -1,5 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { VocabularyListComponent } from './vocabulary-list.component';
 
 describe('VocabularyListComponent', () => {
@@ -8,6 +14,7 @@ describe('VocabularyListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule] ,
       declarations: [ VocabularyListComponent ]
     })
     .compileComponents();
