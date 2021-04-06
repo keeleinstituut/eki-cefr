@@ -32,7 +32,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   public form;
   public tableData: TableItem[];
   public total$: number;
-  @ViewChild(FeedbackModalComponent, { static: false })
+  @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
   public levelLongString = '';
   public wordLongString = '';
