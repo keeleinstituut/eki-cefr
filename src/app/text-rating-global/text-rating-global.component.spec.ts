@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TextRatingGlobalComponent } from './text-rating-global.component';
 
 describe('TextRatingGlobalComponent', () => {
@@ -8,6 +9,7 @@ describe('TextRatingGlobalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ ReactiveFormsModule, HttpClientTestingModule ],
       declarations: [ TextRatingGlobalComponent ]
     })
     .compileComponents();
