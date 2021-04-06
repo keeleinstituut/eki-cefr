@@ -15,9 +15,7 @@ export class TextRatingGlobalComponent {
   public smTable = '';
   public wordCount = '';
   public Findex = '';
-  public Ldindex = '';
-  public NindexVproportion = '';
-  public NindexSproportion = '';
+  public Nindex = '';
   public LixIndex = '';
   public levels = [];
   public notAllowed = [];
@@ -60,9 +58,7 @@ export class TextRatingGlobalComponent {
       this.wordCount = data.textStat.wordCount;
       this.Findex = data.textStat.Findex;
       this.LixIndex = data.textStat.LixIndex;
-      this.Ldindex = data.textStat.Ldindex;
-      this.NindexSproportion = data.textStat.NindexSproportion;
-      this.NindexVproportion = data.textStat.NindexVproportion;
+      this.Nindex = data.textStat.Nindex;
       this.form.controls.text.setValue(this.form.value.text);
       this.form.controls.result.setValue(this.form.value.text);
     });
