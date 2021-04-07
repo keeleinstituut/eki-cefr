@@ -673,17 +673,18 @@
           <li>nimisõnavormide osatähtsust mõõtvat <u>nominaalsusindeksit</u>.</li>
         </ol>
       </div>
-      <p>Sõna- ja lausepiiride tuvastamiseks kasutatakse estNLTK 1.6 teeke.</p>
+      <p>Sõna- ja lausepiiride tuvastamiseks kasutatakse <a
+        href="https://github.com/estnltk/estnltk">estNLTK v 1.6</a> teeke.</p>
       <p><b>Lix-indeksiga</b> mõõdetakse teksti hoomatavust lugemise käigus ja on seega oluline eelkõige sorava lugemisoskuse väljakujunemiseni, kuna pikad sõnad põhjustavad arvestatavat takerdumist eelkõige sel perioodil. Selle töötas algselt rootsi keelele välja Carl-Hugo Björnsson. Lix-indeksi arvutamiseks leitakse lause keskmine pikkus (sõnade arv tekstis jagatakse lausete arvuga); leitakse pikkade sõnade (6 või enam tähte) protsent tekstis; liidetakse keskmine lausepikkus ja pikkade sõnade protsent. Tulemus ümardatakse täisarvuks.<br />
       <a href="https://www.etis.ee/Portal/Publications/Display/22c3bee2-e28d-4eba-a082-d3250ad800b4">Puksandi (2004)</a> uurimistööst selgus, et sõna keskmine pikkus 4.-6. klassi õpikutekstides on 5,85 tähemärki. Seevastu <a href="https://www.etis.ee/Portal/Publications/Display/01f8cf03-e8c0-4402-aae8-231fd7a40422">Koppeli (2019)</a> täiskasvanute eesti keele kui teise keele õpikute analüüsil olid sõnade keskmised pikkused järgmised: A1-tasemel 8, A2-tasemel 8,5, B1-tasemel 9,4, B2-tasemel 10,7 ning C1-tasemel 10,4 tähemärki. Kuigi eesti keeles on erinevalt indoeuroopa keeltest sageli leksikaalne ja grammatiline informatsioon pakitud ühte sõnavormi, võib 6 või enamast tähemärgist koosnevat sõna pidada universaalselt pikaks sõnaks, kuna selle haarmiseks on vaja enamat kui ühte silmaliigutust (<a href="https://www.etis.ee/Portal/Publications/Display/14a03013-3d5b-4eb6-a8e5-f20d5a818800">Kerge 2012: 26</a>).<br />
 Lix-indeksit tõlgendatakse <a href="https://www.etis.ee/Portal/Publications/Display/22c3bee2-e28d-4eba-a082-d3250ad800b4">Puksandi (2004)</a> uurimistöö eeskujul järgmiselt:</p>
       <div class="container">
 		<ul style="list-style-type:disc;">
-			<li>väga kerge = LIX < 25</li>
-			<li>kerge = 25 < LIX < 35</li>
-			<li>keskmine = 35 < LIX < 45</li>
-			<li>raske = 44 < LIX < 55</li>
-			<li>väga raske = 55 > LIX</li>
+			<li>väga kerge = LIX <= 25</li>
+			<li>kerge = 25 < LIX <= 35</li>
+			<li>keskmine = 35 < LIX <= 45</li>
+			<li>raske = 44 < LIX <= 55</li>
+			<li>väga raske = 55 < LIX</li>
 		</ul>
 	</div>
 	<p><b>Formaalsusindeks</b> (F-indeks) mõõdab teksti ühemõttelisuse (väljendustäpsuse) astet. Selle lõid Francis Heylighen ja Jean-Mark Dewaele. Valem põhineb eeldusel, et osa sõnaliikide (pronoomenite, verbide, adverbide, interjektsioonide) esinemissagedus muudab teksti kontekstuaalsemaks ja seega mitmemõttelisemaks, samal ajal kui teise osa (noomenite, adjektiivide, kaassõnade) esinemissagedus langetab kontekstuaalsust, muutes teksti ühemõttelisemaks ehk formaalsemaks. Mida väiksem on formaalsusindeks, seda kontekstuaalsem on tekst. (vt <a href="https://www.etis.ee/Portal/Publications/Display/36e9f5d0-296f-465f-8f49-7a017949cdb8">Kerge jt 2007</a>). Teksti jälgitavust raskendavad nii liigne formaalsus kui ka liigne ühemõttelisus: tekst on kas ebaloomulikult formaalne või lihtsustatud (<a href="https://www.etis.ee/Portal/Publications/Display/2db5d082-a479-4413-a2e8-655d88a3c617">Puksand, Kerge 2012</a>).<br />
@@ -692,13 +693,30 @@ F = [(substantiivi sagedus + adjektiivi sagedus + adpositsiooni sagedus) - (pron
 F-indeks erineb žanripõhiselt. Keskmise F-indeksi näited:</p>
       <div class="container">
 		<ul style="list-style-type:disc;">
-			<li>ametnike kirjad 69,1 - väga formaalne (<a href="https://www.etis.ee/Portal/Publications/Display/72886209-71f1-44ff-a106-4f148fb5dcd5">Kerge, Pajupuu 2010</a>)</li>
-			<li>kirjalik tekst 49,6 - keskmiselt formaalne (<a href="https://www.etis.ee/Portal/Publications/Display/2db5d082-a479-4413-a2e8-655d88a3c617">Puksand, Kerge 2012</a>)</li>
 			<li>suuline tekst 34,8 - pigem kontekstuaalne (<a href="https://www.etis.ee/Portal/Publications/Display/2db5d082-a479-4413-a2e8-655d88a3c617">Puksand, Kerge 2012</a>)</li>
-
+			<li>kirjalik tekst 49,6 - keskmiselt formaalne (<a href="https://www.etis.ee/Portal/Publications/Display/2db5d082-a479-4413-a2e8-655d88a3c617">Puksand, Kerge 2012</a>)</li>
+			<li>ametnike kirjad 69,1 - väga formaalne (<a href="https://www.etis.ee/Portal/Publications/Display/72886209-71f1-44ff-a106-4f148fb5dcd5">Kerge, Pajupuu 2010</a>)</li>
 		</ul>
 	</div>
-	<p><b>Nominaalsusindeks</b> on Michael Halliday järgi nimisõnavormide osatähtsus teksti sõnavormide hulgas. See muutuja näitab teksti tihedust mõistetele viitamise sageduse tähenduses. Räägitakse nominaalsest stiilist. Nimisõnad raskendavad mõistmist – teema põhikandjana on neist igaühe taga mingi mõiste, mis tuleb teistega spetsiifiliselt seostada. Näiteks on elavas eestikeelses dialoogis nimisõnu u 17–23%, kuid Eesti ja ELi seadustes pea kaks korda (55%) ning ametnike kirjades isegi kuni kolm korda enam (64%). (<a href="https://www.etis.ee/Portal/Publications/Display/14a03013-3d5b-4eb6-a8e5-f20d5a818800">Kerge 2012: 27</a>).<br /></p>      
+<p>Teksti hindamise tööriistas on sellele tuginedes F-indeksi vahemikud määratud järgmiselt:</p>
+      <div class="container">
+		<ul style="list-style-type:disc;">
+			<li>F <= 34,8 - üsna kontekstisidus, võib olla raskesti jälgitav</li>
+			<li>34,8 < F <= 42,2 - pigem kontekstuaalne</li>
+			<li>42,2 < F <= 55,65 - keskmise väljendustäpsusega</li>
+			<li>55,65 < F <= 69,1 - pigem formaalne </li>
+			<li>69,1 < F - väga formaalne, võib olla raskesti jälgitav </li>
+		</ul>
+	</div>
+	<p><b>Nominaalsusindeks</b> (N-indeks) on Michael Halliday järgi nimisõnavormide osatähtsus teksti sõnavormide hulgas. See muutuja näitab teksti tihedust mõistetele viitamise sageduse tähenduses. Räägitakse nominaalsest stiilist. Nimisõnad raskendavad mõistmist – teema põhikandjana on neist igaühe taga mingi mõiste, mis tuleb teistega spetsiifiliselt seostada. Näiteks on elavas eestikeelses dialoogis nimisõnu u 17–23%, kuid Eesti ja ELi seadustes pea kaks korda (55%) ning ametnike kirjades isegi kuni kolm korda enam (64%). (<a href="https://www.etis.ee/Portal/Publications/Display/14a03013-3d5b-4eb6-a8e5-f20d5a818800">Kerge 2012: 27</a>). Teksti hindamise tööriistas on sellele tuginedes nominaalsusindeksi vahemikud määratud järgmiselt:</p>
+      <div class="container">
+		<ul style="list-style-type:disc;">
+			<li>N <= 17% - vähe nimisõnu. Tekst võib olla liiga kontekstisidus.</li>
+			<li>17% < N <= 37,5% - tavapärane hulk nimisõnu</li>
+			<li>37,5% < N <= 59,5% - üsna palju nimisõnu. Veendu, et ei oleks liiga palju uut sõnavara.</li>
+			<li>59,5% < N - väga palju nimisõnu. Õpilased võivad vajada sõnaraamatu abi.</li>
+		</ul>
+	</div>     
       <h3 class="jumptarget" id="item-11">Kuidas viidata</h3>
       <p>
         Õpetaja tööriistades esitatud infole palume viidata nii:<br />
