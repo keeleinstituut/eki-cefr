@@ -108,7 +108,7 @@ Lix <= 25 - väga kerge lugeda <br/>
 55 > Lix - väga raske lugeda<br/></ng-template>
             <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="lixindexdescription">(?)</a>:  {{LixIndex}}<br/>
             Formaalsusindeks 
-            <ng-template #Findexdescription>Teksti väljendustäpsuse aste skaalal formaalne-kontekstuaalne. Nimi-, omadus- ja kaassõnad kannavad teksti põhisisu ja tõstavad ühemõttelisust ehk formaalsust, seevastu kõik muud sõnaliigid toetuvad kontekstile. Põhineb sõnaliikide sageduse võrdlusel.<br/>
+            <ng-template #Findexdescription>Teksti väljendustäpsuse aste skaalal formaalne-kontekstuaalne. Nimi-, omadus- ja kaassõnad tõstavad ühemõttelisust ehk formaalsust, seevastu kõik muud sõnaliigid toetuvad kontekstile. Põhineb sõnaliikide sageduse võrdlusel.<br/>
 F <= 34,8 - üsna kontekstisidus, võib olla raskesti jälgitav <br/>
 34,8 < F <= 42,2 - pigem kontekstuaalne <br/>
 42,2 < F <= 55,65 - keskmise väljendustäpsusega<br/>
@@ -116,10 +116,10 @@ F <= 34,8 - üsna kontekstisidus, võib olla raskesti jälgitav <br/>
 69,1 < F - väga formaalne, võib olla raskesti jälgitav <br/></ng-template>
             <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html='true' [ngbPopover]="Findexdescription">(?)</a>:  {{Findex}}<br/>
             Nominaalsusindeks
-            <ng-template #nindexdescritption>Nimisõnavormide osatähtsus. Nimisõnad on teema põhikandjad, igaühe taga on mingi mõiste, mille teadmine on vajalik tekstist arusaamiseks. Mida rohkem on tekstis nimisõnu, seda suurem on oht, et nende hulgas on keeleõppijale tundmatuid sõnu.<br/>
+            <ng-template #nindexdescritption>Nimisõnavormide osatähtsus. Nimisõnade tundmine on vajalik tekstist arusaamiseks. Mida rohkem on tekstis nimisõnu, seda tõenäolisem on, et nende hulgas on keeleõppijale tundmatuid sõnu.<br/>
 N <= 17% - vähe nimisõnu. Tekst võib olla liiga kontekstisidus.<br/>
 17% < N <= 37,5% - tavapärane hulk nimisõnu<br/>
-37,5% < N <= 59,5% - üsna palju nimisõnu. Veendu, et ei oleks liiga palju uut sõnavara.<br/>
+37,5% < N <= 59,5% - üsna palju nimisõnu.<br/>
 59,5% < N - väga palju nimisõnu. Õpilased võivad vajada sõnaraamatu abi.<br/>
 </ng-template>
             <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="nindexdescritption">(?)</a>: {{Nindex}}<br/>
