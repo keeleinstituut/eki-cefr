@@ -17,6 +17,7 @@ export class TextRatingComponent {
   public Findex = '';
   public Nindex = '';
   public LixIndex = '';
+  public SVprop = '';
   public levels = [];
   public notAllowed = [];
   public clicked = false;
@@ -59,6 +60,7 @@ export class TextRatingComponent {
       this.Findex = data.textStat.Findex;
       this.LixIndex = data.textStat.LixIndex;
       this.Nindex = data.textStat.Nindex;
+      this.SVprop = data.textStat.SVprop;
       this.form.controls.text.setValue(this.form.value.text);
       this.form.controls.result.setValue(this.form.value.text);
     });

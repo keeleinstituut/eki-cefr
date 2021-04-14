@@ -665,12 +665,13 @@
 		Enne teksti hindamist tuleb määrata, kas seda soovitakse teha noore keeleõppija või täiskasvanu sõnavaraloendite põhjal. Vaikimisi on valitud täiskasvanud keeleõppija. Hinnatav tekst tuleb sisestada vasakpoolsesse kasti. Keskmisse kasti ilmub hinnatud tekst, kus iga sõna on värvitud vastavalt keeleoskustasemele (määramata sõnad jäävad hindamata). Hinnatud teksti kastis kursoriga liikudes kuvatakse ka iga sõna sõnaliik. Parempoolses kastis on näha statistika kogu teksti kohta – mitu sõna tekstis on ning kuidas need sõnad protsentuaalselt keeleoskustasemete vahel jaotuvad. See võimaldab hinnata, kas tekst on konkreetsele keeleoskustasemele vastav või vajab see lihtsustamist.<br />
       </p>
       <h4>Teksti loetavus</h4>
-      <p>Parempoolses kastis kuvatakse ka teksti loetavuse hinnangud, mis arvutatakse, kui teksti pikkus on vähemalt 100 sõna. Teksti loetavuse mõõtmiseks kasutab tööriist kolme indeksit:</p>
+      <p>Parempoolses kastis kuvatakse ka teksti loetavuse hinnangud, mis arvutatakse, kui teksti pikkus on vähemalt 100 sõna. Teksti loetavuse mõõtmiseks kasutab tööriist nelja parameetrit:</p>
       <div class="container">
         <ol>
           <li>teksti hoomatavust ehk lugemistehnilist raskusastet mõõtvat <u>Lix-indeksit</u>;</li>
           <li>teksti sisulist jälgitavust mõõtvat ja sõnaliike arvestavat <u>formaalsusindeksit ehk F-indeksit</u>;</li>
-          <li>nimisõnavormide osatähtsust mõõtvat <u>nominaalsusindeksit</u>.</li>
+          <li>nimisõnavormide osatähtsust mõõtvat <u>nominaalsust</u>;</li>
+          <li><u>nimi- ja tegusõnavormide suhet</u>.</li>
         </ol>
       </div>
       <p>Sõna- ja lausepiiride tuvastamiseks kasutatakse <a
@@ -687,7 +688,7 @@ Lix-indeksit tõlgendatakse <a href="https://www.etis.ee/Portal/Publications/Dis
 			<li>väga raske = 55 < LIX</li>
 		</ul>
 	</div>
-	<p><b>Formaalsusindeks</b> (F-indeks) mõõdab teksti ühemõttelisuse (väljendustäpsuse) astet. Selle töötasid välja Francis Heylighen ja Jean-Mark Dewaele. Valem põhineb eeldusel, et osa sõnaliikide (pronoomenite, verbide, adverbide, interjektsioonide) esinemissagedus muudab teksti kontekstuaalsemaks ja seega mitmemõttelisemaks, samal ajal kui teise osa (noomenite, adjektiivide, kaassõnade) esinemissagedus langetab kontekstuaalsust, muutes teksti ühemõttelisemaks ehk formaalsemaks. Mida väiksem on formaalsusindeks, seda kontekstuaalsem on tekst. (vt <a href="https://www.etis.ee/Portal/Publications/Display/36e9f5d0-296f-465f-8f49-7a017949cdb8">Kerge jt 2007</a>). Teksti jälgitavust raskendavad nii liigne formaalsus kui ka liigne ühemõttelisus: tekst on kas ebaloomulikult formaalne või lihtsustatud (<a href="https://www.etis.ee/Portal/Publications/Display/2db5d082-a479-4413-a2e8-655d88a3c617">Puksand, Kerge 2012</a>).<br />
+	<p><b>Formaalsusindeks</b> (F-indeks) mõõdab teksti ühemõttelisuse (väljendustäpsuse) astet. Selle töötasid välja Francis Heylighen ja Jean-Mark Dewaele. Valem põhineb eeldusel, et osa sõnaliikide (pronoomenite, verbide, adverbide, interjektsioonide) esinemissagedus muudab teksti kontekstuaalsemaks ja seega mitmemõttelisemaks, samal ajal kui teise osa (noomenite, adjektiivide, kaassõnade) esinemissagedus langetab kontekstuaalsust, muutes teksti ühemõttelisemaks ehk formaalsemaks. Mida väiksem on formaalsusindeks, seda kontekstuaalsem on tekst. (vt <a href="https://www.etis.ee/Portal/Publications/Display/36e9f5d0-296f-465f-8f49-7a017949cdb8">Kerge jt 2007</a>) Teksti jälgitavust raskendavad nii liigne formaalsus kui ka liigne ühemõttelisus: tekst on kas ebaloomulikult formaalne või lihtsustatud (<a href="https://www.etis.ee/Portal/Publications/Display/2db5d082-a479-4413-a2e8-655d88a3c617">Puksand, Kerge 2012</a>).<br />
 F-indeksi arvutamiseks kasutatakse valemit: <br />
 F = [(substantiivi sagedus + adjektiivi sagedus + adpositsiooni sagedus) - (pronoomeni sagedus + verbi sagedus + adverbi sagedus + interjektsiooni sagedus) + 100] / 2<br />
 F-indeks erineb žanripõhiselt. Keskmise F-indeksi näited:</p>
@@ -701,14 +702,12 @@ F-indeks erineb žanripõhiselt. Keskmise F-indeksi näited:</p>
 <p>Teksti hindamise tööriistas on sellele tuginedes F-indeksi vahemikud määratud järgmiselt:</p>
       <div class="container">
 		<ul style="list-style-type:disc;">
-			<li>F <= 34,8 - üsna kontekstisidus, võib olla raskesti jälgitav</li>
-			<li>34,8 < F <= 42,2 - pigem kontekstuaalne</li>
-			<li>42,2 < F <= 55,65 - keskmise väljendustäpsusega</li>
-			<li>55,65 < F <= 69,1 - pigem formaalne </li>
-			<li>69,1 < F - väga formaalne, võib olla raskesti jälgitav </li>
+			<li>F <= 42,2 - kontekstuaalne; suuline tekst</li>
+			<li>42,2 < F <= 55,65 - keskmise väljendustäpsusega; kirjalik tekst</li>
+			<li>55,65 < F - formaalne; ametlik tekst<br/></li>
 		</ul>
 	</div>
-	<p><b>Nominaalsusindeks</b> (N-indeks) on Michael Halliday järgi nimisõnavormide osatähtsus teksti sõnavormide hulgas. See muutuja näitab teksti tihedust mõistetele viitamise sageduse tähenduses. Räägitakse nominaalsest stiilist. Nimisõnad raskendavad mõistmist – teema põhikandjana on neist igaühe taga mingi mõiste, mis tuleb teistega spetsiifiliselt seostada. Näiteks on elavas eestikeelses dialoogis nimisõnu u 17–23%, kuid Eesti ja ELi seadustes pea kaks korda (55%) ning ametnike kirjades isegi kuni kolm korda enam (64%). (<a href="https://www.etis.ee/Portal/Publications/Display/14a03013-3d5b-4eb6-a8e5-f20d5a818800">Kerge 2012: 27</a>). Teksti hindamise tööriistas on sellele tuginedes nominaalsusindeksi vahemikud määratud järgmiselt:</p>
+	<p><b>Nominaalsus</b> (N) on Michael Halliday järgi nimisõnavormide osatähtsus teksti sõnavormide hulgas. See muutuja näitab teksti tihedust mõistetele viitamise sageduse tähenduses. Räägitakse nominaalsest stiilist. Nimisõnad raskendavad mõistmist – teema põhikandjana on neist igaühe taga mingi mõiste, mis tuleb teistega spetsiifiliselt seostada. Näiteks on elavas eestikeelses dialoogis nimisõnu u 17–23%, kuid Eesti ja ELi seadustes pea kaks korda (55%) ning ametnike kirjades isegi kuni kolm korda enam (64%). (<a href="https://www.etis.ee/Portal/Publications/Display/14a03013-3d5b-4eb6-a8e5-f20d5a818800">Kerge 2012: 27</a>) Teksti hindamise tööriistas on sellele tuginedes nominaalsusindeksi vahemikud määratud järgmiselt:</p>
       <div class="container">
 		<ul style="list-style-type:disc;">
 			<li>N <= 17% - vähe nimisõnu. Tekst võib olla liiga kontekstisidus.</li>
@@ -716,7 +715,9 @@ F-indeks erineb žanripõhiselt. Keskmise F-indeksi näited:</p>
 			<li>37,5% < N <= 59,5% - üsna palju nimisõnu.</li>
 			<li>59,5% < N - väga palju nimisõnu. Õpilased võivad vajada sõnaraamatu abi.</li>
 		</ul>
-	</div>     
+	</div>    
+	<p><b>Nimi- ja tegusõnavormide suhe</b> kirjeldab, kas tekst on stiililt pigem verbiline või nimisõnaline. Verbilisemat, s.o enamate tegusõnadega teksti on lihtsam jälgida ja sisu tabatakse kiiremini. Suhe kõigub žanriti 1 : 1,4 (üks nimisõna 1,3 tegusõna kohta) elavas raadiodialoogis kuni 5,8 : 1 (ligi kuus nimisõna ühe tegusõna kohta) ametnike
+omavahelistes kirjades. Suuline keelekasutus ja dialoogi vorm on seega enamasti stiililt verbilisemad kui muud žanrid. (<a href="https://www.etis.ee/Portal/Publications/Display/14a03013-3d5b-4eb6-a8e5-f20d5a818800">Kerge 2012: 27</a>)</p>
       <h3 class="jumptarget" id="item-11">Kuidas viidata</h3>
       <p>
         Õpetaja tööriistades esitatud infole palume viidata nii:<br />
