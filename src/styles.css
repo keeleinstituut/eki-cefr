@@ -51,6 +51,10 @@
   -webkit-transform: scale(1.1);
 }
 
+select.form-control:not([size]):not([multiple]) {
+    height: 2.75rem;
+}
+
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #0053B3;
 }
