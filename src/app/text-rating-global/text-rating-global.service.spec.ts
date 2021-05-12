@@ -10,7 +10,7 @@ describe('TextRatingGlobalService', () => {
   }));
 
   it('should be created', () => {
-    const service: TextRatingGlobalService = TestBed.get(TextRatingGlobalService);
+    const service: TextRatingGlobalService = TestBed.inject(TextRatingGlobalService);
     expect(service).toBeTruthy();
   });
 });

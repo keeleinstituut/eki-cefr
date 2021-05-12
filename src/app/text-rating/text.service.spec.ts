@@ -10,7 +10,7 @@ describe('TextService', () => {
   }));
 
   it('should be created', () => {
-    const service: TextService = TestBed.get(TextService);
+    const service: TextService = TestBed.inject(TextService);
     expect(service).toBeTruthy();
   });
 });
