@@ -10,7 +10,7 @@ describe('UsecaseService', () => {
   }));
 
   it('should be created', () => {
-    const service: UsecaseService = TestBed.get(UsecaseService);
+    const service: UsecaseService = TestBed.inject(UsecaseService);
     expect(service).toBeTruthy();
   });
 });

@@ -10,7 +10,7 @@ describe('VocabularyListService', () => {
   }));
 
   it('should be created', () => {
-    const service: VocabularyListService = TestBed.get(VocabularyListService);
+    const service: VocabularyListService = TestBed.inject(VocabularyListService);
     expect(service).toBeTruthy();
   });
 });
