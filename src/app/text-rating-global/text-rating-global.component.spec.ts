@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TextRatingGlobalComponent } from './text-rating-global.component';
@@ -7,7 +7,7 @@ describe('TextRatingGlobalComponent', () => {
   let component: TextRatingGlobalComponent;
   let fixture: ComponentFixture<TextRatingGlobalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule, HttpClientTestingModule ],
       declarations: [ TextRatingGlobalComponent ]
