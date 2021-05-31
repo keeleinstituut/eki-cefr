@@ -76,3 +76,35 @@
   outline: none;
   box-shadow: none;
 }
+
+
+span.phrase { border-bottom:1px solid; border-color:darkgray;   border-width: thin; }
+
+span.phrase span.phrase { padding-bottom:3px;}
+
+span.phrase span.phrase span.phrase { padding-bottom:6px; }
+span.phrase span.phrase span.phrase span.phrase { padding-bottom:9px; }
+span.phrase span.phrase span.phrase span.phrase  span.phrase { padding-bottom:12px; }
+span.phrase span.phrase span.phrase span.phrase  span.phrase span.phrase { padding-bottom:14px; }
+
+
+span.phrase.eelA1 { border-color: #D3DBE4; }
+span.phrase.A1 { border-color: #A0DCF8; }
+span.phrase.A2 { border-color: #A9EBB4; }
+span.phrase.B1 { border-color: #E8CBF3; }
+span.phrase.B2 { border-color: #FFDD75; }
+span.phrase.C1 { border-color: #FFB9B9; }
+
+
+
+
+/*
+span.phrase.NP { border-color:blue; }
+span.phrase.QUANTP { border-color:green;  }
+
+span.phrase.B1 {  border-color:yellow; }
+span.phrase.B2 {  border-color:magenta; }
+
+
+span.phrase.C1 { border-color:red; }
+*/

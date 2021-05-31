@@ -12,6 +12,7 @@ export class TextRatingComponent {
 
   public form;
   public resultData = '';
+  public phrasesTree = [];
   public smTable = '';
   public wordCount = '';
   public Findex = '';
@@ -55,6 +56,7 @@ export class TextRatingComponent {
   getData() {
     this.service.getTextData(encodeURI(this.form.value.text), this.form.value.list).subscribe((data: any) => {
       this.resultData = data.evaluatedText;
+      this.phrasesTree = data.phrasesTree;
       this.smTable = data.textStat.tables.by_level;
       this.wordCount = data.textStat.wordCount;
       this.Findex = data.textStat.Findex;
