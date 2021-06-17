@@ -70,10 +70,7 @@
           <div class="row lang-settings " style="height:40px">
              <ul ngbNav [(activeId)]="activeId" class="nav-tabs">
                 <li [ngbNavItem]="'sonavara'"  >
-                  <a ngbNavLink >Sõnavara</a>
-                </li>
-                  <li [ngbNavItem]="'vormid'" *ngIf="project=='noor'">
-                  <a ngbNavLink>Sõnavormid</a>
+                  <a ngbNavLink >Sõnavara ja vormimoodustus</a>
                 </li>
                 <li [ngbNavItem]="'fraasid'" *ngIf="project=='noor'">
                   <a ngbNavLink>Fraasid</a>
@@ -84,16 +81,11 @@
             class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text" style="border-top-left-radius: 0">
             <div class="pr-md-2 pr-0 h-25" [id]="i"
                  *ngFor="let word of this.resultData; let i = index">
-              <p class="mixed-text" [ngClass]="colors(word.level)" ngbPopover="{{word.pos_text}}"
-                 triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
-            </div>
-          </div>
-          <div *ngIf="activeId == 'vormid'"
-            class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
-            <div class="pr-md-2 pr-0 h-25" [id]="i"
-                 *ngFor="let word of this.resultDataGrammar; let i = index">
-              <ng-template #popContent>{{word.pos_text}}: <i>{{word.text}}</i>;<br/> vorm: <i>{{word.formXinfo}}</i></ng-template>
-              <p class="mixed-text" [ngClass]="colors(word.level)" [ngbPopover]="popContent"
+              <ng-template #popContent>
+                {{word.pos_text}}: <i>{{word.lemma}}</i>;
+                <br/> vorm: <i>{{this.resultDataGrammar[i].formXinfo}}</i>
+              </ng-template>
+              <p class="mixed-text" [ngClass]="colors(i)" [ngbPopover]="popContent"
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
             </div>
           </div>
