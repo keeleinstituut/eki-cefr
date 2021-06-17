@@ -98,7 +98,6 @@
             </div>
           </div>
           <div *ngIf="activeId == 'fraasid'"
-<<<<<<< HEAD
             class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
             <ng-template #spaceImage>
               <img width="10px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="" />
@@ -140,9 +139,6 @@
                <span ><ng-container *ngTemplateOutlet="nestedSpaceSpan; context:{ levels:textdata[index].spacelevels }"></ng-container></span>
               </span>
             </ng-template>
-=======
-                 class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text"><ng-template #listRecursive let-list let-baseword="baseword" let-parent="parent"><ng-container *ngFor="let item of list"><ng-container *ngIf="item.type=='phrase'"><span *ngIf="item.id==-1"><ng-container *ngTemplateOutlet="listRecursive; context:{ $implicit: item.children, baseword:{}, parent:item}"></ng-container></span><span *ngIf="!(item.id==-1)" [ngClass]="{'phrase': !(item.id==-1)}" class="{{item.baseword.phraselevel}} m-1" ><ng-container *ngTemplateOutlet="listRecursive; context:{ $implicit: item.children, baseword:item.baseword, parent:item}"></ng-container></span></ng-container><ng-container *ngIf="item.type=='word'" ><span ngbPopover="{{parent.phrasetypetext}}; fraasialus: {{baseword.text}}; keeletase: {{baseword.phraselevel}}; tüüp: {{baseword.ruletext}}" triggers="mouseenter:mouseleave" placement="top">{{item.text}} </span></ng-container></ng-container></ng-template>
->>>>>>> 84505b727d20852ae8d5d5e65c8b78caf713a63d
             <p style="line-height:2.5em; text-align: justify">
               <ng-container
                    *ngFor="let word of this.resultDataPhrases; let i = index">
