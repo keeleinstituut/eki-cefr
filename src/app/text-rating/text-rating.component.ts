@@ -11,9 +11,10 @@ import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component
 export class TextRatingComponent {
 
   public form;
-  public resultData = '';
-  public resultDataGrammar = '';
-  public phrasesTree = [];
+  public resultData = [];
+  public resultDataGrammar = [];
+  public resultDataPhrases = []
+  public phrases ={};
   public smTable = '';
   public smTableForms = '';
   public wordCount = '';
@@ -26,8 +27,8 @@ export class TextRatingComponent {
   public clicked = false;
   public project = 'noor';
   public activeId = 'sonavara';
-  
-  
+
+
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
 
@@ -43,10 +44,10 @@ export class TextRatingComponent {
 
   setlangList() {
     this.notAllowed = [];
-    
+
     this.project = this.form.value.list;
     this.activeId = 'sonavara';
-    
+
     this.service.getLevels(this.form.value.list).subscribe((data: any) => {
       this.levels = [];
       this.levels = data.item.evaluationLevels;
@@ -71,10 +72,11 @@ export class TextRatingComponent {
 
   getData() {
     this.service.getTextData(encodeURI(this.form.value.text), this.form.value.list).subscribe((data: any) => {
-      
+
       this.resultData = data.evaluatedText;
       this.resultDataGrammar = data.evaluatedGrammarText;
-      this.phrasesTree = data.phrasesTree;
+      this.resultDataPhrases = data.evaluatedPhrasesText;
+      this.phrases = data.phrasesData;
       this.smTable = data.textStat.tables.by_level;
       this.smTableForms = data.textStat.tables_forms.by_level;
       this.wordCount = data.textStat.wordCount;
@@ -114,6 +116,25 @@ clearText() {
       }
     }
     return 'color-' + level;
+  }
+
+  phraseColors(wordData): string {
+    if (wordData.isbaseword){
+      return 'textcolor-'+wordData.phraselevels[wordData.phraselevels.length-1];
+    }
+    else
+    {
+      return '';
+    }
+  }
+
+  removeFirst(arr) {
+    var arr1 = [...arr];
+    if (arr1.length){
+      arr1.shift();
+      return arr1;
+    }
+    return [];
   }
 
 }

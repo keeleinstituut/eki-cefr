@@ -10,13 +10,12 @@
       <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 text-rating-info">
         <p><b>Teksti hindamise</b> tööriist analüüsib tekste sõnavaraloendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).<br/>
         Lisaks väljastatakse teksti sõnavara keeleoskustasemetesse jaotumise statistika ning vähemalt 100-sõnalise teksti puhul loetavuse aspekte mõõtvad lix-indeks, formaalsusindeks, teksti nominaalsus ning nimi- ja tegusõnade suhe. <br/>
-        Teksti hindaja kohta loe rohkem <a [routerLink]="'/about'" fragment="item-10" >SIIT</a>.    
+        Teksti hindaja kohta loe rohkem <a [routerLink]="'/about'" fragment="item-10" >SIIT</a>.
         </p>
       </div>
     </div>
     <form [formGroup]="form">
       <b>Keeleõppija:</b>
-       
       <div class="pb-md-4 pb-3 pt-md-0 pt-3 ml-auto row">
         <div class="col-md-4 col-12">
         <div class="form-check d-inline-block mr-4">
@@ -45,11 +44,11 @@
                 /2000</small>
             </div>
             <div style="flex: 2; position:relative">
-              
+
           <textarea class="form-control text-area p-3" formControlName="text"
                     id="exampleFormControlTextarea1"
                     maxlength="2000"></textarea>
-              <button class="btn btn-lg  btn-outline-dark float-right gray"  style="position:absolute;top:0;right:0;padding:8px;padding-top:4px" (click)="clearText();getData(); clicked = true;" ngbPopover="Puhasta tekstiväli"
+              <button class="btn btn-sm  btn-outline-dark float-right gray"  style="position:absolute;top:0;right:0;padding:8px;padding-top:4px" (click)="clearText();getData(); clicked = true;" ngbPopover="Puhasta tekstiväli"
                  triggers="mouseenter:mouseleave" placement="top"><i class="fa fa-times"></i></button>
             </div>
           </div>
@@ -81,7 +80,6 @@
                 </li>
               </ul>
           </div>
-        
           <div *ngIf="activeId == 'sonavara'"
             class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text" style="border-top-left-radius: 0">
             <div class="pr-md-2 pr-0 h-25" [id]="i"
@@ -100,9 +98,52 @@
             </div>
           </div>
           <div *ngIf="activeId == 'fraasid'"
-                 class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text"><ng-template #listRecursive let-list let-baseword="baseword" let-parent="parent"><ng-container *ngFor="let item of list"><ng-container *ngIf="item.type=='phrase'"><span *ngIf="item.id==-1"><ng-container *ngTemplateOutlet="listRecursive; context:{ $implicit: item.children, baseword:{}, parent:item}"></ng-container></span><span *ngIf="!(item.id==-1)" [ngClass]="{'phrase': !(item.id==-1)}" class="{{item.baseword.phraselevel}} m-1" ><ng-container *ngTemplateOutlet="listRecursive; context:{ $implicit: item.children, baseword:item.baseword, parent:item}"></ng-container></span></ng-container><ng-container *ngIf="item.type=='word'" ><span ngbPopover="{{parent.phrasetypetext}}; fraasialus: {{baseword.text}}; keeletase: {{baseword.phraselevel}}" triggers="mouseenter:mouseleave" placement="top">{{item.text}} </span></ng-container></ng-container></ng-template>
+            class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
+            <ng-template #spaceImage>
+              <img width="10px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="" />
+            </ng-template>
+            <ng-template #nestedSpan let-text let-levels="levels">
+              <span *ngIf="levels.length" class="phrase {{levels[0]}}">
+                <ng-container *ngTemplateOutlet="nestedSpan; context:{ $implicit: text, levels:removeFirst(levels) }"></ng-container>
+              </span>
+              <span *ngIf="!levels.length">
+                {{text}}
+              </span>
+            </ng-template>
+            <ng-template #nestedSpaceSpan let-levels="levels">
+              <span *ngIf="levels.length" class="phrase {{levels[0]}}">
+                <ng-container *ngTemplateOutlet="nestedSpaceSpan; context:{ levels:removeFirst(levels) }"></ng-container>
+              </span>
+              <span *ngIf="!levels.length">
+                <ng-container *ngTemplateOutlet="spaceImage"></ng-container>
+              </span>
+            </ng-template>
+            <ng-template #wordAndSpace let-textdata let-index="index">
+              <span>
+                <ng-template #basewordPopover>
+                  <div *ngIf="textdata[index].isbaseword"><small>
+                    <b>{{phrases[index].phrasetypetext}}:</b> <i class="ml-2">{{textdata[index].phrasetext}}</i><br/>
+                    <b>Fraasialus:</b> <i class="ml-2">{{textdata[index].text.text}}</i><br/>
+                    <b>Keeletase:</b> {{phrases[index].phraselevel}}<br/>
+                    <b>Tüüp:</b> {{phrases[index].ruletext}}
+                    </small>
+                  </div>
+                </ng-template>
+                <span
+                      [ngClass]="phraseColors(textdata[index])"
+                      [ngbPopover]="basewordPopover"
+                      triggers="mouseenter:mouseleave"
+                      [disablePopover]="textdata[index].isbaseword==false"
+                      placement="top"
+                    ><ng-container *ngTemplateOutlet="nestedSpan; context:{ $implicit: textdata[index].text.text, levels:textdata[index].phraselevels }"> </ng-container></span>
+               <span ><ng-container *ngTemplateOutlet="nestedSpaceSpan; context:{ levels:textdata[index].spacelevels }"></ng-container></span>
+              </span>
+            </ng-template>
             <p style="line-height:2.5em; text-align: justify">
-                <ng-container  *ngTemplateOutlet="listRecursive; context:{ $implicit: phrasesTree, baseword:{}, parent:{}}"></ng-container>
+              <ng-container
+                   *ngFor="let word of this.resultDataPhrases; let i = index">
+                   <ng-container  *ngTemplateOutlet="wordAndSpace; context:{ $implicit: this.resultDataPhrases, index:i}" ></ng-container>
+              </ng-container>
             </p>
           </div>
         </div>
@@ -135,7 +176,7 @@
             <br/>
             <div class="mt-10">
               <u >Teksti loetavuse hindajad</u> <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html='true' ngbPopover="Loetavust hinnatakse, kui tekstis on vähemalt 100 sõna."><i class="fa fa-question-circle-o" aria-hidden="true"></i></a><br/>
-              Lix-indeks 
+              Lix-indeks
               <ng-template #lixindexdescription><span class="small">Teksti hoomatavus ehk tehniline raskusaste. Liidetakse lause keskmine pikkus ja pikkade sõnade (6 või enam tähte) osatähtsus ja ümardatakse täisarvuks.<br/>
                 Lix &lt;= 25 - väga kerge lugeda <br/>
                 25 &lt; Lix &lt;= 35 - kerge lugeda <br/>
@@ -143,7 +184,7 @@
                 44 &lt; Lix &lt;= 55 - raske lugeda<br/>
                 55 &gt; Lix - väga raske lugeda<br/></span></ng-template>
               <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="lixindexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>:  {{LixIndex}}<br/>
-              Formaalsusindeks 
+              Formaalsusindeks
               <ng-template #Findexdescription><span class="small">Teksti väljendustäpsuse aste skaalal formaalne-kontekstuaalne. Põhineb sõnaliikide sageduse võrdlusel.<br/>
               F &lt;= 42,2 - kontekstuaalne; suuline tekst<br/>
                 42,2 &lt; F &lt;= 55,65 - keskmise väljendustäpsusega; kirjalike tekstide keskmine<br/>
@@ -165,7 +206,6 @@
           </div>
         </div>
       </div>
-      
       <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true;">
         Hinda
       </button>
