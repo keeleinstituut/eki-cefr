@@ -8,9 +8,16 @@
         <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
       </div>
       <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 text-rating-info">
-        <p><b>Teksti hindamise</b> tööriist analüüsib tekste sõnavaraloendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).<br/>
-        Lisaks väljastatakse teksti sõnavara keeleoskustasemetesse jaotumise statistika ning vähemalt 100-sõnalise teksti puhul loetavuse aspekte mõõtvad lix-indeks, formaalsusindeks, teksti nominaalsus ning nimi- ja tegusõnade suhe. <br/>
-        Teksti hindaja kohta loe rohkem <a [routerLink]="'/about'" fragment="item-10" >SIIT</a>.
+        <!--<p><b>Teksti hindamise</b> tööriist analüüsib tekste sõnavaraloendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).
+        Teksti hindamise tööriist analüüsib teksti sõnavara, sõnavorme ja fraase.
+Teksti sõnavara keeleoskustasemed määratakse sõnavaraloendite põhjal. Loenditest puuduvad sõnad jäävad määramata. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt tamm 'puu' ja tamm 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. 
+Sõnavormide ja fraaside analüüs tugineb noore keeleõppija grammatikapädevuse kirjeldusele. Hindamisel arvestab programm vaid sõna vormi või fraasi struktuuri, sõna tähendust (sõnavara keeleoskustaset) ei arvestata. Kattuvate sõnavormide või keerulisemate sõltuvussuhete analüüsil võib esineda vigu.-->
+		<p><b>Teksti hindamise</b> tööriist analüüsib teksti sõnavara, sõnavorme ja fraasistruktuuri.</p>
+		<p>Teksti sõnavara keeleoskustasemed määratakse sõnavaraloendite põhjal. Loenditest puuduvad sõnad jäävad määramata. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta sõnavara tasandil mitmesõnalisi üksusi, nagu näiteks ühend- (nt lahku minema) ja väljendverbid (nt silma paistma).</p>
+	<p>Sõnavormide ja fraaside analüüs tugineb noore keeleõppija grammatikapädevuse kirjeldusele. Hindamisel arvestab programm vaid sõna vormi või fraasi struktuuri, sõna tähendust (sõnavara keeleoskustaset) ei arvestata. Kattuvate sõnavormide või keerulisemate sõltuvussuhete analüüsil võib esineda vigu. Fraaside struktuuri keeleoskustasemeid kuvatakse alates A2-tasemest.</p>
+	<p>Sõnavara ja vormimoodustuse analüüsi tulemus kuvatakse samas aknas. Sõna leksikaalset taset näitab tema põhivärv ning värviline kast sõna ümber märgib sõna vormi keeleoskustaset.</p>
+        <p>Lisaks väljastatakse teksti sõnavara keeleoskustasemetesse jaotumise statistika ning vähemalt 100-sõnalise teksti puhul loetavuse aspekte mõõtvad lix-indeks, formaalsusindeks, teksti nominaalsus ning nimi- ja tegusõnade suhe. </p>
+        <p>Teksti hindaja kohta loe rohkem <a [routerLink]="'/about'" fragment="item-10" >SIIT</a>.
         </p>
       </div>
     </div>
@@ -73,7 +80,7 @@
                   <a ngbNavLink >Sõnavara ja vormimoodustus</a>
                 </li>
                 <li [ngbNavItem]="'fraasid'" *ngIf="project=='noor'">
-                  <a ngbNavLink>Fraasid</a>
+                  <a ngbNavLink>Fraasimoodustus</a>
                 </li>
               </ul>
           </div>
@@ -82,8 +89,11 @@
             <div class="pr-md-2 pr-0 h-25" [id]="i"
                  *ngFor="let word of this.resultData; let i = index">
               <ng-template #popContent>
-                {{word.pos_text}}: <i>{{word.lemma}}</i>;
-                <br/> vorm: <i>{{this.resultDataGrammar[i].formXinfo}}</i>
+                <b>{{word.pos_text}}: </b> <i>{{word.lemma}}</i>
+                <br/> <b>sõnavorm: </b> <i>{{this.resultDataGrammar[i].text}}</i>
+                <br/> <b>vormi kirjeldus: </b> {{this.resultDataGrammar[i].formXinfo}}
+                <br/> <b>sõna tase: </b> {{word.level}}
+                <br/> <b>vormi tase: </b> {{this.resultDataGrammar[i].level}}
               </ng-template>
               <p class="mixed-text" [ngClass]="colors(i)" [ngbPopover]="popContent"
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
@@ -113,19 +123,18 @@
             <ng-template #wordAndSpace let-textdata let-index="index">
               <span>
                 <ng-template #basewordPopover>
-                  <div *ngIf="textdata[index].isbaseword"><small>
+                  <div *ngIf="textdata[index].isbaseword">
                     <b>{{phrases[index].phrasetypetext}}:</b> <i class="ml-2">{{textdata[index].phrasetext}}</i><br/>
-                    <b>Fraasialus:</b> <i class="ml-2">{{textdata[index].text.text}}</i><br/>
-                    <b>Keeletase:</b> {{phrases[index].phraselevel}}<br/>
-                    <b>Tüüp:</b> {{phrases[index].ruletext}}
-                    </small>
+                    <b>fraasialus:</b> <i class="ml-2">{{textdata[index].text.text}}</i><br/>
+                    <b>keeletase:</b> {{phrases[index].phraselevel}}<br/>
+                    <b>tüüp:</b> {{phrases[index].ruletext}}
                   </div>
                 </ng-template>
-                <span
+                <span 
                       [ngClass]="phraseColors(textdata[index])"
                       [ngbPopover]="basewordPopover"
                       triggers="mouseenter:mouseleave"
-                      [disablePopover]="textdata[index].isbaseword==false"
+                      [disablePopover]="textdata[index].isbaseword==false || phrases[index].phraselevel == 'A1' || phrases[index].phraselevel == 'eelA1' || phrases[index].phraselevel == 'unknown'"
                       placement="top"
                     ><ng-container *ngTemplateOutlet="nestedSpan; context:{ $implicit: textdata[index].text.text, levels:textdata[index].phraselevels }"> </ng-container></span>
                <span ><ng-container *ngTemplateOutlet="nestedSpaceSpan; context:{ levels:textdata[index].spacelevels }"></ng-container></span>
@@ -142,7 +151,8 @@
         <div class="col-md-2 col-12 pt-md-4 pt-2">
            <div class="row " style="height:40px"></div>
           <div class="bg-white rating-table bg-white py-1 px-3 border border-dark mixed-text">
-            Sõnu kokku: {{wordCount}}
+            Sõnu kokku: {{wordCount}}<br/>
+            Sõnavara jagunemine keeleoskustasemeti:
             <div class="row table-border m-0">
               <div class="col-5 pl-0">
                 Tase
