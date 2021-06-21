@@ -10,7 +10,7 @@
       <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 text-rating-info">
         <!--<p><b>Teksti hindamise</b> tööriist analüüsib tekste sõnavaraloendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).
         Teksti hindamise tööriist analüüsib teksti sõnavara, sõnavorme ja fraase.
-Teksti sõnavara keeleoskustasemed määratakse sõnavaraloendite põhjal. Loenditest puuduvad sõnad jäävad määramata. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt tamm 'puu' ja tamm 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. 
+Teksti sõnavara keeleoskustasemed määratakse sõnavaraloendite põhjal. Loenditest puuduvad sõnad jäävad määramata. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt tamm 'puu' ja tamm 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu.
 Sõnavormide ja fraaside analüüs tugineb noore keeleõppija grammatikapädevuse kirjeldusele. Hindamisel arvestab programm vaid sõna vormi või fraasi struktuuri, sõna tähendust (sõnavara keeleoskustaset) ei arvestata. Kattuvate sõnavormide või keerulisemate sõltuvussuhete analüüsil võib esineda vigu.-->
 		<p><b>Teksti hindamise</b> tööriist analüüsib teksti sõnavara, sõnavorme ja fraasistruktuuri ning on abiks otsustamisel, kas tekst on keeleõppijale lugemiseks tasemekohane.</p>
 		<p>Teksti sõnavara keeleoskustasemed määratakse noore keeleõppija ja täiskasvanute sõnavaraloendite põhjal. Kui sõna loendites ei esine, siis jääb selle tasemekohasus määramata ja tekstis neid sõnu värviga esile ei tooda. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta sõnavara tasandil mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).</p>
@@ -77,7 +77,8 @@ Sõnavormide ja fraaside analüüs tugineb noore keeleõppija grammatikapädevus
           <div class="row lang-settings " style="height:40px">
              <ul ngbNav [(activeId)]="activeId" class="nav-tabs">
                 <li [ngbNavItem]="'sonavara'"  >
-                  <a ngbNavLink >Sõnavara ja vormimoodustus</a>
+                  <a ngbNavLink *ngIf="project=='noor'">Sõnavara ja vormimoodustus</a>
+                  <a ngbNavLink *ngIf="!(project=='noor')">Sõnavara</a>
                 </li>
                 <li [ngbNavItem]="'fraasid'" *ngIf="project=='noor'">
                   <a ngbNavLink>Fraasimoodustus</a>
@@ -130,7 +131,7 @@ Sõnavormide ja fraaside analüüs tugineb noore keeleõppija grammatikapädevus
                     <b>tüüp:</b> {{phrases[index].ruletext}}
                   </div>
                 </ng-template>
-                <span 
+                <span
                       [ngClass]="phraseColors(textdata[index])"
                       [ngbPopover]="basewordPopover"
                       triggers="mouseenter:mouseleave"
