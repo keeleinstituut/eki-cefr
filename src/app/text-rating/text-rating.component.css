@@ -95,15 +95,15 @@ span.phrase span.phrase span.phrase span.phrase  span.phrase span.phrase { paddi
 
 
 
-span.phrase.eelA1 { border-color: white; }
-span.phrase.A1 { border-color: white; }
+span.phrase.eelA1 { border-color: #D3DBE4; }
+span.phrase.A1 { border-color: #A0DCF8; }
 span.phrase.A2 { border-color: #A9EBB4; }
 span.phrase.B1 { border-color: #E8CBF3; }
 span.phrase.B2 { border-color: #FFDD75; }
 span.phrase.C1 { border-color: #FFB9B9; }
 
-.textcolor-eelA1 { color: #001124; }
-.textcolor-A1 { color: #001124; }
+.textcolor-eelA1 { color: #D3DBE4; }
+.textcolor-A1 { color: #A0DCF8; }
 .textcolor-A2 { color: #A9EBB4; }
 .textcolor-B1 { color: #E8CBF3; }
 .textcolor-B2 { color: #FFDD75; }
