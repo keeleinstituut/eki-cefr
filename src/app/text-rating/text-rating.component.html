@@ -73,7 +73,8 @@
           <div class="row lang-settings " style="height:40px">
              <ul ngbNav [(activeId)]="activeId" class="nav-tabs">
                 <li [ngbNavItem]="'sonavara'"  >
-                  <a ngbNavLink >Sõnavara ja vormimoodustus</a>
+                  <a ngbNavLink *ngIf="project=='noor'">Sõnavara ja vormimoodustus</a>
+                  <a ngbNavLink *ngIf="!(project=='noor')">Sõnavara</a>
                 </li>
                 <li [ngbNavItem]="'fraasid'" *ngIf="project=='noor'">
                   <a ngbNavLink>Fraasimoodustus</a>
@@ -126,7 +127,7 @@
                     <b>tüüp:</b> {{phrases[index].ruletext}}
                   </div>
                 </ng-template>
-                <span 
+                <span
                       [ngClass]="phraseColors(textdata[index])"
                       [ngbPopover]="basewordPopover"
                       triggers="mouseenter:mouseleave"
