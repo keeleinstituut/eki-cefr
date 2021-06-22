@@ -8,14 +8,10 @@
         <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
       </div>
       <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 text-rating-info">
-        <!--<p><b>Teksti hindamise</b> tööriist analüüsib tekste sõnavaraloendite põhjal ning näitab, mis keeleoskustaseme sõnavara tekst sisaldab. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).
-        Teksti hindamise tööriist analüüsib teksti sõnavara, sõnavorme ja fraase.
-Teksti sõnavara keeleoskustasemed määratakse sõnavaraloendite põhjal. Loenditest puuduvad sõnad jäävad määramata. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt tamm 'puu' ja tamm 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. 
-Sõnavormide ja fraaside analüüs tugineb noore keeleõppija grammatikapädevuse kirjeldusele. Hindamisel arvestab programm vaid sõna vormi või fraasi struktuuri, sõna tähendust (sõnavara keeleoskustaset) ei arvestata. Kattuvate sõnavormide või keerulisemate sõltuvussuhete analüüsil võib esineda vigu.-->
-		<p><b>Teksti hindamise</b> tööriist analüüsib teksti sõnavara, sõnavorme ja fraasistruktuuri ning on abiks otsustamisel, kas tekst on keeleõppijale lugemiseks tasemekohane.</p>
+        <p><b>Teksti hindamise</b> tööriist määratleb teksti sõnavara, morfoloogiliste vormide ja fraasistruktuuri vastavust keeleoskustasemetele ning on abiks otsustamisel, kas tekst on keeleõppijale lugemiseks tasemekohane.</p>
 		<p>Teksti sõnavara keeleoskustasemed määratakse noore keeleõppija ja täiskasvanute sõnavaraloendite põhjal. Kui sõna loendites ei esine, siis jääb selle tasemekohasus määramata ja tekstis neid sõnu värviga esile ei tooda. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta sõnavara tasandil mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).</p>
-	<p>Vormimoodustuse ja fraasimoodustuse analüüs tugineb noore keeleõppija grammatikapädevuse kirjeldusele, täiskavanute kirjeldus on väljatöötamisel. Programm hindab sõnavormide ja nimi-, omadus- ja määrsõnafraaside struktuuri tasemekohasust, sõnade tähendust (sõnavara keeleoskustaset) ei arvestata. Homonüümsete sõnavormide ja sõltuvussuhete analüüsil võib esineda vigu. Fraaside struktuuri keerukust kuvatakse alates A2-tasemest.</p>
-	<p>Sõnavara ja vormimoodustuse analüüsi tulemus kuvatakse samas aknas. Sõna leksikaalset taset näitab tema põhivärv ning värviline kast sõna ümber märgib sõnavormi tasemekohasust.</p>
+	<p>Vormimoodustuse ja fraasimoodustuse analüüs tugineb noore keeleõppija grammatikapädevuse kirjeldusele, täiskavanute kirjeldus on väljatöötamisel. Programm hindab sõnavormide ja nimi-, omadus- ja määrsõnafraaside struktuuri tasemekohasust, sõnade tähendust (sõnavara keeleoskustaset) ei arvestata. Fraaside struktuuri keerukust kuvatakse alates A2-tasemest. Homonüümsete sõnavormide ja sõltuvussuhete analüüsil võib esineda vigu.</p>
+	<p>Sõnavara ja vormimoodustuse analüüsi tulemus kuvatakse samas aknas. Sõna leksikaalset taset näitab tema põhivärv ning värviline kast sõna ümber märgib sõnavormi tasemekohasust. Juhul, kui sõna leksikaalne ja sõnavormi tase langevad kokku, on sõna ühtlaselt värvitud.</p>
         <p>Tööriist väljastab ka teksti sõnavara keeleoskustasemetesse jaotumise statistika ning vähemalt 100-sõnalise teksti puhul loetavuse aspekte mõõtvad lix-indeks, formaalsusindeks, teksti nominaalsus ning nimi- ja tegusõnade suhe. </p>
         <p>Teksti hindaja kohta loe rohkem <a [routerLink]="'/about'" fragment="item-10" >SIIT</a>.
         </p>
@@ -92,8 +88,8 @@ Sõnavormide ja fraaside analüüs tugineb noore keeleõppija grammatikapädevus
                 <b>{{word.pos_text}}: </b> <i>{{word.lemma}}</i>
                 <br/> <b>sõna tase: </b> {{word.level}}
                 <br/> <b>sõnavorm: </b> <i>{{this.resultDataGrammar[i].text}}</i>
-                <br/> <b>vormi kirjeldus: </b> {{this.resultDataGrammar[i].formXinfo}}
-                <br/> <b>vormi tase: </b> {{this.resultDataGrammar[i].level}}
+                <ng-container *ngIf="this.resultDataGrammar[i].formXinfo"><br/> <b>vormi kirjeldus: </b> {{this.resultDataGrammar[i].formXinfo}}
+                <br/> <b>vormi tase: </b> {{this.resultDataGrammar[i].level}}</ng-container>
               </ng-template>
               <p class="mixed-text" [ngClass]="colors(i)" [ngbPopover]="popContent"
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
