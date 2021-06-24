@@ -11,8 +11,12 @@ import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component
 export class TextRatingComponent {
 
   public form;
-  public resultData = '';
+  public resultData = [];
+  public resultDataGrammar = [];
+  public resultDataPhrases = []
+  public phrases ={};
   public smTable = '';
+  public smTableForms = '';
   public wordCount = '';
   public Findex = '';
   public Nindex = '';
@@ -21,12 +25,16 @@ export class TextRatingComponent {
   public levels = [];
   public notAllowed = [];
   public clicked = false;
+  public project = 'noor';
+  public activeId = 'sonavara';
+
+
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
 
   constructor(private formBuilder: FormBuilder, private service: TextService) {
     this.form = this.formBuilder.group({
-      list: 'etLex',
+      list: 'noor',
       lang: new FormArray([]),
       text: 'Eesti keeles on 14 käänet, mille üle eestlased on iseäranis uhked. Selletõttu aga ei ole eesti keele lauses sõnade järjekord kindlate reeglitega määratud, nagu on seda paljudes indo-euroopa keeltes. Käänete rohkus ei garanteeri veel, et lauseliikmete süntaktilised funktsioonid oleks nende käänete vahel võrdselt ära jaotatud. Ei, nii lihtne eesti keel siiski ei ole! Enamasti sõltub sõna süntaktiline funktsioon ka veel lause tähendusest, see aga on arvutile seni veel ületamatu raskus. Näiteks kui vaadata kahte lauset «Lapsed sõid need kommid ära» ja «Need kommid sõid lapsed ära», siis nendes lausetes saab alust ja sihitist määrata ainult lause tähendust teades.',
       result: ''
@@ -36,6 +44,10 @@ export class TextRatingComponent {
 
   setlangList() {
     this.notAllowed = [];
+
+    this.project = this.form.value.list;
+    this.activeId = 'sonavara';
+
     this.service.getLevels(this.form.value.list).subscribe((data: any) => {
       this.levels = [];
       this.levels = data.item.evaluationLevels;
@@ -50,12 +62,23 @@ export class TextRatingComponent {
       this.getData();
     }
   }
-
+  getStatTable() {
+   if (this.activeId == 'vormid')
+   {
+      return this.smTableForms;
+   }
+   return this.smTable
+  }
 
   getData() {
     this.service.getTextData(encodeURI(this.form.value.text), this.form.value.list).subscribe((data: any) => {
+
       this.resultData = data.evaluatedText;
+      this.resultDataGrammar = data.evaluatedGrammarText;
+      this.resultDataPhrases = data.evaluatedPhrasesText;
+      this.phrases = data.phrasesData;
       this.smTable = data.textStat.tables.by_level;
+      this.smTableForms = data.textStat.tables_forms.by_level;
       this.wordCount = data.textStat.wordCount;
       this.Findex = data.textStat.Findex;
       this.LixIndex = data.textStat.LixIndex;
@@ -86,13 +109,49 @@ clearText() {
     }
   }
 
-  colors(level): string {
+  colors(index): string {
+
+    var level = this.resultData[index].level;
+    var formsLevel = this.resultDataGrammar[index].level;
+    var level1 = 'color-' + level;
+    var level2 = 'border-'+ formsLevel;
+    if (!level) {
+      level1 = 'color-no';
+    }
+  
+    if (!formsLevel || !(this.form.value.list=='noor')) {
+      level2 = 'border-no';
+    }
+
     for (const color of this.notAllowed) {
       if (color === level) {
-        return 'color-no';
+        level1 = 'color-no';
       }
+       if (color === formsLevel) {
+        level2 = 'border-no';
+      }
+
     }
-    return 'color-' + level;
+    return level1 + ' ' + level2;
+  }
+
+  phraseColors(wordData): string {
+    if (wordData.isbaseword){
+      return 'textcolor-'+wordData.phraselevels[wordData.phraselevels.length-1];
+    }
+    else
+    {
+      return '';
+    }
+  }
+
+  removeFirst(arr) {
+    var arr1 = [...arr];
+    if (arr1.length){
+      arr1.shift();
+      return arr1;
+    }
+    return [];
   }
 
 }
