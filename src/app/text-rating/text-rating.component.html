@@ -39,7 +39,7 @@
       </div>
       <div class="row">
         <div class="col-md-4 col-12">
-          <div class="row " style="height:40px" ></div>
+          <!--div class="row " style="height:40px" ></div-->
           <div class="form-group d-flex flex-column h-75">
             <div class="d-flex flex-row">
               <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
@@ -70,7 +70,7 @@
               </div>
             </div>
           </div>
-          <div class="row lang-settings " style="height:40px">
+          <!--div class="row lang-settings " style="height:40px">
              <ul ngbNav [(activeId)]="activeId" class="nav-tabs">
                 <li [ngbNavItem]="'sonavara'"  >
                   <a ngbNavLink *ngIf="project=='noor'">Sõnavara ja vormimoodustus</a>
@@ -80,7 +80,7 @@
                   <a ngbNavLink>Fraasimoodustus</a>
                 </li>
               </ul>
-          </div>
+          </div-->
           <div *ngIf="activeId == 'sonavara'"
             class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text" style="border-top-left-radius: 0">
             <div class="pr-md-2 pr-0 h-25" [id]="i"
@@ -96,7 +96,7 @@
                  triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
             </div>
           </div>
-          <div *ngIf="activeId == 'fraasid'"
+          <!--div *ngIf="activeId == 'fraasid'"
             class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
             <ng-template #spaceImage>
               <img width="10px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="" />
@@ -143,10 +143,10 @@
                    <ng-container  *ngTemplateOutlet="wordAndSpace; context:{ $implicit: this.resultDataPhrases, index:i}" ></ng-container>
               </ng-container>
             </p>
-          </div>
+          </div-->
         </div>
         <div class="col-md-2 col-12 pt-md-4 pt-2">
-           <div class="row " style="height:40px"></div>
+          <!--div class="row " style="height:40px"></div-->
           <div class="bg-white rating-table bg-white py-1 px-3 border border-dark mixed-text">
             Sõnu kokku: {{wordCount}}<br/>
             Sõnavara jagunemine keeleoskustasemeti:
