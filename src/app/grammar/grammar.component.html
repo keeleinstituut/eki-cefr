@@ -20,11 +20,22 @@
       <div class="row lang-settings pb-sm-0 pb-3">
         <b class="pr-2 pb-3">Keeleõppija:</b>
         <div class="form-check pr-4">
+          <div class="form-check d-inline-block">
           <input formControlName="list" class="form-check-input form-control-1x" type="radio"
                  id="customRadio1" value="noor" (click)="getChildData()">
           <label class="form-check-label" for="customRadio1">
             noor keeleõppija
           </label>
+          </div>
+          &nbsp;
+          <div class="form-check d-inline-block">
+
+            <input formControlName="list" class="form-check-input form-control-1x" type="radio"
+                   id="customRadio2" value="etLex" (click)="getAdultData()">
+            <label class="form-check-label" for="customRadio2">
+              täiskasvanu
+            </label>
+          </div>
         </div>
         <div class="form-check" *ngIf="0">
           <input formControlName="list" class="form-check-input form-control-1x" type="radio"

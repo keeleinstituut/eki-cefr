@@ -43,6 +43,7 @@ export interface DataItem {
 })
 export class GrammarComponent implements OnInit, OnDestroy {
 
+  public listType = "noor";
   public adultLangLevel: string[];
   public childLangLevel: string[];
   public adultWordTypes: string[];
@@ -254,6 +255,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
   }
 
   getAdultData() {
+    this.listType = 'etLex';
     this.langLevel = this.adultLangLevel;
     this.form.controls.lang.controls = [];
     this.form.controls.types.controls = [];
@@ -261,7 +263,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
   }
 
   getChildData() {
-    this.form.controls.lang.controls = [];
+    this.listType = 'noor';
     this.langLevel = this.childLangLevel;
     this.form.controls.lang.controls = [];
     this.form.controls.types.controls = [];
@@ -360,7 +362,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
 
     const offset =  (this.page - 1) * this.pageSize + 1;
 
-    this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
+    this.listService.getTableData(this.listType, encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
       this.column, this.direction).subscribe((data: any) => {
       this.valuesArray = [];
       this.itemsCount = data.count;
