@@ -145,7 +145,6 @@ export class GrammarComponent implements OnInit, OnDestroy {
       this.listService.getTypeData().subscribe((data: any) => {
         this.categoriesList = data.items.filter(item => item.parent === null);
         this.categories = data.items;
-        console.log('otsing salvestatud parameetritest', localStorage.getItem('search'));
         if (localStorage.getItem('search')) {
           const value = JSON.parse(localStorage.getItem('search'));
           this.form = this.formBuilder.group({
