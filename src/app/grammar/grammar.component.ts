@@ -137,6 +137,10 @@ export class GrammarComponent implements OnInit, OnDestroy {
       if (index > -1) {
         this.childLangLevel.splice(index, 1);
       }
+      var index = this.adultLangLevel.indexOf('C1');
+      if (index > -1) {
+        this.adultLangLevel.splice(index, 1);
+      }
 
       this.adultWordTypes = data.items.etLex.poslist;
       this.childWordTypes = data.items.noor.poslist;
