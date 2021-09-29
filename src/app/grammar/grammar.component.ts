@@ -145,7 +145,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
       this.listService.getTypeData().subscribe((data: any) => {
         this.categoriesList = data.items.filter(item => item.parent === null);
         this.categories = data.items;
-        console.log('otsing salvestatud', localStorage.getItem('search'));
+        console.log('otsing salvestatud parameetritest', localStorage.getItem('search'));
         if (localStorage.getItem('search')) {
           const value = JSON.parse(localStorage.getItem('search'));
           this.form = this.formBuilder.group({
@@ -165,8 +165,8 @@ export class GrammarComponent implements OnInit, OnDestroy {
             lang: new FormArray([]),
             types: new FormArray([])
           });
-
-          this.langCheckboxes(value.lang);
+          this.listType = value.list;
+          this.langCheckboxes(value.lang, value.list);
           this.sendData();
           localStorage.removeItem('search');
         } else {
@@ -401,8 +401,15 @@ export class GrammarComponent implements OnInit, OnDestroy {
     });
   }
 
-  private langCheckboxes(item: any) {
-    this.langLevel = this.childLangLevel;
+  private langCheckboxes(item: any, listType:string) {
+    if (listType == 'etLex')
+    {
+      this.langLevel = this.adultLangLevel;
+    }
+    else
+    {
+      this.langLevel = this.childLangLevel;
+    }
     this.langLevel.forEach((o, i) => {
       const control = new FormControl(item[i]);
       (this.form.controls.lang as FormArray).push(control);
