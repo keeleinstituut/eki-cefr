@@ -145,7 +145,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
       this.listService.getTypeData().subscribe((data: any) => {
         this.categoriesList = data.items.filter(item => item.parent === null);
         this.categories = data.items;
-
+        console.log('otsing salvestatud', localStorage.getItem('search'));
         if (localStorage.getItem('search')) {
           const value = JSON.parse(localStorage.getItem('search'));
           this.form = this.formBuilder.group({
@@ -161,7 +161,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
                 return group;
               })
             ),
-            list: 'noor',
+            list: value.list,
             lang: new FormArray([]),
             types: new FormArray([])
           });
@@ -172,7 +172,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
         } else {
           this.form = this.formBuilder.group({
             category: new FormArray([]),
-            list: 'noor',
+            list: this.listType,
             lang: new FormArray([]),
             types: new FormArray([])
           });
@@ -387,7 +387,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
   toDetail(item) {
     this.detailService.sendData(item.id);
     this.router.navigate(['/grammar-detail']);
-    this.detailService.saveSearchData(this.form.value, this.pageSize, this.page);
+    this.detailService.saveSearchData(this.listType, this.form.value, this.pageSize, this.page);
   }
 
   scrollTo(el) {
