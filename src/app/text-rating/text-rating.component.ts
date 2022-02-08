@@ -118,11 +118,11 @@ clearText() {
     if (!level) {
       level1 = 'color-no';
     }
-
+    /**
     if (!formsLevel || !(this.form.value.list=='noor')) {
       level2 = 'border-no';
     }
-
+    **/
     for (const color of this.notAllowed) {
       if (color === level) {
         level1 = 'color-no';
