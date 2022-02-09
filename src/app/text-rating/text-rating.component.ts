@@ -119,7 +119,8 @@ clearText() {
       level1 = 'color-no';
     }
 
-    if (!formsLevel) {
+
+   if (!formsLevel) {
       level2 = 'border-no';
     }
 
