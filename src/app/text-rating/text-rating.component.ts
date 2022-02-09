@@ -119,7 +119,7 @@ clearText() {
       level1 = 'color-no';
     }
 
-    if (!formsLevel || !(this.form.value.list=='noor')) {
+    if (!formsLevel) {
       level2 = 'border-no';
     }
 
