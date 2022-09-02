@@ -43,7 +43,7 @@ export interface DataItem {
 })
 export class GrammarComponent implements OnInit, OnDestroy {
 
-  public listType = "noor";
+  public listType = "etLex";
   public adultLangLevel: string[];
   public childLangLevel: string[];
   public adultWordTypes: string[];
