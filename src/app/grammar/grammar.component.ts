@@ -176,7 +176,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
             types: new FormArray([])
           });
           this.addRow();
-          this.getChildData();
+          this.getAdultData();
         }
       });
     });
