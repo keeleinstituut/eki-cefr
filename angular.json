@@ -140,7 +140,6 @@
       }
     }
   },
-  "defaultProject": "ekilex-tools",
   "cli": {
     "analytics": false
   }

@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormArray, FormBuilder, FormControl} from '@angular/forms';
+import {UntypedFormArray, UntypedFormBuilder, UntypedFormControl} from '@angular/forms';
 import {TextService} from './text.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 
@@ -32,10 +32,10 @@ export class TextRatingComponent {
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
 
-  constructor(private formBuilder: FormBuilder, private service: TextService) {
+  constructor(private formBuilder: UntypedFormBuilder, private service: TextService) {
     this.form = this.formBuilder.group({
       list: 'noor',
-      lang: new FormArray([]),
+      lang: new UntypedFormArray([]),
       text: 'Eesti keel on emakeeleks umbes miljonile inimesele üle maailma ja üha rohkem õpitakse seda ka teise või võõrkeelena. Arvatakse, et eesti keelt on raske õppida, kuna selles on koguni 14 käänet, mis tundub jube hirmutav. Küsimusi tekitab ka eesti keele sõnajärg. Nagu teada, ei ole eestikeelse lause sõnade järjekord kindlate reeglitega määratud, nagu on seda paljudes indo-euroopa keeltes. Kindlasti on see arvutile seni veel ületamatu raskus ning võib olla keeruline ka eesti keele õppijate jaoks. Näiteks kui vaadata kahte lauset «Lapsed sõid need kommid ära» ja «Need kommid sõid lapsed ära», siis nendes lausetes saab alust ja sihitist määrata ainult lause tähendust teades. Olgem siis lausete tähenduse mõistmisel tähelepanelikud!',
       result: ''
     });
@@ -51,10 +51,10 @@ export class TextRatingComponent {
     this.service.getLevels(this.form.value.list).subscribe((data: any) => {
       this.levels = [];
       this.levels = data.item.evaluationLevels;
-      (this.form.controls.lang as FormArray).clear();
+      (this.form.controls.lang as UntypedFormArray).clear();
       this.levels.forEach((o, i) => {
-        const control = new FormControl(i >= 0);
-        (this.form.controls.lang as FormArray).push(control);
+        const control = new UntypedFormControl(i >= 0);
+        (this.form.controls.lang as UntypedFormArray).push(control);
       });
 
     });
@@ -96,8 +96,8 @@ clearText() {
 }
   private addCheckboxes() {
     this.levels.forEach((o, i) => {
-      const control = new FormControl(i >= 0);
-      (this.form.controls.lang as FormArray).push(control);
+      const control = new UntypedFormControl(i >= 0);
+      (this.form.controls.lang as UntypedFormArray).push(control);
     });
   }
 

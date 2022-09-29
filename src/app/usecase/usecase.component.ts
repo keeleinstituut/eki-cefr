@@ -12,7 +12,7 @@ import {
   ViewChild,
   ViewChildren
 } from '@angular/core';
-import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { UsecaseService } from './usecase.service';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -83,7 +83,7 @@ export class UsecaseComponent implements OnInit, OnDestroy {
 
   constructor(
     private listService: UsecaseService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private pipe: DecimalPipe,
     private router: Router,
     //private detailService: GrammarDetailService,
@@ -153,7 +153,7 @@ export class UsecaseComponent implements OnInit, OnDestroy {
         if (localStorage.getItem('search')) {
           const value = JSON.parse(localStorage.getItem('search'));
           this.form = this.formBuilder.group({
-            category: new FormArray(value.category.map((item, index) => {
+            category: new UntypedFormArray(value.category.map((item, index) => {
                 const group = this.initSection();
                 this.getChildValues(item.maincategory, index);
                 group.patchValue({
@@ -166,8 +166,8 @@ export class UsecaseComponent implements OnInit, OnDestroy {
               })
             ),
             list: 'noor',
-            lang: new FormArray([]),
-            types: new FormArray([])
+            lang: new UntypedFormArray([]),
+            types: new UntypedFormArray([])
           });
 
           this.langCheckboxes(value.lang);
@@ -175,10 +175,10 @@ export class UsecaseComponent implements OnInit, OnDestroy {
           localStorage.removeItem('search');
         } else {
           this.form = this.formBuilder.group({
-            category: new FormArray([]),
+            category: new UntypedFormArray([]),
             list: 'noor',
-            lang: new FormArray([]),
-            types: new FormArray([])
+            lang: new UntypedFormArray([]),
+            types: new UntypedFormArray([])
           });
           this.addRow();
           this.getChildData();
@@ -191,8 +191,8 @@ export class UsecaseComponent implements OnInit, OnDestroy {
     this.routeHandler.unsubscribe();
   }
 
-  addCont(item, index): FormArray {
-    return new FormArray(item.subCategory.map((obj, i) => {
+  addCont(item, index): UntypedFormArray {
+    return new UntypedFormArray(item.subCategory.map((obj, i) => {
       const secGroup = this.initSecSection();
       this.getTypeValues(item.subcategory, index);
       this.getTypes(obj.descriptor, index, i);
@@ -277,7 +277,7 @@ export class UsecaseComponent implements OnInit, OnDestroy {
     return this.formBuilder.group({
       maincategory: [],
       subcategory: [],
-      subCategory: new FormArray([]),
+      subCategory: new UntypedFormArray([]),
     });
   }
 
@@ -292,7 +292,7 @@ export class UsecaseComponent implements OnInit, OnDestroy {
     (this.form.get('category')).push(this.formBuilder.group({
       maincategory: [],
       subcategory: [],
-      subCategory: new FormArray([]),
+      subCategory: new UntypedFormArray([]),
     }));
   }
 
@@ -400,16 +400,16 @@ export class UsecaseComponent implements OnInit, OnDestroy {
 
   private addCheckboxes() {
     this.langLevel.forEach((o, i) => {
-      const control = new FormControl();
-      (this.form.controls.lang as FormArray).push(control);
+      const control = new UntypedFormControl();
+      (this.form.controls.lang as UntypedFormArray).push(control);
     });
   }
 
   private langCheckboxes(item: any) {
     this.langLevel = this.childLangLevel;
     this.langLevel.forEach((o, i) => {
-      const control = new FormControl(item[i]);
-      (this.form.controls.lang as FormArray).push(control);
+      const control = new UntypedFormControl(item[i]);
+      (this.form.controls.lang as UntypedFormArray).push(control);
     });
   }
 }

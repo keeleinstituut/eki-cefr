@@ -2,7 +2,7 @@ import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
 import { DecimalPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { VocabularyListService } from './vocabulary-list.service';
-import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { environment } from './../../environments/environment';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -51,14 +51,14 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
 
-  constructor(private listService: VocabularyListService, private formBuilder: FormBuilder,
+  constructor(private listService: VocabularyListService, private formBuilder: UntypedFormBuilder,
               private pipe: DecimalPipe, private router: Router, private activatedRoute: ActivatedRoute) {
     this.form = this.formBuilder.group({
       search: '',
       list: 'etLex',
       theme: '',
-      lang: new FormArray([]),
-      types: new FormArray([])
+      lang: new UntypedFormArray([]),
+      types: new UntypedFormArray([])
     });
 
     this.routeHandler = router.events.subscribe(event => {
@@ -200,12 +200,12 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
 
   private addCheckboxes() {
     this.langLevel.forEach((o, i) => {
-      const control = new FormControl();
-      (this.form.controls.lang as FormArray).push(control);
+      const control = new UntypedFormControl();
+      (this.form.controls.lang as UntypedFormArray).push(control);
     });
     this.wordTypes.forEach((o, i) => {
-      const control = new FormControl();
-      (this.form.controls.types as FormArray).push(control);
+      const control = new UntypedFormControl();
+      (this.form.controls.types as UntypedFormArray).push(control);
     });
   }
 }

@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
-import {FormBuilder} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {FeedbackModalService} from './feedback-modal.service';
 import {environment} from '../../environments/environment';
 
@@ -18,7 +18,7 @@ export class FeedbackModalComponent {
   public error = false;
   public agree = false;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder,
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: UntypedFormBuilder,
               private service: FeedbackModalService) {
     config.backdrop = 'static';
     config.keyboard = false;
