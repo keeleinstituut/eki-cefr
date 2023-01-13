@@ -20,6 +20,7 @@ import { GrammarDetailComponent } from './grammar-detail/grammar-detail.componen
 import { SpinnerComponent } from './spinner/spinner.component';
 import {AutosizeModule} from 'ngx-autosize';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { EducationalMaterialComponent } from './educational-material/educational-material.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     KeysPipe,
     FeedbackModalComponent,
     GrammarDetailComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    EducationalMaterialComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,10 @@
   margin-left: 40px;
 }
 
+.emph {
+ //color:green;
+ letter-spacing: 1px;
+}
 .alpha ul {
   list-style-type: upper-roman;
   margin-left: 80px;
@@ -22,10 +26,6 @@ a {
   display: block;
   height: 100px; /* fixed header height*/
   margin: -100px 0 0; /* negative fixed header height */
-}
-
-b {
-margin-right:2px;
 }
 
 .table-sm th,

@@ -41,6 +41,11 @@
           <span class="main-menu-item"
                 [class.item-active]="menuItem === 'rating'">Teksti hindamine</span>
       </a>
+      <a [routerLink]="['/educational-material']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
+         (click)="setItem('educational-material')">
+          <span class="main-menu-item"
+                [class.item-active]="menuItem === 'educational-material'">Õppevara</span>
+      </a>
       <a [routerLink]="['/about']" class="text-center mr-lg-4 ml-lg-4 ml-md-2 mr-md-2"
          (click)="setItem('about')">
             <span class="main-menu-item"
