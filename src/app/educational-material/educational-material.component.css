@@ -3,10 +3,6 @@
   margin-left: 40px;
 }
 
-.emph {
- //color:green;
- letter-spacing: 1px;
-}
 .alpha ul {
   list-style-type: upper-roman;
   margin-left: 80px;
@@ -37,6 +33,14 @@ a {
 .table-sm thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #D8D8D8;
+}
+
+h4 {
+  margin-top: 40px;
+}
+
+h5 {
+  margin-top: 30px;
 }
 
 .nav-link {
