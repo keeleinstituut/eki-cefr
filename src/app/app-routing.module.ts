@@ -7,6 +7,7 @@ import { GrammarComponent } from './grammar/grammar.component';
 import { UsecaseComponent } from './usecase/usecase.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
 import { GrammarDetailComponent } from './grammar-detail/grammar-detail.component';
+import { EducationalMaterialComponent } from './educational-material/educational-material.component';
 
 const routes: Routes = [
   { path: 'home', component: MainComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'usecase', component: UsecaseComponent },
   { path: 'about', component: AboutProjectComponent },
   { path: 'grammar-detail', component: GrammarDetailComponent },
+  { path: 'educational-material', component: EducationalMaterialComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -23,7 +25,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { anchorScrolling: 'enabled', relativeLinkResolution: 'legacy' })
   ],
-  
+
   exports: [RouterModule]
 })
 export class AppRoutingModule {

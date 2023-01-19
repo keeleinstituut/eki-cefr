@@ -24,10 +24,6 @@ a {
   margin: -100px 0 0; /* negative fixed header height */
 }
 
-b {
-margin-right:2px;
-}
-
 .table-sm th,
 .table-sm td {
   border-top: 1px solid #D8D8D8;
@@ -37,6 +33,14 @@ margin-right:2px;
 .table-sm thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #D8D8D8;
+}
+
+h4 {
+  margin-top: 40px;
+}
+
+h5 {
+  margin-top: 30px;
 }
 
 .nav-link {
