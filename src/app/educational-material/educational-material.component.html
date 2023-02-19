@@ -31,11 +31,15 @@
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="nav-link"
            fragment="item-veebimaterjalid">VEEBIMATERJALID</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
-           fragment="item-veebimaterjalid-keeleoppijale">Keeleõppijale</a>
+           fragment="item-veebimaterjalid-keeleoppijale">Noorele keeleõppijale</a>
+        <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
+           fragment="item-veebimaterjalid-taiskasvanud">Täiskasvanud keeleõppijale</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
            fragment="item-veebimaterjalid-opetajale">Õpetajale</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="nav-link"
            fragment="item-veebisonastikud">VEEBISÕNASTIKUD</a>
+        <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="nav-link"
+           fragment="item-abivahendid">Keeletehnoloogilised abivahendid</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="nav-link"
            fragment="item-opetajale">ÕPETAJALE</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
@@ -44,8 +48,7 @@
            fragment="item-opetajale-metoodilised">Metoodilised materjalid ja käsiraamatud</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
            fragment="item-opetajale-uurimused">Uurimused</a>
-        <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
-           fragment="item-opetajale-abivahendid">Keeletehnoloogilised abivahendid</a>
+
       </aside>
     </nav>
     <div data-spy="scroll" class="col-md-8 col-12 pb-4 mb-4" data-offset="0" data-target="#main">
@@ -69,14 +72,15 @@
             <option value="item-taiskasvanule-edasijoudnutele">Edasijõudnud</option>
             <option value="item-taiskasvanule-tasemeta">Ilma kindla tasememääratluseta</option>
             <option value="item-veebimaterjalid">VEEBIMATERJALID</option>
-            <option value="item-veebimaterjalid-keeleoppijale">Keeleõppijale</option>
+            <option value="item-veebimaterjalid-keeleoppijale">Noorele keeleõppijale</option>
+            <option value="item-veebimaterjalid-taiskasvanud">Täiskasvanud keeleõppijale</option>
             <option value="item-veebimaterjalid-opetajale">Õpetajale</option>
             <option value="item-veebisonastikud">VEEBISÕNASTIKUD</option>
+            <option value="item-abivahendid">Keeletehnoloogilised abivahendid</option>
             <option value="item-opetajale">ÕPETAJALE</option>
             <option value="item-opetajale-keeleoskustasemed">Keeleoskustasemete kirjeldused</option>
             <option value="item-opetajale-metoodilised">Metoodilised materjalid ja käsiraamatud</option>
             <option value="item-opetajale-uurimused">Uurimused</option>
-            <option value="item-opetajale-abivahendid">Keeletehnoloogilised abivahendid</option>
           </select>
         </div>
       </div>
@@ -1375,7 +1379,7 @@
 
       <h4 class="jumptarget" id="item-veebimaterjalid">VEEBIMATERJALID</h4>
 
-      <h5 class="jumptarget" id="item-veebimaterjalid-keeleoppijale">Keeleõppijale</h5>
+      <h5 class="jumptarget" id="item-veebimaterjalid-keeleoppijale">Noorele keeleõppijale</h5>
 
       <p>
         <a href="https://alpa.ee/" target="_blank">AlpaKids</a> Digiõppemängud 3-8aastastele lastele.
@@ -1387,18 +1391,21 @@
         <a href="https://www.opiq.ee/" target="_blank">Opiq</a> Digiõpikute keskkond.
       </p>
       <p>
+        <a href="https://www.taskutark.ee/topic/eesti-keel-teise-keelena#list-145799" target="_blank">TaskuTark. Eesti
+          keele teise keelena</a> Haridusportaal.
+        <a href="https://www.taskutark.ee/" target="_blank">Lugemis-, kuulamis- ja grammatikaülesanded tasemetele A1-B1
+          ja B2</a>.
+      </p>
+
+      <h5 class="jumptarget" id="item-veebimaterjalid-taiskasvanud">Täiskasvanud keeleõppijale</h5>
+
+      <p>
         <a href="https://www.keeleklikk.ee/" target="_blank">Keeleklikk</a> Eesti keele e-kursus algajatele.
         Keeleõppesisu autorid: Leelo Kingisepp ja Marju Ilves.
       </p>
       <p>
         <a href="https://www.keeletee.ee/" target="_blank">Keeletee</a> Eesti keele e-kursus edasijõudnutele.
         Keeleõppesisu autorid: Leelo Kingisepp ja Marju Ilves.
-      </p>
-      <p>
-        <a href="https://www.taskutark.ee/topic/eesti-keel-teise-keelena#list-145799" target="_blank">TaskuTark. Eesti
-          keele teise keelena</a> Haridusportaal.
-        <a href="https://www.taskutark.ee/" target="_blank">Lugemis-, kuulamis- ja grammatikaülesanded tasemetele A1-B1
-          ja B2</a>.
       </p>
       <p>
         <a href="https://keeleweb2.ut.ee/" target="_blank">Eesti keele ja kultuuri kursused</a> Tartu Ülikooli eesti
@@ -1429,7 +1436,7 @@
       </p>
       <p>
         <a href="https://integratsioon.ee/iseseisev-ope-ja-oppematerjalid" target="_blank">Iseseisev õpe ja
-          õppematerjalid</a> Materjalide loend Sihtasutuse kodulehel.
+          õppematerjalid</a> Materjalide loend Integratsiooni Sihtasutuse kodulehel.
       </p>
       <p>
         <a href="https://evkk.tlu.ee/links#audiovisuaalne" target="_blank">Audiovisuaalne meedia</a>.
@@ -1466,7 +1473,8 @@
       </p>
       <p>
         <a href="https://evkk.tlu.ee/corrector" target="_blank">Tekstihindaja</a> Tallinna Ülikooli
-        keskkond <a href="https://evkk.tlu.ee/links#tutvustus" target="_blank">ELLE</a>. Rakenduse abil saab hinnata mis
+        keskkond <a href="https://evkk.tlu.ee/links#tutvustus" target="_blank">ELLE</a>. Rakenduse abil saab hinnata,
+        mis
         keeleoskustasemele vastab õppija kirjutatud tekst (A2–C1). Loe lähemalt <a
         href="https://github.com/centre-for-educational-technology/evkk/wiki/Demos" target="_blank">siit</a>.
       </p>
@@ -1506,6 +1514,28 @@
       <p>
         <a href="https://www.eki.ee/dict/asp/" target="_blank">Sihitisesõnastik</a> Sõnastik sisaldab ligikaudu 400
         sagedasemat eesti keele sihilist tegusõna koos sihitise käände kasutamise infoga.
+      </p>
+
+      <h5 class="jumptarget" id="item-abivahendid">Keeletehnoloogilised abivahendid</h5>
+
+      <p>
+        <a href="https://tolkevarav.eki.ee/" target="_blank">Tõlkevärav</a> Eesti Keele Instituudi mitmekeelne
+        tõlketööriist.
+      </p>
+      <p>
+        <a href="https://masintolge.ut.ee/" target="_blank">Neurotõlge</a> Tartu Ülikooli mitmekeelne tõlketööroost.
+      </p>
+      <p>
+        Kõnesünteesiteenus <a href="https://koneveeb.ee/" target="_blank">Kõneveeb</a> (Eesti Keele Instituut)
+      </p>
+      <p>
+        Kõnesünteesiteenus <a href="https://neurokone.ee/" target="_blank">Neurokõne</a> (Tartu Ülikool)
+      </p>
+      <p>
+        Kõnetuvastusteenus <a href="https://tekstiks.ee/" target="_blank">Kõne tekstiks</a> (Tallinna Tehnikaülikool)
+      </p>
+      <p>
+        Kõnetuvastusteenus Androidi rakendustele <a href="" target="_blank">Kõnele</a>
       </p>
 
       <h4 class="jumptarget" id="item-opetajale">ÕPETAJALE</h4>
@@ -1903,6 +1933,14 @@
         keele oskuse areng aasta jooksul.</a> – Philologia Estonica Tallinnensis 7, 39–79.
       </p>
       <p>
+        <b>Brown, Kara 2022.</b><span class="mr-2"> </span><a
+        href="https://ojs.utlib.ee/index.php/EHA/article/view/eha.2022.10.2.07a" target="_blank">Kahesuunalise
+        keelekümblusprogrammi
+        kasutuselevõtt ja arendus Eesti lasteaedades ruumilisest vaatenurgast. Ressursid ja riskid.</a> – Eesti
+        Haridusteaduste
+        Ajakiri 10 (2), 178–202.
+      </p>
+      <p>
         <a
           href="https://centar.ee/tehtud-tood/eesti-keelest-erineva-emakeelega-taiskasvanute-eesti-keele-ope-loimumis-ja-toohoivepoliitikas-kvaliteet-moju-ja-korraldus"
           target="_blank">Eesti keelest erineva emakeelega täiskasvanute eesti keele õpe lõimumis- ja
@@ -1915,8 +1953,12 @@
         Universities Today and Tomorrow. Edited by Kiira Allikmets. Tartu, 20–32.
       </p>
       <p>
-        <b>Ehala, Martin; Kerge, Krista; Niglas, Katrin; Pajupuu, Hille; Raava, Mait 2002.</b> Eesti keele kui teise
-        keele õpetajate pädevusmudel ja koolitusvajadus: uurimuskokkuvõte. Tallinn: Eesti Keele Sihtasutus.
+        <b>Ehala, Martin; Kerge, Krista; Niglas, Katrin; Pajupuu, Hille; Raava, Mait 2002.</b><span
+        class="mr-2"> </span>
+        <a
+          href="https://www.researchgate.net/publication/305033146_Eesti_keele_kui_teise_keele_opetajate_padevusmudel_ja_koolitusvajadus_uurimuskokkuvote"
+          target="_blank">Eesti keele kui teise
+          keele õpetajate pädevusmudel ja koolitusvajadus: uurimuskokkuvõte.</a> Tallinn: Eesti Keele Sihtasutus.
       </p>
       <p>
         <b>Ehala, Martin 2009.</b><span class="mr-2"> </span><a href="https://www.digar.ee/arhiiv/et/perioodika/35173"
@@ -2034,6 +2076,12 @@
         õppijate kirjutamisprotsess.</a> Doktoriväitekiri. Tallinn:
         Tallinna Ülikool.
       </p>
+      <p>
+        <b>Gusjuk, Natalja; Tuul, Maire; Õun, Tiia 2022.</b><span class="mr-2"> </span><a
+        href="https://ojs.utlib.ee/index.php/EHA/article/view/eha.2022.10.2.06" target="_blank">Kahesuunaline
+        keelekümblus Eestis: lastevanemate ootused, kogemused ja hinnang programmi rakendamisele.</a> – Eesti
+        Haridusteaduste
+        Ajakiri 10 (2), 152–177.
       <p>
         <b>Hallap, Merit; Padrik, Marika; Raudik, Signe 2014.</b><span class="mr-2"> </span><a
         href="http://arhiiv.rakenduslingvistika.ee/ajakirjad/index.php/aastaraamat/article/view/ERYa10.05"
@@ -2338,6 +2386,20 @@
         target="_blank">Kuidas õpetada eesti keele kui teise keele grammatikat
         põhikooli õpilastele? Juhtumianalüüs.</a> – Lähivõrdlusi. Lähivertailuja 32, 53–78.
       </p>
+
+      <p>
+        <b>Kitsnik, Mare; Petuhhova, Jekaterina 2021.</b><span class="mr-2"> </span><a
+        href="https://ojs.utlib.ee/index.php/EHA/article/view/eha.2021.9.1.11"
+        target="_blank">Eesti ja eestivene põhikoolinoorte vastastikused hoiakud enne ja pärast mängustatud
+        koostöötegevuste
+        projektis osalemist.</a> – Eesti Haridusteaduste Ajakiri 9 (1), 274–303.
+      <p>
+        <b>Kitsnik, Mare; Palts, Linda; Urb, Monika 2022.</b><span class="mr-2"> </span><a
+        href="https://ojs.utlib.ee/index.php/EHA/article/view/eha.2022.10.2.09"
+        target="_blank">Lugemistekstide kogumiku „Meie elu“ koostamine täiskasvanud A2-taseme eesti keele õppijaile.
+        Tasakaalu otsimine autentselaadsuse, huvitavuse ja jõukohasuse vahel.</a> – Eesti Haridusteaduste Ajakiri 10
+        (2), 251–276.
+      </p>
       <p>
         <b>Klaas, Birute 1992.</b><span class="mr-2"> </span><a href="https://www.digar.ee/arhiiv/nlib-digar:201246"
                                                                 target="_blank">Mõtteid võõrkeeleõpetuse
@@ -2394,6 +2456,11 @@
         target="_blank">Miks õppida “väikest keelt”? Integratiivne vs. instrumentaalne
         motivatsioon välisüliõpilaste eesti keele õppimisel.</a> – Eesti Rakenduslingvistika Ühingu aastaraamat 15,
         83–98.
+      </p>
+      <p>
+        <b>Klaas-Lang, Birute 2022.</b><span class="mr-2"> </span><a
+        href="https://ojs.utlib.ee/index.php/EHA/article/view/eha.2022.10.2.08"
+        target="_blank">Kogukondlik keeleõpe – võimalus kasvatada keeleõppe motivatsiooni.</a> – Eesti Haridusteaduste Ajakiri 10 (2), 228–250.
       </p>
       <p>
         <b>Koppel, Kristina; Kallas, Jelena 2016.</b><span class="mr-2"> </span><a
@@ -2943,27 +3010,6 @@
         Kirjastus, 132–144.
       </p>
 
-      <h5 class="jumptarget" id="item-opetajale-abivahendid">Keeletehnoloogilised abivahendid</h5>
-
-      <p>
-        <a href="https://tolkevarav.eki.ee/" target="_blank">Tõlkevärav</a> Eesti Keele Instituudi mitmekeelne
-        tõlketööriist.
-      </p>
-      <p>
-        <a href="https://masintolge.ut.ee/" target="_blank">Neurotõlge</a> Tartu Ülikooli mitmekeelne tõlketööroost.
-      </p>
-      <p>
-        Kõnesünteesiteenus <a href="https://koneveeb.ee/" target="_blank">Kõneveeb</a> (Eesti Keele Instituut)
-      </p>
-      <p>
-        Kõnesünteesiteenus <a href="https://neurokone.ee/" target="_blank">Neurokõne</a> (Tartu Ülikool)
-      </p>
-      <p>
-        Kõnetuvastusteenus <a href="https://tekstiks.ee/" target="_blank">Kõne tekstiks</a> (Tallinna Tehnikaülikool)
-      </p>
-      <p>
-        Kõnetuvastusteenus Androidi rakendustele <a href="" target="_blank">Kõnele</a>
-      </p>
     </div>
   </div>
   <a (click)="toTop()" class="top-button" title="Tagasi päisesse">
