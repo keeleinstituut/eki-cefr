@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { EducationalMaterialComponent } from './educational-material.component';
 
 describe('EducationalMaterialComponent', () => {
@@ -8,6 +8,7 @@ describe('EducationalMaterialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ RouterTestingModule ],
       declarations: [ EducationalMaterialComponent ]
     })
     .compileComponents();
@@ -20,4 +21,5 @@ describe('EducationalMaterialComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
