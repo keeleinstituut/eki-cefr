@@ -13,12 +13,20 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
   public collapsed = true;
+  public center = '';
 
   ngAfterViewInit() {
   }
 
+  public align() {
+    if (this.collapsed) {
+      return 'center';
+    }
+    return '';
+  }
   setItem(selected: string) {
     this.menuItem = selected;
     this.collapsed = true;
+    this.center = 'center';
   }
 }
