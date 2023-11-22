@@ -95,18 +95,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ekilex-tools:build"
+            "buildTarget": "ekilex-tools:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ekilex-tools:build:production"
+              "buildTarget": "ekilex-tools:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ekilex-tools:build"
+            "buildTarget": "ekilex-tools:build"
           }
         },
         "test": {
