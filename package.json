@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^17.0.4",
     "@angular/router": "^17.0.4",
     "@babel/compat-data": "^7.13.12",
-    "@ng-bootstrap/ng-bootstrap": "^15.0.1",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0-rc.2",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "ngx-autosize": "^2.0.4",
