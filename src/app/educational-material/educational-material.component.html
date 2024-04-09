@@ -34,8 +34,6 @@
            fragment="item-veebimaterjalid-keeleoppijale">Noorele keeleõppijale</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
            fragment="item-veebimaterjalid-taiskasvanud">Täiskasvanud keeleõppijale</a>
-        <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
-           fragment="item-veebimaterjalid-opetajale">Õpetajale</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="nav-link"
            fragment="item-veebisonastikud">VEEBISÕNASTIKUD</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="nav-link"
@@ -46,6 +44,8 @@
            fragment="item-opetajale">ÕPETAJALE</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
            fragment="item-opetajale-keeleoskustasemed">Keeleoskustasemete kirjeldused</a>
+        <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
+           fragment="item-opetajale-tooriistad">Tööriistad</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
            fragment="item-opetajale-metoodilised">Metoodilised materjalid ja käsiraamatud</a>
         <a (click)="onAnchorClick()" [routerLink]="['/educational-material']" class="ml-3 nav-link"
@@ -76,12 +76,12 @@
             <option value="item-veebimaterjalid">VEEBIMATERJALID</option>
             <option value="item-veebimaterjalid-keeleoppijale">Noorele keeleõppijale</option>
             <option value="item-veebimaterjalid-taiskasvanud">Täiskasvanud keeleõppijale</option>
-            <option value="item-veebimaterjalid-opetajale">Õpetajale</option>
             <option value="item-veebisonastikud">VEEBISÕNASTIKUD</option>
             <option value="item-korpused">KORPUSED</option>
             <option value="item-abivahendid">KEELETEHNOLOOGILISED ABIVAHENDID</option>
             <option value="item-opetajale">ÕPETAJALE</option>
             <option value="item-opetajale-keeleoskustasemed">Keeleoskustasemete kirjeldused</option>
+            <option value="item-opetajale-tooriistad">Tööriistad</option>
             <option value="item-opetajale-metoodilised">Metoodilised materjalid ja käsiraamatud</option>
             <option value="item-opetajale-uurimused">Uurimused</option>
           </select>
@@ -90,17 +90,17 @@
 
       <h3 class="jumptarget" id="item-oppevara">Õppevara loend</h3>
 
-      <p>Siit leiad ülevaate aastatel 1990−2023 koostatud eesti keele kui teise keele õppevarast ja aastatel 1985–2023
+      <p>Siit leiad ülevaate aastatel 1990−2024 koostatud eesti keele kui teise keele õppevarast ja aastatel 1985–2024
         avaldatud eesti keele kui
         teise keelega seonduvast kirjandusest:</p>
       <ol>
         <li>
-          eesti keele kui teise keele õppevara noorele keeleõppijale (allikad on aastatest <b>1998−2023</b>):
+          eesti keele kui teise keele õppevara noorele keeleõppijale (allikad on aastatest <b>1998−2024</b>):
           koolieelikud, I kooliaste, II kooliaste,
           III kooliaste, gümnaasium, kutseõpe ja ilma kindla tasememääratluseta materjalid;
         </li>
         <li>
-          eesti keele kui teise keele õppevara täiskasvanud keeleõppijale (allikad on aastatest <b>1990−2023</b>):
+          eesti keele kui teise keele õppevara täiskasvanud keeleõppijale (allikad on aastatest <b>1990−2024</b>):
           algajad (keeleoskustasemed A1, A2, (B1)),
           edasijõudnud (keeleoskustasemed B1, B2, C1) ja ilma kindla tasememääratluseta materjalid;
         </li>
@@ -109,7 +109,7 @@
         </li>
         <li>veebisõnastikud;</li>
         <li>keeletehnoloogilised abivahendid;</li>
-        <li>eesti keele kui teise keele õpetajale (allikad on aastatest <b>1990−2023</b>): keeleoskustasemete
+        <li>eesti keele kui teise keele õpetajale (allikad on aastatest <b>1990−2024</b>): keeleoskustasemete
           kirjeldused, metoodilised materjalid ja käsiraamatud
           ning uurimused.
         </li>
@@ -124,7 +124,7 @@
            target="_blank">Eesti keele
           kui teise keele infokogu. Koostanud Raili Pool. Tartu 2020.</a>
       </p>
-      <p>Viimati muudetud 19.09.2023.</p>
+      <p>Viimati muudetud 10.04.2024.</p>
 
       <h4 class="jumptarget" id="item-noorele">NOORELE KEELEÕPPIJALE</h4>
 
@@ -311,12 +311,12 @@
         Tallinn. Koolibri. (+ töövihik, 1. ja 2. osa)
       </p>
       <p>
-        <b>Pipar, Pille 2017.</b> Koos on vahva. Sõprade seiklused. Elektroonilin materjal vene õppekeelega kooli 3.
+        <b>Pipar, Pille 2017.</b> Koos on vahva. Sõprade seiklused. Elektrooniline materjal vene õppekeelega kooli 3.
         klassile,
         1. osa.
       </p>
       <p>
-        <b>Pipar, Pille 2017.</b> Koos on vahva. Sõprade seiklused. Elektroonilin materjal vene õppekeelega kooli 3.
+        <b>Pipar, Pille 2017.</b> Koos on vahva. Sõprade seiklused. Elektrooniline materjal vene õppekeelega kooli 3.
         klassile,
         2. osa.
       </p>
@@ -1546,43 +1546,10 @@
           teise keele õppijatele</a></li>
         <li class="ml-2"><a href="http://dspace.ut.ee/handle/10062/22927" target="_blank">Tingiv kõneviis eesti keele
           kui teise keele õppijatele</a></li>
+        <li class="ml-2"><a href="https://dspace.ut.ee/handle/10062/17608" target="_blank">Täis- ja enneminevik eesti keele kui teise keele õppijatele</a></li>
+
       </ul>
 
-
-      <h5 class="jumptarget" id="item-veebimaterjalid-opetajale">Õpetajale</h5>
-
-      <p>
-        <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Sõnavara loendid (A1-C1)</a> Eesti Keele
-        Instituudi
-        veebileht <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Eesti keele kui teise keele õpetaja
-        tööriistad</a>
-      </p>
-      <p>
-        <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Grammatikapädevuse kirjeldus (A1-C1)</a>
-        Eesti
-        Keele Instituudi veebileht <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Eesti keele kui
-        teise keele õpetaja tööriistad</a>
-      </p>
-      <p>
-        <a href="https://sonaveeb.ee/teacher-tools/#/rating" target="_blank">Õppeteksti hindaja (A1-C1)</a> Eesti
-        Keele Instituudi veebileht <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Eesti keele kui
-        teise keele õpetaja tööriistad</a> Rakendus on mõeldud õppematerjalina kasutatava teksti tasemekohasuse
-        hindamiseks.
-      </p>
-      <p>
-        <a href="https://evkk.tlu.ee/corrector" target="_blank">Tekstihindaja</a> Tallinna Ülikooli
-        keskkond <a href="https://evkk.tlu.ee/links#tutvustus" target="_blank">ELLE</a>. Rakenduse abil saab hinnata,
-        mis
-        keeleoskustasemele vastab õppija kirjutatud tekst (A2–C1). Loe lähemalt <a
-        href="https://github.com/centre-for-educational-technology/evkk/wiki/Demos" target="_blank">siit</a>.
-      </p>
-      <p>
-        <a href="https://sonaveeb.ee/learn#v-pills-oppetoo" target="_blank">Õppetöö korraldamise fraasikogu</a>
-        (Sõnaveebi alamleht)
-        Koostanud ja toimetanud Raili Pool, Jelena Kallas, Mai Tiits. Fraasikogu on mõeldud abimaterjaliks põhikooli
-        aineõpetajatele,
-        kes õpetavad oma ainet eesti keeles, kuid kelle enda emakeel ei ole eesti keel.
-      </p>
 
       <h4 class="jumptarget" id="item-veebisonastikud">VEEBISÕNASTIKUD</h4>
 
@@ -1626,7 +1593,7 @@
       </p>
       <p>
         Õppijakeele korpused
-        <a href="" target="_blank">ELLE</a> ja  <a href="" target="_blank">EMMA</a>
+        <a href="https://evkk.tlu.ee/tools" target="_blank">ELLE</a> ja  <a href="https://korpused.keeleressursid.ee/emma/" target="_blank">EMMA</a>
          Sisaldavad eesti keelt emakeelena kõnelejate ja eesti keele kui teise keele õppijate tekste. EMMA korpuse
          kasutamiseks on vajalik registreerimine.
       </p>
@@ -1660,6 +1627,12 @@
         Kõnetuvastusteenus Androidi rakendustele <a
         href="https://play.google.com/store/apps/details?id=ee.ioc.phon.android.speak&hl=et&gl=US" target="_blank">Kõnele</a>
       </p>
+      <p>
+        <a href="https://grammar.tartunlp.ai" target="_blank">Õigekirja- ja grammatikakorrektor</a> (Tartu Ülikool)
+      </p>
+      <p>
+        <a href="https://elle.tlu.ee/corrector" target="_blank">ELLE keskkonna tööriistad teksti sõnavara ja grammatika analüüsiks</a> (Tallinna Ülikool)
+      </p>
 
       <h4 class="jumptarget" id="item-opetajale">ÕPETAJALE</h4>
 
@@ -1688,9 +1661,9 @@
       </p>
       <p>
         Euroopa Nõukogu noorte õppijate tasemekirjeldused vanustele <a
-        href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fcaearchServices/DisplayDCTMContent?documentId=0900001680697fca"
+        href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fca"
         target="_blank">7–10</a> ja <a
-        href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fc9nSearchServices/DisplayDCTMContent?documentId=0900001680697fc9"
+        href="https://rm.coe.int/CoERMPublicCommonSearchServices/DisplayDCTMContent?documentId=0900001680697fc9"
         target="_blank">11–15</a>
       </p>
       <p>
@@ -1718,12 +1691,47 @@
            target="_blank">Vilunud
           keelekasutaja. C1-taseme eesti keele oskus.</a> Tallinn: Eesti Keele Sihtasutus.
       </p>
+
+      <h5 class="jumptarget" id="item-opetajale-tooriistad">Tööriistad</h5>
       <p>
         <a href="https://sonaveeb.ee/teacher-tools" target="_blank">Eesti keele kui teise keele õpetaja tööriistad
           2023</a> Õpetaja tööriistade
         leht sisaldab nelja moodulit: sõnavara (noore ja täiskasvanud keeleõppija keeleoskustasemete sõnavaraloendid),
         grammatika (noore
         ja täiskasvanud keeleõppija grammatikapädevus keeleoskustasemeti), kasutusolukorrad ja teksti hindamine.
+      </p>
+
+      <p>
+        <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Sõnavara loendid (A1-C1)</a> Eesti Keele
+        Instituudi
+        veebileht <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Eesti keele kui teise keele õpetaja
+        tööriistad</a>
+      </p>
+      <p>
+        <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Grammatikapädevuse kirjeldus (A1-C1)</a>
+        Eesti
+        Keele Instituudi veebileht <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Eesti keele kui
+        teise keele õpetaja tööriistad</a>
+      </p>
+      <p>
+        <a href="https://sonaveeb.ee/teacher-tools/#/rating" target="_blank">Õppeteksti hindaja (A1-C1)</a> Eesti
+        Keele Instituudi veebileht <a href="https://sonaveeb.ee/teacher-tools/#/home" target="_blank">Eesti keele kui
+        teise keele õpetaja tööriistad</a> Rakendus on mõeldud õppematerjalina kasutatava teksti tasemekohasuse
+        hindamiseks.
+      </p>
+      <p>
+        <a href="https://evkk.tlu.ee/corrector" target="_blank">Tekstihindaja</a> Tallinna Ülikooli
+        keskkond <a href="https://evkk.tlu.ee/links#tutvustus" target="_blank">ELLE</a>. Rakenduse abil saab hinnata,
+        mis
+        keeleoskustasemele vastab õppija kirjutatud tekst (A2–C1). Loe lähemalt <a
+        href="https://github.com/centre-for-educational-technology/evkk/wiki/Demos" target="_blank">siit</a>.
+      </p>
+      <p>
+        <a href="https://sonaveeb.ee/learn#v-pills-oppetoo" target="_blank">Õppetöö korraldamise fraasikogu</a>
+        (Sõnaveebi alamleht)
+        Koostanud ja toimetanud Raili Pool, Jelena Kallas, Mai Tiits. Fraasikogu on mõeldud abimaterjaliks põhikooli
+        aineõpetajatele,
+        kes õpetavad oma ainet eesti keeles, kuid kelle enda emakeel ei ole eesti keel.
       </p>
 
       <h5 class="jumptarget" id="item-opetajale-metoodilised">Metoodilised materjalid ja käsiraamatud</h5>
@@ -2052,27 +2060,25 @@
       </p>
       <p>
         <a href="https://airikoolitab.weebly.com/" target="_blank">Õpetaja loob ja jagab</a> (digiõppevara ja
-        digimängude
-        loomise võimalusi).
+        digimängude loomise võimalusi).
       </p>
       <p>
         <a
           href="https://l.facebook.com/l.php?u=https%3A%2F%2Fnarva.ut.ee%2Fsites%2Fdefault%2Ffiles%2F2023-03%2FTY_l6imimine_a4.pdf&h=AT35N5DA7MkRrk6rsrTkGAqizzVMU7FwD4-jkCyMqokZxEKqovHgNaa0uWte6ygDJ_FtVZBXduRmZebg_MigMAvCHUh_kprr9nt8qX8cblnT39r1ksTGopw3Y6T-Y1LYoMmsP7IW9p_HMTEpjmqZ5sszpQ&__tn__=-UK-R&c[0]=AT0DFMbiGuh8DNYf5HpoPBTEIKGRmz4-tDCnYAe1IAwJs-Hw9w1gzUPPZpm3bwoHoB7PhE8hMfIIbufsJBtxuvOJaTT0_D0jBronWVqpq6BlriXvJrhQqYvQf5T8GN3489KDiLI66ftV-5AiWtuf15kNUIiSWKnW9faVP0CAgDhCH1jx1fsqc55S_ygHGPz3rgY9iV7P4QHJxN7btqf71Ai_ttjdjbWZEKuPkVSi5LQ6PhCW"
           target="_blank">Õppeainete
-          lõimumine ja ainekirjaoskuse omandamine: soovitusi 2. ja 3. kooliastme õpetajatele.</a>
-        Koostajad Anna Golubeva, Svetlana Anissimova, Alina Braziulene, Natalia Presnetsova, Kai Võlli. Tartu Ülikool,
-        2022.
+          lõimumine ja ainekirjaoskuse omandamine: soovitusi 2. ja 3. kooliastme õpetajatele.</a> 2022.
+          Koostajad Anna Golubeva, Svetlana Anissimova, Alina Braziulene, Natalia Presnetsova, Kai Võlli. Tartu Ülikool.
       </p>
       <p>
         <a href="https://oppekava.ee/wp-content/uploads/2022/02/LAK-erinev-kodukeel.pdf" target="_blank">Õppekeelest
           erineva
-          kodukeelega õpilane. Keelelise arengu toetamise kava.</a> Haridus- ja Teadusministeerium, 2022.
+          kodukeelega õpilane. Keelelise arengu toetamise kava.</a> 2022. Haridus- ja Teadusministeerium.
       </p>
       <p>
         <a href="https://www.digar.ee/arhiiv/nlib-digar:1746" target="_blank">Õppematerjal koolieelsete lasteasutuste
-          eesti keele kui teise keele õpetajate põhi- ja täienduskoolituseks.</a>
+          eesti keele kui teise keele õpetajate põhi- ja täienduskoolituseks.</a> 2006.
         Koostajad Liivi Aleksandridi jt.; toimetajad Merit Hallap jt. Tallinn: Mitte-eestlaste Integratsiooni
-        Sihtasutus, 2006.
+        Sihtasutus.
       </p>
 
       <h5 class="jumptarget" id="item-opetajale-uurimused">Uurimused</h5>
@@ -2096,6 +2102,13 @@
         Ühingu aastaraamat 18, 33–53.
       </p>
       <p>
+        <b>Argus, Reili; Rüütmaa, Tiina;  Verschik, Anna; Baird, Piret 2021.</b><span class="mr-2"> </span><a
+        href="https://www.hm.ee/sites/default/files/documents/2022-10/mitmekeelsus-esimese-ja-teise-keele-omandamine-kirjandusulevaade_0.pdf"
+        target="_blank">
+        Mitmekeelsus, esimese ja teise keele omandamine. Peamistest teooriatest,
+        uuringutulemustest ja õpetamismeetoditest.</a> Tartu: Haridus- ja Teadusministeerium / Tallinna Ülikool.
+      </p>
+      <p>
         <b>Asser, Hiie 2001.</b> Muutused vene kooli õpilaste eesti keele oskuses 1994–1999. Kommenteeritud andmebaas.
         Põltsamaa: Vali Press.
       </p>
@@ -2107,7 +2120,7 @@
       </p>
       <p>
         <b>Baird, Piret; Argus, Reili 2022.</b><span class="mr-2"> </span><a
-        href="http://publications.tlu.ee/index.php/philologia/article/view/1106" target="_blank">Eesti keelt teise
+        href="http://arhiiv.rakenduslingvistika.ee/ajakirjad/index.php/aastaraamat/article/view/ERYa18.05" target="_blank">Eesti keelt teise
         keelena omandavate 7-8-aastaste laste kodusest
         keelekeskkonnast ja eesti keele oskusest.</a> – Eesti Rakenduslingvistika Ühingu aastaraamat 18, 75–95.
       </p>
@@ -2116,6 +2129,11 @@
         href="http://publications.tlu.ee/index.php/philologia/article/view/1106" target="_blank">Eesti keelt teise
         keelena omandavate laste eesti
         keele oskuse areng aasta jooksul.</a> – Philologia Estonica Tallinnensis 7, 39–79.
+      </p>
+      <p>
+        <b>Bleive, Agu 2023.</b><span class="mr-2"> </span><a
+        href="http://arhiiv.rakenduslingvistika.ee/ajakirjad/index.php/aastaraamat/article/view/ERYa19.01" target="_blank">How do Chinese L1 learners express Estonian static spatial relations?</a>
+         – Eesti Rakenduslingvistika Ühingu aastaraamat 19, 5–24.
       </p>
       <p>
         <b>Brown, Kara 2022.</b><span class="mr-2"> </span><a
