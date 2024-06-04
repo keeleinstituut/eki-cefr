@@ -1,6 +1,81 @@
-# EkilexTools
+# Õpetajate tööriistad
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+Angulari versioon [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+
+
+Angulari rakenduse kompileerimiseks on vajalik eelnevalt installida [node.js](https://nodejs.org) ja [Angular CLI](https://github.com/angular/angular-cli)  tarkvara.
+
+## Rakenduse paigaldamine
+
+**Angulari juhend**
+
+https://angular.io/start/start-deployment
+
+
+**Koodi allalaadimine**
+
+```bash
+# kataloogi loomine
+mkdir eki-cefr
+
+# projekti koodi allalaadimine. NB! toodangusse mõeldud kood asub harus master
+git clone --single-branch --branch master  https://github.com/keeleinstituut/eki-cefr.git
+```
+
+**Paigaldamine**
+
+```bash
+# liikumine projekti kataloogi
+cd  eki-cefr
+
+# JavaScript teekide paigaldamine
+npm install
+```
+
+**Kausta tekitamine, mis läheb serverisse**
+
+<code>ng build</code> käsk genereerib kõik vajalikud failid kataloogi <code>dist/</code>
+
+<code>--configuration production</code> parameeter määrab ära, et kompileerimisel loetakse keskkonnamuutujad sisse failist <code>eki-cefr/src/environments/environment.prod.ts</code> 
+
+
+```bash
+ng build --configuration production
+```
+
+<code>dist</code> kausta tekkinud kaust tõsta vajalikku kohta
+
+<code>dist</code> kaustas olevas <code>index.html</code> failis peab muutma base urli vastavaks ehk  <code>/ww/teacher-tools</code>
+
+
+## Apache
+* Kopeeri angular failid serverisse <code>/opt</code> kausta
+* muuda <code>index.html</code> failis <code>base url</code>
+* muuda Apache confi
+
+```
+Alias "/ww/teacher-tools" "/opt/teacher-tools"
+
+<Directory "/opt/teacher-tools">
+Order Allow,Deny
+Allow from all
+Require all granted
+</Directory>
+
+
+<Location "/ww/teacher-tools">
+ProxyPass "!"
+</Location>
+```
+
+* taaskäivita apache teenus
+
+## Teised serverid
+
+https://angular.io/guide/deployment#server-configuration
+
+
+
 
 ## Development server
 
@@ -27,35 +102,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-## Kausta tekitamine, mis läheb serverisse
-
-* Kirjuta terminali käsk kui soovid sõnaveebi rakendust lisada: ng build --prod
-
-* Kirjuta terminali käsk kui soovid testserverisse rakendust lisada: ng build --configuration=test
-
-* dist kausta tekkinud kaus tõsta vajalikku kohta
-
-* kaustas olevas index.html failis peab muutma base urli vastavaks ehk  "/ww/teacher-tools"
-
-
-## Apache conf
-* Kopeeri angular failid serverisse /opt kausta
-* muuda index.html failis base url
-* muuda Apache confi
-
-```
-Alias "/ww/teacher-tools" "/opt/teacher-tools"
-
-<Directory "/opt/teacher-tools">
-Order Allow,Deny
-Allow from all
-Require all granted
-</Directory>
-
-
-<Location "/ww/teacher-tools">
-ProxyPass "!"
-</Location>
-```
-
-* taaskäivita apache teenus
