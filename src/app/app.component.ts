@@ -10,7 +10,7 @@ declare let gtag: (conf, id, path) => void;
 })
 
 export class AppComponent {
-  title = 'ekilex-tools';
+  title = 'teacher-tools';
   isIE = /msie\s|trident\//i.test(window.navigator.userAgent);
 
   constructor(public router: Router) {
