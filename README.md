@@ -5,11 +5,25 @@ Angulari versioon [Angular CLI](https://github.com/angular/angular-cli) version 
 
 Angulari rakenduse kompileerimiseks on vajalik eelnevalt installida [node.js](https://nodejs.org) ja [Angular CLI](https://github.com/angular/angular-cli)  tarkvara.
 
+
+**node.js ja npm paigaldamine (Ubuntu)**
+
+```bash
+apt install nodejs
+apt install npm
+```
+
+**Angular CLI paigaldamine (Ubuntu)**
+
+```bash
+npm install -g @angular/cli
+```
+
 ## Rakenduse paigaldamine
 
 **Angulari juhend**
 
-https://angular.io/start/start-deployment
+https://v17.angular.io/guide/deployment
 
 
 **Koodi allalaadimine**
@@ -43,14 +57,19 @@ npm install
 ng build --configuration production
 ```
 
-<code>dist</code> kausta tekkinud kaust tõsta vajalikku kohta
+kui rakendust serveeritakse serveri alamkataloogist, siis tuleb rakenduse asukoht atta ette parameetrina <code>base-href</code>
 
-<code>dist</code> kaustas olevas <code>index.html</code> failis peab muutma base urli vastavaks ehk  <code>/ww/teacher-tools</code>
+
+```bash
+ng build --configuration production --base-href /teacher-tools/
+```
+
+<code>dist</code> kausta tekkinud kaust tuleb tõsta vajalikku kohta
+
 
 
 ## Apache
 * Kopeeri angular failid serverisse <code>/opt</code> kausta
-* muuda <code>index.html</code> failis <code>base url</code>
 * muuda Apache confi
 
 ```
@@ -72,8 +91,20 @@ ProxyPass "!"
 
 ## Teised serverid
 
-https://angular.io/guide/deployment#server-configuration
+https://v17.angular.io/guide/deployment#server-configuration
 
+## Docker
+
+**docker build**
+
+```bash
+docker build -t teacher-tools  .
+```
+
+**docker run**
+```bash
+docker run -d -p 8080:80 --name teacher-tools teacher-tools
+```
 
 
 
@@ -93,9 +124,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
