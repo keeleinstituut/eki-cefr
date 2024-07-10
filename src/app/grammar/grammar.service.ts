@@ -12,20 +12,20 @@ export class GrammarService {
   }
 
   getCheckboxData() {
-    return this.http.get(this.EtLexApiEndpoint + '/v1.0/projects?asdict=1');
+    return this.http.get(this.EtLexApiEndpoint + '/projects?asdict=1');
   }
 
   getTypeData() {
-    return this.http.get(this.EtLexApiEndpoint + '/v1.0/gramcategories');
+    return this.http.get(this.EtLexApiEndpoint + '/gramcategories');
   }
 
   getTypeValues() {
-    return this.http.get(this.EtLexApiEndpoint + '/v1.0/gramdescriptors');
+    return this.http.get(this.EtLexApiEndpoint + '/gramdescriptors');
   }
 
   getTableData(project:string, wordsString: string, level: string, size: number, page: number,
                column: string, direction: string) {
     return this.http
-      .get(this.EtLexApiEndpoint + '/v1.0/gramprofiles?project='+project+'&limit=' + size + '&offset=' + page + column + direction + '&filter_json=' + wordsString + level);
+      .get(this.EtLexApiEndpoint + '/gramprofiles?project='+project+'&limit=' + size + '&offset=' + page + column + direction + '&filter_json=' + wordsString + level);
   }
 }

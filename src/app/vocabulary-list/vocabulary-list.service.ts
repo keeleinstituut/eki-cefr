@@ -13,20 +13,20 @@ export class VocabularyListService {
   }
 
   getCheckboxData() {
-    return this.http.get(this.EtLexApiEndpoint + '/v1.0/projects?asdict=1');
+    return this.http.get(this.EtLexApiEndpoint + '/projects?asdict=1');
   }
 
 
   getThemesData() {
-    return this.http.get(this.EtLexApiEndpoint + '/v1.0/themes');
+    return this.http.get(this.EtLexApiEndpoint + '/themes');
   }
 
   sendToFile(search: string, list: string, item: string, level?: string, words?: string, theme?: string) {
-    return window.location.href = this.EtLexApiEndpoint + '/v1.0/projects/' + list + '/lemmas?' + search + level + words + theme + '&format=' + item;
+    return window.location.href = this.EtLexApiEndpoint + '/projects/' + list + '/lemmas?' + search + level + words + theme + '&format=' + item;
   }
 
   getTableData(search: string, list: string, size: number, page: number, column: string, direction: string, level?: string, words?: string, theme?: string) {
     return this.http
-      .get(this.EtLexApiEndpoint + '/v1.0/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + column + direction + search + level + words + theme);
+      .get(this.EtLexApiEndpoint + '/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + column + direction + search + level + words + theme);
   }
 }

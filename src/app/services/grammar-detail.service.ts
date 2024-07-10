@@ -23,6 +23,6 @@ export class GrammarDetailService {
   }
 
   getData() {
-    return this.http.get(this.EtLexApiEndpoint + '/v1.0/gramprofiles/' + localStorage.getItem('data'));
+    return this.http.get(this.EtLexApiEndpoint + '/gramprofiles/' + localStorage.getItem('data'));
   }
 }
