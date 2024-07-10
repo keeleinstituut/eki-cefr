@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   APIEndpoint: null,
+  EtLexApiEndpoint: 'https://etlex.eki.ee/etLex/api',
   FeedBackEndpoint: null
 };
 
