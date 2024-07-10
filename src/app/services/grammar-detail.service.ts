@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GrammarDetailService {
+  public EtLexApiEndpoint = environment.EtLexApiEndpoint;
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +23,6 @@ export class GrammarDetailService {
   }
 
   getData() {
-    return this.http.get('https://elo.eki.ee/etLex/api/v1.0/gramprofiles/' + localStorage.getItem('data'));
+    return this.http.get(this.EtLexApiEndpoint + '/gramprofiles/' + localStorage.getItem('data'));
   }
 }
