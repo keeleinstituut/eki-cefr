@@ -45,7 +45,7 @@ a {
 }
 
 @media (max-width: 767px) {
-  .comment {
+  .description {
     padding-bottom: 0 !important;
     padding-right: 1rem !important;
     padding-left: 1rem !important;

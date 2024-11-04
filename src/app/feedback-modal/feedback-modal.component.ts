@@ -24,11 +24,10 @@ export class FeedbackModalComponent {
     config.keyboard = false;
 
     this.form = this.formBuilder.group({
-      comments: '',
+      description: '',
       senderName: '',
       senderEmail: '',
-      feedbackType: 'comment',
-      lastSearch: '<õpetaja tööriistad>',
+      feedbackType: 'väline',
       word: '<õpetaja tööriistad>',
     });
   }
@@ -46,7 +45,7 @@ export class FeedbackModalComponent {
   sendData() {
     this.error = false;
     this.success = false;
-    if (this.form.controls.comments.invalid) {
+    if (this.form.controls.description.invalid) {
       this.error = true;
     } else {
       this.service.sendFeedback(this.form.value).subscribe((data) => {
@@ -57,7 +56,7 @@ export class FeedbackModalComponent {
               this.error = true;
             } else {
               this.success = true;
-              this.form.controls.comments.reset();
+              this.form.controls.description.reset();
               this.form.controls.senderName.reset();
               this.form.controls.senderEmail.reset();
             }
