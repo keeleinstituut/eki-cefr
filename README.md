@@ -32,8 +32,9 @@ https://v17.angular.io/guide/deployment
 # kataloogi loomine
 mkdir eki-cefr
 
-# projekti koodi allalaadimine. NB! toodangusse mõeldud kood asub harus master
-git clone --single-branch --branch master  https://github.com/keeleinstituut/eki-cefr.git
+# projekti koodi allalaadimine. 
+# haru nimi vastab tarkvara versiooninumbrile (näiteks 1.39.0).
+git clone --single-branch --branch x.x.x  https://github.com/keeleinstituut/eki-cefr.git
 ```
 
 **Paigaldamine**
@@ -68,7 +69,7 @@ ng build --configuration production --base-href /teacher-tools/
 
 
 
-## Apache
+### Apache
 * Kopeeri angular failid serverisse <code>/opt</code> kausta
 * muuda Apache confi
 
@@ -89,23 +90,9 @@ ProxyPass "!"
 
 * taaskäivita apache teenus
 
-## Teised serverid
+### Teised serverid
 
 https://v17.angular.io/guide/deployment#server-configuration
-
-## Docker
-
-**docker build**
-
-```bash
-docker build -t teacher-tools  .
-```
-
-**docker run**
-```bash
-docker run -d -p 8080:80 --name teacher-tools teacher-tools
-```
-
 
 
 ## Development server
@@ -128,5 +115,20 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Docker
+
+**docker build**
+
+```bash
+docker build -t teacher-tools  .
+```
+
+**docker run**
+```bash
+docker run -d -p 8080:80 --name teacher-tools teacher-tools
+```
+
 
 
