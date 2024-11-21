@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { FeedbackModalComponent } from './feedback-modal.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('FeedbackModalComponent', () => {
   let component: FeedbackModalComponent;
@@ -9,9 +10,10 @@ describe('FeedbackModalComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule, HttpClientTestingModule ],
-      declarations: [ FeedbackModalComponent ]
-    })
+    declarations: [FeedbackModalComponent],
+    imports: [ReactiveFormsModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
   }));
 

@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UsecaseComponent } from './usecase.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('UsecaseComponent', () => {
   let component: UsecaseComponent;
@@ -10,9 +11,10 @@ describe('UsecaseComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule ],
-      declarations: [ UsecaseComponent ]
-    })
+    declarations: [UsecaseComponent],
+    imports: [ReactiveFormsModule, RouterTestingModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
   }));
 
