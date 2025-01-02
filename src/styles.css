@@ -322,7 +322,8 @@ ngb-popover-window.bs-popover-top>.arrow {
   background: #F2F2F2;
 }
 
-.color-no {
+.color-no,
+.color-määramata {
   border-radius: 6px;
   padding-left: 4px;
   padding-right: 4px;
