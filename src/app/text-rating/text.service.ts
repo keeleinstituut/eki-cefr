@@ -11,11 +11,11 @@ export class TextService {
 
   constructor(private http: HttpClient) { }
 
-  getTextData(text: string, list: string) {
-    const payload = {'text':text };
+  evaluateText(text: string, list: string) {
+    const payload = { 'text':text }; 
     return this.http.post(this.EtLexApiEndpoint + '/projects/' + list + '/evaluation', payload);
- }
- 
+  }
+
   getLevels(list: string) {
     return this.http.get(this.EtLexApiEndpoint + '/projects/' + list);
   }

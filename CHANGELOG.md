@@ -1,9 +1,10 @@
-## [] - 2025-01-02
+## [1.40.0]
 
 ### Muudetud
 
 - Bootstrap 4 -> Bootstrap 5.3. Globaalsed muudatused css osas.
 - Angular 17.3 -> 18.2 .
+- Teksti saadetakse hindamisele _POST_-meetodiga.
 
 ## [1.39.0] - 2024-10-08
 
