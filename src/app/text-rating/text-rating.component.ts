@@ -71,7 +71,7 @@ export class TextRatingComponent {
   }
 
   getData() {
-    this.service.getTextData(encodeURI(this.form.value.text), this.form.value.list).subscribe((data: any) => {
+    this.service.getTextData(this.form.value.text, this.form.value.list).subscribe((data: any) => {
 
       this.resultData = data.evaluatedText;
       this.resultDataGrammar = data.evaluatedGrammarText;

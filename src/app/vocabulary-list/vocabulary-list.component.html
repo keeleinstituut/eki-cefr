@@ -10,16 +10,40 @@
         <h3>Sõnavara otsing</h3>
       </div>
       <div class="col-md-4 col-12">
-        <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
+        <button class="btn sm-feedback-btn float-end" (click)="modal.open()">
+          Tagasiside
+        </button>
       </div>
-      <div class="vocabulary-manual col-md-8 col-12 pr-4 pt-md-0 pt-2">
-        <p><b>Sõnavara</b> osa sisaldab eri vanuses ja eri keeleoskustasemega õppijate sõnavara- ja teemaloendeid. Noore keeleõppija tasemekirjelduste vastavused keelepädevusega on järgmised: eelA1 = koolieelikud (6–7-aastased), A1 = I kooliaste (1.–3. klass), A2 = II kooliaste (4.–6. klass), B1 = III kooliaste (7.–9. klass), B2 = gümnaasium (10.-12. klass). Noore keeleõppija C1 sõnavaraloend sisaldab sõnu, mis on esinenud „Eesti keele kui teise keele kooliõpikute sisu korpuse 2021“ gümnaasiumi astme kooliõpikutes, kuid mille esinemissagedus üldkeele korpustes on madal. Täiskasvanute puhul on eristatud algtasemel keeleõppija (A1 ja A2), iseseisev keelekasutaja (B1 ja B2) ning vilunud keelekasutaja (C1 ja C2).</p>
-		<p class="m-0"><b>Otsingu kasutusjuhend:</b></p>
+      <div class="vocabulary-manual col-md-8 col-12 pe-4 pt-md-0 pt-2">
+        <p>
+          <b>Sõnavara</b> osa sisaldab eri vanuses ja eri keeleoskustasemega
+          õppijate sõnavara- ja teemaloendeid. Noore keeleõppija
+          tasemekirjelduste vastavused keelepädevusega on järgmised: eelA1 =
+          koolieelikud (6–7-aastased), A1 = I kooliaste (1.–3. klass), A2 = II
+          kooliaste (4.–6. klass), B1 = III kooliaste (7.–9. klass), B2 =
+          gümnaasium (10.-12. klass). Noore keeleõppija C1 sõnavaraloend
+          sisaldab sõnu, mis on esinenud „Eesti keele kui teise keele
+          kooliõpikute sisu korpuse 2021“ gümnaasiumi astme kooliõpikutes, kuid
+          mille esinemissagedus üldkeele korpustes on madal. Täiskasvanute puhul
+          on eristatud algtasemel keeleõppija (A1 ja A2), iseseisev
+          keelekasutaja (B1 ja B2) ning vilunud keelekasutaja (C1 ja C2).
+        </p>
+        <p class="m-0"><b>Otsingu kasutusjuhend:</b></p>
         <div class="container col-12">
-          <ul style="list-style-type: square;">
-            <li class="pt-md-0 pt-2">Ühe sõna otsimiseks trüki sõna otsingulahtrisse. NB! Jäta keeleoskustaseme, sõnaliigi ja teemaloendi filtrid valimata!</li>
-            <li class="pt-0">Ainult keeleoskustaseme, sõnaliigi ja/või teemaga piiratud loendi saamiseks jäta sõnaotsingu lahter tühjaks.</li>
-            <li class="pt-0">Kindla alguse või lõpuga sõnade loendi saamiseks kasuta tärni, nt “k*” (kõik k-ga algavad sõnad) või “*tar” (kõik tar-lõpulised sõnad).</li>
+          <ul style="list-style-type: square">
+            <li class="pt-md-0 pt-2">
+              Ühe sõna otsimiseks trüki sõna otsingulahtrisse. NB! Jäta
+              keeleoskustaseme, sõnaliigi ja teemaloendi filtrid valimata!
+            </li>
+            <li class="pt-0">
+              Ainult keeleoskustaseme, sõnaliigi ja/või teemaga piiratud loendi
+              saamiseks jäta sõnaotsingu lahter tühjaks.
+            </li>
+            <li class="pt-0">
+              Kindla alguse või lõpuga sõnade loendi saamiseks kasuta tärni, nt
+              “k*” (kõik k-ga algavad sõnad) või “*tar” (kõik tar-lõpulised
+              sõnad).
+            </li>
           </ul>
         </div>
       </div>
@@ -27,25 +51,28 @@
     <div class="row pt-md-4 pt-0">
       <form class="col-md-4 col-sm-6 col-12" [formGroup]="form">
         <b>Keeleõppija:</b>
-        <div class="pb-4 row pt-md-0 pt-3 ml-md-0 ml-auto">
+        <div class="pb-4 row pt-md-0 pt-3 ms-md-0 ms-auto">
           <div class="form-check col-md-6 col-6">
-            <input formControlName="list" class="form-check-input form-control-1x" type="radio"
-                   id="customRadio1" value="noor" (click)="getChildData()">
+            <input formControlName="list" class="form-check-input form-control-1x" type="radio" id="customRadio1"
+              value="noor" (click)="getChildData()" />
             <label class="form-check-label" for="customRadio1">
               noor keeleõppija
             </label>
           </div>
           <div class="form-check col-md-6 col-6">
-            <input formControlName="list" class="form-check-input form-control-1x" type="radio"
-                   id="customRadio2" value="etLex" (click)="getAdultData()">
+            <input formControlName="list" class="form-check-input form-control-1x" type="radio" id="customRadio2"
+              value="etLex" (click)="getAdultData()" />
             <label class="form-check-label" for="customRadio2">
               täiskasvanu
             </label>
           </div>
         </div>
-        <div class="pb-4 ml-md-0 ml-auto row">
-          <input type="text" formControlName="search" placeholder="Otsi sõna" class="form-control col-sm-7 col-md-6 col-9">
-          <button class="btn sm-search-btn ml-2" (click)="page = 1; sendData(1)">Otsi</button>
+        <div class="pb-4 d-flex align-items-center">
+          <input type="text" formControlName="search" style="width: fit-content" placeholder="Otsi sõna"
+            class="form-control col-sm-7 col-md-6 col-9" />
+          <button class="btn sm-search-btn ms-2" (click)="page = 1; sendData(1)">
+            Otsi
+          </button>
         </div>
 
         <div class="row">
@@ -53,9 +80,9 @@
             <b>Keeletase:</b>
             <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
               <div class="form-check pb-md-2 pb-1">
-                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i">
-                <label class="color-{{langLevel[i]}} form-check-label" [for]="i">
-                  {{langLevel[i]}}
+                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i" />
+                <label class="form-label color-{{ langLevel[i] }} form-check-label" [for]="i">
+                  {{ langLevel[i] }}
                 </label>
               </div>
             </div>
@@ -64,38 +91,44 @@
             <b>Sõnaliik:</b>
             <div formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
               <div class="form-check pb-md-0 pb-1">
-                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" id="'type'+{{i}}">
-                <label class="form-check-label" for="'type'+{{i}}">
-                  {{wordTypes[i].name}}
+                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i"
+                  id="'type'+{{ i }}" />
+                <label class="form-check-label" for="'type'+{{ i }}">
+                  {{ wordTypes[i].name }}
                 </label>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-8 col-sm-6 col-md-7 ">
+          <div class="col-lg-8 col-sm-6 col-md-7">
             <b>Temaatilised loendid:</b>
             <select class="form-control form-control-lg" formControlName="theme">
-              <option value="" >Vali teema</option>
-              <option *ngFor="let theme of themesList" value="{{theme.id}}">{{theme.name}}</option>
+              <option value="">Vali teema</option>
+              <option *ngFor="let theme of themesList" value="{{ theme.id }}">
+                {{ theme.name }}
+              </option>
             </select>
-
           </div>
         </div>
         <div class="pt-4 pb-md-0 pb-4">
-          <a class="remove-filters pr-4"
-             (click)="form.controls.lang.reset(); form.controls.types.reset(); form.controls.theme.reset();this.noResult = false;">Tühista
-            filtrid</a>
+          <a class="remove-filters pe-4" (click)="
+              form.controls.lang.reset();
+              form.controls.types.reset();
+              form.controls.theme.reset();
+              this.noResult = false
+            ">Tühista filtrid</a>
           <a class="remove-filters" (click)="checkAll()">Kõik sõnaliigid</a>
         </div>
       </form>
       <div #searchResults class="col-md-8 col-12 search-results" *ngIf="!noResult && total$ && showTable">
-        <b class="search-results-text">Otsingu tulemused ( <span>{{total$}}</span> )</b>
-        <div class="float-right search-info-dl">
-          <span class="pr-2 download-link" (click)="sendToFile('txt')">TXT</span>
-          <span class="pr-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
-          <label for="select">Näita</label>
-          <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="sendData(page)">
+        <b class="search-results-text">Otsingu tulemused ( <span>{{ total$ }}</span> )</b>
+        <div class="float-end search-info-dl">
+          <span class="pe-2 download-link" (click)="sendToFile('txt')">TXT</span>
+          <span class="pe-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
+          <label for="select" class="form-label">Näita</label>
+          <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize"
+            (ngModelChange)="sendData(page)">
             <option [ngValue]="10">10</option>
             <option [ngValue]="20">20</option>
             <option [ngValue]="30">30</option>
@@ -106,33 +139,40 @@
         </div>
         <table class="table table-striped" *ngIf="showTable">
           <thead>
-          <tr>
-            <th scope="col" sortable="lemma" (sort)="onSort($event)">Sõna<span class="arrow-icon"></span></th>
-            <th scope="col" sortable="pos_text" (sort)="onSort($event)">Sõnaliik<span class="arrow-icon"></span></th>
-            <th class="d-sm-block d-none" scope="col" sortable="level" (sort)="onSort($event)">Tase<span class="arrow-icon"></span></th>
-            <th class="d-sm-none" scope="col"></th>
-          </tr>
+            <tr>
+              <th scope="col" sortable="lemma" (sort)="onSort($event)">
+                Sõna<span class="arrow-icon"></span>
+              </th>
+              <th scope="col" sortable="pos_text" (sort)="onSort($event)">
+                Sõnaliik<span class="arrow-icon"></span>
+              </th>
+              <th class="d-sm-block d-none" scope="col" sortable="level" (sort)="onSort($event)">
+                Tase<span class="arrow-icon"></span>
+              </th>
+              <th class="d-sm-none" scope="col"></th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of tableData">
-            <td>
-              <a [class.download-link]="item.url !== null" (click)="sendToTab(item.url)">
-                <ngb-highlight [result]="item.lemma"></ngb-highlight>
-              </a>
-              <span *ngIf="item.specification"> ({{item.specification}})</span>
-            </td>
-            <td>
-              <ngb-highlight [result]="item.pos_text"></ngb-highlight>
-            </td>
-            <td>
-              <ngb-highlight class="color-{{item.level}}" [result]="item.level"></ngb-highlight>
-            </td>
-          </tr>
+            <tr *ngFor="let item of tableData">
+              <td>
+                <a [class.download-link]="item.url !== null" (click)="sendToTab(item.url)">
+                  <ngb-highlight [result]="item.lemma"></ngb-highlight>
+                </a>
+                <span *ngIf="item.specification">
+                  ({{ item.specification }})</span>
+              </td>
+              <td>
+                <ngb-highlight [result]="item.pos_text"></ngb-highlight>
+              </td>
+              <td>
+                <ngb-highlight class="color-{{ item.level }}" [result]="item.level"></ngb-highlight>
+              </td>
+            </tr>
           </tbody>
         </table>
         <div *ngIf="showTable">
           <ngb-pagination [collectionSize]="total$" [(page)]="page" [pageSize]="pageSize"
-                          (pageChange)="page > 0 && sendData($event); scrollTo(searchResults)" [maxSize]="10">
+            (pageChange)="page > 0 && sendData($event); scrollTo(searchResults)" [maxSize]="10">
             <ng-template ngbPaginationPrevious>Eelmine</ng-template>
             <ng-template ngbPaginationNext>Järgmine</ng-template>
           </ngb-pagination>

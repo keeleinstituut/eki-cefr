@@ -1,8 +1,54 @@
+.footer-wrapper {
+  max-width: 80vw !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .footer-text {
   font-size: 0.875rem;
   color: #d8d8d8;
   margin-bottom: 0;
 }
+
+
+.footer .social-list {
+  margin-top: 0rem;
+  display: inline-flex;
+  position: relative;
+  top: 0rem;
+  margin-bottom: .625rem
+}
+
+.social-list .icon {
+  margin-left: .5rem
+}
+
+.social-list .helper-text {
+  color: #d8d8d8;
+  display: inline-block;
+  font-size: .875rem
+}
+
+.copyright,
+.last-update {
+  display: block;
+  margin: 0 auto;
+  color: #d8d8d8;
+  text-align: center;
+  width: 100%;
+  font-size: .875rem
+}
+
+.fb-icon {
+  background: url(/assets/images/fb-icn.svg) center center no-repeat;
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-size: 1.5rem;
+  text-indent: -624.938rem
+}
+
+
 
 @media (max-width: 575px) {
   .footer-copyright {

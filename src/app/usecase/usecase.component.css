@@ -274,7 +274,12 @@ option {
   }
 
   /* Force table to not be like tables anymore */
-  table, thead, tbody, th, td, tr {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
     display: block;
   }
 
@@ -338,5 +343,3 @@ option {
     margin-right: -2.5rem;
   }
 }
-
-

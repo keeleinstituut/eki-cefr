@@ -18,7 +18,9 @@
             },
             "index": "src/index.html",
             "polyfills": [
-              "src/polyfills.ts"
+              "src/polyfills.ts",
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -27,8 +29,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/css/custom.css",
               "node_modules/font-awesome/css/font-awesome.css",
+              "src/assets/css/custom.css",
               "src/styles.css"
             ],
             "scripts": [],
