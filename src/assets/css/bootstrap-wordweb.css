@@ -350,3 +350,26 @@ btn-outline-dark .btn-primary {
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 17, 36, 0.05);
 }
+
+
+.top-button {
+    position: fixed;
+    bottom: 2rem;
+    right: calc(5%);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 3.125rem;
+    height: 2rem;
+    width: 2rem;
+    z-index: 10;
+}
+
+.top-button:hover {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 1);
+}
+
+.top-button .icon {
+    font-size: 2rem;
+}
