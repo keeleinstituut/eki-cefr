@@ -1,7 +1,7 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Tagasiside</h4>
-    <span class="icon icon-close" aria-label="Close" (click)="close()"></span>
+    <span class="icon icon-close ms-auto" aria-label="Close" (click)="close()"></span>
   </div>
   <div class="modal-body">
     <ngb-alert *ngIf="success" type="success" [dismissible]="false">
@@ -11,54 +11,48 @@
       Viga! Tagasiside saatmine ebaõnnestus
     </ngb-alert>
     <form [formGroup]="form">
-      <div class="row pl-4">
-        <p>Kõik väljad on kohustuslikud</p>
+      <div class="row">
+        <p class="ps-4">Kõik väljad on kohustuslikud</p>
       </div>
-      <div class="row pl-4 pr-4">
-        <label for="description" class="ml-0">
+      <div class="row ps-4 pe-4">
+        <label for="description" class="form-label" style="margin-left: -0.75rem">
           Kommentaar
         </label>
         <textarea [class.is-invalid]="error && this.form.controls.description.invalid" type="text"
-                  formControlName="description" id="description" class="form-control description"
-                  required></textarea>
+          formControlName="description" id="description" class="form-control description" required></textarea>
         <div *ngIf="error && this.form.controls.description.invalid" class="invalid-origin-feedback">
           Välja täitmine on kohustuslik
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-12 p-4 form-field">
-          <label for="name" class="ml-0">
-            Nimi
-          </label>
+          <label for="name" class="form-label ms-0"> Nimi </label>
           <input type="text" [class.is-invalid]="error && this.form.controls.senderName.invalid"
-                 formControlName="senderName" id="name" class="form-control" required>
+            formControlName="senderName" id="name" class="form-control" required />
           <div *ngIf="error && this.form.controls.senderName.invalid" class="invalid-origin-feedback">
             Välja täitmine on kohustuslik
           </div>
         </div>
         <div class="col-sm-6 col-12 p-4 form-field">
-          <label for="email" class="ml-0">
-            E-post
-          </label>
+          <label for="email" class="form-label ms-0"> E-post </label>
           <input type="email" [class.is-invalid]="error && this.form.controls.senderEmail.invalid"
-                 formControlName="senderEmail" id="email" class="form-control" required>
+            formControlName="senderEmail" id="email" class="form-control" required />
           <div *ngIf="error && this.form.controls.senderEmail.invalid" class="invalid-origin-feedback">
             Välja täitmine on kohustuslik
           </div>
         </div>
       </div>
     </form>
-    <div class="row pl-3 mr-0">
-      <div class="custom-control custom-checkbox mt-2 modal-checkbox">
-        <input type="checkbox" class="custom-control-input modal-check" id="modalCheck1"
-               [(ngModel)]="agree">
-        <label class="custom-control-label" for="modalCheck1">
-          <span *ngIf="!error || (agree === true)">Postitades kommentaari nõustud</span>
-          <span *ngIf="error && (agree === false)" class="invalid-text-feedback">Postitades kommentaari nõustud</span>
-          <a role="link" class="pl-2" [attr.href]="APIEndpoint + 'regulations'" target="wordweb_regulations"
-             data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
+    <div class="row ps-3 me-0">
+      <div class="custom-control form-check mt-2 modal-checkbox">
+        <input type="checkbox" class="form-check-input modal-check" id="modalCheck1" [(ngModel)]="agree" />
+        <label class="form-check-label" for="modalCheck1">
+          <span *ngIf="!error || agree === true">Postitades kommentaari nõustud</span>
+          <span *ngIf="error && agree === false" class="invalid-text-feedback">Postitades kommentaari nõustud</span>
+          <a role="link" class="ps-2" [attr.href]="APIEndpoint + 'regulations'" target="wordweb_regulations"
+            data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
         </label>
-        <div *ngIf="error && (agree === false)" class="invalid-origin-feedback">
+        <div *ngIf="error && agree === false" class="invalid-origin-feedback">
           Välja täitmine on kohustuslik
         </div>
       </div>
@@ -66,10 +60,10 @@
   </div>
   <div class="modal-footer">
     <div class="col-12 p-0">
-      <div class="text-right">
-        <a role="button" class="mr-3 modal-footer-btn" (click)="close()">Sulge</a>
-        <button [disabled]="agree === false" [class.disabled]="agree === false" role="button"
-                type="button" class="btn btn-primary modal-footer-btn" name="feedbackSendBtn" (click)="sendData()">
+      <div class="text-end">
+        <a role="button" class="me-3 modal-footer-btn" (click)="close()">Sulge</a>
+        <button [disabled]="agree === false" [class.disabled]="agree === false" role="button" type="button"
+          class="btn btn-primary modal-footer-btn" name="feedbackSendBtn" (click)="sendData()">
           Saada
         </button>
       </div>

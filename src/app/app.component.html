@@ -1,8 +1,16 @@
-<app-header class="container-fluid"></app-header>
-<router-outlet></router-outlet>
-<app-footer class="footer"></app-footer>
-<div *ngIf="isIE" class="alert-danger-ie">
-  <div class="alert-danger-ie-container">
-    <span>Te kasutate aegunud veebilehitsejat, millega see veebileht täielikult ei funktsioneeri. Toetatud veebilehitsejad on Mozilla Firefox, Google Chrome, Apple Safari ja Microsoft Edge</span>
+<div class="d-flex flex-column min-vh-95">
+  <app-header class="container-fluid fixed-top"></app-header>
+  <div class="flex-grow-1 pt-header">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+  <app-footer class="mt-auto"></app-footer>
+  <div *ngIf="isIE" class="alert-danger-ie">
+    <div class="alert-danger-ie-container">
+      <span>Te kasutate aegunud veebilehitsejat, millega see veebileht täielikult
+        ei funktsioneeri. Toetatud veebilehitsejad on Mozilla Firefox, Google
+        Chrome, Apple Safari ja Microsoft Edge</span>
+    </div>
   </div>
 </div>

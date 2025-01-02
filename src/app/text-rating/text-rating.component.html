@@ -5,208 +5,217 @@
         <h3>Õppeteksti hindamine</h3>
       </div>
       <div class="col-md-4 col-12">
-        <button class="btn sm-feedback-btn float-right" (click)="modal.open()">Tagasiside</button>
+        <button class="btn sm-feedback-btn float-end" (click)="modal.open()">
+          Tagasiside
+        </button>
       </div>
-      <div class="col-md-8 col-12 pr-4 pt-md-0 pt-2 text-rating-info">
-        <p><b>Õppeteksti hindamise</b> tööriist on mõeldud õppematerjalina kasutatavate tekstide tasemekohasuse hindamiseks.</p>
-        <p>Tööriist määratleb sõnade ja nende grammatiliste vormide vastavust keeleoskustasemetele ning on abiks otsustamisel, kas tekst on keeleõppijale jõukohane.</p>
-        <p>Teksti sõnavara ja vormimoodustuse analüüsi tulemus kuvatakse samas aknas. Konkreetse sõna ja selle grammatilise vormi keerukuse info kuvatakse hüpikaknas kursori viimisel sõna kohale.</p>
-        <p>Sõnad jaotatakse keeleoskustasemetesse noore keeleõppija ja täiskasvanute sõnavaraloendite põhjal. Sõna leksikaalset taset näitab tema põhivärv. Kui sõna loendites ei esine, siis jääb selle tasemekohasus määramata ja tekstis neid sõnu värviga esile ei tooda. Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei tuvasta sõnavara tasandil mitmesõnalisi üksusi, nagu näiteks ühend- (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).  </p>
-        <p>Vormimoodustuse analüüs tugineb grammatikapädevuse kirjeldusele. Programm hindab grammatiliste vormide (käände- ja pöördevormid, võrdlusastmed) tasemekohasust. Eesmärk on esile tuua grammatilised vormid ja konstruktsioonid, mille mõistmine on B1-tasemest madalamal tasemel õppija jaoks keeruline. Need on eristatud punase kastiga. Eristuseta vormid on B1-tasemel õppijale arusaadavad või on nende keerukus määramata. </p>
-        <p>Tööriist väljastab ka teksti sõnavara keeleoskustasemetesse jaotumise statistika ning vähemalt 100-sõnalise teksti puhul loetavuse aspekte mõõtvad lix-indeksi, formaalsusindeksi, teksti nominaalsuse ning nimi- ja tegusõnade suhte.</p>
-        <p>Teksti loetavuse hindajate kohta loe rohkem <a [routerLink]="'/about'" fragment="item-10" >SIIT</a>.
+      <div class="col-md-8 col-12 pe-4 pt-md-0 pt-2 text-rating-info">
+        <p>
+          <b>Õppeteksti hindamise</b> tööriist on mõeldud õppematerjalina
+          kasutatavate tekstide tasemekohasuse hindamiseks.
+        </p>
+        <p>
+          Tööriist määratleb sõnade ja nende grammatiliste vormide vastavust
+          keeleoskustasemetele ning on abiks otsustamisel, kas tekst on
+          keeleõppijale jõukohane.
+        </p>
+        <p>
+          Teksti sõnavara ja vormimoodustuse analüüsi tulemus kuvatakse samas
+          aknas. Konkreetse sõna ja selle grammatilise vormi keerukuse info
+          kuvatakse hüpikaknas kursori viimisel sõna kohale.
+        </p>
+        <p>
+          Sõnad jaotatakse keeleoskustasemetesse noore keeleõppija ja
+          täiskasvanute sõnavaraloendite põhjal. Sõna leksikaalset taset näitab
+          tema põhivärv. Kui sõna loendites ei esine, siis jääb selle
+          tasemekohasus määramata ja tekstis neid sõnu värviga esile ei tooda.
+          Hindamine toimub lemmapõhiselt ehk sõna algvormi alusel. Homonüümide
+          puhul (nt <i>tamm</i> 'puu' ja <i>tamm</i> 'veevoolu tõkestav
+          rajatis') annab tööriist madalama keeletaseme hinnangu. Programm ei
+          tuvasta sõnavara tasandil mitmesõnalisi üksusi, nagu näiteks ühend-
+          (nt <i>lahku minema</i>) ja väljendverbid (nt <i>silma paistma</i>).
+        </p>
+        <p>
+          Vormimoodustuse analüüs tugineb grammatikapädevuse kirjeldusele.
+          Programm hindab grammatiliste vormide (käände- ja pöördevormid,
+          võrdlusastmed) tasemekohasust. Eesmärk on esile tuua grammatilised
+          vormid ja konstruktsioonid, mille mõistmine on B1-tasemest madalamal
+          tasemel õppija jaoks keeruline. Need on eristatud punase kastiga.
+          Eristuseta vormid on B1-tasemel õppijale arusaadavad või on nende
+          keerukus määramata.
+        </p>
+        <p>
+          Tööriist väljastab ka teksti sõnavara keeleoskustasemetesse jaotumise
+          statistika ning vähemalt 100-sõnalise teksti puhul loetavuse aspekte
+          mõõtvad lix-indeksi, formaalsusindeksi, teksti nominaalsuse ning nimi-
+          ja tegusõnade suhte.
+        </p>
+        <p>
+          Teksti loetavuse hindajate kohta loe rohkem
+          <a [routerLink]="'/about'" fragment="item-10">SIIT</a>.
         </p>
       </div>
     </div>
     <form [formGroup]="form">
       <b>Keeleõppija:</b>
-      <div class="pb-md-4 pb-3 pt-md-0 pt-3 ml-auto row">
+      <div class="pb-md-4 pb-3 pt-md-0 pt-3 ms-auto row">
         <div class="col-md-4 col-12">
-        <div class="form-check d-inline-block mr-4">
-          <input formControlName="list" name="list" class="form-check-input form-control-1x" type="radio"
-                 id="customRadio1" value="noor" (ngModelChange)="setlangList()">
-          <label class="form-check-label" for="customRadio1">
-            noor keeleõppija
-          </label>
+          <div class="form-check d-inline-block">
+            <input formControlName="list" name="list" class="form-check-input form-control-1x" type="radio"
+              id="customRadio1" value="noor" (ngModelChange)="setlangList()" />
+            <label class="form-check-label" for="customRadio1">
+              noor keeleõppija
+            </label>
+          </div>
+          <div class="form-check d-inline-block ms-3">
+            <input formControlName="list" class="form-check-input form-control-1x" type="radio" id="customRadio2"
+              value="etLex" (ngModelChange)="setlangList()" />
+            <label class="form-check-label" for="customRadio2">
+              täiskasvanu
+            </label>
+          </div>
         </div>
-        <div class="form-check d-inline-block">
-          <input formControlName="list" class="form-check-input form-control-1x" type="radio"
-                 id="customRadio2" value="etLex" (ngModelChange)="setlangList()">
-          <label class="form-check-label" for="customRadio2">
-            täiskasvanu
-          </label>
-        </div>
-      </div>
       </div>
       <div class="row">
         <div class="col-md-4 col-12">
-          <!--div class="row " style="height:40px" ></div-->
-          <div class="form-group d-flex flex-column h-75">
+          <div class="d-flex flex-column mb-3">
             <div class="d-flex flex-row">
-              <label for="exampleFormControlTextarea1"><b>Sisesta tekst:</b></label>
-              <small class="counter ml-auto mt-auto">{{this.form.controls.text.value.length}}
-                /2000</small>
+              <label for="exampleFormControlTextarea1" class="form-label"><b>Sisesta tekst:</b></label>
+              <small class="counter ms-auto mt-auto">{{ this.form.controls.text.value.length }} /2000</small>
             </div>
-            <div style="flex: 2; position:relative">
-
-          <textarea class="form-control text-area p-3" formControlName="text"
-                    id="exampleFormControlTextarea1"
-                    maxlength="2000"></textarea>
-              <button class="btn btn-sm  btn-outline-dark float-right gray"  style="position:absolute;top:0;right:0;padding:8px;padding-top:4px" (click)="clearText();getData(); clicked = true;" ngbPopover="Puhasta tekstiväli"
-                 triggers="mouseenter:mouseleave" placement="top"><i class="fa fa-times"></i></button>
+            <div style="flex: 2; position: relative">
+              <textarea class="form-control text-area p-3" formControlName="text" id="exampleFormControlTextarea1"
+                maxlength="2000"></textarea>
+              <button class="btn btn-sm btn-outline-dark float-end gray" style="
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  padding: 8px;
+                  padding-top: 4px;
+                " (click)="clearText(); getData(); clicked = true" ngbPopover="Puhasta tekstiväli"
+                triggers="mouseenter:mouseleave" placement="top">
+                <i class="fa fa-times"></i>
+              </button>
             </div>
           </div>
         </div>
         <div class="col-md-6 col-12">
-          <div class="row lang-settings">
-            <label class="lang-lvl pr-2"><b>Keeleoskustase:</b></label>
-            <div class="pb-md-0 pb-3" formArrayName="lang"
-                 *ngFor="let lang of form.controls.lang.controls; let i = index">
-              <div class="form-check pb-2 pr-3">
+          <div class="d-flex align-items-center lang-settings flex-wrap" style="margin-bottom: 0px">
+            <label class="form-label lang-lvl pe-2"><b>Keeleoskustase:</b></label>
+            <div class="d-flex align-items-center flex-wrap" formArrayName="lang"
+              *ngFor="let lang of form.controls.lang.controls; let i = index">
+              <div class="form-check me-3">
                 <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i"
-                       (ngModelChange)="wordColor(levels[i], lang.value)">
-                <label class="color-{{levels[i]}} form-check-label" [for]="i">
-                  {{levels[i]}}
+                  (ngModelChange)="wordColor(levels[i], lang.value)" />
+                <label class="form-label color-{{ levels[i] }} form-check-label" [for]="i">
+                  {{ levels[i] }}
                 </label>
               </div>
             </div>
           </div>
-          <!--div class="row lang-settings " style="height:40px">
-             <ul ngbNav [(activeId)]="activeId" class="nav-tabs">
-                <li [ngbNavItem]="'sonavara'"  >
-                  <a ngbNavLink *ngIf="project=='noor'">Sõnavara ja vormimoodustus</a>
-                  <a ngbNavLink *ngIf="!(project=='noor')">Sõnavara</a>
-                </li>
-                <li [ngbNavItem]="'fraasid'" *ngIf="project=='noor'">
-                  <a ngbNavLink>Fraasimoodustus</a>
-                </li>
-              </ul>
-          </div-->
           <div *ngIf="activeId == 'sonavara'"
-            class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text" style="border-top-left-radius: 0">
-            <div class="pr-md-2 pr-0 h-25" [id]="i"
-                 *ngFor="let word of this.resultData; let i = index">
+            class="text-bg-white text-list border border-dark p-3 justify-content-between lang-settings mixed-text d-flex flex-wrap"
+            style="border-top-left-radius: 0">
+            <div class="pe-md-2 pe-0 h-25" [id]="i" *ngFor="let word of this.resultData; let i = index">
               <ng-template #popContent>
-                <b>{{word.pos_text}}: </b> <i>{{word.lemma}}</i>
-                <br/> <b>sõna tase: </b> {{word.level}}
-                <br/> <b>sõnavorm/konstruktsioon: </b> <i>{{this.resultDataGrammar[i].text}}</i>
-                <ng-container *ngIf="this.resultDataGrammar[i].formXinfo"><br/> <b>vormi kirjeldus: </b> {{this.resultDataGrammar[i].formXinfo}}
-                <br/> <b>vormi keerukuse tase: </b> {{this.resultDataGrammar[i].level}}</ng-container>
+                <b>{{ word.pos_text }}: </b> <i>{{ word.lemma }}</i> <br />
+                <b>sõna tase: </b> {{ word.level }} <br />
+                <b>sõnavorm/konstruktsioon: </b>
+                <i>{{ this.resultDataGrammar[i].text }}</i>
+                <ng-container *ngIf="this.resultDataGrammar[i].formXinfo"><br />
+                  <b>vormi kirjeldus: </b>
+                  {{ this.resultDataGrammar[i].formXinfo }} <br />
+                  <b>vormi keerukuse tase: </b>
+                  {{ this.resultDataGrammar[i].level }}</ng-container>
               </ng-template>
-              <p class="mixed-text" [ngClass]="colors(i)" [ngbPopover]="popContent"
-                 triggers="mouseenter:mouseleave" placement="top">{{word.token}}</p>
+              <p class="mixed-text" [ngClass]="colors(i)" [ngbPopover]="popContent" triggers="mouseenter:mouseleave"
+                placement="top" style="width: fit-content">
+                {{ word.token }}
+              </p>
             </div>
           </div>
-          <!--div *ngIf="activeId == 'fraasid'"
-            class="row text-bg-white text-list border border-dark p-3 d-flex justify-content-between lang-settings mixed-text">
-            <ng-template #spaceImage>
-              <img width="10px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="" />
-            </ng-template>
-            <ng-template #nestedSpan let-text let-levels="levels">
-              <span *ngIf="levels.length" class="phrase {{levels[0]}}">
-                <ng-container *ngTemplateOutlet="nestedSpan; context:{ $implicit: text, levels:removeFirst(levels) }"></ng-container>
-              </span>
-              <span *ngIf="!levels.length">
-                {{text}}
-              </span>
-            </ng-template>
-            <ng-template #nestedSpaceSpan let-levels="levels">
-              <span *ngIf="levels.length" class="phrase {{levels[0]}}">
-                <ng-container *ngTemplateOutlet="nestedSpaceSpan; context:{ levels:removeFirst(levels) }"></ng-container>
-              </span>
-              <span *ngIf="!levels.length">
-                <ng-container *ngTemplateOutlet="spaceImage"></ng-container>
-              </span>
-            </ng-template>
-            <ng-template #wordAndSpace let-textdata let-index="index">
-              <span>
-                <ng-template #basewordPopover>
-                  <div *ngIf="textdata[index].isbaseword">
-                    <b>{{phrases[index].phrasetypetext}}:</b> <i class="ml-2">{{textdata[index].phrasetext}}</i><br/>
-                    <b>fraasialus:</b> <i class="ml-2">{{textdata[index].text.text}}</i><br/>
-                    <b>keeletase:</b> {{phrases[index].phraselevel}}<br/>
-                    <b>tüüp:</b> {{phrases[index].ruletext}}
-                  </div>
-                </ng-template>
-                <span
-                      [ngClass]="phraseColors(textdata[index])"
-                      [ngbPopover]="basewordPopover"
-                      triggers="mouseenter:mouseleave"
-                      [disablePopover]="textdata[index].isbaseword==false || phrases[index].phraselevel == 'unknown'"
-                      placement="top"
-                    ><ng-container *ngTemplateOutlet="nestedSpan; context:{ $implicit: textdata[index].text.text, levels:textdata[index].phraselevels }"> </ng-container></span>
-               <span ><ng-container *ngTemplateOutlet="nestedSpaceSpan; context:{ levels:textdata[index].spacelevels }"></ng-container></span>
-              </span>
-            </ng-template>
-            <p style="line-height:2.5em; text-align: justify">
-              <ng-container
-                   *ngFor="let word of this.resultDataPhrases; let i = index">
-                   <ng-container  *ngTemplateOutlet="wordAndSpace; context:{ $implicit: this.resultDataPhrases, index:i}" ></ng-container>
-              </ng-container>
-            </p>
-          </div-->
         </div>
         <div class="col-md-2 col-12 pt-md-4 pt-2">
           <!--div class="row " style="height:40px"></div-->
           <div class="bg-white rating-table bg-white py-1 px-3 border border-dark mixed-text">
-            Sõnu kokku: {{wordCount}}<br/>
+            Sõnu kokku: {{ wordCount }}<br />
             Sõnavara jagunemine keeleoskustasemeti:
             <div class="row table-border m-0">
-              <div class="col-5 pl-0">
-                Tase
-              </div>
-              <div class="col-3 pl-0">
-                Sõnu
-              </div>
-              <div class="col-4 pl-0">
-                %
-              </div>
+              <div class="col-5 ps-0">Tase</div>
+              <div class="col-3 ps-0">Sõnu</div>
+              <div class="col-4 ps-0">%</div>
             </div>
             <div class="row" *ngFor="let item of getStatTable()">
               <div class="col-5">
-                {{item.label}}
+                {{ item.label }}
               </div>
               <div class="col-3 result-word-column">
-                {{item.count}}
+                {{ item.count }}
               </div>
-              <div class="col-4 pl-0 pl-0-md pl-2">
-                {{item.percentage}}
+              <div class="col-4 ps-0 ps-0-md ps-2">
+                {{ item.percentage }}
               </div>
             </div>
-            <br/>
+            <br />
             <div class="mt-10">
-              <u >Teksti loetavuse hindajad</u> <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html='true' ngbPopover="Loetavust hinnatakse, kui tekstis on vähemalt 100 sõna."><i class="fa fa-question-circle-o" aria-hidden="true"></i></a><br/>
+              <u>Teksti loetavuse hindajad</u>
+              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html="true"
+                ngbPopover="Loetavust hinnatakse, kui tekstis on vähemalt 100 sõna."><i class="fa fa-question-circle-o"
+                  aria-hidden="true"></i></a><br />
               Lix-indeks
-              <ng-template #lixindexdescription><span class="small">Teksti hoomatavus ehk tehniline raskusaste. Liidetakse lause keskmine pikkus ja pikkade sõnade (7 või enam tähte) osatähtsus ja ümardatakse täisarvuks.<br/>
-                Lix &lt;= 25 - väga kerge lugeda <br/>
-                25 &lt; Lix &lt;= 35 - kerge lugeda <br/>
-                35 &lt; Lix &lt;= 45 - keskmise keerukusega<br/>
-                44 &lt; Lix &lt;= 55 - raske lugeda<br/>
-                55 &gt; Lix - väga raske lugeda<br/></span></ng-template>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="lixindexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>:  {{LixIndex}}<br/>
+              <ng-template #lixindexdescription><span class="small">Teksti hoomatavus ehk tehniline raskusaste.
+                  Liidetakse lause
+                  keskmine pikkus ja pikkade sõnade (7 või enam tähte)
+                  osatähtsus ja ümardatakse täisarvuks.<br />
+                  Lix &lt;= 25 - väga kerge lugeda <br />
+                  25 &lt; Lix &lt;= 35 - kerge lugeda <br />
+                  35 &lt; Lix &lt;= 45 - keskmise keerukusega<br />
+                  44 &lt; Lix &lt;= 55 - raske lugeda<br />
+                  55 &gt; Lix - väga raske lugeda<br /></span></ng-template>
+              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
+                [ngbPopover]="lixindexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
+              LixIndex }}<br />
               Formaalsusindeks
-              <ng-template #Findexdescription><span class="small">Teksti väljendustäpsuse aste skaalal formaalne-kontekstuaalne. Põhineb sõnaliikide sageduse võrdlusel.<br/>
-              F &lt;= 42,2 - kontekstuaalne; suuline tekst<br/>
-                42,2 &lt; F &lt;= 55,65 - keskmise väljendustäpsusega; kirjalike tekstide keskmine<br/>
-                55,65 &lt; F - formaalne; kirjalik ametlik tekst<br/></span></ng-template>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html='true' [ngbPopover]="Findexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>:  {{Findex}}<br/>
+              <ng-template #Findexdescription><span class="small">Teksti väljendustäpsuse aste skaalal
+                  formaalne-kontekstuaalne. Põhineb sõnaliikide sageduse
+                  võrdlusel.<br />
+                  F &lt;= 42,2 - kontekstuaalne; suuline tekst<br />
+                  42,2 &lt; F &lt;= 55,65 - keskmise väljendustäpsusega;
+                  kirjalike tekstide keskmine<br />
+                  55,65 &lt; F - formaalne; kirjalik ametlik tekst<br /></span></ng-template>
+              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html="true"
+                [ngbPopover]="Findexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
+              Findex }}<br />
               Nominaalsus
-              <ng-template #nindexdescritption><span class="small">Nimisõnavormide osatähtsus. Nimisõnade tundmine on vajalik tekstist arusaamiseks. Mida rohkem on tekstis nimisõnu, seda tõenäolisem on, et nende hulgas on keeleõppijale tundmatuid sõnu.<br/>
-              N &lt;= 17% - vähe nimisõnu. Tekst võib olla liiga kontekstisidus.<br/>
-              17% &lt; N &lt;= 37,5% - tavapärane hulk nimisõnu<br/>
-              37,5% &lt; N &lt;= 59,5% - üsna palju nimisõnu.<br/>
-              59,5% &lt; N - väga palju nimisõnu. Õpilased võivad vajada sõnaraamatu abi.<br/>
-                </span></ng-template>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="nindexdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{Nindex}}<br/>
+              <ng-template #nindexdescritption><span class="small">Nimisõnavormide osatähtsus. Nimisõnade tundmine on
+                  vajalik
+                  tekstist arusaamiseks. Mida rohkem on tekstis nimisõnu, seda
+                  tõenäolisem on, et nende hulgas on keeleõppijale tundmatuid
+                  sõnu.<br />
+                  N &lt;= 17% - vähe nimisõnu. Tekst võib olla liiga
+                  kontekstisidus.<br />
+                  17% &lt; N &lt;= 37,5% - tavapärane hulk nimisõnu<br />
+                  37,5% &lt; N &lt;= 59,5% - üsna palju nimisõnu.<br />
+                  59,5% &lt; N - väga palju nimisõnu. Õpilased võivad vajada
+                  sõnaraamatu abi.<br /> </span></ng-template>
+              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
+                [ngbPopover]="nindexdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
+              Nindex }}<br />
               Nimi- ja tegusõnade suhe
-              <ng-template #SVpropdescritption><span class="small">Nimi- ja tegusõnavormide suhe tekstis. Tegusõnarohkus on omane pigem suulisele keelele ja dialoogilistele tekstidele, nimisõnarohkus ametlikele tekstidele. Verbilisemat teksti on lihtsam jälgida ja seda tarbitakse kiiremini.<br/></span>
-  </ng-template>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" [ngbPopover]="SVpropdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{SVprop}}<br/>
+              <ng-template #SVpropdescritption><span class="small">Nimi- ja tegusõnavormide suhe tekstis. Tegusõnarohkus
+                  on
+                  omane pigem suulisele keelele ja dialoogilistele tekstidele,
+                  nimisõnarohkus ametlikele tekstidele. Verbilisemat teksti on
+                  lihtsam jälgida ja seda tarbitakse kiiremini.<br /></span>
+              </ng-template>
+              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
+                [ngbPopover]="SVpropdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
+              SVprop }}<br />
             </div>
           </div>
         </div>
       </div>
-      <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true;">
+      <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true">
         Hinda
       </button>
     </form>

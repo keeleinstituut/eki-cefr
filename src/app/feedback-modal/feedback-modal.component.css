@@ -44,6 +44,7 @@ a {
   color: #dc3545;
 }
 
+
 @media (max-width: 767px) {
   .description {
     padding-bottom: 0 !important;
@@ -68,4 +69,8 @@ a {
     padding-top: 0.5rem !important;
     font-size: 0.75rem;
   }
+}
+
+.form-check .form-check-input {
+  margin-left: -0.50em;
 }

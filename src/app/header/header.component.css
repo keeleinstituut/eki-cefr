@@ -1,25 +1,89 @@
+.header-wrap {
+  display: block;
+  width: 100%;
+}
+
 .main-menu-item {
   font-family: Inter, serif;
   font-size: 1rem;
   color: #0053B3;
 }
 
-.logo, .back {
+.logo,
+.back {
   right: 0 !important;
   left: auto;
 }
 
+
 .navbar {
   display: flex;
   white-space: nowrap;
-  width: 81%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.icon-small {
-  font-size: 1.1rem;
+.logo,
+.back,
+.menu-btn {
+  top: 0;
+  position: absolute;
+  display: block;
+  padding: .625rem 1.25rem;
+  background-color: transparent
 }
+
+.logo,
+.logo:hover,
+.back,
+.back:hover,
+.menu-btn,
+.menu-btn:hover {
+  color: #001124;
+  text-decoration: none
+}
+
+.logo .icon:before,
+.back .icon:before,
+.menu-btn .icon:before {
+  font-size: 2.1875rem;
+  height: 2.1875rem;
+  width: 2.1875rem
+}
+
+.logo,
+.back {
+  left: 0
+}
+
+.back {
+  background-color: #f2f2f2
+}
+
+.icon-logo:before {
+  content: "\e90b";
+}
+
+.icon-logo-s:before {
+  content: "\e90a";
+}
+
+.icon-logo-type:before {
+  content: "\e90c";
+}
+
+.icon-menu:before {
+  content: "\e909";
+}
+
+.icon-menu:before {
+  content: "\e909";
+}
+
+
+
+
 
 .item-active {
   color: #0053B3;
@@ -63,6 +127,37 @@ a:focus {
     font-size: 2rem;
   }
 
+
+  .logo,
+  .back,
+  .menu-btn {
+    top: 0;
+    position: absolute;
+    display: block;
+    padding: 0.625rem 1.25rem;
+    background-color: transparent;
+  }
+
+  .logo,
+  .logo:hover,
+  .back,
+  .back:hover,
+  .menu-btn,
+  .menu-btn:hover {
+    color: #001124;
+    text-decoration: none;
+  }
+
+  .logo .icon:before,
+  .back .icon:before,
+  .menu-btn .icon:before {
+    font-size: 2.1875rem;
+    height: 2.1875rem;
+    width: 2.1875rem;
+  }
+
+
+
   .main-logo {
     width: 105px;
   }
@@ -84,6 +179,7 @@ a:focus {
   }
 }
 
+
 @media (max-width: 1199px) {
   .navbar {
     width: 100%;
@@ -93,5 +189,18 @@ a:focus {
 @media (min-width: 768px) {
   .collapse {
     display: block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    background-color: #fff;
+  }
+
+  .menu-btn {
+    background-color: transparent;
+    top: 0;
+    right: 0;
+    padding-top: 0;
   }
 }
