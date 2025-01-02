@@ -1,10 +1,8 @@
 # Õpetajate tööriistad
 
-Angular [Angular CLI](https://github.com/angular/angular-cli) versioon 17.3.3.
+Angular [Angular CLI](https://github.com/angular/angular-cli) versioon 18.2.
 
-
-Angulari rakenduse kompileerimiseks on vajalik eelnevalt installida [node.js](https://nodejs.org) ja [Angular CLI](https://github.com/angular/angular-cli)  tarkvara.
-
+Angulari rakenduse kompileerimiseks on vajalik eelnevalt installida [node.js](https://nodejs.org) ja [Angular CLI](https://github.com/angular/angular-cli) tarkvara.
 
 **node.js ja npm paigaldamine (Ubuntu)**
 
@@ -25,14 +23,13 @@ npm install -g @angular/cli
 
 https://v17.angular.io/guide/deployment
 
-
 **Koodi allalaadimine**
 
 ```bash
 # kataloogi loomine
 mkdir eki-cefr
 
-# projekti koodi allalaadimine. 
+# projekti koodi allalaadimine.
 # haru nimi vastab tarkvara versiooninumbrile (näiteks 1.39.0).
 git clone --single-branch --branch x.x.x  https://github.com/keeleinstituut/eki-cefr.git
 ```
@@ -51,8 +48,7 @@ npm install
 
 <code>ng build</code> käsk genereerib kõik vajalikud failid kataloogi <code>dist/</code>
 
-<code>--configuration production</code> parameeter määrab ära, et kompileerimisel loetakse keskkonnamuutujad sisse failist <code>eki-cefr/src/environments/environment.prod.ts</code> 
-
+<code>--configuration production</code> parameeter määrab ära, et kompileerimisel loetakse keskkonnamuutujad sisse failist <code>eki-cefr/src/environments/environment.prod.ts</code>
 
 ```bash
 ng build --configuration production
@@ -60,18 +56,16 @@ ng build --configuration production
 
 kui rakendust serveeritakse serveri alamkataloogist, siis tuleb rakenduse asukoht atta ette parameetrina <code>base-href</code>
 
-
 ```bash
 ng build --configuration production --base-href /teacher-tools/
 ```
 
 <code>dist</code> kausta tekkinud kaust tuleb tõsta vajalikku kohta
 
-
-
 ### Apache
-* Kopeeri angular failid serverisse <code>/opt</code> kausta
-* muuda Apache confi
+
+- Kopeeri angular failid serverisse <code>/opt</code> kausta
+- muuda Apache confi
 
 ```
 Alias "/ww/teacher-tools" "/opt/teacher-tools"
@@ -88,12 +82,11 @@ ProxyPass "!"
 </Location>
 ```
 
-* taaskäivita apache teenus
+- taaskäivita apache teenus
 
 ### Teised serverid
 
 https://v17.angular.io/guide/deployment#server-configuration
-
 
 ## Development server
 
@@ -111,11 +104,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
 
 ## Docker
 
@@ -126,9 +117,7 @@ docker build -t teacher-tools  .
 ```
 
 **docker run**
+
 ```bash
 docker run -d -p 8080:80 --name teacher-tools teacher-tools
 ```
-
-
-
