@@ -36,8 +36,8 @@
       <span class="main-menu-item ps-0 d-md-none d-block" (click)="modal.open()">Tagasiside</span>
     </div>
 
-    <a [attr.href]="APIEndpoint" aria-label="Sõnaveebi" role="link" class="logo position-relative d-md-block d-none"
-      [class.d-block]="!collapsed">
+    <a [attr.href]="APIEndpoint" aria-label="Sõnaveebi" role="link" class="logo position-relative d-md-block"
+      [class.d-none]="collapsed" [class.d-block]="!collapsed">
       <span class="icon-logo" [class.icon]="collapsed" [class.logo-navbar-open]="!collapsed"></span>
     </a>
   </nav>
