@@ -3,9 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
-  selector: 'app-educational-material',
-  templateUrl: './educational-material.component.html',
-  styleUrls: ['./educational-material.component.css']
+    selector: 'app-educational-material',
+    templateUrl: './educational-material.component.html',
+    styleUrls: ['./educational-material.component.css'],
+    standalone: false
 })
 export class EducationalMaterialComponent {
 

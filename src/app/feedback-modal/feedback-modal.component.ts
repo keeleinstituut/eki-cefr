@@ -5,10 +5,11 @@ import {FeedbackModalService} from './feedback-modal.service';
 import {environment} from '../../environments/environment';
 
 @Component({
-  selector: 'app-feedback-modal',
-  templateUrl: './feedback-modal.component.html',
-  styleUrls: ['./feedback-modal.component.css'],
-  providers: [NgbModalConfig, NgbModal]
+    selector: 'app-feedback-modal',
+    templateUrl: './feedback-modal.component.html',
+    styleUrls: ['./feedback-modal.component.css'],
+    providers: [NgbModalConfig, NgbModal],
+    standalone: false
 })
 export class FeedbackModalComponent {
   @ViewChild('content') content;

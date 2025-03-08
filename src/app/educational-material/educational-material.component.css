@@ -12,6 +12,10 @@ a {
   color: #0053B3;
 }
 
+#main {
+  max-width: 400px;
+}
+
 .set-nav {
   top: 60px;
   position: sticky;
@@ -20,8 +24,10 @@ a {
 .jumptarget::before {
   content: "";
   display: block;
-  height: 100px; /* fixed header height*/
-  margin: -100px 0 0; /* negative fixed header height */
+  height: 100px;
+  /* fixed header height*/
+  margin: -100px 0 0;
+  /* negative fixed header height */
 }
 
 .table-sm th,

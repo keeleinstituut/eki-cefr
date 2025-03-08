@@ -3,7 +3,7 @@
 ### Muudetud
 
 - Bootstrap 4 -> Bootstrap 5.3. Globaalsed muudatused css osas.
-- Angular 17.3 -> 18.2 .
+- Angular 17.3 -> 19.2.
 - Teksti saadetakse hindamisele _POST_-meetodiga.
 
 ## [1.39.0] - 2024-10-08
