@@ -1,6 +1,6 @@
 # Õpetajate tööriistad
 
-Angular [Angular CLI](https://github.com/angular/angular-cli) versioon 18.2.
+Angular [Angular CLI](https://github.com/angular/angular-cli) versioon 19.2.
 
 Angulari rakenduse kompileerimiseks on vajalik eelnevalt installida [node.js](https://nodejs.org) ja [Angular CLI](https://github.com/angular/angular-cli) tarkvara.
 
@@ -21,7 +21,7 @@ npm install -g @angular/cli
 
 **Angulari juhend**
 
-https://v17.angular.io/guide/deployment
+https://angular.dev/tools/cli/deployment
 
 **Koodi allalaadimine**
 
@@ -30,7 +30,7 @@ https://v17.angular.io/guide/deployment
 mkdir eki-cefr
 
 # projekti koodi allalaadimine.
-# haru nimi vastab tarkvara versiooninumbrile (näiteks 1.39.0).
+# haru nimi vastab tarkvara versiooninumbrile (näiteks 1.40.0).
 git clone --single-branch --branch x.x.x  https://github.com/keeleinstituut/eki-cefr.git
 ```
 
