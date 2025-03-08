@@ -223,16 +223,16 @@
       <table class="table table-striped" *ngIf="showTable">
         <thead>
           <tr>
-            <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)">
+            <th style="width: 15%" scope="col" sortable="maincategory_name" (sort)="onSort($event)" class="text-nowrap">
               Suhtlustoiming<span class="arrow-icon"></span>
             </th>
-            <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)">
+            <th style="width: 15%" scope="col" sortable="subcategory_name" (sort)="onSort($event)" class="text-nowrap">
               Näidisskaala<span class="arrow-icon"></span>
             </th>
-            <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)">
+            <th style="width: 10%" scope="col" sortable="langlevel" (sort)="onSort($event)" class="text-nowrap">
               Tase<span class="arrow-icon"></span>
             </th>
-            <th scope="col" sortable="summary" (sort)="onSort($event)">
+            <th scope="col" sortable="summary" (sort)="onSort($event)" class="text-nowrap">
               Kirjeldus<span class="arrow-icon"></span>
             </th>
             <th scope="col"></th>
