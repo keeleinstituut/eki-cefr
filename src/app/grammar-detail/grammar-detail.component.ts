@@ -4,9 +4,10 @@ import {GrammarDetailService} from '../services/grammar-detail.service';
 import {Location} from '@angular/common';
 
 @Component({
-  selector: 'app-grammar-detail',
-  templateUrl: './grammar-detail.component.html',
-  styleUrls: ['./grammar-detail.component.css']
+    selector: 'app-grammar-detail',
+    templateUrl: './grammar-detail.component.html',
+    styleUrls: ['./grammar-detail.component.css'],
+    standalone: false
 })
 export class GrammarDetailComponent implements OnInit {
 

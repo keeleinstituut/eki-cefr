@@ -15,10 +15,11 @@ export interface TableItem {
 }
 
 @Component({
-  selector: 'app-vocabulary-list',
-  templateUrl: './vocabulary-list.component.html',
-  styleUrls: ['./vocabulary-list.component.css'],
-  providers: [DecimalPipe]
+    selector: 'app-vocabulary-list',
+    templateUrl: './vocabulary-list.component.html',
+    styleUrls: ['./vocabulary-list.component.css'],
+    providers: [DecimalPipe],
+    standalone: false
 })
 
 export class VocabularyListComponent implements OnInit, OnDestroy {

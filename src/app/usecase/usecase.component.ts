@@ -38,10 +38,11 @@ export interface DataItem {
 }
 
 @Component({
-  selector: 'app-usecase',
-  templateUrl: './usecase.component.html',
-  styleUrls: ['./usecase.component.css'],
-  providers: [DecimalPipe]
+    selector: 'app-usecase',
+    templateUrl: './usecase.component.html',
+    styleUrls: ['./usecase.component.css'],
+    providers: [DecimalPipe],
+    standalone: false
 })
 export class UsecaseComponent implements OnInit, OnDestroy {
 

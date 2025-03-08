@@ -3,9 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
-  selector: 'app-about-project',
-  templateUrl: './about-project.component.html',
-  styleUrls: ['./about-project.component.css']
+    selector: 'app-about-project',
+    templateUrl: './about-project.component.html',
+    styleUrls: ['./about-project.component.css'],
+    standalone: false
 })
 
 export class AboutProjectComponent {

@@ -4,9 +4,10 @@ import {TextService} from './text.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 
 @Component({
-  selector: 'app-text-rating',
-  templateUrl: './text-rating.component.html',
-  styleUrls: ['./text-rating.component.css']
+    selector: 'app-text-rating',
+    templateUrl: './text-rating.component.html',
+    styleUrls: ['./text-rating.component.css'],
+    standalone: false
 })
 export class TextRatingComponent {
 

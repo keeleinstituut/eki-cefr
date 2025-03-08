@@ -19,7 +19,10 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GrammarDetailService } from '../services/grammar-detail.service';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
-@Pipe({ name: 'keys', pure: false })
+@Pipe({
+    name: 'keys', pure: false,
+    standalone: false
+})
 export class KeysPipe implements PipeTransform {
   transform(value: any, args: any[] = null): any {
     return Object.values(value).sort((a: any, b: any) => a.ord - b.ord);
@@ -36,10 +39,11 @@ export interface DataItem {
 }
 
 @Component({
-  selector: 'app-grammar',
-  templateUrl: './grammar.component.html',
-  styleUrls: ['./grammar.component.css'],
-  providers: [DecimalPipe]
+    selector: 'app-grammar',
+    templateUrl: './grammar.component.html',
+    styleUrls: ['./grammar.component.css'],
+    providers: [DecimalPipe],
+    standalone: false
 })
 export class GrammarComponent implements OnInit, OnDestroy {
 
