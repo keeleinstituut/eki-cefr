@@ -1,6 +1,6 @@
 # https://blog.stackademic.com/deploy-your-angular-app-with-docker-and-nginx-a5b0a3c1d06b
 # syntax=docker/dockerfile:1
-FROM node:22-alpine as build
+FROM node:22-alpine AS build
 WORKDIR /app
 COPY ./ .
 RUN npm install
