@@ -1,11 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { RouterTestingModule } from '@angular/router/testing';
-
+import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
+import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { VocabularyListComponent } from './vocabulary-list.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
@@ -15,11 +12,15 @@ describe('VocabularyListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [VocabularyListComponent],
-    imports: [ReactiveFormsModule, RouterTestingModule],
-    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-})
-    .compileComponents();
+      declarations: [VocabularyListComponent, FeedbackModalComponent],
+      imports: [ReactiveFormsModule, RouterLink],
+      providers: [
+        provideRouter(
+          [{ path: '', component: VocabularyListComponent }]
+          , withEnabledBlockingInitialNavigation()
+        ), provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {

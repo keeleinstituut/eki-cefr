@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
 import { EducationalMaterialComponent } from './educational-material.component';
 
 describe('EducationalMaterialComponent', () => {
@@ -8,10 +8,15 @@ describe('EducationalMaterialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ RouterTestingModule ],
-      declarations: [ EducationalMaterialComponent ]
+      imports: [RouterLink],
+      declarations: [EducationalMaterialComponent],
+      providers: [
+        provideRouter(
+          [{ path: '', component: EducationalMaterialComponent }]
+          , withEnabledBlockingInitialNavigation()
+        )]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EducationalMaterialComponent);
     component = fixture.componentInstance;

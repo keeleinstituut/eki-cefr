@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
 import { AboutProjectComponent } from './about-project.component';
 
 describe('AboutProjectComponent', () => {
@@ -8,10 +8,15 @@ describe('AboutProjectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule ],
-      declarations: [ AboutProjectComponent ]
+      imports: [RouterLink],
+      declarations: [AboutProjectComponent],
+      providers: [
+        provideRouter(
+          [{ path: '', component: AboutProjectComponent }]
+          , withEnabledBlockingInitialNavigation()
+        )]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

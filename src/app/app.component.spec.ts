@@ -1,14 +1,21 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink, RouterOutlet } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterLink, RouterOutlet],
       declarations: [
-        AppComponent
+        AppComponent, FooterComponent, HeaderComponent
       ],
+      providers: [
+        provideRouter(
+          [{ path: '', component: AppComponent }]
+          , withEnabledBlockingInitialNavigation()
+        )]
     }).compileComponents();
   }));
 
@@ -23,5 +30,5 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('teacher-tools');
   });
-  
+
 });

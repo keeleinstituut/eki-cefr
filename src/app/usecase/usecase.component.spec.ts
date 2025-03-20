@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
+import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { UsecaseComponent } from './usecase.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
@@ -11,11 +12,15 @@ describe('UsecaseComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [UsecaseComponent],
-    imports: [ReactiveFormsModule, RouterTestingModule],
-    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-})
-    .compileComponents();
+      imports: [ReactiveFormsModule, RouterLink],
+      declarations: [UsecaseComponent, FeedbackModalComponent],
+      providers: [provideRouter(
+        [{ path: '', component: UsecaseComponent }]
+        , withEnabledBlockingInitialNavigation()
+      ),
+      provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {

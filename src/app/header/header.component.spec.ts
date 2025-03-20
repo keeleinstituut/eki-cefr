@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
 import { HeaderComponent } from './header.component';
+import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,9 +11,18 @@ describe('HeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      imports: [RouterLink],
+      declarations: [HeaderComponent, FeedbackModalComponent],
+      providers: [
+        provideRouter(
+          [{ path: '', component: HeaderComponent }]
+          , withEnabledBlockingInitialNavigation()
+        ),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
