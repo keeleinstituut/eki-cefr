@@ -85,7 +85,7 @@
             </div>
             <div style="flex: 2; position: relative">
               <textarea class="form-control text-area p-3" formControlName="text" id="exampleFormControlTextarea1"
-                maxlength="2000"></textarea>
+              maxlength="2000"></textarea>
               <button class="btn btn-sm btn-outline-dark float-end gray" style="
                   position: absolute;
                   top: 0;
@@ -102,50 +102,59 @@
         <div class="col-md-6 col-12">
           <div class="d-flex align-items-center lang-settings flex-wrap" style="margin-bottom: 0px">
             <label class="form-label lang-lvl pe-2"><b>Keeleoskustase:</b></label>
-            <div class="d-flex align-items-center flex-wrap" formArrayName="lang"
-              *ngFor="let lang of form.controls.lang.controls; let i = index">
-              <div class="form-check me-3">
-                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i"
-                  (ngModelChange)="wordColor(levels[i], lang.value)" />
-                <label class="form-label color-{{ levels[i] }} form-check-label" [for]="i">
-                  {{ levels[i] }}
-                </label>
+            @for (lang of form.controls.lang.controls; track lang; let i = $index) {
+              <div class="d-flex align-items-center flex-wrap" formArrayName="lang"
+                >
+                <div class="form-check me-3">
+                  <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i"
+                    (ngModelChange)="wordColor(levels[i], lang.value)" />
+                  <label class="form-label color-{{ levels[i] }} form-check-label" [for]="i">
+                    {{ levels[i] }}
+                  </label>
+                </div>
               </div>
-            </div>
+            }
           </div>
-          <div *ngIf="activeId == 'sonavara'"
-            class="text-bg-white text-list border border-dark p-3 justify-content-between lang-settings mixed-text d-flex flex-wrap"
-            style="border-top-left-radius: 0">
-            <div class="pe-md-2 pe-0 h-25" [id]="i" *ngFor="let word of this.resultData; let i = index">
-              <ng-template #popContent>
-                <b>{{ word.pos_text }}: </b> <i>{{ word.lemma }}</i> <br />
-                <b>sõna tase: </b> {{ word.level }} <br />
-                <b>sõnavorm/konstruktsioon: </b>
-                <i>{{ this.resultDataGrammar[i].text }}</i>
-                <ng-container *ngIf="this.resultDataGrammar[i].formXinfo"><br />
-                  <b>vormi kirjeldus: </b>
-                  {{ this.resultDataGrammar[i].formXinfo }} <br />
-                  <b>vormi keerukuse tase: </b>
-                  {{ this.resultDataGrammar[i].level }}</ng-container>
-              </ng-template>
-              <p class="mixed-text" [ngClass]="colors(i)" [ngbPopover]="popContent" triggers="mouseenter:mouseleave"
-                placement="top" style="width: fit-content">
-                {{ word.token }}
-              </p>
+          @if (activeId == 'sonavara') {
+            <div
+              class="text-bg-white text-list border border-dark p-3 justify-content-between lang-settings mixed-text d-flex flex-wrap"
+              style="border-top-left-radius: 0">
+              @for (word of this.resultData; track word; let i = $index) {
+                <div class="pe-md-2 pe-0 h-25" [id]="i">
+                  <ng-template #popContent>
+                    <b>{{ word.pos_text }}: </b> <i>{{ word.lemma }}</i> <br />
+                    <b>sõna tase: </b> {{ word.level }} <br />
+                    <b>sõnavorm/konstruktsioon: </b>
+                    <i>{{ this.resultDataGrammar[i].text }}</i>
+                    @if (this.resultDataGrammar[i].formXinfo) {
+                      <br />
+                      <b>vormi kirjeldus: </b>
+                      {{ this.resultDataGrammar[i].formXinfo }} <br />
+                      <b>vormi keerukuse tase: </b>
+                      {{ this.resultDataGrammar[i].level }}
+                    }
+                  </ng-template>
+                  <p class="mixed-text" [ngClass]="colors(i)" [ngbPopover]="popContent" triggers="mouseenter:mouseleave"
+                    placement="top" style="width: fit-content">
+                    {{ word.token }}
+                  </p>
+                </div>
+              }
             </div>
-          </div>
+          }
         </div>
         <div class="col-md-2 col-12 pt-md-4 pt-2">
-          <!--div class="row " style="height:40px"></div-->
-          <div class="bg-white rating-table bg-white py-1 px-3 border border-dark mixed-text">
-            Sõnu kokku: {{ wordCount }}<br />
-            Sõnavara jagunemine keeleoskustasemeti:
-            <div class="row table-border m-0">
-              <div class="col-5 ps-0">Tase</div>
-              <div class="col-3 ps-0">Sõnu</div>
-              <div class="col-4 ps-0">%</div>
-            </div>
-            <div class="row" *ngFor="let item of getStatTable()">
+        <!--div class="row " style="height:40px"></div-->
+        <div class="bg-white rating-table bg-white py-1 px-3 border border-dark mixed-text">
+          Sõnu kokku: {{ wordCount }}<br />
+          Sõnavara jagunemine keeleoskustasemeti:
+          <div class="row table-border m-0">
+            <div class="col-5 ps-0">Tase</div>
+            <div class="col-3 ps-0">Sõnu</div>
+            <div class="col-4 ps-0">%</div>
+          </div>
+          @for (item of getStatTable(); track item) {
+            <div class="row">
               <div class="col-5">
                 {{ item.label }}
               </div>
@@ -156,38 +165,39 @@
                 {{ item.percentage }}
               </div>
             </div>
-            <br />
-            <div class="mt-10">
-              <u>Teksti loetavuse hindajad</u>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html="true"
-                ngbPopover="Loetavust hinnatakse, kui tekstis on vähemalt 100 sõna."><i class="fa fa-question-circle-o"
-                  aria-hidden="true"></i></a><br />
-              Lix-indeks
-              <ng-template #lixindexdescription><span class="small">Teksti hoomatavus ehk tehniline raskusaste.
-                  Liidetakse lause
-                  keskmine pikkus ja pikkade sõnade (7 või enam tähte)
-                  osatähtsus ja ümardatakse täisarvuks.<br />
-                  Lix &lt;= 25 - väga kerge lugeda <br />
-                  25 &lt; Lix &lt;= 35 - kerge lugeda <br />
-                  35 &lt; Lix &lt;= 45 - keskmise keerukusega<br />
-                  44 &lt; Lix &lt;= 55 - raske lugeda<br />
-                  55 &gt; Lix - väga raske lugeda<br /></span></ng-template>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
-                [ngbPopover]="lixindexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
+          }
+          <br />
+          <div class="mt-10">
+            <u>Teksti loetavuse hindajad</u>
+            <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html="true"
+              ngbPopover="Loetavust hinnatakse, kui tekstis on vähemalt 100 sõna."><i class="fa fa-question-circle-o"
+            aria-hidden="true"></i></a><br />
+            Lix-indeks
+            <ng-template #lixindexdescription><span class="small">Teksti hoomatavus ehk tehniline raskusaste.
+              Liidetakse lause
+              keskmine pikkus ja pikkade sõnade (7 või enam tähte)
+              osatähtsus ja ümardatakse täisarvuks.<br />
+              Lix &lt;= 25 - väga kerge lugeda <br />
+              25 &lt; Lix &lt;= 35 - kerge lugeda <br />
+              35 &lt; Lix &lt;= 45 - keskmise keerukusega<br />
+              44 &lt; Lix &lt;= 55 - raske lugeda<br />
+            55 &gt; Lix - väga raske lugeda<br /></span></ng-template>
+            <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
+              [ngbPopover]="lixindexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
               LixIndex }}<br />
               Formaalsusindeks
               <ng-template #Findexdescription><span class="small">Teksti väljendustäpsuse aste skaalal
-                  formaalne-kontekstuaalne. Põhineb sõnaliikide sageduse
-                  võrdlusel.<br />
-                  F &lt;= 42,2 - kontekstuaalne; suuline tekst<br />
-                  42,2 &lt; F &lt;= 55,65 - keskmise väljendustäpsusega;
-                  kirjalike tekstide keskmine<br />
-                  55,65 &lt; F - formaalne; kirjalik ametlik tekst<br /></span></ng-template>
+                formaalne-kontekstuaalne. Põhineb sõnaliikide sageduse
+                võrdlusel.<br />
+                F &lt;= 42,2 - kontekstuaalne; suuline tekst<br />
+                42,2 &lt; F &lt;= 55,65 - keskmise väljendustäpsusega;
+                kirjalike tekstide keskmine<br />
+              55,65 &lt; F - formaalne; kirjalik ametlik tekst<br /></span></ng-template>
               <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top" html="true"
                 [ngbPopover]="Findexdescription"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
-              Findex }}<br />
-              Nominaalsus
-              <ng-template #nindexdescritption><span class="small">Nimisõnavormide osatähtsus. Nimisõnade tundmine on
+                Findex }}<br />
+                Nominaalsus
+                <ng-template #nindexdescritption><span class="small">Nimisõnavormide osatähtsus. Nimisõnade tundmine on
                   vajalik
                   tekstist arusaamiseks. Mida rohkem on tekstis nimisõnu, seda
                   tõenäolisem on, et nende hulgas on keeleõppijale tundmatuid
@@ -197,28 +207,28 @@
                   17% &lt; N &lt;= 37,5% - tavapärane hulk nimisõnu<br />
                   37,5% &lt; N &lt;= 59,5% - üsna palju nimisõnu.<br />
                   59,5% &lt; N - väga palju nimisõnu. Õpilased võivad vajada
-                  sõnaraamatu abi.<br /> </span></ng-template>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
-                [ngbPopover]="nindexdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
-              Nindex }}<br />
-              Nimi- ja tegusõnade suhe
-              <ng-template #SVpropdescritption><span class="small">Nimi- ja tegusõnavormide suhe tekstis. Tegusõnarohkus
-                  on
-                  omane pigem suulisele keelele ja dialoogilistele tekstidele,
-                  nimisõnarohkus ametlikele tekstidele. Verbilisemat teksti on
+                sõnaraamatu abi.<br /> </span></ng-template>
+                <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
+                  [ngbPopover]="nindexdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
+                  Nindex }}<br />
+                  Nimi- ja tegusõnade suhe
+                  <ng-template #SVpropdescritption><span class="small">Nimi- ja tegusõnavormide suhe tekstis. Tegusõnarohkus
+                    on
+                    omane pigem suulisele keelele ja dialoogilistele tekstidele,
+                    nimisõnarohkus ametlikele tekstidele. Verbilisemat teksti on
                   lihtsam jälgida ja seda tarbitakse kiiremini.<br /></span>
-              </ng-template>
-              <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
-                [ngbPopover]="SVpropdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
-              SVprop }}<br />
+                </ng-template>
+                <a class="mixed-text" triggers="mouseenter:mouseleave" placement="top"
+                  [ngbPopover]="SVpropdescritption"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>: {{
+                  SVprop }}<br />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+          <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true">
+            Hinda
+          </button>
+        </form>
+        <app-feedback-modal></app-feedback-modal>
       </div>
-      <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true">
-        Hinda
-      </button>
-    </form>
-    <app-feedback-modal></app-feedback-modal>
-  </div>
-</div>
+    </div>

@@ -6,11 +6,13 @@
     </main>
   </div>
   <app-footer class="mt-auto"></app-footer>
-  <div *ngIf="isIE" class="alert-danger-ie">
-    <div class="alert-danger-ie-container">
-      <span>Te kasutate aegunud veebilehitsejat, millega see veebileht täielikult
-        ei funktsioneeri. Toetatud veebilehitsejad on Mozilla Firefox, Google
+  @if (isIE) {
+    <div class="alert-danger-ie">
+      <div class="alert-danger-ie-container">
+        <span>Te kasutate aegunud veebilehitsejat, millega see veebileht täielikult
+          ei funktsioneeri. Toetatud veebilehitsejad on Mozilla Firefox, Google
         Chrome, Apple Safari ja Microsoft Edge</span>
+      </div>
     </div>
-  </div>
+  }
 </div>

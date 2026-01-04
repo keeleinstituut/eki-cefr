@@ -1,191 +1,245 @@
 <div class="wrapper">
-  <div class="container-fluid bottom-gutter content-panel" *ngIf="isDataAvailable">
-    <div class="row">
-      <div class="col-12">
-        <h3>Detailinfo</h3>
-      </div>
-      <div class="col-8 pr-4 pb-2 mt-md-0 mt-2">
-        <a (click)="location.back()" href="javascript:void(0)" class="back-link">Tagasi</a>
-      </div>
-      <div class="col-4 pb-md-0 pb-2">
-        <button class="btn sm-feedback-btn float-end" (click)="modal.open()">Tagasiside</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-12">
-        Keeletase:
-      </div>
-      <div class="col-md-10 col-12">
-        <span class="color-{{obj.langlevel}}">{{obj.langlevel}}</span>
-      </div>
-    </div>
-    <div class="row pt-1">
-      <div class="col-md-2 col-12 pt-md-0 pt-2">
-        Peakategooria:
-      </div>
-      <div class="col-md-10 col-12">
-        {{obj.maincategory_name}}
-      </div>
-    </div>
-    <div class="row pt-1">
-      <div class="col-md-2 col-12 pt-md-0 pt-2">
-        Alamkategooria:
-      </div>
-      <div class="col-md-10 col-12">
-        {{obj.subcategory_name}}
-      </div>
-    </div>
-    <div class="row pt-1">
-      <div class="col-md-2 col-12 pt-md-0 pt-2 pb-md-0 pb-1">
-        Teema:
-      </div>
-      <div class="col-md-10 col-12 pt-md-0 pt-2 pb-md-0 pb-2">
-        <span class="gramprofile-topic" [innerHTML]="obj.topic">{{obj.topic}}</span>
-      </div>
-    </div>
-    <div class="row pt-1">
-      <div class="col-md-2 col-12 pt-md-0 pt-2">
-        Oskab-lause:
-      </div>
-      <div class="col-md-10 col-12">
-        <span [innerHTML]="obj.can_do_statement">{{obj.can_do_statement}}</span>
-      </div>
-    </div>
-    <div class="row pt-1">
-      <div class="col-md-2 col-12 pt-md-0 pt-2">
-        Tunnused:
-      </div>
-      <div class="col-md-10 col-12">
-        <div *ngFor="let item of obj.descriptors | keys" class="small">
-          {{item.name}} <span class="features-category">{{item.values}}</span>
+  @if (isDataAvailable) {
+    <div class="container-fluid bottom-gutter content-panel">
+      <div class="row">
+        <div class="col-12">
+          <h3>Detailinfo</h3>
+        </div>
+        <div class="col-8 pr-4 pb-2 mt-md-0 mt-2">
+          <a (click)="location.back()" href="javascript:void(0)" class="back-link">Tagasi</a>
+        </div>
+        <div class="col-4 pb-md-0 pb-2">
+          <button class="btn sm-feedback-btn float-end" (click)="modal.open()">Tagasiside</button>
         </div>
       </div>
-    </div>
-    <div class="row pt-1" *ngIf="0 && obj.function_sem">
-      <div class="col-md-2 col-12 pt-md-0 pt-2 pb-md-0 pb-2">
-        Semantiline funktsioon:
-      </div>
-      <div class="col-md-10 col-12">
-        {{obj.function_sem}}
-      </div>
-    </div>
-    <div class="row pt-1" *ngIf="obj.function_synt">
-      <div class="col-md-2 col-12 pt-md-0 pt-2">
-        Süntaktiline funktsioon:
-      </div>
-      <div class="col-md-10 col-12">
-        {{obj.function_synt}}
-      </div>
-    </div>
-    <div class="row pt-1" *ngIf="0 && obj.function_pragm">
-      <div class="col-md-2 col-12 pt-md-0 pt-2 pb-md-0 pb-2">
-        Pragmaatiline funktsioon:
-      </div>
-      <div class="col-md-10 col-12">
-        {{obj.function_pragm}}
-      </div>
-    </div>
-    <div class="row pb-4" *ngIf="obj.comment">
-      <div class="col-md-2 col-12">
-        Märkus:
-      </div>
-      <div class="col-md-10 col-12">
-        {{obj.comment}}
-      </div>
-    </div>
-    <hr>
-    <div class="d-flex flex-md-column flex-column" *ngIf="obj.examples">
       <div class="row">
         <div class="col-md-2 col-12">
-          Allikas
+          Keeletase:
         </div>
         <div class="col-md-10 col-12">
-          Näitelaused
+          <span class="color-{{obj.langlevel}}">{{obj.langlevel}}</span>
         </div>
       </div>
-      <div class="row  mt-3" *ngIf="obj.examples_nosource.length">
-        <div class="col-md-2 col-12">
-          <span *ngIf="obj.examples_nosource[0]['source_url']">
-            <a href="{{obj.examples_nosource[0]['source_url']}}" target="_blank">
-              {{obj.examples_nosource[0]['source_name']}}
-            </a>
-          </span>
-          <span *ngIf="!obj.examples_nosource[0]['source_url']">
-            {{obj.examples_nosource[0]['source_name']}}
-          </span>
+      <div class="row pt-1">
+        <div class="col-md-2 col-12 pt-md-0 pt-2">
+          Peakategooria:
         </div>
         <div class="col-md-10 col-12">
-          <div *ngFor="let example of obj.examples_nosource; let i = index" class="mt-1">
-            {{example.text}}
-          </div>
+          {{obj.maincategory_name}}
         </div>
       </div>
-      <div class="row mt-3" *ngIf="obj.examples_textbook.length">
-        <div class="col-md-2 col-12 ">
-          <span *ngIf="obj.examples_textbook[0]['source_url']">
-            <a href="{{obj.examples_textbook[0]['source_url']}}" target="_blank">
-              {{obj.examples_textbook[0]['source_name']}}
-            </a>
-          </span>
-          <span *ngIf="!obj.examples_textbook[0]['source_url']">
-            {{obj.examples_textbook[0]['source_name']}}
-          </span>
+      <div class="row pt-1">
+        <div class="col-md-2 col-12 pt-md-0 pt-2">
+          Alamkategooria:
         </div>
         <div class="col-md-10 col-12">
-          <div *ngFor="let example of obj.examples_textbook; let i = index" class="mt-1">
-            {{example.text}}
-          </div>
+          {{obj.subcategory_name}}
         </div>
       </div>
-      <div class="row  mt-3" *ngIf="obj.examples_learnerlanguage.length">
-        <div class="col-md-2 col-12" rowspan="2">
-          <span *ngIf="obj.examples_learnerlanguage[0]['source_url']">
-            <a href="{{obj.examples_learnerlanguage[0]['source_url']}}" target="_blank">
-              {{obj.examples_learnerlanguage[0]['source_name']}}
-            </a>
-          </span>
-          <span *ngIf="!obj.examples_learnerlanguage[0]['source_url']">
-            {{obj.examples_learnerlanguage[0]['source_name']}}
-          </span>
+      <div class="row pt-1">
+        <div class="col-md-2 col-12 pt-md-0 pt-2 pb-md-0 pb-1">
+          Teema:
         </div>
-        <div class="col">
-          <div class="row  mt-1" *ngFor="let example of obj.examples_learnerlanguage; let i = index">
-            <div class="col-md-6 col-sm-6 col-12">
-              <span *ngIf="i==0" class="d-none d-md-block"><i>Algupärane lause</i><br /></span>
-              <i class="d-md-none">Algupärane lause: </i>{{example.text}}
-            </div>
-            <div class="col-md-6 col-sm-6 col-12">
-              <span *ngIf="i==0" class="d-none d-md-block"><i>Parandatud lause</i><br /></span>
-              <i class="d-md-none">Parandatud lause: </i>{{example.text_fixed}}
-            </div>
-          </div>
+        <div class="col-md-10 col-12 pt-md-0 pt-2 pb-md-0 pb-2">
+          <span class="gramprofile-topic" [innerHTML]="obj.topic">{{obj.topic}}</span>
         </div>
       </div>
-      <div class="row  mt-3" *ngIf="obj.examples_teachersurvey.length">
-        <div class="col-md-2 col-12" rowspan="2">
-          <span *ngIf="obj.examples_teachersurvey[0]['source_url']">
-            <a href="{{obj.examples_teachersurvey[0]['source_url']}}" target="_blank">
-              {{obj.examples_teachersurvey[0]['source_name']}}
-            </a>
-          </span>
-          <span *ngIf="!obj.examples_teachersurvey[0]['source_url']">
-            {{obj.examples_teachersurvey[0]['source_name']}}
-          </span>
+      <div class="row pt-1">
+        <div class="col-md-2 col-12 pt-md-0 pt-2">
+          Oskab-lause:
         </div>
-        <div class="col">
-          <div class="row  mt-1" *ngFor="let example of obj.examples_teachersurvey; let i = index">
-            <div class="col-md-6 col-sm-6 col-12">
-              <span *ngIf="i==0" class="d-none d-md-block"><i>Algupärane lause</i><br /></span>
-              <i class="d-md-none">Algupärane lause: </i>{{example.text}}
-            </div>
-            <div class="col-md-6 col-sm-6 col-12">
-              <span *ngIf="i==0" class="d-none d-md-block"><i>Parandatud lause</i><br /></span>
-              <i class="d-md-none">Parandatud lause: </i>{{example.text_fixed}}
-            </div>
-          </div>
+        <div class="col-md-10 col-12">
+          <span [innerHTML]="obj.can_do_statement">{{obj.can_do_statement}}</span>
         </div>
       </div>
-      <app-feedback-modal></app-feedback-modal>
-    </div>
+      <div class="row pt-1">
+        <div class="col-md-2 col-12 pt-md-0 pt-2">
+          Tunnused:
+        </div>
+        <div class="col-md-10 col-12">
+          @for (item of obj.descriptors | keys; track item) {
+            <div class="small">
+              {{item.name}} <span class="features-category">{{item.values}}</span>
+            </div>
+          }
+        </div>
+      </div>
+      @if (0 && obj.function_sem) {
+        <div class="row pt-1">
+          <div class="col-md-2 col-12 pt-md-0 pt-2 pb-md-0 pb-2">
+            Semantiline funktsioon:
+          </div>
+          <div class="col-md-10 col-12">
+            {{obj.function_sem}}
+          </div>
+        </div>
+      }
+      @if (obj.function_synt) {
+        <div class="row pt-1">
+          <div class="col-md-2 col-12 pt-md-0 pt-2">
+            Süntaktiline funktsioon:
+          </div>
+          <div class="col-md-10 col-12">
+            {{obj.function_synt}}
+          </div>
+        </div>
+      }
+      @if (0 && obj.function_pragm) {
+        <div class="row pt-1">
+          <div class="col-md-2 col-12 pt-md-0 pt-2 pb-md-0 pb-2">
+            Pragmaatiline funktsioon:
+          </div>
+          <div class="col-md-10 col-12">
+            {{obj.function_pragm}}
+          </div>
+        </div>
+      }
+      @if (obj.comment) {
+        <div class="row pb-4">
+          <div class="col-md-2 col-12">
+            Märkus:
+          </div>
+          <div class="col-md-10 col-12">
+            {{obj.comment}}
+          </div>
+        </div>
+      }
+      <hr>
+        @if (obj.examples) {
+          <div class="d-flex flex-md-column flex-column">
+            <div class="row">
+              <div class="col-md-2 col-12">
+                Allikas
+              </div>
+              <div class="col-md-10 col-12">
+                Näitelaused
+              </div>
+            </div>
+            @if (obj.examples_nosource.length) {
+              <div class="row  mt-3">
+                <div class="col-md-2 col-12">
+                  @if (obj.examples_nosource[0]['source_url']) {
+                    <span>
+                      <a href="{{obj.examples_nosource[0]['source_url']}}" target="_blank">
+                        {{obj.examples_nosource[0]['source_name']}}
+                      </a>
+                    </span>
+                  }
+                  @if (!obj.examples_nosource[0]['source_url']) {
+                    <span>
+                      {{obj.examples_nosource[0]['source_name']}}
+                    </span>
+                  }
+                </div>
+                <div class="col-md-10 col-12">
+                  @for (example of obj.examples_nosource; track example; let i = $index) {
+                    <div class="mt-1">
+                      {{example.text}}
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+            @if (obj.examples_textbook.length) {
+              <div class="row mt-3">
+                <div class="col-md-2 col-12 ">
+                  @if (obj.examples_textbook[0]['source_url']) {
+                    <span>
+                      <a href="{{obj.examples_textbook[0]['source_url']}}" target="_blank">
+                        {{obj.examples_textbook[0]['source_name']}}
+                      </a>
+                    </span>
+                  }
+                  @if (!obj.examples_textbook[0]['source_url']) {
+                    <span>
+                      {{obj.examples_textbook[0]['source_name']}}
+                    </span>
+                  }
+                </div>
+                <div class="col-md-10 col-12">
+                  @for (example of obj.examples_textbook; track example; let i = $index) {
+                    <div class="mt-1">
+                      {{example.text}}
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+            @if (obj.examples_learnerlanguage.length) {
+              <div class="row  mt-3">
+                <div class="col-md-2 col-12" rowspan="2">
+                  @if (obj.examples_learnerlanguage[0]['source_url']) {
+                    <span>
+                      <a href="{{obj.examples_learnerlanguage[0]['source_url']}}" target="_blank">
+                        {{obj.examples_learnerlanguage[0]['source_name']}}
+                      </a>
+                    </span>
+                  }
+                  @if (!obj.examples_learnerlanguage[0]['source_url']) {
+                    <span>
+                      {{obj.examples_learnerlanguage[0]['source_name']}}
+                    </span>
+                  }
+                </div>
+                <div class="col">
+                  @for (example of obj.examples_learnerlanguage; track example; let i = $index) {
+                    <div class="row  mt-1">
+                      <div class="col-md-6 col-sm-6 col-12">
+                        @if (i==0) {
+                          <span class="d-none d-md-block"><i>Algupärane lause</i><br /></span>
+                        }
+                        <i class="d-md-none">Algupärane lause: </i>{{example.text}}
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-12">
+                        @if (i==0) {
+                          <span class="d-none d-md-block"><i>Parandatud lause</i><br /></span>
+                        }
+                        <i class="d-md-none">Parandatud lause: </i>{{example.text_fixed}}
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+            @if (obj.examples_teachersurvey.length) {
+              <div class="row  mt-3">
+                <div class="col-md-2 col-12" rowspan="2">
+                  @if (obj.examples_teachersurvey[0]['source_url']) {
+                    <span>
+                      <a href="{{obj.examples_teachersurvey[0]['source_url']}}" target="_blank">
+                        {{obj.examples_teachersurvey[0]['source_name']}}
+                      </a>
+                    </span>
+                  }
+                  @if (!obj.examples_teachersurvey[0]['source_url']) {
+                    <span>
+                      {{obj.examples_teachersurvey[0]['source_name']}}
+                    </span>
+                  }
+                </div>
+                <div class="col">
+                  @for (example of obj.examples_teachersurvey; track example; let i = $index) {
+                    <div class="row  mt-1">
+                      <div class="col-md-6 col-sm-6 col-12">
+                        @if (i==0) {
+                          <span class="d-none d-md-block"><i>Algupärane lause</i><br /></span>
+                        }
+                        <i class="d-md-none">Algupärane lause: </i>{{example.text}}
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-12">
+                        @if (i==0) {
+                          <span class="d-none d-md-block"><i>Parandatud lause</i><br /></span>
+                        }
+                        <i class="d-md-none">Parandatud lause: </i>{{example.text_fixed}}
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+            <app-feedback-modal></app-feedback-modal>
+          </div>
+        }
+      </div>
+    }
   </div>
-</div>

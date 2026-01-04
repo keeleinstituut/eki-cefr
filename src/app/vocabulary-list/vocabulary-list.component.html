@@ -1,9 +1,11 @@
 <div class="wrapper">
-  <div class="overlay" *ngIf="showSpinner">
-    <div class="spinner-wrapper">
-      <app-spinner></app-spinner>
+  @if (showSpinner) {
+    <div class="overlay">
+      <div class="spinner-wrapper">
+        <app-spinner></app-spinner>
+      </div>
     </div>
-  </div>
+  }
   <div class="loaded-content container-fluid bottom-gutter content-panel" [class.blurred]="showSpinner">
     <div class="row flex-row-reverse">
       <div class="col-12">
@@ -78,26 +80,30 @@
         <div class="row">
           <div class="col-4">
             <b>Keeletase:</b>
-            <div formArrayName="lang" *ngFor="let lang of form.controls.lang.controls; let i = index">
-              <div class="form-check pb-md-2 pb-1">
-                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i" />
-                <label class="form-label color-{{ langLevel[i] }} form-check-label" [for]="i">
-                  {{ langLevel[i] }}
-                </label>
+            @for (lang of form.controls.lang.controls; track lang; let i = $index) {
+              <div formArrayName="lang">
+                <div class="form-check pb-md-2 pb-1">
+                  <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i" [id]="i" />
+                  <label class="form-label color-{{ langLevel[i] }} form-check-label" [for]="i">
+                    {{ langLevel[i] }}
+                  </label>
+                </div>
               </div>
-            </div>
+            }
           </div>
           <div class="col-8">
             <b>Sõnaliik:</b>
-            <div formArrayName="types" *ngFor="let type of form.controls.types.controls; let i = index">
-              <div class="form-check pb-md-0 pb-1">
-                <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i"
-                  id="'type'+{{ i }}" />
-                <label class="form-check-label" for="'type'+{{ i }}">
-                  {{ wordTypes[i].name }}
-                </label>
+            @for (type of form.controls.types.controls; track type; let i = $index) {
+              <div formArrayName="types">
+                <div class="form-check pb-md-0 pb-1">
+                  <input class="form-check-input form-control-1x" type="checkbox" [formControlName]="i"
+                    id="'type'+{{ i }}" />
+                  <label class="form-check-label" for="'type'+{{ i }}">
+                    {{ wordTypes[i].name }}
+                  </label>
+                </div>
               </div>
-            </div>
+            }
           </div>
         </div>
         <div class="row">
@@ -105,9 +111,11 @@
             <b>Temaatilised loendid:</b>
             <select class="form-control form-control-lg" formControlName="theme">
               <option value="">Vali teema</option>
-              <option *ngFor="let theme of themesList" value="{{ theme.id }}">
-                {{ theme.name }}
-              </option>
+              @for (theme of themesList; track theme) {
+                <option value="{{ theme.id }}">
+                  {{ theme.name }}
+                </option>
+              }
             </select>
           </div>
         </div>
@@ -121,66 +129,78 @@
           <a class="remove-filters" (click)="checkAll()">Kõik sõnaliigid</a>
         </div>
       </form>
-      <div #searchResults class="col-md-8 col-12 search-results" *ngIf="!noResult && total$ && showTable">
-        <b class="search-results-text">Otsingu tulemused ( <span>{{ total$ }}</span> )</b>
-        <div class="float-end search-info-dl">
-          <span class="pe-2 download-link" (click)="sendToFile('txt')">TXT</span>
-          <span class="pe-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
-          <label for="select" class="form-label">Näita</label>
-          <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize"
-            (ngModelChange)="sendData(page)">
-            <option [ngValue]="10">10</option>
-            <option [ngValue]="20">20</option>
-            <option [ngValue]="30">30</option>
-            <option [ngValue]="50">50</option>
-            <option [ngValue]="100">100</option>
-            <option [ngValue]="total$">kõik</option>
-          </select>
+      @if (!noResult && total$ && showTable) {
+        <div #searchResults class="col-md-8 col-12 search-results">
+          <b class="search-results-text">Otsingu tulemused ( <span>{{ total$ }}</span> )</b>
+          <div class="float-end search-info-dl">
+            <span class="pe-2 download-link" (click)="sendToFile('txt')">TXT</span>
+            <span class="pe-2 download-link" (click)="sendToFile('xlsx')">XLSX</span>
+            <label for="select" class="form-label">Näita</label>
+            <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize"
+              (ngModelChange)="sendData(page)">
+              <option [ngValue]="10">10</option>
+              <option [ngValue]="20">20</option>
+              <option [ngValue]="30">30</option>
+              <option [ngValue]="50">50</option>
+              <option [ngValue]="100">100</option>
+              <option [ngValue]="total$">kõik</option>
+            </select>
+          </div>
+          @if (showTable) {
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col" sortable="lemma" (sort)="onSort($event)">
+                    Sõna<span class="arrow-icon"></span>
+                  </th>
+                  <th scope="col" sortable="pos_text" (sort)="onSort($event)">
+                    Sõnaliik<span class="arrow-icon"></span>
+                  </th>
+                  <th class="d-sm-block d-none" scope="col" sortable="level" (sort)="onSort($event)">
+                    Tase<span class="arrow-icon"></span>
+                  </th>
+                  <th class="d-sm-none" scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of tableData; track item) {
+                  <tr>
+                    <td>
+                      <a [class.download-link]="item.url !== null" (click)="sendToTab(item.url)">
+                        <ngb-highlight [result]="item.lemma"></ngb-highlight>
+                      </a>
+                      @if (item.specification) {
+                        <span>
+                        ({{ item.specification }})</span>
+                      }
+                    </td>
+                    <td>
+                      <ngb-highlight [result]="item.pos_text"></ngb-highlight>
+                    </td>
+                    <td>
+                      <ngb-highlight class="color-{{ item.level }}" [result]="item.level"></ngb-highlight>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          }
+          @if (showTable) {
+            <div>
+              <ngb-pagination [collectionSize]="total$" [(page)]="page" [pageSize]="pageSize"
+                (pageChange)="page > 0 && sendData($event); scrollTo(searchResults)" [maxSize]="10">
+                <ng-template ngbPaginationPrevious>Eelmine</ng-template>
+                <ng-template ngbPaginationNext>Järgmine</ng-template>
+              </ngb-pagination>
+            </div>
+          }
         </div>
-        <table class="table table-striped" *ngIf="showTable">
-          <thead>
-            <tr>
-              <th scope="col" sortable="lemma" (sort)="onSort($event)">
-                Sõna<span class="arrow-icon"></span>
-              </th>
-              <th scope="col" sortable="pos_text" (sort)="onSort($event)">
-                Sõnaliik<span class="arrow-icon"></span>
-              </th>
-              <th class="d-sm-block d-none" scope="col" sortable="level" (sort)="onSort($event)">
-                Tase<span class="arrow-icon"></span>
-              </th>
-              <th class="d-sm-none" scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of tableData">
-              <td>
-                <a [class.download-link]="item.url !== null" (click)="sendToTab(item.url)">
-                  <ngb-highlight [result]="item.lemma"></ngb-highlight>
-                </a>
-                <span *ngIf="item.specification">
-                  ({{ item.specification }})</span>
-              </td>
-              <td>
-                <ngb-highlight [result]="item.pos_text"></ngb-highlight>
-              </td>
-              <td>
-                <ngb-highlight class="color-{{ item.level }}" [result]="item.level"></ngb-highlight>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div *ngIf="showTable">
-          <ngb-pagination [collectionSize]="total$" [(page)]="page" [pageSize]="pageSize"
-            (pageChange)="page > 0 && sendData($event); scrollTo(searchResults)" [maxSize]="10">
-            <ng-template ngbPaginationPrevious>Eelmine</ng-template>
-            <ng-template ngbPaginationNext>Järgmine</ng-template>
-          </ngb-pagination>
+      }
+      @if (noResult) {
+        <div class="col-md-8 col-12">
+          <p class="no-result">Otsing ei tagastanud ühtegi tulemust.</p>
         </div>
-      </div>
-      <div class="col-md-8 col-12" *ngIf="noResult">
-        <p class="no-result">Otsing ei tagastanud ühtegi tulemust.</p>
-      </div>
+      }
     </div>
     <app-feedback-modal></app-feedback-modal>
   </div>
