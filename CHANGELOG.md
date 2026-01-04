@@ -1,3 +1,7 @@
+## [praegune]
+
+- Angular 19.2 -> 20.3.
+
 ## [1.40.0]
 
 ### Muudetud
