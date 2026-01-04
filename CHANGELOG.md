@@ -1,6 +1,7 @@
 ## [praegune]
 
-- Angular 19.2 -> 20.3.
+- Angular 19.2 -> 21.0
+- Bootstrap 5.3.3 -> 5.3.8
 
 ## [1.40.0]
 

@@ -1,6 +1,6 @@
 # Õpetajate tööriistad
 
-Angular [Angular CLI](https://github.com/angular/angular-cli) versioon 20.3.
+Angular [Angular CLI](https://github.com/angular/angular-cli) versioon 21.0.
 
 Angulari rakenduse kompileerimiseks on vajalik eelnevalt installida [node.js](https://nodejs.org) ja [Angular CLI](https://github.com/angular/angular-cli) tarkvara.
 
