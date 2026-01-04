@@ -4,12 +4,16 @@
     <span class="icon icon-close ms-auto" aria-label="Close" (click)="close()"></span>
   </div>
   <div class="modal-body">
-    <ngb-alert *ngIf="success" type="success" [dismissible]="false">
-      Tagasiside saatmine õnnestus
-    </ngb-alert>
-    <ngb-alert *ngIf="error" type="danger" [dismissible]="false">
-      Viga! Tagasiside saatmine ebaõnnestus
-    </ngb-alert>
+    @if (success) {
+      <ngb-alert type="success" [dismissible]="false">
+        Tagasiside saatmine õnnestus
+      </ngb-alert>
+    }
+    @if (error) {
+      <ngb-alert type="danger" [dismissible]="false">
+        Viga! Tagasiside saatmine ebaõnnestus
+      </ngb-alert>
+    }
     <form [formGroup]="form">
       <div class="row">
         <p class="ps-4">Kõik väljad on kohustuslikud</p>
@@ -19,27 +23,33 @@
           Kommentaar
         </label>
         <textarea [class.is-invalid]="error && this.form.controls.description.invalid" type="text"
-          formControlName="description" id="description" class="form-control description" required></textarea>
-        <div *ngIf="error && this.form.controls.description.invalid" class="invalid-origin-feedback">
-          Välja täitmine on kohustuslik
-        </div>
+        formControlName="description" id="description" class="form-control description" required></textarea>
+        @if (error && this.form.controls.description.invalid) {
+          <div class="invalid-origin-feedback">
+            Välja täitmine on kohustuslik
+          </div>
+        }
       </div>
       <div class="row">
         <div class="col-sm-6 col-12 p-4 form-field">
           <label for="name" class="form-label ms-0"> Nimi </label>
           <input type="text" [class.is-invalid]="error && this.form.controls.senderName.invalid"
             formControlName="senderName" id="name" class="form-control" required />
-          <div *ngIf="error && this.form.controls.senderName.invalid" class="invalid-origin-feedback">
-            Välja täitmine on kohustuslik
-          </div>
+          @if (error && this.form.controls.senderName.invalid) {
+            <div class="invalid-origin-feedback">
+              Välja täitmine on kohustuslik
+            </div>
+          }
         </div>
         <div class="col-sm-6 col-12 p-4 form-field">
           <label for="email" class="form-label ms-0"> E-post </label>
           <input type="email" [class.is-invalid]="error && this.form.controls.senderEmail.invalid"
             formControlName="senderEmail" id="email" class="form-control" required />
-          <div *ngIf="error && this.form.controls.senderEmail.invalid" class="invalid-origin-feedback">
-            Välja täitmine on kohustuslik
-          </div>
+          @if (error && this.form.controls.senderEmail.invalid) {
+            <div class="invalid-origin-feedback">
+              Välja täitmine on kohustuslik
+            </div>
+          }
         </div>
       </div>
     </form>
@@ -47,14 +57,20 @@
       <div class="custom-control form-check mt-2 modal-checkbox">
         <input type="checkbox" class="form-check-input modal-check" id="modalCheck1" [(ngModel)]="agree" />
         <label class="form-check-label" for="modalCheck1">
-          <span *ngIf="!error || agree === true">Postitades kommentaari nõustud</span>
-          <span *ngIf="error && agree === false" class="invalid-text-feedback">Postitades kommentaari nõustud</span>
+          @if (!error || agree === true) {
+            <span>Postitades kommentaari nõustud</span>
+          }
+          @if (error && agree === false) {
+            <span class="invalid-text-feedback">Postitades kommentaari nõustud</span>
+          }
           <a role="link" class="ps-2" [attr.href]="APIEndpoint + 'regulations'" target="wordweb_regulations"
-            data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
+          data-item-name="regulations">kasutus- ja privaatsustingimustega</a>
         </label>
-        <div *ngIf="error && agree === false" class="invalid-origin-feedback">
-          Välja täitmine on kohustuslik
-        </div>
+        @if (error && agree === false) {
+          <div class="invalid-origin-feedback">
+            Välja täitmine on kohustuslik
+          </div>
+        }
       </div>
     </div>
   </div>
