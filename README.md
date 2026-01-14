@@ -40,8 +40,9 @@ git clone --single-branch --branch x.x.x  https://github.com/keeleinstituut/eki-
 # liikumine projekti kataloogi
 cd  eki-cefr
 
-# JavaScript teekide paigaldamine
-npm install
+# JavaScript teekide paigaldamine (ci parameeter kasutab package-lock.json)
+# npm install kirjutab package-lock.json faili üle
+npm ci
 ```
 
 **Kausta tekitamine, mis läheb serverisse**
