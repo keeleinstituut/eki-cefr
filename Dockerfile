@@ -3,7 +3,7 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 COPY ./ .
-RUN npm install
+RUN npm ci
 RUN npm run build
 
 # Use a specific version of nginx
