@@ -1,3 +1,4 @@
+import { PagingModule } from './shared/paging/paging.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -41,6 +42,7 @@ import { EducationalMaterialComponent } from './educational-material/educational
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
+        PagingModule,
         FormsModule,
         NgbModule,
         FormsModule,

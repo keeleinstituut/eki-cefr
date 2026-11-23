@@ -18,7 +18,6 @@ import { GrammarService } from './grammar.service';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GrammarDetailService } from '../services/grammar-detail.service';
-import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
 @Pipe({
     name: 'keys', pure: false,
@@ -71,8 +70,6 @@ export class GrammarComponent implements OnInit, OnDestroy {
   public total$: number;
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
-  @ViewChild(NgbPagination)
-  public pageConf: NgbPagination;
   public showSpinner = false;
   public noResult = false;
   @Input() public page = 0;

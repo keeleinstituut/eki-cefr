@@ -1,3 +1,4 @@
+import { PagingModule } from '../shared/paging/paging.module';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { provideHttpClientTesting } from '@angular/common/http/testing';
@@ -16,7 +17,7 @@ describe('GrammarComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GrammarComponent, FeedbackModalComponent],
-      imports: [ReactiveFormsModule, RouterLink],
+      imports: [PagingModule, ReactiveFormsModule, RouterLink],
       providers: [provideRouter(
         [{ path: '', component: GrammarComponent }]
         , withEnabledBlockingInitialNavigation()
