@@ -1,4 +1,5 @@
-import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
+import { UsecaseFilter } from './usecase-query';
+import { SortableListComponent } from '../shared/sorting/sortable-list.component';
 import { DecimalPipe } from '@angular/common';
 import {
   Component,
@@ -8,9 +9,7 @@ import {
   OnInit,
   Pipe,
   PipeTransform,
-  QueryList,
   ViewChild,
-  ViewChildren,
   ChangeDetectionStrategy
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
@@ -18,7 +17,6 @@ import { UsecaseService } from './usecase.service';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 //import { GrammarDetailService } from '../services/grammar-detail.service';
-import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
 /*
 @Pipe({ name: 'keys', pure: false })
@@ -46,7 +44,7 @@ export interface DataItem {
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class UsecaseComponent implements OnInit, OnDestroy {
+export class UsecaseComponent extends SortableListComponent implements OnInit, OnDestroy {
 
   public adultLangLevel: string[];
   public childLangLevel: string[];
@@ -63,25 +61,18 @@ export class UsecaseComponent implements OnInit, OnDestroy {
   public valTypeList = [];
   public valTypeLists = [];
   public categories: any[];
-  public valuesArray = [];
   public list = [];
   itemsCount: number;
   public total$: number;
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
-  @ViewChild(NgbPagination)
-  public pageConf: NgbPagination;
   public showSpinner = false;
   public noResult = false;
   @Input() public page = 0;
   public pageSize = 20;
-  public column = '';
-  public direction = '';
-  public levelLongString = '';
   public routeHandler: any;
   public showTable = true;
 
-  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   @ViewChild('searchResults', { static: true }) searchResults: ElementRef;
 
   constructor(
@@ -91,6 +82,7 @@ export class UsecaseComponent implements OnInit, OnDestroy {
     private router: Router,
     //private detailService: GrammarDetailService,
     private activatedRoute: ActivatedRoute) {
+    super();
 
     this.routeHandler = router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -120,15 +112,7 @@ export class UsecaseComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSort({ column, direction }: SortEvent) {
-    this.column = '&sort=' + column;
-    this.direction = '&direction=' + direction;
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
+  protected override reloadAfterSort(): void {
     this.sendData();
   }
 
@@ -326,51 +310,27 @@ export class UsecaseComponent implements OnInit, OnDestroy {
     }
 
     this.showSpinner = true;
-    this.levelLongString = '';
 
     const langLevel = this.form ? this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null) : [];
 
-    for (const lang of langLevel) {
-      let levelString = '';
-      if (lang === langLevel[0] && this.form.value.search === '') {
-        levelString = 'level=' + lang;
-      } else {
-        levelString = '&level=' + lang;
-      }
-      this.levelLongString = this.levelLongString + levelString;
-    }
-
     const category = this.form ? this.form.value.category : [];
 
-    for (const item of category) {
-      let valueArray = {};
-      const descriptors = [];
-      for (const part of item.subCategory) {
-        if (part.descriptor === 'null') {
-          part.descriptor = null;
-        }
-        if (part.values === 'null') {
-          part.values = null;
-        }
-        descriptors.push([part.descriptor, part.values]);
-      }
-      if (item.maincategory === 'null') {
-        item.maincategory = null;
-      }
-      if (item.subcategory === 'null') {
-        item.subcategory = null;
-      }
-      valueArray = { maincategory: item.maincategory, subcategory: item.subcategory, descriptors };
-      this.valuesArray.push(valueArray);
-    }
+    const filters: UsecaseFilter[] = category.map(item => ({
+      maincategory: item.maincategory === 'null' ? null : item.maincategory,
+      subcategory: item.subcategory === 'null' ? null : item.subcategory,
+      descriptors: item.subCategory.map(part => [
+        part.descriptor === 'null' ? null : part.descriptor,
+        part.values === 'null' ? null : part.values
+      ])
+    }));
 
-    const offset =  (this.page - 1) * this.pageSize + 1;
-
-    this.listService.getTableData(encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
-      this.column, this.direction).subscribe((data: any) => {
-      this.valuesArray = [];
+    this.listService.getTableData({
+      filters, levels: langLevel,
+      page: pageNr ?? this.page, pageSize: this.pageSize,
+      sort: this.column, direction: this.direction
+    }).subscribe((data: any) => {
       this.itemsCount = data.count;
       this.tableData = data.items;
       this.total$ = data.total_count;

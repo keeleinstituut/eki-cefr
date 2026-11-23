@@ -1,3 +1,4 @@
+import { UsecaseQuery, usecaseParams } from './usecase-query';
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -24,9 +25,7 @@ export class UsecaseService {
     return this.http.get(this.EtLexApiEndpoint + '/usecasedescriptors');
   }
 
-  getTableData(wordsString: string, level: string, size: number, page: number,
-               column: string, direction: string) {
-    return this.http
-      .get(this.EtLexApiEndpoint + '/usecases?project=noor&limit=' + size + '&offset=' + page + column + direction + '&filter_json=' + wordsString + level);
+  getTableData(query: UsecaseQuery) {
+    return this.http.get(this.EtLexApiEndpoint + '/usecases', { params: usecaseParams(query) });
   }
 }

@@ -1,3 +1,4 @@
+import { PagingModule } from '../shared/paging/paging.module';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ describe('VocabularyListComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [VocabularyListComponent, FeedbackModalComponent],
-      imports: [ReactiveFormsModule, RouterLink],
+      imports: [PagingModule, ReactiveFormsModule, RouterLink],
       providers: [
         provideRouter(
           [{ path: '', component: VocabularyListComponent }]

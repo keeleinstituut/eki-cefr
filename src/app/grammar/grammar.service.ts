@@ -1,3 +1,4 @@
+import { GrammarQuery, grammarParams } from './grammar-query';
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -23,9 +24,7 @@ export class GrammarService {
     return this.http.get(this.EtLexApiEndpoint + '/gramdescriptors');
   }
 
-  getTableData(project:string, wordsString: string, level: string, size: number, page: number,
-               column: string, direction: string) {
-    return this.http
-      .get(this.EtLexApiEndpoint + '/gramprofiles?project='+project+'&limit=' + size + '&offset=' + page + column + direction + '&filter_json=' + wordsString + level);
+  getTableData(query: GrammarQuery) {
+    return this.http.get(this.EtLexApiEndpoint + '/gramprofiles', { params: grammarParams(query) });
   }
 }

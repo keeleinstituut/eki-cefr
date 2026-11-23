@@ -6,6 +6,8 @@
 - TypeScript 5.9 -> 6.0
 - Brauserite sihtversioonid viidi vastavusse Angular 22 toega (Baseline 2026-05-07).
 - Sõnaotsingu piirmäär on 90 märki.
+- Otsingutulemuste loogika koondati ühte komponenti `paging`.
+- Otsingupäringute parameetrid koostatakse `HttpParams`-i abil, mitte stringide liitmisega.
 
 ### Parandatud
 

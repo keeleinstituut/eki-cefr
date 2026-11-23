@@ -1,3 +1,4 @@
+import { PagingModule } from '../shared/paging/paging.module';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
@@ -12,7 +13,7 @@ describe('UsecaseComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, RouterLink],
+      imports: [PagingModule, ReactiveFormsModule, RouterLink],
       declarations: [UsecaseComponent, FeedbackModalComponent],
       providers: [provideRouter(
         [{ path: '', component: UsecaseComponent }]

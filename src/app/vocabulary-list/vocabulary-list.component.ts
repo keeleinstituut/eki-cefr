@@ -1,6 +1,7 @@
-import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
+import { VocabularyFilters } from './vocabulary-query';
+import { SortableListComponent } from '../shared/sorting/sortable-list.component';
 import { DecimalPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { VocabularyListService } from './vocabulary-list.service';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
@@ -25,7 +26,7 @@ export interface TableItem {
     standalone: false
 })
 
-export class VocabularyListComponent implements OnInit, OnDestroy {
+export class VocabularyListComponent extends SortableListComponent implements OnInit, OnDestroy {
   public themesList: string[];
   public adultLangLevel: string[];
   public childLangLevel: string[];
@@ -38,27 +39,22 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   public total$: number;
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
-  public levelLongString = '';
-  public wordLongString = '';
-  public searchLongString = '';
   public showSpinner = false;
-  public themeLongString = '';
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public noResult = false;
   public searchError = false;
   public page = 0;
   public showTable = true;
   public pageSize = 20;
-  public column = '';
-  public direction = '';
   public routeHandler: any;
   private searchRequest?: Subscription;
+  private searchFilters: VocabularyFilters = { project: 'etLex' };
 
-  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
 
   constructor(private listService: VocabularyListService, private formBuilder: UntypedFormBuilder,
               private pipe: DecimalPipe, private router: Router, private activatedRoute: ActivatedRoute) {
+    super();
     this.form = this.formBuilder.group({
       search: '',
       list: 'etLex',
@@ -81,15 +77,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSort({ column, direction }: SortEvent) {
-    this.column = '&sort=' + column;
-    this.direction = '&direction=' + direction;
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
+  protected override reloadAfterSort(): void {
     this.sendData(this.page);
   }
 
@@ -141,10 +129,6 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
     this.showSpinner = true;
     this.searchError = false;
     this.noResult = false;
-    this.levelLongString = '';
-    this.wordLongString = '';
-    this.searchLongString = '';
-    this.themeLongString = '';
 
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
@@ -154,30 +138,15 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
       .map((v, i) => v ? this.wordTypes[i].pos : null)
       .filter(v => v !== null);
 
-    for (const lang of langLevel) {
-      let levelString = '';
-      levelString = '&level=' + lang;
-      this.levelLongString = this.levelLongString + levelString;
-    }
+    this.searchFilters = {
+      project: this.form.value.list, word: this.form.value.search,
+      levels: langLevel, partsOfSpeech: wordList, theme: this.form.value.theme
+    };
 
-    for (const word of wordList) {
-      let wordString = '';
-      wordString = '&pos=' + word;
-      this.wordLongString = this.wordLongString + wordString;
-    }
-
-    if (this.form.value.search !== '') {
-      this.searchLongString = '&word=' + this.form.value.search;
-    }
-
-    if (this.form.value.theme !== '' && this.form.value.theme !== null) {
-      this.themeLongString = '&themes=' + this.form.value.theme;
-    }
-
-    const offset = (Math.max(pageNr ?? this.page, 1) - 1) * this.pageSize + 1;
-
-    this.searchRequest = this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
-      this.column, this.direction, this.levelLongString, this.wordLongString, this.themeLongString)
+    this.searchRequest = this.listService.getTableData({
+      ...this.searchFilters, page: pageNr ?? this.page, pageSize: this.pageSize,
+      sort: this.column, direction: this.direction
+    })
       .pipe(finalize(() => this.showSpinner = false))
       .subscribe({
         next: (data: any) => {
@@ -194,7 +163,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   }
 
   sendToFile(item) {
-    this.listService.sendToFile(this.searchLongString, this.form.value.list, item, this.levelLongString, this.wordLongString, this.themeLongString);
+    this.listService.sendToFile({ ...this.searchFilters, project: this.form.value.list }, item);
   }
 
   checkAll() {

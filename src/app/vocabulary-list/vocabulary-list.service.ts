@@ -1,3 +1,4 @@
+import { VocabularyFilters, VocabularyQuery, vocabularyFilterParams, vocabularyParams } from './vocabulary-query';
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -21,12 +22,18 @@ export class VocabularyListService {
     return this.http.get(this.EtLexApiEndpoint + '/themes');
   }
 
-  sendToFile(search: string, list: string, item: string, level?: string, words?: string, theme?: string) {
-    return window.location.href = this.EtLexApiEndpoint + '/projects/' + list + '/lemmas?' + search + level + words + theme + '&format=' + item;
+  getExportUrl(query: VocabularyFilters, format: string): string {
+    const params = vocabularyFilterParams(query).set('format', format);
+    return this.EtLexApiEndpoint + '/projects/' + encodeURIComponent(query.project) + '/lemmas?' + params.toString();
   }
 
-  getTableData(search: string, list: string, size: number, page: number, column: string, direction: string, level?: string, words?: string, theme?: string) {
-    return this.http
-      .get(this.EtLexApiEndpoint + '/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + column + direction + search + level + words + theme);
+  sendToFile(query: VocabularyFilters, format: string) {
+    window.location.href = this.getExportUrl(query, format);
+  }
+
+  getTableData(query: VocabularyQuery) {
+    return this.http.get(this.EtLexApiEndpoint + '/projects/' + encodeURIComponent(query.project) + '/lemmas', {
+      params: vocabularyParams(query)
+    });
   }
 }

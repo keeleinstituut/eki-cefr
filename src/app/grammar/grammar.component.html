@@ -227,15 +227,8 @@
       <div #searchResults class="pt-md-4 pt-0 d-flex flex-column">
         <b>Otsingu tulemused ( <span>{{ total$ }}</span> )</b>
         <div class="float-end ms-auto search-results-text">
-          <label for="select" class="form-label">Näita</label>
-          <select id="select" class="select-num" name="pageSize" [(ngModel)]="pageSize" (ngModelChange)="sendData(page)">
-            <option [ngValue]="10">10</option>
-            <option [ngValue]="20">20</option>
-            <option [ngValue]="30">30</option>
-            <option [ngValue]="50">50</option>
-            <option [ngValue]="100">100</option>
-            <option [ngValue]="total$">kõik</option>
-          </select>
+          <app-page-size [total]="total$" [pageSize]="pageSize"
+            (pageSizeChange)="pageSize = $event; sendData(page)"></app-page-size>
         </div>
         <div class="section-separator d-sm-none"></div>
         @if (showTable) {
@@ -320,11 +313,8 @@
         }
         @if (showTable) {
           <div>
-            <ngb-pagination [collectionSize]="total$" [(page)]="page" [pageSize]="pageSize"
-              (pageChange)="handleOnPageChange($event); scrollTo(searchResults)" [maxSize]="10">
-              <ng-template ngbPaginationPrevious>Eelmine</ng-template>
-              <ng-template ngbPaginationNext>Järgmine</ng-template>
-            </ngb-pagination>
+            <app-paging [total]="total$" [page]="page" [pageSize]="pageSize"
+              (pageChange)="page = $event; handleOnPageChange($event); scrollTo(searchResults)"></app-paging>
           </div>
         }
       </div>
