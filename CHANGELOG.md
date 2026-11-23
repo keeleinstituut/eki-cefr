@@ -11,6 +11,7 @@
 
 - Sõnaotsing ja teksti hindamise vaated ei jää ootele, kui server tagastab veakoodi 422.
 - Teksti hindamisel kuvatakse laadimiskuva.
+- Laadimiskuva katab kogu vaate ka kerimisel.
 
 ## [1.45.0] 2026-01-14
 
