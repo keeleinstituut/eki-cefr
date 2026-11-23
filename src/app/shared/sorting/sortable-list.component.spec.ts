@@ -32,7 +32,7 @@ describe('SortableListComponent', () => {
     for (const direction of ['asc', 'desc', '']) {
       header.click();
       fixture.detectChanges();
-      expect(component.reload).toHaveBeenCalledWith('&sort=name', '&direction=' + direction);
+      expect(component.reload).toHaveBeenCalledWith('name', direction);
       expect(component.headers.first.direction).toBe(direction);
     }
     expect(component.reload).toHaveBeenCalledTimes(3);
@@ -48,7 +48,7 @@ describe('SortableListComponent', () => {
     const component = fixture.componentInstance;
     expect(component.headers.first.direction).toBe('');
     expect(component.headers.last.direction).toBe('asc');
-    expect(component.reload).toHaveBeenCalledWith('&sort=level', '&direction=asc');
+    expect(component.reload).toHaveBeenCalledWith('level', 'asc');
     expect(component.reload).toHaveBeenCalledTimes(2);
   });
 });

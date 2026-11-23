@@ -1,4 +1,4 @@
-import { PagingQuery, pagingParams } from '../shared/paging/paging-query';
+import { UsecaseQuery, usecaseParams } from './usecase-query';
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -25,9 +25,7 @@ export class UsecaseService {
     return this.http.get(this.EtLexApiEndpoint + '/usecasedescriptors');
   }
 
-  getTableData(wordsString: string, level: string, paging: PagingQuery,
-               column: string, direction: string) {
-    return this.http
-      .get(this.EtLexApiEndpoint + '/usecases?project=noor' + column + direction + '&filter_json=' + wordsString + level, { params: pagingParams(paging) });
+  getTableData(query: UsecaseQuery) {
+    return this.http.get(this.EtLexApiEndpoint + '/usecases', { params: usecaseParams(query) });
   }
 }

@@ -1,4 +1,4 @@
-import { PagingQuery } from '../shared/paging/paging-query';
+import { VocabularyFilters } from './vocabulary-query';
 import { SortableListComponent } from '../shared/sorting/sortable-list.component';
 import { DecimalPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
@@ -39,11 +39,7 @@ export class VocabularyListComponent extends SortableListComponent implements On
   public total$: number;
   @ViewChild(FeedbackModalComponent)
   public modal: FeedbackModalComponent;
-  public levelLongString = '';
-  public wordLongString = '';
-  public searchLongString = '';
   public showSpinner = false;
-  public themeLongString = '';
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public noResult = false;
   public searchError = false;
@@ -52,6 +48,7 @@ export class VocabularyListComponent extends SortableListComponent implements On
   public pageSize = 20;
   public routeHandler: any;
   private searchRequest?: Subscription;
+  private searchFilters: VocabularyFilters = { project: 'etLex' };
 
 
 
@@ -132,10 +129,6 @@ export class VocabularyListComponent extends SortableListComponent implements On
     this.showSpinner = true;
     this.searchError = false;
     this.noResult = false;
-    this.levelLongString = '';
-    this.wordLongString = '';
-    this.searchLongString = '';
-    this.themeLongString = '';
 
     const langLevel = this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
@@ -145,30 +138,15 @@ export class VocabularyListComponent extends SortableListComponent implements On
       .map((v, i) => v ? this.wordTypes[i].pos : null)
       .filter(v => v !== null);
 
-    for (const lang of langLevel) {
-      let levelString = '';
-      levelString = '&level=' + lang;
-      this.levelLongString = this.levelLongString + levelString;
-    }
+    this.searchFilters = {
+      project: this.form.value.list, word: this.form.value.search,
+      levels: langLevel, partsOfSpeech: wordList, theme: this.form.value.theme
+    };
 
-    for (const word of wordList) {
-      let wordString = '';
-      wordString = '&pos=' + word;
-      this.wordLongString = this.wordLongString + wordString;
-    }
-
-    if (this.form.value.search !== '') {
-      this.searchLongString = '&word=' + this.form.value.search;
-    }
-
-    if (this.form.value.theme !== '' && this.form.value.theme !== null) {
-      this.themeLongString = '&themes=' + this.form.value.theme;
-    }
-
-    const paging: PagingQuery = { page: pageNr ?? this.page, pageSize: this.pageSize };
-
-    this.searchRequest = this.listService.getTableData(this.searchLongString, this.form.value.list, paging,
-      this.column, this.direction, this.levelLongString, this.wordLongString, this.themeLongString)
+    this.searchRequest = this.listService.getTableData({
+      ...this.searchFilters, page: pageNr ?? this.page, pageSize: this.pageSize,
+      sort: this.column, direction: this.direction
+    })
       .pipe(finalize(() => this.showSpinner = false))
       .subscribe({
         next: (data: any) => {
@@ -185,7 +163,7 @@ export class VocabularyListComponent extends SortableListComponent implements On
   }
 
   sendToFile(item) {
-    this.listService.sendToFile(this.searchLongString, this.form.value.list, item, this.levelLongString, this.wordLongString, this.themeLongString);
+    this.listService.sendToFile({ ...this.searchFilters, project: this.form.value.list }, item);
   }
 
   checkAll() {

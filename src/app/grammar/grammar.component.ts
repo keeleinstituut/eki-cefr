@@ -1,4 +1,4 @@
-import { PagingQuery } from '../shared/paging/paging-query';
+import { GrammarFilter } from './grammar-query';
 import { SortableListComponent } from '../shared/sorting/sortable-list.component';
 import { DecimalPipe } from '@angular/common';
 import {
@@ -63,7 +63,6 @@ export class GrammarComponent extends SortableListComponent implements OnInit, O
   public valTypeList = [];
   public valTypeLists = [];
   public categories: any[];
-  public valuesArray = [];
   public list = [];
   itemsCount: number;
   public total$: number;
@@ -73,7 +72,6 @@ export class GrammarComponent extends SortableListComponent implements OnInit, O
   public noResult = false;
   @Input() public page = 0;
   public pageSize = 20;
-  public levelLongString = '';
   public routeHandler: any;
   public showTable = true;
 
@@ -311,51 +309,27 @@ export class GrammarComponent extends SortableListComponent implements OnInit, O
     }
 
     this.showSpinner = true;
-    this.levelLongString = '';
 
     const langLevel = this.form ? this.form.value.lang
       .map((v, i) => v ? this.langLevel[i] : null)
       .filter(v => v !== null) : [];
 
-    for (const lang of langLevel) {
-      let levelString = '';
-      if (lang === langLevel[0] && this.form.value.search === '') {
-        levelString = 'level=' + lang;
-      } else {
-        levelString = '&level=' + lang;
-      }
-      this.levelLongString = this.levelLongString + levelString;
-    }
-
     const category = this.form ? this.form.value.category : [];
 
-    for (const item of category) {
-      let valueArray = {};
-      const descriptors = [];
-      for (const part of item.subCategory) {
-        if (part.descriptor === 'null') {
-          part.descriptor = null;
-        }
-        if (part.values === 'null') {
-          part.values = null;
-        }
-        descriptors.push([part.descriptor, part.values]);
-      }
-      if (item.maincategory === 'null') {
-        item.maincategory = null;
-      }
-      if (item.subcategory === 'null') {
-        item.subcategory = null;
-      }
-      valueArray = { maincategory: item.maincategory, subcategory: item.subcategory, descriptors };
-      this.valuesArray.push(valueArray);
-    }
+    const filters: GrammarFilter[] = category.map(item => ({
+      maincategory: item.maincategory === 'null' ? null : item.maincategory,
+      subcategory: item.subcategory === 'null' ? null : item.subcategory,
+      descriptors: item.subCategory.map(part => [
+        part.descriptor === 'null' ? null : part.descriptor,
+        part.values === 'null' ? null : part.values
+      ])
+    }));
 
-    const paging: PagingQuery = { page: pageNr ?? this.page, pageSize: this.pageSize };
-
-    this.listService.getTableData(this.listType, encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, paging,
-      this.column, this.direction).subscribe((data: any) => {
-      this.valuesArray = [];
+    this.listService.getTableData({
+      project: this.listType, filters, levels: langLevel,
+      page: pageNr ?? this.page, pageSize: this.pageSize,
+      sort: this.column, direction: this.direction
+    }).subscribe((data: any) => {
       this.itemsCount = data.count;
       this.tableData = data.items;
       this.total$ = data.total_count;

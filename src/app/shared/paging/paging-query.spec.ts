@@ -31,15 +31,15 @@ describe('Paging parameters', () => {
     for (const feature of ['grammar', 'usecase', 'vocabulary']) {
       it(`adds paging once while retaining ${feature} filters and sorting`, () => {
         const paging = { page: 3, pageSize: 20 };
-        const sort = '&sort=level';
-        const direction = '&direction=asc';
+        const sort = 'level';
+        const direction = 'asc' as const;
         if (feature === 'grammar') {
-          TestBed.inject(GrammarService).getTableData('etLex', '[]', '&level=A1', paging, sort, direction).subscribe();
+          TestBed.inject(GrammarService).getTableData({ ...paging, project: 'etLex', filters: [], levels: ['A1'], sort, direction }).subscribe();
         } else if (feature === 'usecase') {
-          TestBed.inject(UsecaseService).getTableData('[]', '&level=A1', paging, sort, direction).subscribe();
+          TestBed.inject(UsecaseService).getTableData({ ...paging, filters: [], levels: ['A1'], sort, direction }).subscribe();
         } else {
-          TestBed.inject(VocabularyListService).getTableData('&word=test', 'etLex', paging, sort, direction,
-            '&level=A1', '&pos=S', '&themes=test').subscribe();
+          TestBed.inject(VocabularyListService).getTableData({ ...paging, project: 'etLex', word: 'test', levels: ['A1'],
+            partsOfSpeech: ['S'], theme: 'test', sort, direction }).subscribe();
         }
         const request = TestBed.inject(HttpTestingController).expectOne(() => true);
         const params = new URL(request.request.urlWithParams, 'https://example.test').searchParams;
