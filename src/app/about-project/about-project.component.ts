@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 
@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
     selector: 'app-about-project',
     templateUrl: './about-project.component.html',
     styleUrls: ['./about-project.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

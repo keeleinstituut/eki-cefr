@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 
@@ -6,6 +6,7 @@ import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.compone
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HeaderComponent implements AfterViewInit {

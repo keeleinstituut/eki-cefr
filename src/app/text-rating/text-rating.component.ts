@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {UntypedFormArray, UntypedFormBuilder, UntypedFormControl} from '@angular/forms';
 import {TextService} from './text.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
@@ -7,6 +7,7 @@ import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component
     selector: 'app-text-rating',
     templateUrl: './text-rating.component.html',
     styleUrls: ['./text-rating.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TextRatingComponent {

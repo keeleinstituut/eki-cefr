@@ -10,7 +10,8 @@ import {
   PipeTransform,
   QueryList,
   ViewChild,
-  ViewChildren
+  ViewChildren,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { UsecaseService } from './usecase.service';
@@ -42,6 +43,7 @@ export interface DataItem {
     templateUrl: './usecase.component.html',
     styleUrls: ['./usecase.component.css'],
     providers: [DecimalPipe],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UsecaseComponent implements OnInit, OnDestroy {

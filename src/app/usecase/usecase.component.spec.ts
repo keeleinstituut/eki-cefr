@@ -4,7 +4,7 @@ import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { UsecaseComponent } from './usecase.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('UsecaseComponent', () => {
   let component: UsecaseComponent;
@@ -18,7 +18,7 @@ describe('UsecaseComponent', () => {
         [{ path: '', component: UsecaseComponent }]
         , withEnabledBlockingInitialNavigation()
       ),
-      provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+      provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
     })
       .compileComponents();
   }));

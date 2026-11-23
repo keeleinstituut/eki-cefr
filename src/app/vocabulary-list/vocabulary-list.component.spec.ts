@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
 import { VocabularyListComponent } from './vocabulary-list.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('VocabularyListComponent', () => {
   let component: VocabularyListComponent;
@@ -18,7 +18,7 @@ describe('VocabularyListComponent', () => {
         provideRouter(
           [{ path: '', component: VocabularyListComponent }]
           , withEnabledBlockingInitialNavigation()
-        ), provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+        ), provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
     })
       .compileComponents();
   }));
