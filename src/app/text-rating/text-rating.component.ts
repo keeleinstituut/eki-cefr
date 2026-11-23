@@ -1,7 +1,9 @@
-import {Component, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnDestroy, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {UntypedFormArray, UntypedFormBuilder, UntypedFormControl} from '@angular/forms';
 import {TextService} from './text.service';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
+import {Subscription} from 'rxjs';
+import {finalize} from 'rxjs/operators';
 
 @Component({
     selector: 'app-text-rating',
@@ -10,7 +12,7 @@ import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class TextRatingComponent {
+export class TextRatingComponent implements OnDestroy {
 
   public form;
   public resultData = [];
@@ -29,6 +31,9 @@ export class TextRatingComponent {
   public clicked = false;
   public project = 'noor';
   public activeId = 'sonavara';
+  public isEvaluating = false;
+  public evaluationError = false;
+  private evaluationRequest?: Subscription;
 
 
   @ViewChild(FeedbackModalComponent)
@@ -73,24 +78,35 @@ export class TextRatingComponent {
   }
 
   getData() {
-    this.service.evaluateText(this.form.value.text, this.form.value.list).subscribe((data: any) => {
+    this.evaluationRequest?.unsubscribe();
+    this.isEvaluating = true;
+    this.evaluationError = false;
 
-      this.resultData = data.evaluatedText;
-      this.resultDataGrammar = data.evaluatedGrammarText;
-      this.resultDataPhrases = data.evaluatedPhrasesText;
-      this.phrases = data.phrasesData;
-      this.smTable = data.textStat.tables.by_level;
-      this.smTableForms = data.textStat.tables_forms.by_level;
-      this.wordCount = data.textStat.wordCount;
-      this.Findex = data.textStat.Findex;
-      this.LixIndex = data.textStat.LixIndex;
-      this.Nindex = data.textStat.Nindex;
-      this.SVprop = data.textStat.SVprop;
-      this.form.controls.text.setValue(this.form.value.text);
-      this.form.controls.result.setValue(this.form.value.text);
-    });
+    this.evaluationRequest = this.service.evaluateText(this.form.value.text, this.form.value.list)
+      .pipe(finalize(() => this.isEvaluating = false))
+      .subscribe({
+        next: (data: any) => {
+          this.resultData = data.evaluatedText;
+          this.resultDataGrammar = data.evaluatedGrammarText;
+          this.resultDataPhrases = data.evaluatedPhrasesText;
+          this.phrases = data.phrasesData;
+          this.smTable = data.textStat.tables.by_level;
+          this.smTableForms = data.textStat.tables_forms.by_level;
+          this.wordCount = data.textStat.wordCount;
+          this.Findex = data.textStat.Findex;
+          this.LixIndex = data.textStat.LixIndex;
+          this.Nindex = data.textStat.Nindex;
+          this.SVprop = data.textStat.SVprop;
+          this.form.controls.text.setValue(this.form.value.text);
+          this.form.controls.result.setValue(this.form.value.text);
+        },
+        error: () => this.evaluationError = true
+      });
   }
 
+  ngOnDestroy(): void {
+    this.evaluationRequest?.unsubscribe();
+  }
 
 clearText() {
   this.form.controls.text.setValue('');

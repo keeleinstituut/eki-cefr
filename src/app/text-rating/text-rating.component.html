@@ -1,5 +1,12 @@
 <div class="wrapper">
-  <div class="container-fluid bottom-gutter content-panel">
+  @if (isEvaluating) {
+    <div class="overlay" role="status">
+      <div class="spinner-wrapper">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  }
+  <div class="container-fluid bottom-gutter content-panel" [attr.aria-busy]="isEvaluating" [inert]="isEvaluating">
     <div class="row flex-row-reverse">
       <div class="col-12">
         <h3>Õppeteksti hindamine</h3>
@@ -228,6 +235,9 @@
           <button class="btn sm-search-btn mt-3 mb-md-0 mb-3" (click)="getData(); clicked = true">
             Hinda
           </button>
+          @if (evaluationError) {
+            <p class="mt-3" role="alert">Teksti hindamine ebaõnnestus. Proovi uuesti.</p>
+          }
         </form>
         <app-feedback-modal></app-feedback-modal>
       </div>
