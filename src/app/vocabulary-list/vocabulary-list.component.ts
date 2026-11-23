@@ -1,6 +1,7 @@
-import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
+import { PagingQuery } from '../shared/paging/paging-query';
+import { SortableListComponent } from '../shared/sorting/sortable-list.component';
 import { DecimalPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { VocabularyListService } from './vocabulary-list.service';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
@@ -25,7 +26,7 @@ export interface TableItem {
     standalone: false
 })
 
-export class VocabularyListComponent implements OnInit, OnDestroy {
+export class VocabularyListComponent extends SortableListComponent implements OnInit, OnDestroy {
   public themesList: string[];
   public adultLangLevel: string[];
   public childLangLevel: string[];
@@ -49,16 +50,14 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   public page = 0;
   public showTable = true;
   public pageSize = 20;
-  public column = '';
-  public direction = '';
   public routeHandler: any;
   private searchRequest?: Subscription;
 
-  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
 
   constructor(private listService: VocabularyListService, private formBuilder: UntypedFormBuilder,
               private pipe: DecimalPipe, private router: Router, private activatedRoute: ActivatedRoute) {
+    super();
     this.form = this.formBuilder.group({
       search: '',
       list: 'etLex',
@@ -81,15 +80,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSort({ column, direction }: SortEvent) {
-    this.column = '&sort=' + column;
-    this.direction = '&direction=' + direction;
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
+  protected override reloadAfterSort(): void {
     this.sendData(this.page);
   }
 
@@ -174,9 +165,9 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
       this.themeLongString = '&themes=' + this.form.value.theme;
     }
 
-    const offset = (Math.max(pageNr ?? this.page, 1) - 1) * this.pageSize + 1;
+    const paging: PagingQuery = { page: pageNr ?? this.page, pageSize: this.pageSize };
 
-    this.searchRequest = this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
+    this.searchRequest = this.listService.getTableData(this.searchLongString, this.form.value.list, paging,
       this.column, this.direction, this.levelLongString, this.wordLongString, this.themeLongString)
       .pipe(finalize(() => this.showSpinner = false))
       .subscribe({

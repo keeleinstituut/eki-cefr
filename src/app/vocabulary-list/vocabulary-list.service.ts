@@ -1,3 +1,4 @@
+import { PagingQuery, pagingParams } from '../shared/paging/paging-query';
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -25,8 +26,8 @@ export class VocabularyListService {
     return window.location.href = this.EtLexApiEndpoint + '/projects/' + list + '/lemmas?' + search + level + words + theme + '&format=' + item;
   }
 
-  getTableData(search: string, list: string, size: number, page: number, column: string, direction: string, level?: string, words?: string, theme?: string) {
+  getTableData(search: string, list: string, paging: PagingQuery, column: string, direction: string, level?: string, words?: string, theme?: string) {
     return this.http
-      .get(this.EtLexApiEndpoint + '/projects/' + list + '/lemmas?&limit=' + size + '&offset=' + page + column + direction + search + level + words + theme);
+      .get(this.EtLexApiEndpoint + '/projects/' + list + '/lemmas?' + column + direction + search + level + words + theme, { params: pagingParams(paging) });
   }
 }

@@ -1,3 +1,4 @@
+import { PagingQuery, pagingParams } from '../shared/paging/paging-query';
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -23,9 +24,9 @@ export class GrammarService {
     return this.http.get(this.EtLexApiEndpoint + '/gramdescriptors');
   }
 
-  getTableData(project:string, wordsString: string, level: string, size: number, page: number,
+  getTableData(project:string, wordsString: string, level: string, paging: PagingQuery,
                column: string, direction: string) {
     return this.http
-      .get(this.EtLexApiEndpoint + '/gramprofiles?project='+project+'&limit=' + size + '&offset=' + page + column + direction + '&filter_json=' + wordsString + level);
+      .get(this.EtLexApiEndpoint + '/gramprofiles?project='+project+ column + direction + '&filter_json=' + wordsString + level, { params: pagingParams(paging) });
   }
 }

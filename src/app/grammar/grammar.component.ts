@@ -1,4 +1,5 @@
-import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
+import { PagingQuery } from '../shared/paging/paging-query';
+import { SortableListComponent } from '../shared/sorting/sortable-list.component';
 import { DecimalPipe } from '@angular/common';
 import {
   Component,
@@ -8,9 +9,7 @@ import {
   OnInit,
   Pipe,
   PipeTransform,
-  QueryList,
   ViewChild,
-  ViewChildren,
   ChangeDetectionStrategy
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
@@ -46,7 +45,7 @@ export interface DataItem {
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
-export class GrammarComponent implements OnInit, OnDestroy {
+export class GrammarComponent extends SortableListComponent implements OnInit, OnDestroy {
 
   public listType = "etLex";
   public adultLangLevel: string[];
@@ -74,13 +73,10 @@ export class GrammarComponent implements OnInit, OnDestroy {
   public noResult = false;
   @Input() public page = 0;
   public pageSize = 20;
-  public column = '';
-  public direction = '';
   public levelLongString = '';
   public routeHandler: any;
   public showTable = true;
 
-  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   @ViewChild('searchResults', { static: true }) searchResults: ElementRef;
 
   constructor(
@@ -90,6 +86,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
     private router: Router,
     private detailService: GrammarDetailService,
     private activatedRoute: ActivatedRoute) {
+    super();
 
     this.routeHandler = router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -119,15 +116,7 @@ export class GrammarComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSort({ column, direction }: SortEvent) {
-    this.column = '&sort=' + column;
-    this.direction = '&direction=' + direction;
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
+  protected override reloadAfterSort(): void {
     this.sendData();
   }
 
@@ -362,9 +351,9 @@ export class GrammarComponent implements OnInit, OnDestroy {
       this.valuesArray.push(valueArray);
     }
 
-    const offset =  (this.page - 1) * this.pageSize + 1;
+    const paging: PagingQuery = { page: pageNr ?? this.page, pageSize: this.pageSize };
 
-    this.listService.getTableData(this.listType, encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, this.pageSize, offset,
+    this.listService.getTableData(this.listType, encodeURI(JSON.stringify(this.valuesArray)), this.levelLongString, paging,
       this.column, this.direction).subscribe((data: any) => {
       this.valuesArray = [];
       this.itemsCount = data.count;
