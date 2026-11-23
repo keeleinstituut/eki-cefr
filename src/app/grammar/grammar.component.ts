@@ -10,7 +10,8 @@ import {
   PipeTransform,
   QueryList,
   ViewChild,
-  ViewChildren
+  ViewChildren,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { GrammarService } from './grammar.service';
@@ -43,6 +44,7 @@ export interface DataItem {
     templateUrl: './grammar.component.html',
     styleUrls: ['./grammar.component.css'],
     providers: [DecimalPipe],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GrammarComponent implements OnInit, OnDestroy {

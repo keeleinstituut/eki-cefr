@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {FeedbackModalComponent} from '../feedback-modal/feedback-modal.component';
 import {GrammarDetailService} from '../services/grammar-detail.service';
 import {Location} from '@angular/common';
@@ -7,6 +7,7 @@ import {Location} from '@angular/common';
     selector: 'app-grammar-detail',
     templateUrl: './grammar-detail.component.html',
     styleUrls: ['./grammar-detail.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GrammarDetailComponent implements OnInit {

@@ -7,7 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VocabularyListComponent} from './vocabulary-list/vocabulary-list.component';
 import {NgbdSortableHeader} from './services/sortable.directive';
@@ -45,5 +45,5 @@ import { EducationalMaterialComponent } from './educational-material/educational
         NgbModule,
         FormsModule,
         ReactiveFormsModule,
-        AutosizeModule], providers: [FeedbackModalComponent, { provide: LocationStrategy, useClass: HashLocationStrategy }, provideHttpClient(withInterceptorsFromDi())] })
+        AutosizeModule], providers: [FeedbackModalComponent, { provide: LocationStrategy, useClass: HashLocationStrategy }, provideHttpClient(withXhr(), withInterceptorsFromDi())] })
 export class AppModule { }

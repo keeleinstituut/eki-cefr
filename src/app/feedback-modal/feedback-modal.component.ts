@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {UntypedFormBuilder} from '@angular/forms';
 import {FeedbackModalService} from './feedback-modal.service';
@@ -9,6 +9,7 @@ import {environment} from '../../environments/environment';
     templateUrl: './feedback-modal.component.html',
     styleUrls: ['./feedback-modal.component.css'],
     providers: [NgbModalConfig, NgbModal],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FeedbackModalComponent {

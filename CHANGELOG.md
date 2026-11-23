@@ -1,3 +1,11 @@
+## [Unreleased]
+
+### Muudetud
+
+- Angular 21.0 -> 22.3
+- TypeScript 5.9 -> 6.0
+- Brauserite sihtversioonid viidi vastavusse Angular 22 toega (Baseline 2026-05-07).
+
 ## [1.45.0] 2026-01-14
 
 - Angular 19.2 -> 21.0

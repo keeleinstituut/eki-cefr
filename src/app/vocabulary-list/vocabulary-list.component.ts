@@ -1,6 +1,6 @@
 import { NgbdSortableHeader, SortEvent } from '../services/sortable.directive';
 import { DecimalPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { VocabularyListService } from './vocabulary-list.service';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
@@ -19,6 +19,7 @@ export interface TableItem {
     templateUrl: './vocabulary-list.component.html',
     styleUrls: ['./vocabulary-list.component.css'],
     providers: [DecimalPipe],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

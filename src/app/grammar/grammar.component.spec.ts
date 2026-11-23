@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
 import { GrammarComponent } from './grammar.component';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('GrammarComponent', () => {
   let component: GrammarComponent;
@@ -20,7 +20,7 @@ describe('GrammarComponent', () => {
       providers: [provideRouter(
         [{ path: '', component: GrammarComponent }]
         , withEnabledBlockingInitialNavigation()
-      ), provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+      ), provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
     })
       .compileComponents();
   }));

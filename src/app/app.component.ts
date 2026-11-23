@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 declare let gtag: (conf, id, path) => void;
@@ -7,6 +7,7 @@ declare let gtag: (conf, id, path) => void;
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideRouter, withEnabledBlockingInitialNavigation, RouterLink } from '@angular/router';
 
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { TextRatingComponent } from './text-rating.component';
@@ -21,7 +21,7 @@ describe('TextRatingComponent', () => {
           [{ path: '', component: TextRatingComponent }]
           , withEnabledBlockingInitialNavigation()
         ),
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting()
       ]
     })

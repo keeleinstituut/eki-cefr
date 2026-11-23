@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ChangeDetectionStrategy } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 
@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
     selector: 'app-educational-material',
     templateUrl: './educational-material.component.html',
     styleUrls: ['./educational-material.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EducationalMaterialComponent {
