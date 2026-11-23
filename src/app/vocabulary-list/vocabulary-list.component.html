@@ -70,7 +70,7 @@
           </div>
         </div>
         <div class="pb-4 d-flex align-items-center">
-          <input type="text" formControlName="search" style="width: fit-content" placeholder="Otsi sõna"
+          <input type="text" formControlName="search" maxlength="90" style="width: fit-content" placeholder="Otsi sõna"
             class="form-control col-sm-7 col-md-6 col-9" />
           <button class="btn sm-search-btn ms-2" (click)="page = 1; sendData(1)">
             Otsi
@@ -196,7 +196,11 @@
           }
         </div>
       }
-      @if (noResult) {
+      @if (searchError) {
+        <div class="col-md-8 col-12">
+          <p class="no-result" role="alert">Otsing ebaõnnestus. Kontrolli otsingutingimusi ja proovi uuesti.</p>
+        </div>
+      } @else if (noResult) {
         <div class="col-md-8 col-12">
           <p class="no-result">Otsing ei tagastanud ühtegi tulemust.</p>
         </div>

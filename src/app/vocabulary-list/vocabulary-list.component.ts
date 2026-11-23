@@ -4,8 +4,10 @@ import { Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren, Chang
 import { VocabularyListService } from './vocabulary-list.service';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { FeedbackModalComponent } from '../feedback-modal/feedback-modal.component';
-import { environment } from './../../environments/environment';
+import { environment } from '../../environments/environment';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 export interface TableItem {
   url: string;
@@ -43,12 +45,14 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
   public themeLongString = '';
   public APIEndpoint = environment.production && environment.APIEndpoint ? environment.APIEndpoint : environment;
   public noResult = false;
+  public searchError = false;
   public page = 0;
   public showTable = true;
   public pageSize = 20;
   public column = '';
   public direction = '';
   public routeHandler: any;
+  private searchRequest?: Subscription;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
@@ -104,6 +108,7 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routeHandler.unsubscribe();
+    this.searchRequest?.unsubscribe();
   }
 
   getAdultData() {
@@ -132,7 +137,10 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
       queryParamsHandling: 'merge',
     });
 
+    this.searchRequest?.unsubscribe();
     this.showSpinner = true;
+    this.searchError = false;
+    this.noResult = false;
     this.levelLongString = '';
     this.wordLongString = '';
     this.searchLongString = '';
@@ -165,18 +173,23 @@ export class VocabularyListComponent implements OnInit, OnDestroy {
     if (this.form.value.theme !== '' && this.form.value.theme !== null) {
       this.themeLongString = '&themes=' + this.form.value.theme;
     }
-    
-    const offset = (this.page - 1) * this.pageSize + 1;
 
-    this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
+    const offset = (Math.max(pageNr ?? this.page, 1) - 1) * this.pageSize + 1;
+
+    this.searchRequest = this.listService.getTableData(this.searchLongString, this.form.value.list, this.pageSize, offset,
       this.column, this.direction, this.levelLongString, this.wordLongString, this.themeLongString)
-      .subscribe((data: any) => {
-        this.tableData = data.items;
-        this.total$ = data.total_count;
-      }, () => {
-      }, () => {
-        this.noResult = this.tableData.length === 0;
-        setTimeout(() => this.showSpinner = false, 1000);
+      .pipe(finalize(() => this.showSpinner = false))
+      .subscribe({
+        next: (data: any) => {
+          this.tableData = data.items;
+          this.total$ = data.total_count;
+          this.noResult = this.tableData.length === 0;
+        },
+        error: () => {
+          this.tableData = [];
+          this.total$ = 0;
+          this.searchError = true;
+        }
       });
   }
 

@@ -5,6 +5,11 @@
 - Angular 21.0 -> 22.3
 - TypeScript 5.9 -> 6.0
 - Brauserite sihtversioonid viidi vastavusse Angular 22 toega (Baseline 2026-05-07).
+- Sõnaotsingu piirmäär on 90 märki.
+
+### Parandatud
+
+- Sõnaotsing ei jää ootele, kui server tagastab veakoodi 422.
 
 ## [1.45.0] 2026-01-14
 
